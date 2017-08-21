@@ -51,8 +51,7 @@ public class TurmaDAO
         }
         return k;
     }
-    public ArrayList<String> turmasDisp(String curso) 
-    {
+    public ArrayList<String> turmasDisp(String curso) {
         ArrayList<String> lista = new ArrayList();
         String sql = "select * from turma where curso=?;";
         ResultSet rs = null;
@@ -72,10 +71,5 @@ public class TurmaDAO
             e.printStackTrace();
         }
         return lista;
-    }
-    
-    public void altCurso(String curso,String turma)
-    {
-        
     }
 }

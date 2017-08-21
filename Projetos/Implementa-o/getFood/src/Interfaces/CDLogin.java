@@ -343,7 +343,6 @@ public class CDLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_loginActionPerformed
 
     private void inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inActionPerformed
-        System.out.println(login.getText());
         String s = new String(senha.getPassword());
         String c = new String(confirma.getPassword());
         if(login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("") )
@@ -355,25 +354,12 @@ public class CDLogin extends javax.swing.JFrame {
             {
                 System.out.println("Senhas iguais");
                 LoginDAO log = new LoginDAO();
-                boolean k = log.validaLogin(login.getText());
-                if(k)
+                if(log.validaLogin(login.getText()))
                 {
                    JOptionPane.showMessageDialog(null,"Esse login já existe.");
                 }else
                 {
                    log.add(login.getText(),s,Float.parseFloat(matr.getText())); 
-                   int r = JOptionPane.showConfirmDialog(null,"Cadastro efetuado com sucesso, deseja cadastrar outro login?");
-                   if(r == JOptionPane.YES_OPTION)
-                   {
-                       dispose();
-                       CDLogin l = new CDLogin();
-                       l.setVisible(true);
-                   }else
-                   {
-                       dispose();
-                       Inicio i = new Inicio();
-                       i.setVisible(true);
-                   }
                 }
             }
         }

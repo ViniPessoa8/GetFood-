@@ -6,7 +6,7 @@ public class Funcionario
     protected String nome="",cargo="";
 
     public Funcionario(float matricula, String nome, String cargo) {
-        this.matricula=matricula;
+         this.matricula=matricula;
         this.nome=nome;
         this.cargo=cargo;
     }

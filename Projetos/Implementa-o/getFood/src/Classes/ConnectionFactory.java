@@ -11,7 +11,6 @@ public class ConnectionFactory {
              String url = "jdbc:mysql://localhost/getFood";
              Class.forName("com.mysql.jdbc.Driver");
              return DriverManager.getConnection(url, "root", "rockdesaia");
-             // return DriverManager.getConnection(url, "root", "root");
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

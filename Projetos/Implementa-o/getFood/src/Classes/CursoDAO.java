@@ -98,12 +98,12 @@ public class CursoDAO
     }
      public void alteraNome(String codigo, String nome)
      {
-         String sql="update curso set nome='"+nome+"' where codigo=?;";
+         String sql="update curso set nome='?' where codigo=?;";
          try
          {
              PreparedStatement stmt = con.prepareStatement(sql);
-            // stmt.setString(1,nome);
-             stmt.setString(1,codigo);
+             stmt.setString(1,nome);
+             stmt.setString(2,codigo);
              stmt.execute();
              stmt.close();
          }catch(SQLException e)
@@ -111,20 +111,7 @@ public class CursoDAO
              e.printStackTrace();
          }
      }
-      public void alteraCodigo(String novo,String old)
-     {
-         String sql="update curso set codigo=? where codigo=?;";
-         try
-         {
-             PreparedStatement stmt = con.prepareStatement(sql);
-             stmt.setString(1,novo);
-             stmt.setString(2,old);
-             stmt.execute();
-             stmt.close();
-         }catch(SQLException e)
-         {
-             e.printStackTrace();
-         }
-     }
+     
+     
      
 }

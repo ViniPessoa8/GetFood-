@@ -30,21 +30,14 @@ public class FichaDAO
     
     public float getVal()
     {
-        String sql="select valor from ficha;";
+        String sql="select * from ficha;";
         ResultSet rs=null;
         float p=0;
         try
         {
             PreparedStatement stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
-            if(rs.first())
-            {
-                p = rs.getFloat("valor");
-            }else
-            {
-                System.out.println("tomo no cu");
-            }
-            
+            p = rs.getFloat("valor");
             System.out.println(p);
         } catch(SQLException e)
         {

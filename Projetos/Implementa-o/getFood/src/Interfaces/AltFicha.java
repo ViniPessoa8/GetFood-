@@ -5,16 +5,12 @@ import Classes.FichaDAO;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-public class AltFicha extends javax.swing.JFrame 
-{
+public class AltFicha extends javax.swing.JFrame {
 
     FichaDAO ficha;
-    public AltFicha() 
-    {
+    public AltFicha() {
         initComponents();
         ficha= new FichaDAO();
-        txtAtual.setEditable(false);
-        txtAtual.setEnabled(true);
         txtAtual.setText(""+ficha.getVal());
     }
 
@@ -58,7 +54,7 @@ public class AltFicha extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel1.setText("Preço atual(R$):");
+        jLabel1.setText("Preço atual:");
 
         txtAtual.setEnabled(false);
         txtAtual.setPreferredSize(new java.awt.Dimension(6, 34));
@@ -77,7 +73,7 @@ public class AltFicha extends javax.swing.JFrame
         });
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel2.setText("Novo preço(R$):");
+        jLabel2.setText("Novo preço:");
 
         cxPreco.setPreferredSize(new java.awt.Dimension(6, 34));
         cxPreco.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +101,7 @@ public class AltFicha extends javax.swing.JFrame
                             .addComponent(cxPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(210, 210, 210)
                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,18 +220,16 @@ public class AltFicha extends javax.swing.JFrame
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ficha.updatePreco(Float.parseFloat(cxPreco.getText()));
-        JOptionPane.showMessageDialog(null,"Preço alterado.");
-        dispose();
-        Inicio i = new Inicio();
-        i.setVisible(true);
-        //JOptionPane.showMessageDialog(null,cxPreco.getText());
+        JOptionPane.showMessageDialog(null,cxPreco.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cxPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxPrecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cxPrecoActionPerformed
 
-   
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

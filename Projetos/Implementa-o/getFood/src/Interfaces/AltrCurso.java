@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JOptionPane;
 
 public class AltrCurso extends javax.swing.JFrame {
     CursoDAO cur;
@@ -403,39 +402,12 @@ public class AltrCurso extends javax.swing.JFrame {
             System.out.println(codigo);
             System.out.println(cxN.getText());
             cur.alteraNome(codigo, cxN.getText());
-            int rp = JOptionPane.showConfirmDialog(null,"Deseja alterar dados de outro curso?");
-            if(rp == JOptionPane.YES_OPTION)
-            {
-                dispose();
-                AltrCurso alt = new AltrCurso();
-                alt.setVisible(true);
-            }else
-            {
-                dispose();
-                Inicio inicio = new Inicio();
-                inicio.setVisible(true);
-            }
         }
         if(csCodigo.isSelected())
         {
-            System.out.println(codigo);
-            System.out.println(cxCodigo.getText());
-            cur.alteraCodigo(cxCodigo.getText(),codigo);
+            //
             
         }
-        
-        int rp = JOptionPane.showConfirmDialog(null,"Deseja alterar dados de outro curso?");
-        if(rp == JOptionPane.YES_OPTION)
-        {
-            dispose();
-            AltrCurso alt = new AltrCurso();
-            alt.setVisible(true);
-        }else
-        {
-            dispose();
-            Inicio inicio = new Inicio();
-            inicio.setVisible(true);
-         }
     }//GEN-LAST:event_btnAltActionPerformed
 
     private void csNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csNomeActionPerformed

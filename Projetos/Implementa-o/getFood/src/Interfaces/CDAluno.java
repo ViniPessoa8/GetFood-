@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFileChooser;
 
 public class CDAluno extends javax.swing.JFrame {
 
@@ -295,9 +294,6 @@ public class CDAluno extends javax.swing.JFrame {
        SelectArq s = new SelectArq();
        this.setVisible(false);
        s.setVisible(true);
-       s.setTitle("Identificação do aluno");
-      
-       //s.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
