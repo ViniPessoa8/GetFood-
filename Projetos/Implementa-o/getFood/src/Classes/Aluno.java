@@ -2,10 +2,10 @@ package Classes;
 
 public class Aluno 
 {
-    protected float matricula=0, saldo=0;
-    protected String nome="",turma="",curso="";
+    protected float saldo=0;
+    protected String nome="",turma="",curso="",matricula="";
     //fota ?
-    public void Aluno(float matricula, float saldo,String nome,String turma,String curso)
+    public void Aluno(String matricula, float saldo,String nome,String turma,String curso)
     {
         this.nome=nome;
         this.saldo=saldo;
@@ -13,11 +13,15 @@ public class Aluno
         this.turma=turma;
         this.curso=curso;
     }
-    public float getMatricula()
+    public String getMatricula()
     {
         return matricula;
     }
-
+    
+    public void setMatricula(String matricula){
+        this.matricula = matricula;
+    }
+    
     public float getSaldo() {
         return saldo;
     }
@@ -49,5 +53,12 @@ public class Aluno
     public void setCurso(String curso) {
         this.curso = curso;
     }
+
+    @Override
+    public String toString() {
+        return "Aluno{" + "matricula=" + matricula + ", saldo=" + saldo + ", nome=" + nome + ", turma=" + turma + ", curso=" + curso + '}';
+    }
+    
+    
     
 }
