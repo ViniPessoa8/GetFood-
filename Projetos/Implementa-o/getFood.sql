@@ -1,4 +1,4 @@
-
+drop database getFood;
 create database getFood;
 use getFood;
 
@@ -16,7 +16,7 @@ create table turma(
 );
 
 create table aluno(
-	matricula float(12) not null,
+	matricula varchar(14) not null,
 	primary key(matricula),
 	foto longblob,
 	saldo float,
@@ -42,7 +42,7 @@ create table ficha(
 create table venda(
 	codigo int not null,
 	primary key(codigo),
-	matrAl float(12) not null,
+	matrAl varchar(12) not null,
 	foreign key(matrAl) references aluno(matricula),
 	matrFun float(12) not null,
 	foreign key(matrFun) references funcionario(matricula),
