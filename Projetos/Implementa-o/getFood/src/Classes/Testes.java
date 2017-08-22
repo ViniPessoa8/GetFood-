@@ -23,7 +23,13 @@ public class Testes {
         //Teste para verificar se o método 'getListaAlunosNome' funciona
         listaAlunos = alunDAO.getListaAlunosNome("Vinícius");
         for(int i = 0; i < listaAlunos.size(); i++){
-            System.out.println(listaAlunos.get(i).toString());
+            System.out.println("getListaAlunosNome('Vinícius'): "+listaAlunos.get(i).toString());
+        }
+        
+        //Teste para verificar se o método 'getListaAlunosTurma' funciona
+        listaAlunos = alunDAO.getListaAlunosTurma("IINF31B", 2017);
+        for(int i = 0; i < listaAlunos.size(); i++){
+            System.out.println("getListaAlunosTurma('IINF31B', 2017): "+listaAlunos.get(i).toString());
         }
     }
 }

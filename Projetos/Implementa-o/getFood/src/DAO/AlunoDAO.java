@@ -119,7 +119,44 @@ public class AlunoDAO {
     
     //Retorna um ArrayList de alunos de acordo com a turma procurada.
     public ArrayList<Aluno> getListaAlunosTurma(String turma, int ano){
+        Aluno aluno;
+        PreparedStatement pstm;
+        String sql;
+        ResultSet rs;
+        ArrayList<Aluno> listaAlunos;
         
+        //Instancias
+        listaAlunos = new ArrayList();
+        
+        sql = "SELECT * FROM aluno A, turma T WHERE  T.codigo = ? and T.ano = ? and A.turma = T.codigo";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,turma);
+            pstm.setInt(2, ano);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                aluno = new Aluno();
+                
+                //Atribuição de valores recuperados do BD
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getString("matricula"));
+                aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setTurma(rs.getString("turma"));
+                aluno.setBeneficiario(rs.getInt("beneficiario"));
+                
+                //Adiciona o aluno à lista
+                listaAlunos.add(aluno);
+            }
+            
+            pstm.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return listaAlunos;
     }
     
     //Retorna um Arraylist de alunos de acordo com o curso procurado.
