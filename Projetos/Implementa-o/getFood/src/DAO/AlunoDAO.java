@@ -8,6 +8,7 @@ package DAO;
 import Classes.Aluno;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -23,6 +24,7 @@ public class AlunoDAO {
         con = new ConnectionFactory().getConnection();
     }
 
+    //Incompleto
     public boolean addAluno(Aluno aluno) {
         boolean resultado = false;
         String sql;
@@ -32,10 +34,32 @@ public class AlunoDAO {
         try {
             pstm = con.prepareStatement(sql);
             pstm.execute();
-        } catch(SQLException e){
+            pstm.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return resultado;
     }
 
+    public Aluno getAlunoMatricula(String matricula) {
+        Aluno aluno;
+        PreparedStatement pstm;
+        String sql;
+        ResultSet rs;
+
+        //Requisição de dados do banco de dados
+        sql = "SELECT * FROM aluno WHERE matricula = ?";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(0, matricula);
+            rs = pstm.executeQuery();
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        
+        return aluno;
+    }
 }
