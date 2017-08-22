@@ -7,7 +7,7 @@ public class Aluno
     //fota ?
     public void Aluno(String matricula, float saldo,String nome,String turma,String curso)
     {
-        this.nome=nome;
+        this.matricula=matricula;
         this.saldo=saldo;
         this.nome=nome;
         this.turma=turma;

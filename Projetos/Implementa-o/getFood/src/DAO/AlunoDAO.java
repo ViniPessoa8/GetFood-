@@ -58,6 +58,7 @@ public class AlunoDAO {
             e.printStackTrace();
         }
         
+        aluno = new Aluno();
         
         
         return aluno;
