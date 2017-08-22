@@ -57,7 +57,9 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" + "matricula=" + matricula + ", saldo=" + saldo + ", nome=" + nome + ", turma=" + turma + ", curso=" + curso + '}';
+        return "Aluno{" + "saldo=" + saldo + ", nome=" + nome + ", turma=" + turma + ", curso=" + curso + ", matricula=" + matricula + ", beneficiario=" + beneficiario + '}';
     }
+
+    
 
 }

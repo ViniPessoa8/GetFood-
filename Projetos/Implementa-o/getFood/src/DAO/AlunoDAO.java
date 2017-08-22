@@ -42,21 +42,25 @@ public class AlunoDAO {
         return resultado;
     }
 
+    /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
+    * matricula informada
+    */
     public Aluno getAlunoMatricula(String matricula) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
         ResultSet rs;
-
+        
+        //Instancia um aluno
         aluno = new Aluno();
         
         //Requisição de dados do banco de dados
         sql = "SELECT * FROM aluno WHERE matricula = ?";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(0, matricula);
+            pstm.setString(1, matricula);
             rs = pstm.executeQuery();
-            
+            rs.next();
             //Atribuição de valores ao objeto 'aluno'
             aluno.setCurso(rs.getString("curso"));
             aluno.setMatricula(rs.getString("matricula"));
@@ -69,26 +73,31 @@ public class AlunoDAO {
             e.printStackTrace();
         }
         
-        
-        
+        //[Desnvolvedor] Imprime no console as informações do usuário
         System.out.println(aluno.toString());
         
         return aluno;
     }
     
+    //Retorna um ArrayList de alunos de acordo com o nome procurado.
     public ArrayList<Aluno> getListaAlunosNome(String nome){
         
     }
     
-    public ArrayList<Aluno> getListaAlunosTurma(String turma){
+    //Retorna um ArrayList de alunos de acordo com a turma procurada.
+    public ArrayList<Aluno> getListaAlunosTurma(String turma, int ano){
         
     }
     
-    public ArrayList<Aluno> getListaAlunosCurso(String curso){
+    //Retorna um Arraylist de alunos de acordo com o curso procurado.
+    public ArrayList<Aluno> getListaAlunosCurso(String curso, int ano){
         
     }
     
-    public ArrayList<Aluno> getListaAlunosBeneficio(){
+    /*Retorna um Arraylist de alunos beneficiarios ou não (depende do 'tipo' 
+    * inserido) de determinado ano.
+    */
+    public ArrayList<Aluno> getListaAlunosBeneficio(int ano){
         
     }
 }

@@ -23,9 +23,9 @@ create table aluno(
 	foto longblob,
 	saldo float,
 	nome varchar(50) not null,
-	curso varchar(25) not null,
     beneficiario int(1) not null,
-	foreign key(curso) references curso(codigo),
+	curso varchar(25) not null,
+    foreign key(curso) references curso(codigo),
 	turma varchar(25) not null,
 	foreign key (turma) references turma(codigo)
 );
