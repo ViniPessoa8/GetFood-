@@ -1,27 +1,28 @@
 package Classes;
 
-public class Aluno 
-{
-    protected float saldo=0;
-    protected String nome="",turma="",curso="",matricula="";
+public class Aluno {
+
+    private float saldo = 0;
+    private String nome = "", turma = "", curso = "", matricula = "";
+    private int beneficiario = 0;
     //fota ?
-    public void Aluno(String matricula, float saldo,String nome,String turma,String curso)
-    {
-        this.matricula=matricula;
-        this.saldo=saldo;
-        this.nome=nome;
-        this.turma=turma;
-        this.curso=curso;
+    public void Aluno(String matricula, float saldo, String nome, String turma, String curso, int beneficiario) {
+        this.matricula = matricula;
+        this.saldo = saldo;
+        this.nome = nome;
+        this.turma = turma;
+        this.curso = curso;
+        this.beneficiario = beneficiario;
     }
-    public String getMatricula()
-    {
+
+    public String getMatricula() {
         return matricula;
     }
-    
-    public void setMatricula(String matricula){
+
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
-    
+
     public float getSaldo() {
         return saldo;
     }
@@ -58,7 +59,5 @@ public class Aluno
     public String toString() {
         return "Aluno{" + "matricula=" + matricula + ", saldo=" + saldo + ", nome=" + nome + ", turma=" + turma + ", curso=" + curso + '}';
     }
-    
-    
-    
+
 }
