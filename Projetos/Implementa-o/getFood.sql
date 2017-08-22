@@ -12,7 +12,8 @@ create table turma(
 	codigo varchar(25) not null,
 	primary key(codigo),
 	curso varchar(25) not null,
-	foreign key (curso) references curso(codigo)
+	foreign key (curso) references curso(codigo),
+    ano int (4) not null
 );
 
 create table aluno(
