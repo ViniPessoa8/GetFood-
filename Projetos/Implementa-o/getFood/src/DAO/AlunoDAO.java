@@ -81,7 +81,40 @@ public class AlunoDAO {
     
     //Retorna um ArrayList de alunos de acordo com o nome procurado.
     public ArrayList<Aluno> getListaAlunosNome(String nome){
+        Aluno aluno;
+        PreparedStatement pstm;
+        String sql;
+        ResultSet rs;
+        ArrayList<Aluno> listaAlunos;
         
+        //Instancias
+        listaAlunos = new ArrayList();
+        
+        sql = "SELECT * FROM aluno WHERE nome LIKE '%"+nome+"%'";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                aluno = new Aluno();
+                
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getString("matricula"));
+                aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setTurma(rs.getString("turma"));
+                aluno.setBeneficiario(rs.getInt("beneficiario"));
+                
+                listaAlunos.add(aluno);
+            }
+            
+            pstm.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return listaAlunos;
     }
     
     //Retorna um ArrayList de alunos de acordo com a turma procurada.

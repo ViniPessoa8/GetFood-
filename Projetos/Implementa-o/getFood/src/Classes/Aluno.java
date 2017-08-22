@@ -55,6 +55,16 @@ public class Aluno {
         this.curso = curso;
     }
 
+    public int getBeneficiario() {
+        return beneficiario;
+    }
+
+    public void setBeneficiario(int beneficiario) {
+        this.beneficiario = beneficiario;
+    }
+
+    
+    
     @Override
     public String toString() {
         return "Aluno{" + "saldo=" + saldo + ", nome=" + nome + ", turma=" + turma + ", curso=" + curso + ", matricula=" + matricula + ", beneficiario=" + beneficiario + '}';
