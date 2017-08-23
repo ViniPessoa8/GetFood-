@@ -5,7 +5,7 @@
  */
 package Interfaces;
 
-import Classes.FunDAO;
+import DAO.FunDAO;
 import Classes.Funcionario;
 import javax.swing.JOptionPane;
 

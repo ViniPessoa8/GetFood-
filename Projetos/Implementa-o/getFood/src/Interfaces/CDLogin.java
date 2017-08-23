@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Classes.LoginDAO;
+import DAO.LoginDAO;
 import javax.swing.JOptionPane;
 
 public class CDLogin extends javax.swing.JFrame {

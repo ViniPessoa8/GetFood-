@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Classes.CursoDAO;
+import DAO.CursoDAO;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.ComboBoxModel;

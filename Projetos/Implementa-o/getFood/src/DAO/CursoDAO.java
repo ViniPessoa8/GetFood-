@@ -1,7 +1,8 @@
-package Classes;
+package DAO;
 
 
 
+import Classes.Curso;
 import DAO.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

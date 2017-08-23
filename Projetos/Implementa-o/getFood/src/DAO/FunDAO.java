@@ -1,5 +1,6 @@
-package Classes;
+package DAO;
 
+import Classes.Funcionario;
 import DAO.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

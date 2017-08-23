@@ -1,7 +1,7 @@
 package Interfaces;
 
 import Classes.Ficha;
-import Classes.FichaDAO;
+import DAO.FichaDAO;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 

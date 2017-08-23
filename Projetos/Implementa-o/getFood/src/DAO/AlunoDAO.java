@@ -60,14 +60,16 @@ public class AlunoDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, matricula);
             rs = pstm.executeQuery();
-            rs.next();
-            //Atribuição de valores ao objeto 'aluno'
-            aluno.setCurso(rs.getString("curso"));
-            aluno.setMatricula(rs.getString("matricula"));
-            aluno.setNome(rs.getString("nome"));
-            aluno.setTurma(rs.getString("turma"));
-            aluno.setSaldo(rs.getFloat("saldo"));
-
+            
+            //Se houver resultado
+            if (rs.next()) {
+                //Atribuição de valores ao objeto 'aluno'
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setMatricula(rs.getString("matricula"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setTurma(rs.getString("turma"));
+                aluno.setSaldo(rs.getFloat("saldo"));
+            }
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -243,7 +245,8 @@ public class AlunoDAO {
 
         return listaAlunos;
     }
-
+    
+    //remove o aluno de acordo com a matricula fornecida.
     public boolean rmAlunoMatricula(String matricula) {
         boolean retorno;
         String sql;
@@ -256,25 +259,61 @@ public class AlunoDAO {
 
         //Caso o aluno for encontrado
         if (aluno != null) {
-            
+
             sql = "DELETE FROM aluno WHERE matricula = ?";
-            
+
             //efetua a remoção do aluno
             try {
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, matricula);
                 pstm.execute();
                 pstm.close();
-                
+
                 //Operação efetuada com sucesso
                 retorno = true;
-                
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        
+
         return retorno;
 
+    }
+    
+    public boolean rmAlunosTurma(String turma, int ano){
+        boolean retorno;
+        ArrayList<Aluno> listaAlunos;
+        String sql1, sql2;
+        PreparedStatement pstm;
+        
+        //Atribuições
+        retorno = false;
+        listaAlunos = getListaAlunosTurma(turma, ano);
+        
+        //Se a turma for encontrada
+        if(listaAlunos.size() > 0){
+            
+            //comando para apagar os alunos da turma
+            sql1 = "DELETE aluno FROM aluno A, turma T WHERE A.turma = T.codigo and T.codigo = ? and T.ano = ?";
+            
+            //comando para apagar a turma
+            sql2 = "DELETE FROM turma WHERE codigo = ?";
+            
+            //Efetua a remoção
+            try{
+                //Remove os alunos da turma
+                pstm = con.prepareStatement(sql1);
+                pstm.setString(1, turma);
+                pstm.setInt(2, ano);
+                pstm.execute();
+                
+                //remove a turma
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
+        }
+        
+        return false;
     }
 }

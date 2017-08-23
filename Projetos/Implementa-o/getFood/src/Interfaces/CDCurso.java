@@ -5,7 +5,7 @@
  */
 package Interfaces;
 import Classes.Curso;
-import Classes.CursoDAO;
+import DAO.CursoDAO;
 import javax.swing.JOptionPane;
 
 /**
