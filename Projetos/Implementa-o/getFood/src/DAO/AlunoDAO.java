@@ -161,13 +161,86 @@ public class AlunoDAO {
     
     //Retorna um Arraylist de alunos de acordo com o curso procurado.
     public ArrayList<Aluno> getListaAlunosCurso(String curso, int ano){
+        Aluno aluno;
+        PreparedStatement pstm;
+        String sql;
+        ResultSet rs;
+        ArrayList<Aluno> listaAlunos;
         
+        //Instancias
+        listaAlunos = new ArrayList();
+        
+        sql = "SELECT * FROM aluno A, curso C WHERE  C.codigo = ? and C.ano = ? and A.curso = C.codigo";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,curso);
+            pstm.setInt(2, ano);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                aluno = new Aluno();
+                
+                //Atribuição de valores recuperados do BD
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getString("matricula"));
+                aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setTurma(rs.getString("turma"));
+                aluno.setBeneficiario(rs.getInt("beneficiario"));
+                
+                //Adiciona o aluno à lista
+                listaAlunos.add(aluno);
+            }
+            
+            pstm.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return listaAlunos;
     }
     
     /*Retorna um Arraylist de alunos beneficiarios ou não (depende do 'tipo' 
     * inserido) de determinado ano.
     */
-    public ArrayList<Aluno> getListaAlunosBeneficio(int ano){
+    public ArrayList<Aluno> getListaAlunosBeneficio(int param, int ano){
+        Aluno aluno;
+        PreparedStatement pstm;
+        String sql;
+        ResultSet rs;
+        ArrayList<Aluno> listaAlunos;
         
+        //Instancias
+        listaAlunos = new ArrayList();
+        
+        sql = "SELECT * FROM aluno A WHERE  beneficiario = ?";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setInt(1, param);
+            rs = pstm.executeQuery();
+            
+            while(rs.next()){
+                aluno = new Aluno();
+                
+                //Atribuição de valores recuperados do BD
+                aluno.setCurso(rs.getString("curso"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getString("matricula"));
+                aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setTurma(rs.getString("turma"));
+                aluno.setBeneficiario(rs.getInt("beneficiario"));
+                
+                //Adiciona o aluno à lista
+                listaAlunos.add(aluno);
+            }
+            
+            pstm.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return listaAlunos;
     }
 }
