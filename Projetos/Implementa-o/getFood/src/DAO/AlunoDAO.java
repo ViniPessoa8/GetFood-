@@ -286,6 +286,7 @@ public class AlunoDAO {
         ArrayList<Aluno> listaAlunos;
         String sql1, sql2;
         PreparedStatement pstm;
+        TurmaDAO turmaDAO = new TurmaDAO();
         
         //Atribuições
         retorno = false;
@@ -296,9 +297,6 @@ public class AlunoDAO {
             
             //comando para apagar os alunos da turma
             sql1 = "DELETE aluno FROM aluno A, turma T WHERE A.turma = T.codigo and T.codigo = ? and T.ano = ?";
-            
-            //comando para apagar a turma
-            sql2 = "DELETE FROM turma WHERE codigo = ?";
             
             //Efetua a remoção
             try{
@@ -312,8 +310,13 @@ public class AlunoDAO {
             }catch(SQLException e){
                 e.printStackTrace();
             }
+            
+            //comando para apagar a turma
+            turmaDAO.rmTurma(turma, ano);
+            
+            retorno = true;
         }
         
-        return false;
+        return retorno;
     }
 }

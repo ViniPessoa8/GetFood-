@@ -2,7 +2,9 @@ package Classes;
 
 public class Turma 
 {
-    protected String codigo="",curso="";
+    private String codigo="",curso="";
+    private int ano;
+    
     public Turma(String codigo,String curso)
     {
         this.curso=curso;
@@ -24,5 +26,19 @@ public class Turma
     public void setCurso(String curso) {
         this.curso = curso;
     }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    @Override
+    public String toString() {
+        return "Turma{" + "codigo=" + codigo + ", curso=" + curso + ", ano=" + ano + '}';
+    }
+    
     
 }
