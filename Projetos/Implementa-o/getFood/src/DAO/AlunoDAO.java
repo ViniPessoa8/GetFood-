@@ -44,16 +44,16 @@ public class AlunoDAO {
 
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
     * matricula informada
-    */
+     */
     public Aluno getAlunoMatricula(String matricula) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
         ResultSet rs;
-        
+
         //Instancia um aluno
         aluno = new Aluno();
-        
+
         //Requisição de dados do banco de dados
         sql = "SELECT * FROM aluno WHERE matricula = ?";
         try {
@@ -67,78 +67,78 @@ public class AlunoDAO {
             aluno.setNome(rs.getString("nome"));
             aluno.setTurma(rs.getString("turma"));
             aluno.setSaldo(rs.getFloat("saldo"));
-            
+
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         //[Desnvolvedor] Imprime no console as informações do usuário
         System.out.println(aluno.toString());
-        
+
         return aluno;
     }
-    
+
     //Retorna um ArrayList de alunos de acordo com o nome procurado.
-    public ArrayList<Aluno> getListaAlunosNome(String nome){
+    public ArrayList<Aluno> getListaAlunosNome(String nome) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
         ResultSet rs;
         ArrayList<Aluno> listaAlunos;
-        
+
         //Instancias
         listaAlunos = new ArrayList();
-        
-        sql = "SELECT * FROM aluno WHERE nome LIKE '%"+nome+"%'";
-        
-        try{
+
+        sql = "SELECT * FROM aluno WHERE nome LIKE '%" + nome + "%'";
+
+        try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 aluno = new Aluno();
-                
+
                 aluno.setCurso(rs.getString("curso"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setSaldo(rs.getFloat("saldo"));
                 aluno.setTurma(rs.getString("turma"));
                 aluno.setBeneficiario(rs.getInt("beneficiario"));
-                
+
                 listaAlunos.add(aluno);
             }
-            
+
             pstm.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return listaAlunos;
     }
-    
+
     //Retorna um ArrayList de alunos de acordo com a turma procurada.
-    public ArrayList<Aluno> getListaAlunosTurma(String turma, int ano){
+    public ArrayList<Aluno> getListaAlunosTurma(String turma, int ano) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
         ResultSet rs;
         ArrayList<Aluno> listaAlunos;
-        
+
         //Instancias
         listaAlunos = new ArrayList();
-        
+
         sql = "SELECT * FROM aluno A, turma T WHERE  T.codigo = ? and T.ano = ? and A.turma = T.codigo";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1,turma);
+            pstm.setString(1, turma);
             pstm.setInt(2, ano);
             rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 aluno = new Aluno();
-                
+
                 //Atribuição de valores recuperados do BD
                 aluno.setCurso(rs.getString("curso"));
                 aluno.setNome(rs.getString("nome"));
@@ -146,41 +146,41 @@ public class AlunoDAO {
                 aluno.setSaldo(rs.getFloat("saldo"));
                 aluno.setTurma(rs.getString("turma"));
                 aluno.setBeneficiario(rs.getInt("beneficiario"));
-                
+
                 //Adiciona o aluno à lista
                 listaAlunos.add(aluno);
             }
-            
+
             pstm.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return listaAlunos;
     }
-    
+
     //Retorna um Arraylist de alunos de acordo com o curso procurado.
-    public ArrayList<Aluno> getListaAlunosCurso(String curso, int ano){
+    public ArrayList<Aluno> getListaAlunosCurso(String curso, int ano) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
         ResultSet rs;
         ArrayList<Aluno> listaAlunos;
-        
+
         //Instancias
         listaAlunos = new ArrayList();
-        
+
         sql = "SELECT * FROM aluno A, curso C WHERE  C.codigo = ? and C.ano = ? and A.curso = C.codigo";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1,curso);
+            pstm.setString(1, curso);
             pstm.setInt(2, ano);
             rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 aluno = new Aluno();
-                
+
                 //Atribuição de valores recuperados do BD
                 aluno.setCurso(rs.getString("curso"));
                 aluno.setNome(rs.getString("nome"));
@@ -188,42 +188,42 @@ public class AlunoDAO {
                 aluno.setSaldo(rs.getFloat("saldo"));
                 aluno.setTurma(rs.getString("turma"));
                 aluno.setBeneficiario(rs.getInt("beneficiario"));
-                
+
                 //Adiciona o aluno à lista
                 listaAlunos.add(aluno);
             }
-            
+
             pstm.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return listaAlunos;
     }
-    
+
     /*Retorna um Arraylist de alunos beneficiarios ou não (depende do 'tipo' 
     * inserido) de determinado ano.
-    */
-    public ArrayList<Aluno> getListaAlunosBeneficio(int param, int ano){
+     */
+    public ArrayList<Aluno> getListaAlunosBeneficio(int param, int ano) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
         ResultSet rs;
         ArrayList<Aluno> listaAlunos;
-        
+
         //Instancias
         listaAlunos = new ArrayList();
-        
+
         sql = "SELECT * FROM aluno A WHERE  beneficiario = ?";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, param);
             rs = pstm.executeQuery();
-            
-            while(rs.next()){
+
+            while (rs.next()) {
                 aluno = new Aluno();
-                
+
                 //Atribuição de valores recuperados do BD
                 aluno.setCurso(rs.getString("curso"));
                 aluno.setNome(rs.getString("nome"));
@@ -231,16 +231,50 @@ public class AlunoDAO {
                 aluno.setSaldo(rs.getFloat("saldo"));
                 aluno.setTurma(rs.getString("turma"));
                 aluno.setBeneficiario(rs.getInt("beneficiario"));
-                
+
                 //Adiciona o aluno à lista
                 listaAlunos.add(aluno);
             }
-            
+
             pstm.close();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return listaAlunos;
+    }
+
+    public boolean rmAlunoMatricula(String matricula) {
+        boolean retorno;
+        String sql;
+        Aluno aluno;
+        PreparedStatement pstm;
+
+        //Atribuições
+        retorno = false; //o valor será mudado se a operação for executada, senão continuará sendo false.
+        aluno = getAlunoMatricula(matricula); //verifica se a matricula informada existe no BD
+
+        //Caso o aluno for encontrado
+        if (aluno != null) {
+            
+            sql = "DELETE FROM aluno WHERE matricula = ?";
+            
+            //efetua a remoção do aluno
+            try {
+                pstm = con.prepareStatement(sql);
+                pstm.setString(1, matricula);
+                pstm.execute();
+                pstm.close();
+                
+                //Operação efetuada com sucesso
+                retorno = true;
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        return retorno;
+
     }
 }

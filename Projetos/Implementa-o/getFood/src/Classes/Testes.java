@@ -37,5 +37,10 @@ public class Testes {
         for(int i = 0; i < listaAlunos.size(); i++){
             System.out.println("getListaAlunosCurso('1', 2017): "+listaAlunos.get(i).toString());
         }
+        
+        //Teste para verificar se o método 'rmAlunoMatricula' funciona
+        if (alunDAO.rmAlunoMatricula("201511440260")){
+            System.out.println("201511440260 excluido com sucesso.");
+        }
     }
 }
