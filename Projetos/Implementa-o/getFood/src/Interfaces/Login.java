@@ -133,20 +133,22 @@ public class Login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         LoginDAO loginDAO = new LoginDAO();
         String senha = new String(txtSenha.getPassword());
-       // System.out.println(s);
-        if(txtLogin.getText().isEmpty() || senha.equals(""))
+        String login = txtLogin.getText();
+        boolean result;
+        if(login.isEmpty() || senha.isEmpty())
         {
             JOptionPane.showMessageDialog(null,"Um campo importante está vazio!");
         }else
         {
-            loginDAO.logar(txtLogin.getText(),senha);
-            /*if(login.getText().equals("admin") && s.equals("admin"))
-            {
-                //System.out.println("VRAU");
+            result = loginDAO.logar(txtLogin.getText(),senha);
+            
+            if(result){
                 dispose();
                 Inicio i = new Inicio();
                 i.setVisible(true);
-            }*/
+            } else {
+                JOptionPane.showMessageDialog(null,"Senha/login inválidos.");
+            }
         }
         
         

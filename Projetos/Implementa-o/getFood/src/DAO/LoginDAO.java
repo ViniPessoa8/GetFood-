@@ -8,6 +8,10 @@ import java.sql.SQLException;
 public class LoginDAO {
 
     private Connection con;
+    
+    public LoginDAO(){
+        con = new ConnectionFactory().getConnection();
+    }
 
     public boolean validaLogin(String login) {
         ResultSet rs;
@@ -29,16 +33,16 @@ public class LoginDAO {
     public boolean logar(String login, String senha) {
         boolean result = false;
         ResultSet rs = null;
-        String sql = "select * from login where login = '?' and senha = MD5('" + senha + "');";
-        System.out.println("");
+        String sql = "select * from login where login = ? and senha = MD5('" + senha + "');";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, login);
-            stmt.setString(2, senha);
             rs = stmt.executeQuery();
+            
             if (rs.first()) {
                 result = true;
             } 
+            
             stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();

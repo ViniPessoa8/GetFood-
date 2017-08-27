@@ -31,7 +31,7 @@ create table aluno(
 );
 
 create table funcionario(
-	matricula float(12) not null,
+	matricula varchar(12) not null,
 	primary key(matricula),
 	cargo varchar(25) not null,
 	nome varchar(50) not null
@@ -63,6 +63,11 @@ create table relatorio(
 	foreign key(codVenda) references venda(codigo)
 );
 
+CREATE TABLE login(
+	login varchar(25),
+    senha varchar(255),
+    matrFun varchar(12)
+);
 
 
 
