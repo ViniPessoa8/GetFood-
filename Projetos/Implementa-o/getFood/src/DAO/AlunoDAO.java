@@ -18,8 +18,11 @@ import java.util.ArrayList;
  */
 public class AlunoDAO {
 
-    //Conexão
+    //Variáveis
     Connection con;
+    PreparedStatement pstm;
+    ResultSet rs;
+    String sql;
 
     public AlunoDAO() {
         con = new ConnectionFactory().getConnection();
@@ -28,8 +31,6 @@ public class AlunoDAO {
     //Incompleto
     public boolean addAluno(Aluno aluno) {
         boolean resultado = false;
-        String sql;
-        PreparedStatement pstm;
 
         sql = "INSERT INTO aluno VALUES()";
         try {
@@ -47,9 +48,6 @@ public class AlunoDAO {
      */
     public Aluno getAlunoMatricula(String matricula) {
         Aluno aluno;
-        PreparedStatement pstm;
-        String sql;
-        ResultSet rs;
 
         //Instancia um aluno
         aluno = new Aluno();
@@ -84,9 +82,6 @@ public class AlunoDAO {
     //Retorna um ArrayList de alunos de acordo com o nome procurado.
     public ArrayList<Aluno> getListaAlunosNome(String nome) {
         Aluno aluno;
-        PreparedStatement pstm;
-        String sql;
-        ResultSet rs;
         ArrayList<Aluno> listaAlunos;
 
         //Instancias
@@ -122,9 +117,6 @@ public class AlunoDAO {
     //Retorna um ArrayList de alunos de acordo com a turma procurada.
     public ArrayList<Aluno> getListaAlunosTurma(String turma, int ano) {
         Aluno aluno;
-        PreparedStatement pstm;
-        String sql;
-        ResultSet rs;
         ArrayList<Aluno> listaAlunos;
 
         //Instancias
@@ -164,9 +156,6 @@ public class AlunoDAO {
     //Retorna um Arraylist de alunos de acordo com o curso procurado.
     public ArrayList<Aluno> getListaAlunosCurso(String curso, int ano) {
         Aluno aluno;
-        PreparedStatement pstm;
-        String sql;
-        ResultSet rs;
         ArrayList<Aluno> listaAlunos;
 
         //Instancias
@@ -208,9 +197,6 @@ public class AlunoDAO {
      */
     public ArrayList<Aluno> getListaAlunosBeneficio(int param, int ano) {
         Aluno aluno;
-        PreparedStatement pstm;
-        String sql;
-        ResultSet rs;
         ArrayList<Aluno> listaAlunos;
 
         //Instancias
@@ -246,12 +232,10 @@ public class AlunoDAO {
         return listaAlunos;
     }
     
-    //remove o aluno de acordo com a matricula fornecida.
+    //Remove o aluno de acordo com a matricula fornecida.
     public boolean rmAlunoMatricula(String matricula) {
         boolean retorno;
-        String sql;
         Aluno aluno;
-        PreparedStatement pstm;
 
         //Atribuições
         retorno = false; //o valor será mudado se a operação for executada, senão continuará sendo false.
@@ -281,11 +265,11 @@ public class AlunoDAO {
 
     }
     
+    //Remove o aluno todos os alunos da turma fornecida.
     public boolean rmAlunosTurma(String turma, int ano){
         boolean retorno;
         ArrayList<Aluno> listaAlunos;
         String sql1, sql2;
-        PreparedStatement pstm;
         TurmaDAO turmaDAO = new TurmaDAO();
         
         //Atribuições
