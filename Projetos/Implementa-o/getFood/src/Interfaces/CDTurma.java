@@ -9,24 +9,24 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-public class CDTurma extends javax.swing.JFrame 
-{
+public class CDTurma extends javax.swing.JFrame {
+
     CursoDAO cur;
-    public CDTurma() 
-    {
+
+    public CDTurma() {
         initComponents();
         cur = new CursoDAO();
-         Vector v = null;
-         ArrayList k;
+        Vector v = null;
+        ArrayList k;
         k = cur.cursosDisp();
         v = new Vector<String>();
-        for (int i = 0; i < k.size(); i++) 
-        {
+        for (int i = 0; i < k.size(); i++) {
             v.add(k.get(i).toString());
         }
         ComboBoxModel cbm = new DefaultComboBoxModel(v);
         cxCurso.setModel(cbm);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,9 +38,11 @@ public class CDTurma extends javax.swing.JFrame
         jButton1 = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 90), new java.awt.Dimension(0, 90), new java.awt.Dimension(32767, 90));
         jLabel2 = new javax.swing.JLabel();
-        turma = new javax.swing.JTextField();
+        txtNomeTurma = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         cxCurso = new javax.swing.JComboBox<>();
+        txtAno = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -76,15 +78,25 @@ public class CDTurma extends javax.swing.JFrame
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel2.setText("Nome:");
 
-        turma.setPreferredSize(new java.awt.Dimension(6, 34));
-        turma.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeTurma.setPreferredSize(new java.awt.Dimension(6, 34));
+        txtNomeTurma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                turmaActionPerformed(evt);
+                txtNomeTurmaActionPerformed(evt);
             }
         });
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setText("Curso:");
+
+        txtAno.setPreferredSize(new java.awt.Dimension(6, 34));
+        txtAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel4.setText("Ano:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,21 +106,25 @@ public class CDTurma extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(278, 278, 278)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(cxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(turma, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(171, 171, 171)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(cxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(173, 173, 173)
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(274, 274, 274)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(371, 371, 371))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,13 +137,17 @@ public class CDTurma extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(cxCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(turma, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNomeTurma, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(27, 27, 27)
+                .addGap(35, 35, 35)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 204));
@@ -222,32 +242,33 @@ public class CDTurma extends javax.swing.JFrame
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      String codigo = cur.busca((String)cxCurso.getSelectedItem());
-      Turma t= new Turma(turma.getText(),codigo);
-      //JOptionPane.showMessageDialog(null,codigo);
-      TurmaDAO tr= new TurmaDAO();
-      if(tr.validacao(t))
-      {
-        JOptionPane.showMessageDialog(null,"Esta turma já está cadastrada!");
-      }else
-      {
-        tr.addTurma(t);
-        int r=JOptionPane.showConfirmDialog(null,"Cadastro feito com sucesso, deseja cadastrar outra turma?");
-        if(JOptionPane.YES_OPTION == r)
-        {
-            turma.setText("");
-        }else
-        {
-            dispose();
-            Inicio i=new Inicio();
-            i.setVisible(true);
+        String codigo = cur.busca((String) cxCurso.getSelectedItem());
+        Turma t = new Turma(txtNomeTurma.getText(), codigo);
+        int ano = Integer.parseInt(txtAno.getText());
+        //JOptionPane.showMessageDialog(null,codigo);
+        TurmaDAO tr = new TurmaDAO();
+        if (tr.validacao(t.getCodigo(), ano)) {
+            JOptionPane.showMessageDialog(null, "Esta turma já está cadastrada!");
+        } else {
+            tr.addTurma(t, ano);
+            int r = JOptionPane.showConfirmDialog(null, "Cadastro feito com sucesso, deseja cadastrar outra turma?");
+            if (JOptionPane.YES_OPTION == r) {
+                txtNomeTurma.setText("");
+            } else {
+                dispose();
+                Inicio i = new Inicio();
+                i.setVisible(true);
+            }
         }
-      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void turmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turmaActionPerformed
+    private void txtNomeTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeTurmaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_turmaActionPerformed
+    }//GEN-LAST:event_txtNomeTurmaActionPerformed
+
+    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtAnoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -350,6 +371,7 @@ public class CDTurma extends javax.swing.JFrame
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -371,6 +393,7 @@ public class CDTurma extends javax.swing.JFrame
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JTextField turma;
+    private javax.swing.JTextField txtAno;
+    private javax.swing.JTextField txtNomeTurma;
     // End of variables declaration//GEN-END:variables
 }
