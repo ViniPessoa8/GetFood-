@@ -249,37 +249,30 @@ public class CDFun extends javax.swing.JFrame {
     }//GEN-LAST:event_cargoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        float matr=Float.parseFloat(mat.getText());
-        Funcionario fun = new Funcionario(matr,nome.getText(),cargo.getText());
-        FunDAO f=new FunDAO();
-        if(f.validarMatr(fun))
-        {
-            JOptionPane.showMessageDialog(null,"Essa matricula já está no nosso banco de dados.");
-        }else
-        {
+        String matr = mat.getText();
+        Funcionario fun = new Funcionario(matr, nome.getText(), cargo.getText());
+        FunDAO f = new FunDAO();
+        if (f.validarMatr(fun)) {
+            JOptionPane.showMessageDialog(null, "Essa matricula já está no nosso banco de dados.");
+        } else {
             f.addFuncionario(fun);
-            int k = JOptionPane.showConfirmDialog(null,"Deseja executar o  cadastro do login deste funcionário?");
-            if(k == JOptionPane.YES_NO_OPTION)
-            {
-                
-                
-            }else
-            {
-                int r = JOptionPane.showConfirmDialog(null,"Deseja cadastrar outro funcionário?");
-                if(r == JOptionPane.YES_OPTION)
-                {
+            int k = JOptionPane.showConfirmDialog(null, "Deseja executar o  cadastro do login deste funcionário?");
+            if (k == JOptionPane.YES_NO_OPTION) {
+
+            } else {
+                int r = JOptionPane.showConfirmDialog(null, "Deseja cadastrar outro funcionário?");
+                if (r == JOptionPane.YES_OPTION) {
                     nome.setText("");
                     mat.setText("");
                     cargo.setText("");
-                 }else
-                {
-                   dispose();
-                   Inicio i=new Inicio();
-                  i.setVisible(true);
+                } else {
+                    dispose();
+                    Inicio i = new Inicio();
+                    i.setVisible(true);
                 }
             }
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
