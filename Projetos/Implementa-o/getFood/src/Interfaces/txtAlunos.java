@@ -152,8 +152,6 @@ public class txtAlunos extends javax.swing.JFrame {
                     System.out.println(aluno.toString());
 
                     linha = txt.readLine();
-
-                    linha = txt.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
