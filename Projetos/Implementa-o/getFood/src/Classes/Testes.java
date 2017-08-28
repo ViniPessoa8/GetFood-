@@ -6,6 +6,7 @@
 package Classes;
 
 import DAO.AlunoDAO;
+import DAO.FunDAO;
 import java.util.ArrayList;
 
 /**
@@ -39,8 +40,14 @@ public class Testes {
         }
         
         //Teste para verificar se o método 'rmAlunoMatricula' funciona
-        if (alunDAO.rmAlunoMatricula("201511440260")){
+        /*if (alunDAO.rmAlunoMatricula("201511440260")){
             System.out.println("201511440260 excluido com sucesso.");
-        }
+        }*/
+        
+        //Teste para verificar se o método 'getFuncionarioMatricula' funciona
+        Funcionario fun;
+        FunDAO funDAO = new FunDAO();
+        fun = funDAO.getFuncionarioMatricula("123456789");
+        System.out.println(fun.toString());
     }
 }

@@ -2,14 +2,20 @@ package Classes;
 
 public class Funcionario {
 
-    protected String nome = "", cargo = "", matricula = "";
+    protected String nome, cargo, matricula;
 
     public Funcionario(String matricula, String nome, String cargo) {
         this.matricula = matricula;
         this.nome = nome;
         this.cargo = cargo;
     }
-
+    
+    public Funcionario(){
+        nome = null;
+        cargo = null;
+        matricula = null;
+    }
+    
     public String getMatricula() {
         return matricula;
     }
@@ -34,4 +40,11 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario{" + "nome=" + nome + ", cargo=" + cargo + ", matricula=" + matricula + '}';
+    }
+    
+    
+    
 }

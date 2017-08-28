@@ -6,4 +6,5 @@ INSERT INTO funcionario(matricula,cargo,nome) VALUES ('123456789','Coordenador',
 INSERT INTO login(login,senha,matrFun) VALUES ('admin',MD5('admin'),'123456789');
 
 SELECT * FROM aluno WHERE nome LIKE '%a%';
+SELECT * FROM funcionario;
 

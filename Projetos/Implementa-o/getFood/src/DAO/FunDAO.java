@@ -10,19 +10,22 @@ import java.sql.SQLException;
 public class FunDAO {
 
     private Connection con;
-
+    String sql;
+    ResultSet rs;
+    PreparedStatement pstm;
+    
     public FunDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
 
     public boolean validarMatr(Funcionario fun) {
         boolean x = false;
-        ResultSet rs = null;
-        String sql = "select * from funcionario where matricula=?;";
+        rs = null;
+        sql = "select * from funcionario where matricula=?;";
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, fun.getMatricula());
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, fun.getMatricula());
+            rs = pstm.executeQuery();
             if (rs.first()) {
                 System.out.println(rs.getStatement());
                 x = true;
@@ -35,16 +38,35 @@ public class FunDAO {
     }
 
     public void addFuncionario(Funcionario fun) {
-        String sql = "insert into funcionario(matricula,nome,cargo) values (?,?,?);";
+        sql = "insert into funcionario(matricula,nome,cargo) values (?,?,?);";
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, fun.getMatricula());
-            stmt.setString(2, fun.getNome());
-            stmt.setString(3, fun.getCargo());
-            stmt.execute();
-            stmt.close();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, fun.getMatricula());
+            pstm.setString(2, fun.getNome());
+            pstm.setString(3, fun.getCargo());
+            pstm.execute();
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public Funcionario getFuncionarioMatricula(String matricula){
+        Funcionario fun =  new Funcionario();
+        sql = "SELECT * FROM funcionario WHERE matricula = ?";
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, matricula);
+            rs = pstm.executeQuery();
+            rs.next();
+            
+            fun.setMatricula(rs.getString("matricula"));
+            fun.setCargo(rs.getString("cargo"));
+            fun.setNome(rs.getString("nome"));
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        return fun;
     }
 }
