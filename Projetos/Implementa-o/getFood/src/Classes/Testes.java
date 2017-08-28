@@ -49,5 +49,16 @@ public class Testes {
         FunDAO funDAO = new FunDAO();
         fun = funDAO.getFuncionarioMatricula("123456789");
         System.out.println(fun.toString());
+        
+        //Teste para verificar se o método 'getListaFuncionarioNome' funciona
+        ArrayList<Funcionario> lista = funDAO.getListaFuncionarioNome("J");
+        System.out.println("\ngetListaFuncionarioNome:");
+        for(int i = 0; i < lista.size(); i++){
+            System.out.println(lista.get(i).toString());
+            
+        }
+        
+        //Teste para verificar se o método 'getFuncionarioMatricula' funciona
+        
     }
 }

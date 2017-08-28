@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class FunDAO {
 
@@ -13,7 +14,7 @@ public class FunDAO {
     String sql;
     ResultSet rs;
     PreparedStatement pstm;
-    
+
     public FunDAO() {
         this.con = new ConnectionFactory().getConnection();
     }
@@ -50,23 +51,74 @@ public class FunDAO {
             e.printStackTrace();
         }
     }
-    
-    public Funcionario getFuncionarioMatricula(String matricula){
-        Funcionario fun =  new Funcionario();
+
+    public Funcionario getFuncionarioMatricula(String matricula) {
+        Funcionario fun = new Funcionario();
         sql = "SELECT * FROM funcionario WHERE matricula = ?";
-        try{
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, matricula);
             rs = pstm.executeQuery();
             rs.next();
-            
+
             fun.setMatricula(rs.getString("matricula"));
             fun.setCargo(rs.getString("cargo"));
             fun.setNome(rs.getString("nome"));
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return fun;
+    }
+
+    public ArrayList<Funcionario> getListaFuncionarioCargo(String cargo) {
+        ArrayList<Funcionario> lista = new ArrayList();
+        Funcionario fun;
+        sql = "SELECT * FROM funcionario WHERE cargo = ?";
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, cargo);
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                
+                fun = new Funcionario();
+                
+                fun.setMatricula(rs.getString("matricula"));
+                fun.setCargo(rs.getString("cargo"));
+                fun.setNome(rs.getString("nome"));
+
+                lista.add(fun);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
+    }
+    
+    public ArrayList<Funcionario> getListaFuncionarioNome(String nome) {
+        ArrayList<Funcionario> lista = new ArrayList();
+        Funcionario fun;
+        sql = "SELECT * FROM funcionario WHERE nome LIKE '%"+nome+"%'";
+        try {
+            System.out.println(sql);
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                
+                fun = new Funcionario();
+                
+                fun.setMatricula(rs.getString("matricula"));
+                fun.setCargo(rs.getString("cargo"));
+                fun.setNome(rs.getString("nome"));
+
+                lista.add(fun);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lista;
     }
 }
