@@ -1,52 +1,72 @@
 package Classes;
 
-import java.util.Calendar;
+import java.util.Date;
 
+public class Venda {
 
-public class Venda 
-{
-    Aluno al;
-    Funcionario fun;
-    protected float valor=0;
-    protected Calendar data;
-    public void Venda(Aluno al,Funcionario fun,float valor,Calendar data)
-    {
-        this.al=al;
-        this.fun=fun;
-        this.valor=valor;
-        this.data=data;
+    private String matAluno, matFun;
+    private Double valor;
+    private Date data;
+    private int tipo;
+
+    public void Venda(String matAluno, String matFun, Double valor, Date data, int tipo) {
+        this.matAluno = matAluno;
+        this.matFun = matFun;
+        this.valor = valor;
+        this.data = data;
+        this.tipo = tipo;
     }
 
-    public Aluno getAl() {
-        return al;
+    public Venda() {
+        matAluno = null;
+        matFun = null;
+        tipo = 0;
+        valor = null;
+        data = null;
+    }
+    
+    
+
+    public String getMatAluno() {
+        return matAluno;
     }
 
-    public void setAl(Aluno al) {
-        this.al = al;
+    public void setMatAluno(String matAluno) {
+        this.matAluno = matAluno;
     }
 
-    public Funcionario getFun() {
-        return fun;
+    public String getMatFun() {
+        return matFun;
     }
 
-    public void setFun(Funcionario fun) {
-        this.fun = fun;
+    public void setMatFun(String matFun) {
+        this.matFun = matFun;
     }
 
-    public float getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
-    public Calendar getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(Date data) {
         this.data = data;
     }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     
+
 }

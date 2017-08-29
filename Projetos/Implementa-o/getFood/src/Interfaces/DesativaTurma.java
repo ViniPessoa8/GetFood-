@@ -23,7 +23,7 @@ public class DesativaTurma extends javax.swing.JFrame {
         t = new TurmaDAO();
          Vector v = null;
          ArrayList k;
-        k = cur.cursosDisp();
+        k = cur.getListaCursos();
         v = new Vector<String>();
         for (int i = 0; i < k.size(); i++) 
         {

@@ -2,7 +2,7 @@ package Classes;
 
 public class Ficha 
 {
-    protected float valor=0;
+    private float valor=0;
     public Ficha(float valor)
     {
         this.valor=valor;

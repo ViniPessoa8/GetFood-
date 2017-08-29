@@ -9,20 +9,27 @@ import java.sql.SQLException;
 public class FichaDAO
 {
     private Connection con;
+    private String sql;
+    private PreparedStatement pstm;
+    private ResultSet rs;
+    
     public FichaDAO()
     {
         this.con = new ConnectionFactory().getConnection();
+        rs = null;
+        pstm = null;
+        sql = null;
     }
     
     public void updatePreco(float preco)
     {
-        String sql="update ficha set valor=?;";
+        sql="update ficha set valor=?;";
         try
         {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setFloat(1,preco);
-            stmt.execute();
-            stmt.close();
+            pstm = con.prepareStatement(sql);
+            pstm.setFloat(1,preco);
+            pstm.execute();
+            pstm.close();
         }catch(SQLException e)
         {
             e.printStackTrace();
@@ -31,8 +38,8 @@ public class FichaDAO
     
     public float getVal()
     {
-        String sql="select * from ficha;";
-        ResultSet rs=null;
+        sql="select * from ficha;";
+        rs=null;
         float p=0;
         try
         {

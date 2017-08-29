@@ -15,7 +15,7 @@ public class AltrCurso extends javax.swing.JFrame {
         cur = new CursoDAO();
         Vector v = null;
         ArrayList k,s;
-        k = cur.cursosDisp();
+        k = cur.getListaCursos();
         v = new Vector<String>();
         for (int i = 0; i < k.size(); i++) 
         {

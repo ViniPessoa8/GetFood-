@@ -18,7 +18,7 @@ public class CDTurma extends javax.swing.JFrame {
         cur = new CursoDAO();
         Vector v = null;
         ArrayList k;
-        k = cur.cursosDisp();
+        k = cur.getListaCursos();
         v = new Vector<String>();
         for (int i = 0; i < k.size(); i++) {
             v.add(k.get(i).toString());
@@ -247,10 +247,10 @@ public class CDTurma extends javax.swing.JFrame {
         int ano = Integer.parseInt(txtAno.getText());
         //JOptionPane.showMessageDialog(null,codigo);
         TurmaDAO tr = new TurmaDAO();
-        if (tr.validacao(t.getCodigo(), ano)) {
+        if (tr.validacao(t.getCodigo())) {
             JOptionPane.showMessageDialog(null, "Esta turma já está cadastrada!");
         } else {
-            tr.addTurma(t, ano);
+            tr.addTurma(t);
             int r = JOptionPane.showConfirmDialog(null, "Cadastro feito com sucesso, deseja cadastrar outra turma?");
             if (JOptionPane.YES_OPTION == r) {
                 txtNomeTurma.setText("");

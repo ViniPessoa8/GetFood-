@@ -7,60 +7,87 @@ import java.sql.SQLException;
 
 public class LoginDAO {
 
+    private String sql;
+    private PreparedStatement pstm;
     private Connection con;
+    private ResultSet rs;
     
     public LoginDAO(){
         con = new ConnectionFactory().getConnection();
+        rs = null;
+        pstm = null;
+        sql = null;
     }
 
     public boolean validaLogin(String login) {
-        ResultSet rs;
         boolean log = false;
-        String sql = "select * from login where login = ?;";
+        sql = "select * from login where login = ?;";
+        
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, login);
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, login);
+            rs = pstm.executeQuery();
             if (rs.first()) {
                 log = true;
             }
+            
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
         return log;
     }
 
     public boolean logar(String login, String senha) {
         boolean result = false;
-        ResultSet rs = null;
-        String sql = "select * from login where login = ? and senha = MD5('" + senha + "');";
+        sql = "select * from login where login = ? and senha = MD5('" + senha + "');";
+        
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, login);
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, login);
+            rs = pstm.executeQuery();
             
             if (rs.first()) {
                 result = true;
             } 
             
-            stmt.close();
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    public void add(String login, String senha, float matr) {
-        String sql = "insert into login(login,senha,matrFun) values('?',MD5('" + senha + "'),'?');";
+    public void add(String login, String senha,String matr) {
+        sql = "insert into login(login,senha,matrFun) values('?',MD5('" + senha + "'),'?');";
+        
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, login);
-            stmt.setFloat(2, matr);
-            stmt.execute();
-            stmt.close();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, login);
+            pstm.setString(2, matr);
+            pstm.execute();
+            pstm.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    
+    public boolean rmLogin(String login){
+        boolean retorno = false;
+        sql = "DELETE FROM login WHERE login = ?";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, login);
+            pstm.execute();
+            pstm.close();
+            retorno = true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        } 
+        
+        return retorno;
     }
 }

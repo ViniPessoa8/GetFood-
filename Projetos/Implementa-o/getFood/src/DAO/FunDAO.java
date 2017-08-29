@@ -17,6 +17,9 @@ public class FunDAO {
 
     public FunDAO() {
         this.con = new ConnectionFactory().getConnection();
+        rs = null;
+        pstm = null;
+        sql = null;
     }
 
     public boolean validarMatr(Funcionario fun) {
@@ -120,5 +123,24 @@ public class FunDAO {
         }
 
         return lista;
+    }
+    
+    public boolean rmFuncionarioMatricula (String matricula){
+        boolean retorno = false;
+        Funcionario fun = new Funcionario();
+        
+        sql = "DELETRO FROM funcionario WHERE matricula = ?";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, matricula);
+            pstm.execute();
+            pstm.close();
+            retorno = true;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        return retorno;
     }
 }
