@@ -19,18 +19,17 @@ public class TurmaDAO {
         this.con = new ConnectionFactory().getConnection();
     }
 
-    public boolean addTurma(Turma t, int ano) {
+    public boolean addTurma(Turma t) {
         boolean retorno;
         
         //Atribuições
-        sql = "INSERT INTO turma(codigo,curso, ano) VALUES (?,?,?)";
+        sql = "INSERT INTO turma(codigo,curso) VALUES (?,?)";
         retorno = false;
 
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, t.getCodigo());
             pstm.setString(2, t.getCurso());
-            pstm.setInt(3, ano);
             pstm.execute();
             pstm.close();
             retorno = true;
@@ -41,11 +40,11 @@ public class TurmaDAO {
         return retorno;
     }
 
-    public boolean validacao(String codigo, int ano) {
+    public boolean validacao(String codigo) {
         boolean retorno;
 
         //Atribuições
-        sql = "SELECT * FROM turma WHERE codigo = ? AND ano = ?";
+        sql = "SELECT * FROM turma WHERE codigo = ?";
         rs = null;
         retorno = false;
 
@@ -53,7 +52,6 @@ public class TurmaDAO {
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, codigo);
-            pstm.setInt(2, ano);
             rs = pstm.executeQuery();
             
             //Se houver resultado
@@ -70,12 +68,12 @@ public class TurmaDAO {
         return retorno;
     }
 
-    public ArrayList<String> getTurmasCurso(String curso, int ano) {
+    public ArrayList<String> getTurmasCurso(String curso) {
         ArrayList<String> lista;
         
         //Atribuições
         rs = null;
-        sql = "SELECT * FROM turma WHERE curso = ?";
+        sql = "SELECT * FROM turma";
         lista = new ArrayList();
         
         try {
@@ -99,21 +97,20 @@ public class TurmaDAO {
         return lista;
     }
 
-    public boolean rmTurma(String codigo, int ano) {
+    public boolean rmTurma(String codigo) {
         boolean retorno;
 
         //Atribuições
         retorno = false;
 
         //verifica se a turma existe
-        if(validacao(codigo, ano)){
+        if(validacao(codigo)){
             
-            sql = "DELETE turma FROM turma WHERE codigo = ? AND ano = ?";
+            sql = "DELETE turma FROM turma WHERE codigo = ?";
             
             try{
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, codigo);
-                pstm.setInt(2, ano);
                 pstm.execute();
                 pstm.close();
                 

@@ -120,7 +120,7 @@ public class AlunoDAO {
     }
 
     //Retorna um ArrayList de alunos de acordo com a turma procurada.
-    public ArrayList<Aluno> getListaAlunosTurma(String turma, int ano) {
+    public ArrayList<Aluno> getListaAlunosTurma(String turma) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
@@ -130,12 +130,11 @@ public class AlunoDAO {
         //Instancias
         listaAlunos = new ArrayList();
 
-        sql = "SELECT * FROM aluno A, turma T WHERE  T.codigo = ? and T.ano = ? and A.turma = T.codigo";
+        sql = "SELECT * FROM aluno A, turma T WHERE  T.codigo = ? and A.turma = T.codigo";
 
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, turma);
-            pstm.setInt(2, ano);
             rs = pstm.executeQuery();
 
             while (rs.next()) {
@@ -162,7 +161,7 @@ public class AlunoDAO {
     }
 
     //Retorna um Arraylist de alunos de acordo com o curso procurado.
-    public ArrayList<Aluno> getListaAlunosCurso(String curso, int ano) {
+    public ArrayList<Aluno> getListaAlunosCurso(String curso) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
@@ -172,12 +171,11 @@ public class AlunoDAO {
         //Instancias
         listaAlunos = new ArrayList();
 
-        sql = "SELECT * FROM aluno A, curso C WHERE  C.codigo = ? and C.ano = ? and A.curso = C.codigo";
+        sql = "SELECT * FROM aluno A, curso C WHERE  C.codigo = ? and and A.curso = C.codigo";
 
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, curso);
-            pstm.setInt(2, ano);
             rs = pstm.executeQuery();
 
             while (rs.next()) {
@@ -206,7 +204,7 @@ public class AlunoDAO {
     /*Retorna um Arraylist de alunos beneficiarios ou não (depende do 'tipo' 
     * inserido) de determinado ano.
      */
-    public ArrayList<Aluno> getListaAlunosBeneficio(int param, int ano) {
+    public ArrayList<Aluno> getListaAlunosBeneficio(int param) {
         Aluno aluno;
         PreparedStatement pstm;
         String sql;
@@ -281,7 +279,7 @@ public class AlunoDAO {
 
     }
     
-    public boolean rmAlunosTurma(String turma, int ano){
+    public boolean rmAlunosTurma(String turma){
         boolean retorno;
         ArrayList<Aluno> listaAlunos;
         String sql1, sql2;
@@ -290,20 +288,19 @@ public class AlunoDAO {
         
         //Atribuições
         retorno = false;
-        listaAlunos = getListaAlunosTurma(turma, ano);
+        listaAlunos = getListaAlunosTurma(turma);
         
         //Se a turma for encontrada
         if(listaAlunos.size() > 0){
             
             //comando para apagar os alunos da turma
-            sql1 = "DELETE aluno FROM aluno A, turma T WHERE A.turma = T.codigo and T.codigo = ? and T.ano = ?";
+            sql1 = "DELETE aluno FROM aluno A, turma T WHERE A.turma = T.codigo and T.codigo = ?";
             
             //Efetua a remoção
             try{
                 //Remove os alunos da turma
                 pstm = con.prepareStatement(sql1);
                 pstm.setString(1, turma);
-                pstm.setInt(2, ano);
                 pstm.execute();
                 
                 //remove a turma
@@ -312,7 +309,7 @@ public class AlunoDAO {
             }
             
             //comando para apagar a turma
-            turmaDAO.rmTurma(turma, ano);
+            turmaDAO.rmTurma(turma);
             
             retorno = true;
         }
