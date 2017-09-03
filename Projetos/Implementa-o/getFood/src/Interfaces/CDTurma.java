@@ -9,24 +9,24 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-public class CDTurma extends javax.swing.JFrame 
-{
+public class CDTurma extends javax.swing.JFrame {
+
     CursoDAO cur;
-    public CDTurma() 
-    {
+
+    public CDTurma() {
         initComponents();
         cur = new CursoDAO();
-         Vector v = null;
-         ArrayList k;
+        Vector v = null;
+        ArrayList k;
         k = cur.cursosDisp();
         v = new Vector<String>();
-        for (int i = 0; i < k.size(); i++) 
-        {
+        for (int i = 0; i < k.size(); i++) {
             v.add(k.get(i).toString());
         }
         ComboBoxModel cbm = new DefaultComboBoxModel(v);
         cxCurso.setModel(cbm);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -222,27 +222,23 @@ public class CDTurma extends javax.swing.JFrame
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      String codigo = cur.busca((String)cxCurso.getSelectedItem());
-      Turma t= new Turma(turma.getText(),codigo);
-      //JOptionPane.showMessageDialog(null,codigo);
-      TurmaDAO tr= new TurmaDAO();
-      if(tr.validacao(t))
-      {
-        JOptionPane.showMessageDialog(null,"Esta turma já está cadastrada!");
-      }else
-      {
-        tr.addTurma(t);
-        int r=JOptionPane.showConfirmDialog(null,"Cadastro feito com sucesso, deseja cadastrar outra turma?");
-        if(JOptionPane.YES_OPTION == r)
-        {
-            turma.setText("");
-        }else
-        {
-            dispose();
-            Inicio i=new Inicio();
-            i.setVisible(true);
+        String codigo = cur.busca((String) cxCurso.getSelectedItem());
+        Turma t = new Turma(turma.getText(), codigo);
+        //JOptionPane.showMessageDialog(null,codigo);
+        TurmaDAO tr = new TurmaDAO();
+        if (tr.validacao(t.getCodigo())) {
+            JOptionPane.showMessageDialog(null, "Esta turma já está cadastrada!");
+        } else {
+            tr.addTurma(t);
+            int r = JOptionPane.showConfirmDialog(null, "Cadastro feito com sucesso, deseja cadastrar outra turma?");
+            if (JOptionPane.YES_OPTION == r) {
+                turma.setText("");
+            } else {
+                dispose();
+                Inicio i = new Inicio();
+                i.setVisible(true);
+            }
         }
-      }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void turmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turmaActionPerformed

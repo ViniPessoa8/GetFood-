@@ -3,7 +3,6 @@ package Classes;
 public class Turma 
 {
     private String codigo="",curso="";
-    private int ano;
     
     public Turma(String codigo,String curso)
     {
@@ -27,17 +26,9 @@ public class Turma
         this.curso = curso;
     }
 
-    public int getAno() {
-        return ano;
-    }
-
-    public void setAno(int ano) {
-        this.ano = ano;
-    }
-
     @Override
     public String toString() {
-        return "Turma{" + "codigo=" + codigo + ", curso=" + curso + ", ano=" + ano + '}';
+        return "Turma{" + "codigo=" + codigo + ", curso=" + curso + '}';
     }
     
     
