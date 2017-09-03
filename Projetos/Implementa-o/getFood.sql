@@ -5,16 +5,14 @@ use getFood;
 create table curso(
 	codigo varchar(25) not null,
 	primary key(codigo),
-	nome varchar(50) not null,
-    ano int(4) not null
+	nome varchar(50) not null
 );
 
 create table turma(
 	codigo varchar(25) not null,
 	primary key(codigo),
 	curso varchar(25) not null,
-	foreign key (curso) references curso(codigo),
-    ano int (4) not null
+	foreign key (curso) references curso(codigo)
 );
 
 create table aluno(
