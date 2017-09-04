@@ -9,66 +9,67 @@ import java.sql.SQLException;
 public class LoginDAO 
 {
     private Connection con;
+    private String sql;
+    private PreparedStatement pstm;
+    private ResultSet rs;
+    private boolean retorno;
     
     public boolean validaLogin(String login)
     {
         ResultSet rs;
-        boolean log = false;
-        String sql = "select * from login where login = ?;";
+        retorno = false;
+        sql = "SELECT * FROM login WHERE login = ?";
         try
         {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1,login);
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,login);
+            rs = pstm.executeQuery();
             if(rs.first())
             {
-                log = true; 
+                retorno = true; 
             }
         } catch(SQLException e)
         {
             e.printStackTrace();
         }
-        return log;
+        return retorno;
     }
     
     public boolean logar(String login, String senha)
     {
-        boolean result = false;
-        ResultSet rs = null;
-        String sql = "select * from login where login = '?' and senha = MD5('"+senha+"');";
-        System.out.println("");
+        sql = "select * from login where login = '?' and senha = MD5('"+senha+"')";
         try
         {
-            PreparedStatement stmt = con.prepareStatement(sql);
+            pstm = con.prepareStatement(sql);
             System.out.println("eae men");
-            stmt.setString(1,login);
-            stmt.setString(2,senha);
-            rs = stmt.executeQuery();
+            pstm.setString(1,login);
+            pstm.setString(2,senha);
+            rs = pstm.executeQuery();
             if(rs.first())
             {
                 System.out.println("ACHOU");
-                result = true;
+                retorno = true;
             }else
             {
                 System.out.println("vc falhou como smp se fode ai");
             }
-            stmt.close();
+            pstm.close();
         }catch(SQLException e)
         {
             e.printStackTrace();
         }
-        return result;
+        return retorno;
     }
     public void add(String login, String senha,float matr)
     {
-        String sql="insert into login(login,senha,matrFun) values('?',MD5('"+senha+"'),'?');";
+        sql="insert into login(login,senha,matrFun) values('?',MD5('"+senha+"'),'?');";
         try
         {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1,login);
-            stmt.setFloat(2,matr);
-            stmt.execute();
-            stmt.close();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,login);
+            pstm.setFloat(2,matr);
+            pstm.execute();
+            pstm.close();
             
         }catch(SQLException e)
         {

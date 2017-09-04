@@ -7,50 +7,47 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FunDAO 
-{
+public class FunDAO {
+
     private Connection con;
-    public FunDAO()
-    {
-        this.con= new ConnectionFactory().getConnection();
+    private String sql;
+    private PreparedStatement pstm;
+    private ResultSet rs;
+    private boolean retorno;
+
+    public FunDAO() {
+        this.con = new ConnectionFactory().getConnection();
     }
-    
-    public boolean validarMatr(Funcionario fun)
-    {
-        boolean x=false;
-        ResultSet rs=null;
-        String sql="select * from funcionario where matricula=?;";
-        try
-        {
-            PreparedStatement stmt=con.prepareStatement(sql);
-            stmt.setFloat(1,fun.getMatricula());
-            rs=stmt.executeQuery();
-            if(rs.first())
-            {
+
+    public boolean validarMatr(Funcionario fun) {
+        retorno = false;
+        sql = "SELECT * FROM funcionario WHERE matricula = ?";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setFloat(1, fun.getMatricula());
+            rs = pstm.executeQuery();
+            if (rs.first()) {
                 System.out.println(rs.getStatement());
-                x=true;
+                retorno = true;
             }
-            
-        }catch(SQLException e)   
-        {
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return x;
+        return retorno;
     }
-    public void addFuncionario(Funcionario fun)
-    {
-        String sql="insert into funcionario(matricula,nome,cargo) values (?,?,?);";
-        try
-        {
-            PreparedStatement stmt=con.prepareStatement(sql);
-            stmt.setFloat(1,fun.getMatricula());
-            stmt.setString(2,fun.getNome());
-            stmt.setString(3,fun.getCargo());
-            stmt.execute();
-            stmt.close();
-        }catch(SQLException e)
-        {
-             e.printStackTrace();
+
+    public void addFuncionario(Funcionario fun) {
+        sql = "INSERT INTO funcionario(matricula,nome,cargo) VALUES (?,?,?)";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setFloat(1, fun.getMatricula());
+            pstm.setString(2, fun.getNome());
+            pstm.setString(3, fun.getCargo());
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

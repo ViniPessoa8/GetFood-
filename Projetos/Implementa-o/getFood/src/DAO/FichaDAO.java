@@ -6,44 +6,41 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class FichaDAO
-{
+public class FichaDAO {
+
     private Connection con;
-    public FichaDAO()
-    {
+    private String sql;
+    private PreparedStatement pstm;
+    private ResultSet rs;
+
+    public FichaDAO() {
         this.con = new ConnectionFactory().getConnection();
+        pstm = null;
     }
-    
-    public void updatePreco(float preco)
-    {
-        String sql="update ficha set valor=?;";
-        try
-        {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setFloat(1,preco);
-            stmt.execute();
-            stmt.close();
-        }catch(SQLException e)
-        {
+
+    public void updatePreco(float preco) {
+        sql = "UPDATE ficha SET valor = ?";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setFloat(1, preco);
+            pstm.execute();
+            pstm.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    public float getVal()
-    {
-        String sql="select * from ficha;";
-        ResultSet rs=null;
-        float p=0;
-        try
-        {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
-            p = rs.getFloat("valor");
-            System.out.println(p);
-        } catch(SQLException e)
-        {
+
+    public float getVal() {
+        sql = "SELECT * FROM ficha";
+        float valor = 0;
+        try {
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            valor = rs.getFloat("valor");
+            System.out.println(valor);
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return p;
+        return valor;
     }
 }
