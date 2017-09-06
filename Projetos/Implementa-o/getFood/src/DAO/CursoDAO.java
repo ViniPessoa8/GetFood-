@@ -101,7 +101,7 @@ public class CursoDAO {
     }
 
     public void alteraNome(String codigo, String nome) {
-        sql = "update curso set nome='?' where codigo=?;";
+        sql = "UPDATE curso SET nome = ? WHERE codigo = ?";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, nome);

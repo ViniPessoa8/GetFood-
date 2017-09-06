@@ -32,24 +32,10 @@ public class AlunoDAO {
 
     }
 
-    //Incompleto
-    public boolean addAluno(Aluno aluno) {
-        retorno = false;
-
-        sql = "INSERT INTO aluno VALUES()";
-        try {
-            pstm = con.prepareStatement(sql);
-            pstm.execute();
-            pstm.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return retorno;
-    }
-
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
     * matricula informada
      */
+    
     public Aluno getAlunoMatricula(String matricula) {
 
         //Instancia um aluno

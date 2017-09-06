@@ -14,7 +14,6 @@ public class LoginDAO {
     private boolean retorno;
 
     public boolean validaLogin(String login) {
-        ResultSet rs;
         retorno = false;
         sql = "SELECT * FROM login WHERE login = ?";
         try {
@@ -36,7 +35,7 @@ public class LoginDAO {
     }
 
     public boolean logar(String login, String senha) {
-        sql = "select * from login where login = '?' and senha = MD5('" + senha + "')";
+        sql = "SELECT * FROM login WHERE login = ? AND senha = MD5('" + senha + "')";
         try {
             pstm = con.prepareStatement(sql);
             System.out.println("eae men");
@@ -58,7 +57,7 @@ public class LoginDAO {
     }
 
     public void add(String login, String senha, String matr) {
-        sql = "insert into login(login,senha,matrFun) values('?',MD5('" + senha + "'),'?');";
+        sql = "INSERT INTO login(login,senha,matrFun) values(?, MD5('" + senha + "'), ?);";
 
         try {
             pstm = con.prepareStatement(sql);
@@ -73,7 +72,7 @@ public class LoginDAO {
     }
 
     public boolean rmLogin(String login) {
-        boolean retorno = false;
+        retorno = false;
         sql = "DELETE FROM login WHERE login = ?";
 
         try {
