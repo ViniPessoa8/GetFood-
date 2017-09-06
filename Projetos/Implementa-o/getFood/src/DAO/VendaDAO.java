@@ -231,7 +231,8 @@ public class VendaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+ 
+        
         return lista;
     }
 }
