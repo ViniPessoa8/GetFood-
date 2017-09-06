@@ -305,30 +305,30 @@ public class CDLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-      dispose();
-      CDCurso c=new CDCurso();
-      c.setVisible(true);
+        dispose();
+        CDCurso c = new CDCurso();
+        c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
-       
+
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-         dispose();
-        CDTurma c=new CDTurma();
+        dispose();
+        CDTurma c = new CDTurma();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun f=new CDFun();
+        CDFun f = new CDFun();
         f.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
-        AltrCurso a=new AltrCurso();
+        AltrCurso a = new AltrCurso();
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
@@ -345,25 +345,20 @@ public class CDLogin extends javax.swing.JFrame {
     private void inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inActionPerformed
         String s = new String(senha.getPassword());
         String c = new String(confirma.getPassword());
-        if(login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("") )
-        {
-            JOptionPane.showMessageDialog(null,"Um campo importante está vazio!");
-        }else
-        {
-            if(s.equals(c))
-            {
+        if (login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("")) {
+            JOptionPane.showMessageDialog(null, "Um campo importante está vazio!");
+        } else {
+            if (s.equals(c)) {
                 System.out.println("Senhas iguais");
                 LoginDAO log = new LoginDAO();
-                if(log.validaLogin(login.getText()))
-                {
-                   JOptionPane.showMessageDialog(null,"Esse login já existe.");
-                }else
-                {
-                   log.add(login.getText(),s,Float.parseFloat(matr.getText())); 
+                if (log.validaLogin(login.getText())) {
+                    JOptionPane.showMessageDialog(null, "Esse login já existe.");
+                } else {
+                    log.add(login.getText(), s, matr.getText());
                 }
             }
         }
-       
+
 
     }//GEN-LAST:event_inActionPerformed
 
@@ -372,7 +367,7 @@ public class CDLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_matrActionPerformed
 
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CDLogin().setVisible(true);

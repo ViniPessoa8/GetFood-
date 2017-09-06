@@ -39,6 +39,7 @@ public class FichaDAO {
             valor = rs.getFloat("valor");
             System.out.println(valor);
         } catch (SQLException e) {
+
             e.printStackTrace();
         }
         return valor;

@@ -19,6 +19,9 @@ public class TurmaDAO {
 
     public TurmaDAO() {
         this.con = new ConnectionFactory().getConnection();
+        rs = null;
+        pstm = null;
+        sql = null;
     }
 
     public boolean addTurma(Turma t) {
@@ -46,6 +49,7 @@ public class TurmaDAO {
         //Atribuições
         sql = "SELECT * FROM turma WHERE codigo = ?";
         rs = null;
+
         retorno = false;
 
         //efetua a validação
@@ -70,9 +74,11 @@ public class TurmaDAO {
 
     public ArrayList<String> getTurmasCurso(String curso) {
 
+
         //Atribuições
         rs = null;
         sql = "SELECT * FROM turma";
+
         lista = new ArrayList();
 
         try {
@@ -102,11 +108,13 @@ public class TurmaDAO {
         retorno = false;
 
         //verifica se a turma existe
+
         if (validacao(codigo)) {
 
             sql = "DELETE turma FROM turma WHERE codigo = ?";
 
             try {
+
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, codigo);
                 pstm.execute();

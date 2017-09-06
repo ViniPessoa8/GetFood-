@@ -17,8 +17,11 @@ public class CursoDAO {
     private boolean retorno;
     private ArrayList<String> lista;
 
+
     public CursoDAO() {
         this.con = new ConnectionFactory().getConnection();
+        pstm = null;
+        sql = null;
     }
 
     public void addCurso(Curso c) {
@@ -29,6 +32,7 @@ public class CursoDAO {
             pstm.setString(2, c.getNome());
             pstm.execute();
             pstm.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,6 +51,7 @@ public class CursoDAO {
             }
             pstm.close();
 
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,9 +59,10 @@ public class CursoDAO {
         return retorno;
     }
 
-    public ArrayList<String> cursosDisp() {
+    public ArrayList<String> getListaCursos() {
         lista = new ArrayList();
         sql = "SELECT * FROM curso";
+
         try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
@@ -83,6 +89,7 @@ public class CursoDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, nome);
             rs = pstm.executeQuery();
+
             if (rs.first()) {
                 codigo = rs.getString("codigo");
                 System.out.println(codigo);
@@ -101,6 +108,7 @@ public class CursoDAO {
             pstm.setString(2, codigo);
             pstm.execute();
             pstm.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

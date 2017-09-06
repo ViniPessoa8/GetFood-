@@ -1,22 +1,26 @@
 package Classes;
 
-public class Funcionario 
-{
-    protected float matricula=0;
-    protected String nome="",cargo="";
+public class Funcionario {
 
-    public Funcionario(float matricula, String nome, String cargo) {
-         this.matricula=matricula;
-        this.nome=nome;
-        this.cargo=cargo;
+    protected String nome, cargo, matricula;
+
+    public Funcionario(String matricula, String nome, String cargo) {
+        this.matricula = matricula;
+        this.nome = nome;
+        this.cargo = cargo;
     }
-  
-
-    public float getMatricula() {
+    
+    public Funcionario(){
+        nome = null;
+        cargo = null;
+        matricula = null;
+    }
+    
+    public String getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(float matricula) {
+    public void setMatricula(String matricula) {
         this.matricula = matricula;
     }
 
@@ -35,5 +39,12 @@ public class Funcionario
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" + "nome=" + nome + ", cargo=" + cargo + ", matricula=" + matricula + '}';
+    }
+    
+    
     
 }

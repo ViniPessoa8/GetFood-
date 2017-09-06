@@ -29,12 +29,12 @@ public class AlunoDAO {
 
     public AlunoDAO() {
         con = new ConnectionFactory().getConnection();
-        
+
     }
 
     //Incompleto
     public boolean addAluno(Aluno aluno) {
-        boolean resultado = false;
+        retorno = false;
 
         sql = "INSERT INTO aluno VALUES()";
         try {
@@ -44,13 +44,14 @@ public class AlunoDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return resultado;
+        return retorno;
     }
 
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
     * matricula informada
      */
     public Aluno getAlunoMatricula(String matricula) {
+
         //Instancia um aluno
         aluno = new Aluno();
 
@@ -60,7 +61,7 @@ public class AlunoDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, matricula);
             rs = pstm.executeQuery();
-            
+
             //Se houver resultado
             if (rs.next()) {
                 //Atribuição de valores ao objeto 'aluno'
@@ -83,7 +84,6 @@ public class AlunoDAO {
 
     //Retorna um ArrayList de alunos de acordo com o nome procurado.
     public ArrayList<Aluno> getListaAlunosNome(String nome) {
-        ArrayList<Aluno> listaAlunos;
 
         //Instancias
         listaAlunos = new ArrayList();
@@ -157,7 +157,7 @@ public class AlunoDAO {
         //Instancias
         listaAlunos = new ArrayList();
 
-        sql = "SELECT * FROM aluno A, curso C WHERE  C.codigo = ? and and A.curso = C.codigo";
+        sql = "SELECT * FROM aluno A, curso C WHERE  C.codigo = ? and A.curso = C.codigo";
 
         try {
             pstm = con.prepareStatement(sql);
@@ -189,6 +189,7 @@ public class AlunoDAO {
 
     /*Retorna um Arraylist de alunos beneficiarios ou não (depende do 'tipo' 
     * inserido) de determinado ano.
+    * Se o parametro for 1, o método retorna os alunos que recebem benefício.
      */
     public ArrayList<Aluno> getListaAlunosBeneficio(int param) {
 
@@ -224,8 +225,8 @@ public class AlunoDAO {
 
         return listaAlunos;
     }
-    
-    //remove o aluno de acordo com a matricula fornecida.
+
+    //Remove o aluno de acordo com a matricula fornecida.
     public boolean rmAlunoMatricula(String matricula) {
 
         //Atribuições
@@ -255,38 +256,38 @@ public class AlunoDAO {
         return retorno;
 
     }
-    
-    public boolean rmAlunosTurma(String turma){
+
+    public boolean rmAlunosTurma(String turma) {
         turmaDAO = new TurmaDAO();
-        
+
         //Atribuições
         retorno = false;
         listaAlunos = getListaAlunosTurma(turma);
-        
+
         //Se a turma for encontrada
-        if(listaAlunos.size() > 0){
-            
+        if (listaAlunos.size() > 0) {
+
             //comando para apagar os alunos da turma
             sql = "DELETE aluno FROM aluno A, turma T WHERE A.turma = T.codigo and T.codigo = ?";
-            
+
             //Efetua a remoção
-            try{
+            try {
                 //Remove os alunos da turma
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, turma);
                 pstm.execute();
-                
+
                 //remove a turma
-            }catch(SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
-            
+
             //comando para apagar a turma
             turmaDAO.rmTurma(turma);
-            
+
             retorno = true;
         }
-        
+
         return retorno;
     }
 }
