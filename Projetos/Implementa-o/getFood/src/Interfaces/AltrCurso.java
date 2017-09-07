@@ -8,21 +8,21 @@ import javax.swing.DefaultComboBoxModel;
 
 public class AltrCurso extends javax.swing.JFrame {
 
-    CursoDAO cur;
+    CursoDAO cursoDAO;
     String codigo;
     int i = 0;
 
     public AltrCurso() {
         initComponents();
-        cur = new CursoDAO();
-        Vector v = null;
-        ArrayList k, s;
-        k = cur.getListaCursos();
-        v = new Vector<String>();
-        for (int i = 0; i < k.size(); i++) {
-            v.add(k.get(i).toString());
+        cursoDAO = new CursoDAO();
+        Vector vetorCursos = null;
+        ArrayList ListaCursos, s;
+        ListaCursos = cursoDAO.getListaCursos();
+        vetorCursos = new Vector<String>();
+        for (int i = 0; i < ListaCursos.size(); i++) {
+            vetorCursos.add(ListaCursos.get(i).toString());
         }
-        ComboBoxModel cbm = new DefaultComboBoxModel(v);
+        ComboBoxModel cbm = new DefaultComboBoxModel(vetorCursos);
         cxCurso.setModel(cbm);
         lblNome.setVisible(false);
         cxN.setVisible(false);
@@ -370,14 +370,14 @@ public class AltrCurso extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma c = new CDTurma();
-        c.setVisible(true);
+        CDTurma cadastroTurma = new CDTurma();
+        cadastroTurma.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun f = new CDFun();
-        f.setVisible(true);
+        CDFun CadastroFuncionario = new CDFun();
+        CadastroFuncionario.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void cxNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxNActionPerformed
@@ -386,7 +386,7 @@ public class AltrCurso extends javax.swing.JFrame {
 
     private void cxCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxCursoActionPerformed
         String curso = (String) cxCurso.getSelectedItem();
-        codigo = cur.busca((String) cxCurso.getSelectedItem());
+        codigo = cursoDAO.busca(curso);
     }//GEN-LAST:event_cxCursoActionPerformed
 
     private void cxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxCodigoActionPerformed
@@ -401,11 +401,12 @@ public class AltrCurso extends javax.swing.JFrame {
         if (csNome.isSelected()) {
             System.out.println(codigo);
             System.out.println(cxN.getText());
-            cur.alteraNome(codigo, cxN.getText());
+            cursoDAO.alteraNome(codigo, cxN.getText());
         }
         if (csCodigo.isSelected()) {
-            //
-
+            System.out.println(codigo);
+            System.out.println(cxCodigo.getText());
+            cursoDAO.alteraCodigo(codigo, cxCodigo.getText());
         }
     }//GEN-LAST:event_btnAltActionPerformed
 
