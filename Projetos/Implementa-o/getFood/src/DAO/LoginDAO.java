@@ -11,57 +11,54 @@ public class LoginDAO {
     private PreparedStatement pstm;
     private Connection con;
     private ResultSet rs;
-    
-    public LoginDAO(){
-        con = new ConnectionFactory().getConnection();
-        rs = null;
-        pstm = null;
-        sql = null;
-    }
+    private boolean retorno;
 
     public boolean validaLogin(String login) {
-        boolean log = false;
-        sql = "select * from login where login = ?;";
-        
+        retorno = false;
+        sql = "SELECT * FROM login WHERE login = ?";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, login);
             rs = pstm.executeQuery();
             if (rs.first()) {
-                log = true;
+                retorno = true;
+
             }
-            
+
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
-        return log;
+        
+        return retorno;
     }
 
     public boolean logar(String login, String senha) {
-        boolean result = false;
-        sql = "select * from login where login = ? and senha = MD5('" + senha + "');";
-        
+        sql = "SELECT * FROM login WHERE login = ? AND senha = MD5('" + senha + "')";
         try {
             pstm = con.prepareStatement(sql);
+            System.out.println("eae men");
             pstm.setString(1, login);
+            pstm.setString(2, senha);
             rs = pstm.executeQuery();
-            
             if (rs.first()) {
-                result = true;
-            } 
-            
+                System.out.println("ACHOU");
+                retorno = true;
+            } else {
+                System.out.println("vc falhou como smp se fode ai");
+            }
             pstm.close();
         } catch (SQLException e) {
+
             e.printStackTrace();
         }
-        return result;
+        return retorno;
     }
 
-    public void add(String login, String senha,String matr) {
-        sql = "insert into login(login,senha,matrFun) values('?',MD5('" + senha + "'),'?');";
-        
+    public void add(String login, String senha, String matr) {
+        sql = "INSERT INTO login(login,senha,matrFun) values(?, MD5('" + senha + "'), ?);";
+
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, login);
@@ -73,21 +70,21 @@ public class LoginDAO {
             e.printStackTrace();
         }
     }
-    
-    public boolean rmLogin(String login){
-        boolean retorno = false;
+
+    public boolean rmLogin(String login) {
+        retorno = false;
         sql = "DELETE FROM login WHERE login = ?";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, login);
             pstm.execute();
             pstm.close();
             retorno = true;
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        } 
-        
+        }
+
         return retorno;
     }
 }

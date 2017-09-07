@@ -14,6 +14,9 @@ public class CursoDAO {
     private String sql;
     private PreparedStatement pstm;
     private ResultSet rs;
+    private boolean retorno;
+    private ArrayList<String> lista;
+
 
     public CursoDAO() {
         this.con = new ConnectionFactory().getConnection();
@@ -22,46 +25,47 @@ public class CursoDAO {
     }
 
     public void addCurso(Curso c) {
-        String sql = "insert into curso(codigo,nome) values(?,?);";
+        sql = "INSERT INTO curso(codigo,nome) VALUES(?, ?)";
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, c.getCodigo());
-            stmt.setString(2, c.getNome());
-            stmt.execute();
-            stmt.close();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, c.getCodigo());
+            pstm.setString(2, c.getNome());
+            pstm.execute();
+            pstm.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public boolean validarCurso(Curso c) {
-        boolean x = false;
-        String sql = "select nome from curso where nome=?;";
-        ResultSet rs = null;
+        sql = "SELECT nome FROM curso WHERE nome = ?";
+
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, c.getNome());
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, c.getNome());
+            rs = pstm.executeQuery();
             if (rs.first()) {
                 System.out.println(rs.getStatement());
-                x = true;
+                retorno = true;
             }
-            stmt.close();
+            pstm.close();
+
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return x;
+        return retorno;
     }
 
     public ArrayList<String> getListaCursos() {
-        ArrayList<String> lista = new ArrayList();
-        String sql = "select * from curso;";
-        ResultSet rs = null;
+        lista = new ArrayList();
+        sql = "SELECT * FROM curso";
+
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
             if (!rs.first()) {
                 lista = null;
             } else {
@@ -69,7 +73,7 @@ public class CursoDAO {
                     lista.add(rs.getString("nome"));
                 } while (rs.next());
             }
-            stmt.close();
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -77,14 +81,15 @@ public class CursoDAO {
     }
 
     public String busca(String nome) {
-        ResultSet rs = null;
-        String codigo = "";
-        String sql = "select * from curso where nome=?;";
+        String codigo = null;
+
+        sql = "SELECT * FROM curso WHERE nome = ?";
 
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
-            rs = stmt.executeQuery();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, nome);
+            rs = pstm.executeQuery();
+
             if (rs.first()) {
                 codigo = rs.getString("codigo");
                 System.out.println(codigo);
@@ -96,13 +101,14 @@ public class CursoDAO {
     }
 
     public void alteraNome(String codigo, String nome) {
-        String sql = "update curso set nome='?' where codigo=?;";
+        sql = "UPDATE curso SET nome = ? WHERE codigo = ?";
         try {
-            PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
-            stmt.setString(2, codigo);
-            stmt.execute();
-            stmt.close();
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, nome);
+            pstm.setString(2, codigo);
+            pstm.execute();
+            pstm.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

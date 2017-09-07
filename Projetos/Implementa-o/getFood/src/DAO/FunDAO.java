@@ -10,48 +10,52 @@ import java.util.ArrayList;
 
 public class FunDAO {
 
+
+
+
     private Connection con;
-    String sql;
-    ResultSet rs;
-    PreparedStatement pstm;
+    private String sql;
+    private PreparedStatement pstm;
+    private ResultSet rs;
+    private boolean retorno;
 
     public FunDAO() {
         this.con = new ConnectionFactory().getConnection();
-        rs = null;
-        pstm = null;
-        sql = null;
     }
 
     public boolean validarMatr(Funcionario fun) {
-        boolean x = false;
-        rs = null;
-        sql = "select * from funcionario where matricula=?;";
+        retorno = false;
+        sql = "SELECT * FROM funcionario WHERE matricula = ?";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, fun.getMatricula());
             rs = pstm.executeQuery();
             if (rs.first()) {
                 System.out.println(rs.getStatement());
-                x = true;
+                retorno = true;
+
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return x;
+        return retorno;
     }
 
     public void addFuncionario(Funcionario fun) {
-        sql = "insert into funcionario(matricula,nome,cargo) values (?,?,?);";
+
+        sql = "INSERT INTO funcionario(matricula,nome,cargo) VALUES (?,?,?)";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, fun.getMatricula());
+
             pstm.setString(2, fun.getNome());
             pstm.setString(3, fun.getCargo());
             pstm.execute();
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
+
         }
     }
 
@@ -139,6 +143,7 @@ public class FunDAO {
             retorno = true;
         }catch (SQLException e){
             e.printStackTrace();
+
         }
         
         return retorno;

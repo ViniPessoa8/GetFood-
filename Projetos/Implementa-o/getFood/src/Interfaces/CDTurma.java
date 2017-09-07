@@ -19,6 +19,7 @@ public class CDTurma extends javax.swing.JFrame {
         Vector v = null;
         ArrayList k;
         k = cur.getListaCursos();
+
         v = new Vector<String>();
         for (int i = 0; i < k.size(); i++) {
             v.add(k.get(i).toString());
@@ -243,8 +244,10 @@ public class CDTurma extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String codigo = cur.busca((String) cxCurso.getSelectedItem());
+
         Turma t = new Turma(txtNomeTurma.getText(), codigo);
         int ano = Integer.parseInt(txtAno.getText());
+
         //JOptionPane.showMessageDialog(null,codigo);
         TurmaDAO tr = new TurmaDAO();
         if (tr.validacao(t.getCodigo())) {
@@ -253,7 +256,9 @@ public class CDTurma extends javax.swing.JFrame {
             tr.addTurma(t);
             int r = JOptionPane.showConfirmDialog(null, "Cadastro feito com sucesso, deseja cadastrar outra turma?");
             if (JOptionPane.YES_OPTION == r) {
+
                 txtNomeTurma.setText("");
+
             } else {
                 dispose();
                 Inicio i = new Inicio();

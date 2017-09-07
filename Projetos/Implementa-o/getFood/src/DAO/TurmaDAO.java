@@ -14,6 +14,8 @@ public class TurmaDAO {
     private String sql;
     private PreparedStatement pstm;
     private ResultSet rs;
+    private ArrayList<String> lista;
+    private boolean retorno;
 
     public TurmaDAO() {
         this.con = new ConnectionFactory().getConnection();
@@ -23,8 +25,7 @@ public class TurmaDAO {
     }
 
     public boolean addTurma(Turma t) {
-        boolean retorno;
-        
+
         //Atribuições
         sql = "INSERT INTO turma(codigo,curso) VALUES (?,?)";
         retorno = false;
@@ -39,15 +40,16 @@ public class TurmaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return retorno;
     }
 
     public boolean validacao(String codigo) {
-        boolean retorno;
 
         //Atribuições
         sql = "SELECT * FROM turma WHERE codigo = ?";
+        rs = null;
+
         retorno = false;
 
         //efetua a validação
@@ -55,13 +57,13 @@ public class TurmaDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, codigo);
             rs = pstm.executeQuery();
-            
+
             //Se houver resultado
             if (rs.first()) {
                 System.out.println(rs.getStatement());
                 retorno = true;
             }
-            
+
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -71,17 +73,19 @@ public class TurmaDAO {
     }
 
     public ArrayList<String> getTurmasCurso(String curso) {
-        ArrayList<String> lista;
-        
+
+
         //Atribuições
-        sql = "SELECT * FROM turma WHERE curso = ?";
+        rs = null;
+        sql = "SELECT * FROM turma";
+
         lista = new ArrayList();
-        
+
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, curso);
             rs = pstm.executeQuery();
-            
+
             //Se não houver resultado da busca
             if (!rs.first()) {
                 lista = null;
@@ -99,31 +103,30 @@ public class TurmaDAO {
     }
 
     public boolean rmTurma(String codigo) {
-        boolean retorno;
 
         //Atribuições
         retorno = false;
 
         //verifica se a turma existe
-        if(validacao(codigo)){
-            
+
+        if (validacao(codigo)) {
+
             sql = "DELETE turma FROM turma WHERE codigo = ?";
-            
-            try{
+
+            try {
+
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, codigo);
                 pstm.execute();
                 pstm.close();
-                
+
                 retorno = true;
-            } catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
-            
-            
-            
+
         }
-        
+
         return retorno;
     }
 }
