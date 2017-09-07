@@ -7,18 +7,19 @@ import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 
 public class AltrCurso extends javax.swing.JFrame {
+
     CursoDAO cur;
-    String codigo; 
-    int i=0;
+    String codigo;
+    int i = 0;
+
     public AltrCurso() {
         initComponents();
         cur = new CursoDAO();
         Vector v = null;
-        ArrayList k,s;
+        ArrayList k, s;
         k = cur.getListaCursos();
         v = new Vector<String>();
-        for (int i = 0; i < k.size(); i++) 
-        {
+        for (int i = 0; i < k.size(); i++) {
             v.add(k.get(i).toString());
         }
         ComboBoxModel cbm = new DefaultComboBoxModel(v);
@@ -28,7 +29,7 @@ public class AltrCurso extends javax.swing.JFrame {
         btnAlt.setVisible(false);
         lblCodigo.setVisible(false);
         cxCodigo.setVisible(false);
-        codigo="";
+        codigo = "";
     }
 
     @SuppressWarnings("unchecked")
@@ -358,24 +359,24 @@ public class AltrCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-      dispose();
-      CDCurso c=new CDCurso();
-      c.setVisible(true);
+        dispose();
+        CDCurso c = new CDCurso();
+        c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
-       
+
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-         dispose();
-        CDTurma c=new CDTurma();
+        dispose();
+        CDTurma c = new CDTurma();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun f=new CDFun();
+        CDFun f = new CDFun();
         f.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
@@ -384,8 +385,8 @@ public class AltrCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_cxNActionPerformed
 
     private void cxCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxCursoActionPerformed
-        String curso=(String)cxCurso.getSelectedItem();
-        codigo = cur.busca((String)cxCurso.getSelectedItem());
+        String curso = (String) cxCurso.getSelectedItem();
+        codigo = cur.busca((String) cxCurso.getSelectedItem());
     }//GEN-LAST:event_cxCursoActionPerformed
 
     private void cxCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxCodigoActionPerformed
@@ -397,52 +398,46 @@ public class AltrCurso extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAltActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltActionPerformed
-        if(csNome.isSelected())
-        {
+        if (csNome.isSelected()) {
             System.out.println(codigo);
             System.out.println(cxN.getText());
             cur.alteraNome(codigo, cxN.getText());
         }
-        if(csCodigo.isSelected())
-        {
+        if (csCodigo.isSelected()) {
             //
-            
+
         }
     }//GEN-LAST:event_btnAltActionPerformed
 
     private void csNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csNomeActionPerformed
-        i=1;
-       if(csNome.isSelected())
-       {
-        lblNome.setVisible(true);
-        cxN.setVisible(true);
-        btnAlt.setVisible(true);
-       }else
-       {
-         lblNome.setVisible(false);
-         cxN.setVisible(false);
-         btnAlt.setVisible(false);
-       }
+        i = 1;
+        if (csNome.isSelected()) {
+            lblNome.setVisible(true);
+            cxN.setVisible(true);
+            btnAlt.setVisible(true);
+        } else {
+            lblNome.setVisible(false);
+            cxN.setVisible(false);
+            btnAlt.setVisible(false);
+        }
     }//GEN-LAST:event_csNomeActionPerformed
 
     private void csCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csCodigoActionPerformed
-        i=2;
-        if(csCodigo.isSelected())
-       {
-          lblCodigo.setVisible(true);
-          cxCodigo.setVisible(true);
-          btnAlt.setVisible(true);
-       }else
-       {
-          lblCodigo.setVisible(false);
-          cxCodigo.setVisible(false);
-          btnAlt.setVisible(false);
-       }
-        
+        i = 2;
+        if (csCodigo.isSelected()) {
+            lblCodigo.setVisible(true);
+            cxCodigo.setVisible(true);
+            btnAlt.setVisible(true);
+        } else {
+            lblCodigo.setVisible(false);
+            cxCodigo.setVisible(false);
+            btnAlt.setVisible(false);
+        }
+
     }//GEN-LAST:event_csCodigoActionPerformed
 
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AltrCurso().setVisible(true);
