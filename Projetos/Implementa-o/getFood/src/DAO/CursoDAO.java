@@ -113,5 +113,19 @@ public class CursoDAO {
             e.printStackTrace();
         }
     }
+    
+    public void alteraCodigo(String codigoAntigo, String codigoNovo){
+        sql = "UPDATE curso SET codigo = ? WHERE codigo = ?";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, codigoNovo);
+            pstm.setString(2, codigoAntigo);
+            pstm.execute();
+            pstm.close();
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
 
 }
