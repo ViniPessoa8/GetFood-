@@ -257,11 +257,11 @@ public class CDFun extends javax.swing.JFrame {
         } else {
             f.addFuncionario(fun);
             int k = JOptionPane.showConfirmDialog(null, "Deseja executar o  cadastro do login deste funcionário?");
-            if (k == JOptionPane.YES_NO_OPTION) {
-
+            if (k == JOptionPane.YES_OPTION) {
+                
             } else {
                 int r = JOptionPane.showConfirmDialog(null, "Deseja cadastrar outro funcionário?");
-                if (r == JOptionPane.YES_OPTION) {
+                if (r == JOptionPane.YES_OPTION || r == JOptionPane.OK_OPTION) {
                     nome.setText("");
                     mat.setText("");
                     cargo.setText("");
