@@ -48,17 +48,8 @@ create table venda(
 	matrFun varchar(12) not null,
 	foreign key(matrFun) references funcionario(matricula),
 	valor float not null,
+    tipo int not null,
 	dt date not null
-);
-
-create table relatorio(
-	dt date not null,
-	codigo int not null,
-	primary key(codigo),
-	totalSaldo float not null,
-	totalAlunos int not null,
-	codVenda int not null,
-	foreign key(codVenda) references venda(codigo)
 );
 
 CREATE TABLE login(
@@ -67,7 +58,7 @@ CREATE TABLE login(
     matrFun varchar(12) not null,
     primary key(login),
     foreign key (matrFun) references funcionario(matricula)
-)
+);
 
 
 select * from funcionario;
