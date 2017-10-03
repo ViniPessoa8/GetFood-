@@ -47,7 +47,7 @@ create table venda(
 	foreign key(matrAl) references aluno(matricula),
 	matrFun varchar(12) not null,
 	foreign key(matrFun) references funcionario(matricula),
-	valor float not null,
+	valor double not null,
     tipo int not null,
 	dt date not null
 );
