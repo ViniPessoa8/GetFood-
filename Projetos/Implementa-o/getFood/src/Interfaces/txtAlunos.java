@@ -6,13 +6,21 @@
 package Interfaces;
 
 import Classes.Aluno;
+import DAO.AlunoDAO;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+
 
 /**
  *
@@ -22,14 +30,18 @@ public class txtAlunos extends javax.swing.JFrame {
 
     BufferedReader txt;
     Aluno aluno;
+    AlunoDAO alunoDAO;
     String[] dadosAluno;
-    FileReader arqReader;
-
+    Reader arqReader;
+    ArrayList<Aluno> alunos;
+    
     /**
      * Creates new form txtAlunos
      */
     public txtAlunos() {
         initComponents();
+        alunoDAO = new AlunoDAO();
+        alunos = new ArrayList();
     }
 
     /**
@@ -129,9 +141,9 @@ public class txtAlunos extends javax.swing.JFrame {
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
             try {
-                arqReader = new FileReader(arq);
+                arqReader = new InputStreamReader(new FileInputStream(arq), "UTF-8");
                 txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
 
@@ -150,7 +162,9 @@ public class txtAlunos extends javax.swing.JFrame {
                     aluno.setTurma(dadosAluno[3]);
                     aluno.setSaldo(0);
                     System.out.println(aluno.toString());
-
+                    
+                    alunos.add(aluno);
+                    
                     linha = txt.readLine();
                 }
             } catch (IOException e) {
@@ -160,7 +174,9 @@ public class txtAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEscolherArquivoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+        for(Aluno al : alunos){
+            alunoDAO.addAluno(al);
+        }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

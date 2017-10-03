@@ -35,6 +35,28 @@ public class AlunoDAO {
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
     * matricula informada
      */
+    public boolean addAluno(Aluno al){
+        
+        retorno = false;
+        sql = "INSERT INTO aluno(matricula, saldo, nome, beneficiario, curso, turma) VALUES (?,?,?,?,?,?)";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, al.getMatricula());
+            pstm.setDouble(2, al.getSaldo());
+            pstm.setString(3, al.getNome());
+            pstm.setInt(4, al.getBeneficiario());
+            pstm.setString(5, al.getCurso());
+            pstm.setString(6, al.getTurma());
+            retorno =  pstm.execute();
+            
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
+    
     
     public Aluno getAlunoMatricula(String matricula) {
 
