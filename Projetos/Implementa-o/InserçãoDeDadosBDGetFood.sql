@@ -9,7 +9,8 @@ INSERT INTO aluno(matricula,nome,saldo,turma,curso,foto,beneficiario) VALUES ('2
 INSERT INTO funcionario(matricula,cargo,nome) VALUES ('123456789','Coordenador','Jucibs');
 INSERT INTO login(login,senha,matrFun) VALUES ('admin',MD5('admin'),'123456789');
 
-INSERT INTO venda(matrAl, matrFun, valor, tipo, dt) VALUES ('201511440260', '123456789', 20.0, 0, '2017-10-02');
+INSERT INTO venda(matrAl, matrFun, valor, tipo, dt) VALUES ('201511440260', '123456789', 20.0, 0, '2017-10-03');
+
 SELECT * FROM aluno WHERE nome LIKE '%a%';
 SELECT * FROM funcionario;
 
