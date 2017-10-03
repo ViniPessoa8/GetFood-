@@ -41,7 +41,7 @@ create table ficha(
 );
 
 create table venda(
-	codigo int not null,
+	codigo int not null auto_increment,
 	primary key(codigo),
 	matrAl varchar(12) not null,
 	foreign key(matrAl) references aluno(matricula),
