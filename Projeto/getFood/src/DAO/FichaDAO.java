@@ -31,15 +31,17 @@ public class FichaDAO {
     }
 
     public float getVal() {
-        sql = "SELECT * FROM ficha";
+        sql = "SELECT valor FROM ficha";
         float valor = 0;
         try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
+            rs.first();
             valor = rs.getFloat("valor");
+            
             System.out.println(valor);
         } catch (SQLException e) {
-
+            
             e.printStackTrace();
         }
         return valor;

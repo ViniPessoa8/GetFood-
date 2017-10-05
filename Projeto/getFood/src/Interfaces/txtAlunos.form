@@ -122,11 +122,6 @@
     <Component class="javax.swing.JTextField" name="txtNomeArquivo">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="/home/vinicius/&#xc1;rea de Trabalho/LOGO_150px.png"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

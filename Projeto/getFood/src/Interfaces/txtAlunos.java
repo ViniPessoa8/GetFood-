@@ -6,12 +6,16 @@
 package Interfaces;
 
 import Classes.Aluno;
+import DAO.AlunoDAO;
+import DAO.CursoDAO;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -22,14 +26,20 @@ public class txtAlunos extends javax.swing.JFrame {
 
     BufferedReader txt;
     Aluno aluno;
+    AlunoDAO alunoDao;
+    CursoDAO cursoDao;
     String[] dadosAluno;
     FileReader arqReader;
+    ArrayList<Aluno> listaAluno;
 
     /**
      * Creates new form txtAlunos
      */
     public txtAlunos() {
         initComponents();
+        listaAluno = new ArrayList();
+        alunoDao = new AlunoDAO();
+        cursoDao = new CursoDAO();
     }
 
     /**
@@ -159,11 +169,15 @@ public class txtAlunos extends javax.swing.JFrame {
                     aluno = new Aluno();
                     aluno.setMatricula(dadosAluno[0]);
                     aluno.setNome(dadosAluno[1]);
-                    aluno.setCurso(dadosAluno[2]);
+                    aluno.setCurso(cursoDao.getCodigoByNome(dadosAluno[2]));
                     aluno.setTurma(dadosAluno[3]);
                     aluno.setSaldo(0);
+                    aluno.setBeneficiario(0);
                     System.out.println(aluno.toString());
-
+                    
+                    listaAluno.add(aluno);
+                    
+                    
                     linha = txt.readLine();
                 }
             } catch (IOException e) {
@@ -173,7 +187,10 @@ public class txtAlunos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEscolherArquivoActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-
+        for(Aluno al : listaAluno){
+            alunoDao.addAluno(al);
+        }
+        JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

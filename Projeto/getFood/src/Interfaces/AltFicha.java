@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
 
 public class AltFicha extends javax.swing.JFrame {
 
-    FichaDAO ficha;
+    FichaDAO fichaDao;
     public AltFicha() {
         initComponents();
-        ficha= new FichaDAO();
-        txtAtual.setText(""+ficha.getVal());
+        fichaDao = new FichaDAO();
+        txtAtual.setText(""+fichaDao.getVal());
     }
 
     
@@ -231,7 +231,7 @@ public class AltFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAtualActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ficha.updatePreco(Float.parseFloat(cxPreco.getText()));
+        fichaDao.updatePreco(Float.parseFloat(cxPreco.getText()));
         JOptionPane.showMessageDialog(null,cxPreco.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 

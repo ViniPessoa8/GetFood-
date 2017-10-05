@@ -12,6 +12,10 @@ public class LoginDAO {
     private Connection con;
     private ResultSet rs;
     private boolean retorno;
+    
+    public LoginDAO(){
+        this.con = new ConnectionFactory().getConnection();
+    }
 
     public boolean validaLogin(String login) {
         retorno = false;
@@ -40,7 +44,6 @@ public class LoginDAO {
             pstm = con.prepareStatement(sql);
             System.out.println("eae men");
             pstm.setString(1, login);
-            pstm.setString(2, senha);
             rs = pstm.executeQuery();
             if (rs.first()) {
                 System.out.println("ACHOU");

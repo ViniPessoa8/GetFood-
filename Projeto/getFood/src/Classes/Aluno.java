@@ -3,10 +3,10 @@ package Classes;
 public class Aluno {
 
     private float saldo = 0;
-    private String nome = "", turma = "", curso = "", matricula = "";
-    private int beneficiario = 0;
+    private String nome = "", turma = "", matricula = "";
+    private int beneficiario = 0, curso = 0;
     //fota ?
-    public void Aluno(String matricula, float saldo, String nome, String turma, String curso, int beneficiario) {
+    public void Aluno(String matricula, float saldo, String nome, String turma, int curso, int beneficiario) {
         this.matricula = matricula;
         this.saldo = saldo;
         this.nome = nome;
@@ -47,11 +47,11 @@ public class Aluno {
         this.turma = turma;
     }
 
-    public String getCurso() {
+    public int getCurso() {
         return curso;
     }
 
-    public void setCurso(String curso) {
+    public void setCurso(int curso) {
         this.curso = curso;
     }
 

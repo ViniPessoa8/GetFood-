@@ -36,6 +36,28 @@ public class AlunoDAO {
     * matricula informada
      */
     
+    public Boolean addAluno(Aluno aluno){
+        retorno = false;
+        sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario) VALUES (?,?,?,?,?,?)";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, aluno.getMatricula());
+            pstm.setString(2, aluno.getNome());
+            pstm.setDouble(3, aluno.getSaldo());
+            pstm.setString(4, aluno.getTurma());
+            pstm.setInt(5, aluno.getCurso());
+            pstm.setInt(6, aluno.getBeneficiario());
+            pstm.execute();
+            
+            retorno = true;
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
+    
     public Aluno getAlunoMatricula(String matricula) {
 
         //Instancia um aluno
@@ -51,7 +73,7 @@ public class AlunoDAO {
             //Se houver resultado
             if (rs.next()) {
                 //Atribuição de valores ao objeto 'aluno'
-                aluno.setCurso(rs.getString("curso"));
+                aluno.setCurso(rs.getInt("curso"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setTurma(rs.getString("turma"));
@@ -83,7 +105,7 @@ public class AlunoDAO {
             while (rs.next()) {
                 aluno = new Aluno();
 
-                aluno.setCurso(rs.getString("curso"));
+                aluno.setCurso(rs.getInt("curso"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setSaldo(rs.getFloat("saldo"));
@@ -118,7 +140,7 @@ public class AlunoDAO {
                 aluno = new Aluno();
 
                 //Atribuição de valores recuperados do BD
-                aluno.setCurso(rs.getString("curso"));
+                aluno.setCurso(rs.getInt("curso"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setSaldo(rs.getFloat("saldo"));
@@ -154,7 +176,7 @@ public class AlunoDAO {
                 aluno = new Aluno();
 
                 //Atribuição de valores recuperados do BD
-                aluno.setCurso(rs.getString("curso"));
+                aluno.setCurso(rs.getInt("curso"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setSaldo(rs.getFloat("saldo"));
@@ -193,7 +215,7 @@ public class AlunoDAO {
                 aluno = new Aluno();
 
                 //Atribuição de valores recuperados do BD
-                aluno.setCurso(rs.getString("curso"));
+                aluno.setCurso(rs.getInt("curso"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setSaldo(rs.getFloat("saldo"));

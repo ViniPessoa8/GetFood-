@@ -127,5 +127,21 @@ public class CursoDAO {
             e.printStackTrace();
         }
     }
+    
+    public int getCodigoByNome(String nome){
+        sql = "SELECT * FROM curso WHERE nome = ?";
+        int codigo = 0;
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, nome);
+            System.out.println(pstm.toString());
+            rs = pstm.executeQuery();
+            rs.first();
+            codigo = rs.getInt("codigo");
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
+        return codigo;
+    }
 
 }
