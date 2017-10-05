@@ -1,11 +1,8 @@
 package Interfaces;
 
-import DAO.LoginDAO;
-import javax.swing.JOptionPane;
+public class VendaCreditus extends javax.swing.JFrame {
 
-public class CDLogin extends javax.swing.JFrame {
-
-    public CDLogin() {
+    public VendaCreditus() {
         initComponents();
     }
 
@@ -18,16 +15,17 @@ public class CDLogin extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        login = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        in = new javax.swing.JButton();
-        confirma = new javax.swing.JPasswordField();
-        senha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        txtMatr = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        matr = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        txtQuantia = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        PainelDadosAl = new javax.swing.JTextPane();
+        PainelImagem = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -63,96 +61,110 @@ public class CDLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel1.setText("Login:");
+        jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setText("Matrícula:");
 
-        login.addActionListener(new java.awt.event.ActionListener() {
+        txtMatr.setPreferredSize(new java.awt.Dimension(6, 34));
+        txtMatr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                txtMatrActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel4.setText("Senha:");
+        jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setText("Quantia (R$):");
 
-        jLabel5.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel5.setText("Confirme:");
-
-        in.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        in.setText("Cadastrar");
-        in.addActionListener(new java.awt.event.ActionListener() {
+        txtQuantia.setPreferredSize(new java.awt.Dimension(6, 34));
+        txtQuantia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inActionPerformed(evt);
+                txtQuantiaActionPerformed(evt);
             }
         });
 
-        confirma.setPreferredSize(new java.awt.Dimension(6, 20));
+        jButton1.setText("Verificar");
 
-        senha.setPreferredSize(new java.awt.Dimension(6, 20));
+        jScrollPane1.setViewportView(PainelDadosAl);
 
-        jLabel2.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
-        jLabel2.setText("Matrícula:");
+        PainelImagem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        matr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matrActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout PainelImagemLayout = new javax.swing.GroupLayout(PainelImagem);
+        PainelImagem.setLayout(PainelImagemLayout);
+        PainelImagemLayout.setHorizontalGroup(
+            PainelImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 207, Short.MAX_VALUE)
+        );
+        PainelImagemLayout.setVerticalGroup(
+            PainelImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 189, Short.MAX_VALUE)
+        );
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/vinicius/Área de Trabalho/LOGO_150px.png")); // NOI18N
+        jButton2.setText("Vender");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(349, 349, 349))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(242, 242, 242)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(in, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(460, 460, 460)
+                        .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(417, 417, 417)
+                        .addComponent(jLabel5)))
+                .addContainerGap(420, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(matr, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(278, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(59, 59, 59)
+                        .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(204, 204, 204)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(44, 44, 44))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel3)
-                .addGap(48, 48, 48)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(matr, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(in, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(204, 255, 255));
@@ -296,7 +308,7 @@ public class CDLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,30 +323,30 @@ public class CDLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-        dispose();
-        CDCurso c = new CDCurso();
-        c.setVisible(true);
+      dispose();
+      CDCurso c=new CDCurso();
+      c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
-
+       
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-        dispose();
-        CDTurma c = new CDTurma();
+         dispose();
+        CDTurma c=new CDTurma();
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun f = new CDFun();
+        CDFun f=new CDFun();
         f.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
-        AltrCurso a = new AltrCurso();
+        AltrCurso a=new AltrCurso();
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
@@ -344,68 +356,30 @@ public class CDLogin extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+    private void txtMatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatrActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginActionPerformed
+    }//GEN-LAST:event_txtMatrActionPerformed
 
-    private void inActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inActionPerformed
-        String s = new String(senha.getPassword());
-        String c = new String(confirma.getPassword());
-        if (login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("")) 
-        {
-            JOptionPane.showMessageDialog(null, "Um campo importante está vazio!");
-        } else 
-        {
-            if (s.equals(c)) 
-            {
-                System.out.println("Senhas iguais");
-                LoginDAO log = new LoginDAO();
-                if (log.validaLogin(login.getText())) 
-                {
-                    System.out.println("vrau");
-                    JOptionPane.showMessageDialog(null, "Esse login já existe.");
-                } else 
-                {
-                    log.add(login.getText(), s, matr.getText());
-                    int r = JOptionPane.showConfirmDialog(null,"Login cadastrado com sucesso. Deseja cadastrar outro login ?");
-                    if(r == JOptionPane.YES_OPTION)
-                    {
-                        dispose();
-                        CDLogin cadastro = new CDLogin();
-                        cadastro.setVisible(true);
-                    }else
-                    {
-                        dispose();
-                        Inicio inicio = new Inicio();
-                        inicio.setVisible(true);
-                    }
-                
-                }
-            }
-        }
-
-
-    }//GEN-LAST:event_inActionPerformed
-
-    private void matrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matrActionPerformed
+    private void txtQuantiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matrActionPerformed
+    }//GEN-LAST:event_txtQuantiaActionPerformed
 
     public static void main(String args[]) {
-
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CDLogin().setVisible(true);
+                new VendaCreditus().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField confirma;
-    private javax.swing.JButton in;
+    private javax.swing.JTextPane PainelDadosAl;
+    private javax.swing.JPanel PainelImagem;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu1;
@@ -439,8 +413,8 @@ public class CDLogin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JTextField login;
-    private javax.swing.JTextField matr;
-    private javax.swing.JPasswordField senha;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtMatr;
+    private javax.swing.JTextField txtQuantia;
     // End of variables declaration//GEN-END:variables
 }
