@@ -298,4 +298,19 @@ public class AlunoDAO {
 
         return retorno;
     }
+    
+    public boolean setBeneficiario(Aluno al){
+        sql = "UPDATE aluno SET beneficiario = 1 WHERE matricula = ?";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, al.getMatricula());
+            pstm.execute();
+            retorno = true;
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        return retorno;
+    }
 }

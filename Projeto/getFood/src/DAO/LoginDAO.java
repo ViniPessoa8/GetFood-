@@ -19,10 +19,11 @@ public class LoginDAO {
 
     public boolean validaLogin(String login) {
         retorno = false;
-        sql = "SELECT * FROM login WHERE login = ?";
+        sql = "SELECT * FROM login WHERE login = '"+login+"';";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, login);
+            System.out.println("passou");
+            //pstm.setString(1, login);
             rs = pstm.executeQuery();
             if (rs.first()) {
                 retorno = true;
@@ -44,6 +45,7 @@ public class LoginDAO {
             pstm = con.prepareStatement(sql);
             System.out.println("eae men");
             pstm.setString(1, login);
+           // pstm.setString(2, senha);
             rs = pstm.executeQuery();
             if (rs.first()) {
                 System.out.println("ACHOU");

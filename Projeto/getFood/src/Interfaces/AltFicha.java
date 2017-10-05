@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
 
 public class AltFicha extends javax.swing.JFrame {
 
-    FichaDAO ficha;
+    FichaDAO fichaDao;
     public AltFicha() {
         initComponents();
-        ficha= new FichaDAO();
-        txtAtual.setText(""+ficha.getVal());
+        fichaDao = new FichaDAO();
+        txtAtual.setText(""+fichaDao.getVal());
     }
 
     
@@ -82,8 +82,6 @@ public class AltFicha extends javax.swing.JFrame {
                 cxPrecoActionPerformed(evt);
             }
         });
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("/home/vinicius/Área de Trabalho/LOGO_150px.png")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -231,7 +229,7 @@ public class AltFicha extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAtualActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ficha.updatePreco(Float.parseFloat(cxPreco.getText()));
+        fichaDao.updatePreco(Float.parseFloat(cxPreco.getText()));
         JOptionPane.showMessageDialog(null,cxPreco.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
