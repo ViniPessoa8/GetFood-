@@ -15,11 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class CDFun extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CdAluno
-     */
-    public CDFun() {
+    Funcionario funLog;
+    
+    private CDFun() {
         initComponents();
+    }
+    
+    public CDFun(Funcionario fun){
+        initComponents();
+        this.funLog = fun;
     }
 
     /**
@@ -160,7 +164,7 @@ public class CDFun extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnVoltar2)))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,13 +194,12 @@ public class CDFun extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnVoltar2)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 204));
 
         jMenu2.setBorder(null);
-        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\cash.png")); // NOI18N
         jMenu2.setText("Venda");
         jMenu2.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu2.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -230,7 +233,6 @@ public class CDFun extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBorder(null);
-        jMenu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\ticket.png")); // NOI18N
         jMenu3.setText("Ficha");
         jMenu3.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -245,7 +247,6 @@ public class CDFun extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\icon.png")); // NOI18N
         jMenu4.setText("Aluno");
         jMenu4.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu4.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -281,7 +282,6 @@ public class CDFun extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\users.png")); // NOI18N
         jMenu5.setText("Funcionário");
         jMenu5.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu5.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -311,7 +311,6 @@ public class CDFun extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\padnote.png")); // NOI18N
         jMenu6.setText("Relatório");
         jMenu6.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -438,7 +437,7 @@ public class CDFun extends javax.swing.JFrame {
                     cargo.setText("");
                 } else {
                     dispose();
-                    Inicio i = new Inicio();
+                    Inicio i = new Inicio(funLog);
                     i.setVisible(true);
                 }
             }
@@ -448,105 +447,103 @@ public class CDFun extends javax.swing.JFrame {
 
     private void btnVoltar2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltar2MouseClicked
         dispose();
-        Inicio newInicio = new Inicio();
+        Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltar2MouseClicked
 
-    private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jMenuItem11MouseEntered
-
-    private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
-
-    }//GEN-LAST:event_jMenuItem11MouseExited
-
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
         dispose();
-        Venda newVenda = new Venda();
-        newVenda.setVisible(true);
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+        CDTurma newCD = new CDTurma(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         dispose();
-        VendaCreditus newVenda = new VendaCreditus();
-        newVenda.setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
-
-    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
-        dispose();
-        AltFicha alt = new AltFicha();
+        AltrTurma alt = new AltrTurma(funLog);
         alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem20ActionPerformed
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
+        CDTurma c=new CDTurma(funLog);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         dispose();
-        CDBeneficio newCD = new CDBeneficio();
+        CDCurso newCD = new CDCurso(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenu7ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
-        ResetAlunos newReset = new ResetAlunos();
-        newReset.setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+        AltrCurso alt = new AltrCurso(funLog);
+        alt.setVisible(true);
+    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDFun newCD = new CDFun();
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-        dispose();
-        CDLogin newCD = new CDLogin();
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenu5ActionPerformed
+        CDCurso c=new CDCurso(funLog);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         dispose();
-        CDCurso c=new CDCurso();
-        c.setVisible(true);
-    }//GEN-LAST:event_jMenuItem14ActionPerformed
-
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        dispose();
-        AltrCurso alt = new AltrCurso();
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
-
-    private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
-        dispose();
-        CDCurso newCD = new CDCurso();
+        CDLogin newCD = new CDLogin(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jMenu7ActionPerformed
+    }//GEN-LAST:event_jMenu5ActionPerformed
 
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDTurma c=new CDTurma();
-        c.setVisible(true);
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
-
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        AltrTurma alt = new AltrTurma();
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
-
-    private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
-        dispose();
-        CDTurma newCD = new CDTurma();
+        CDFun newCD = new CDFun(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jMenu8ActionPerformed
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        dispose();
+        ResetAlunos newReset = new ResetAlunos(funLog);
+        newReset.setVisible(true);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+        dispose();
+        CDBeneficio newCD = new CDBeneficio(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        dispose();
+        AltFicha alt = new AltFicha(funLog);
+        alt.setVisible(true);
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
+
+    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+        dispose();
+        VendaCreditus newVenda = new VendaCreditus(funLog);
+        newVenda.setVisible(true);
+    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        dispose();
+        Venda newVenda = new Venda(funLog);
+        newVenda.setVisible(true);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
+
+    }//GEN-LAST:event_jMenuItem11MouseExited
+
+    private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem11MouseEntered
 
     /**
      * @param args the command line arguments

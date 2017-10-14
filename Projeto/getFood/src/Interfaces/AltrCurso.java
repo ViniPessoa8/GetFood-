@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Classes.Funcionario;
 import DAO.CursoDAO;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -11,8 +12,9 @@ public class AltrCurso extends javax.swing.JFrame {
     CursoDAO cursoDAO;
     String codigo;
     int i = 0;
+    Funcionario funLog;
 
-    public AltrCurso() {
+    public AltrCurso(Funcionario fun) {
         initComponents();
         cursoDAO = new CursoDAO();
         Vector vetorCursos = null;
@@ -30,6 +32,11 @@ public class AltrCurso extends javax.swing.JFrame {
         lblCodigo.setVisible(false);
         cxCodigo.setVisible(false);
         codigo = "";
+        this.funLog = fun;
+    }
+    
+    private AltrCurso(){
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -369,7 +376,7 @@ public class AltrCurso extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDCurso c = new CDCurso();
+        CDCurso c = new CDCurso(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -379,13 +386,13 @@ public class AltrCurso extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma cadastroTurma = new CDTurma();
+        CDTurma cadastroTurma = new CDTurma(funLog);
         cadastroTurma.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun CadastroFuncionario = new CDFun();
+        CDFun CadastroFuncionario = new CDFun(funLog);
         CadastroFuncionario.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 

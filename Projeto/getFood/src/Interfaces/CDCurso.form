@@ -29,9 +29,6 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\user\Desktop\cash.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Venda"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Simplified Arabic" size="18" style="0"/>
@@ -70,9 +67,6 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\user\Desktop\ticket.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Ficha"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Simplified Arabic" size="18" style="0"/>
@@ -94,9 +88,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\user\Desktop\icon.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Aluno"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Simplified Arabic" size="18" style="0"/>
@@ -143,9 +134,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu5">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\user\Desktop\users.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Simplified Arabic" size="18" style="0"/>
@@ -186,9 +174,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu6">
           <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\user\Desktop\padnote.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="Relat&#xf3;rio"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Simplified Arabic" size="18" style="0"/>

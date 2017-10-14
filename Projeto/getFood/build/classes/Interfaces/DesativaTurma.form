@@ -295,7 +295,6 @@
                                       <Component id="cxTurma" min="-2" pref="220" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="cxCurso" min="-2" pref="220" max="-2" attributes="0"/>
@@ -393,11 +392,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="/home/vinicius/&#xc1;rea de Trabalho/LOGO_150px.png"/>
-            </Property>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -1,5 +1,6 @@
 package Interfaces;
 
+import Classes.Funcionario;
 import DAO.CursoDAO;
 import DAO.TurmaDAO;
 import java.util.ArrayList;
@@ -15,7 +16,13 @@ public class DesativaTurma extends javax.swing.JFrame {
     CursoDAO cur;
     int curso;
     TurmaDAO t;
-    public DesativaTurma() 
+    Funcionario funLog;
+    
+    private DesativaTurma(){
+        initComponents();
+    }
+    
+    public DesativaTurma(Funcionario fun) 
     {
         initComponents();
         curso = 0;
@@ -32,6 +39,7 @@ public class DesativaTurma extends javax.swing.JFrame {
         ComboBoxModel cbm = new DefaultComboBoxModel(v);
         cxCurso.setModel(cbm);
         btnDesativar.setEnabled(false);
+        this.funLog = fun;
     }
 
     @SuppressWarnings("unchecked")
@@ -310,7 +318,7 @@ public class DesativaTurma extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
       dispose();
-      CDCurso c=new CDCurso();
+      CDCurso c=new CDCurso(funLog);
       c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -320,25 +328,25 @@ public class DesativaTurma extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
          dispose();
-        CDTurma c=new CDTurma();
+        CDTurma c=new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun f=new CDFun();
+        CDFun f=new CDFun(funLog);
         f.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
-        AltrCurso a=new AltrCurso();
+        AltrCurso a=new AltrCurso(funLog);
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         dispose();
-        AltFicha a = new AltFicha();
+        AltFicha a = new AltFicha(funLog);
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 

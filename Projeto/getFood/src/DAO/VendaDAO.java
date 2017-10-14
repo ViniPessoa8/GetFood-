@@ -51,6 +51,7 @@ public class VendaDAO {
                 pstm.setDate(4, (java.sql.Date) data);
                 pstm.setInt(5, tipo);
                 pstm.execute();
+                retorno = true;
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -68,42 +69,46 @@ public class VendaDAO {
                     pstm.setDate(4, new java.sql.Date(data.getTime()));
                     pstm.setInt(5, tipo);
                     pstm.execute();
+                    retorno = true;
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 1) {
-                    atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) - valor);
+            } else if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 1) {
+                atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) - valor);
 
-                    sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
+                sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
 
-                    try {
-                        pstm = con.prepareStatement(sql);
-                        pstm.setString(1, matAluno);
-                        pstm.setString(2, matFun);
-                        pstm.setDouble(3, valor);
-                        pstm.setDate(4, new java.sql.Date(data.getTime()));
-                        pstm.setInt(5, tipo);
-                        pstm.execute();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
-                } else if (tipo == 3) {
-                    atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) + valor);
-                    sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
+                try {
+                    pstm = con.prepareStatement(sql);
+                    pstm.setString(1, matAluno);
+                    pstm.setString(2, matFun);
+                    pstm.setDouble(3, valor);
+                    pstm.setDate(4, new java.sql.Date(data.getTime()));
+                    pstm.setInt(5, tipo);
+                    pstm.execute();
+                    retorno = true;
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else if (tipo == 3) {
+                System.out.println("Chegou aqui uhul");
+                atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) + valor);
+                sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
 
-                    try {
-                        pstm = con.prepareStatement(sql);
-                        pstm.setString(1, matAluno);
-                        pstm.setString(2, matFun);
-                        pstm.setDouble(3, valor);
-                        pstm.setDate(4, new java.sql.Date(data.getTime()));
-                        pstm.setInt(5, tipo);
-                        pstm.execute();
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+                try {
+                    pstm = con.prepareStatement(sql);
+                    pstm.setString(1, matAluno);
+                    pstm.setString(2, matFun);
+                    pstm.setDouble(3, valor);
+                    pstm.setDate(4, new java.sql.Date(data.getTime()));
+                    pstm.setInt(5, tipo);
+                    pstm.execute();
+                    retorno = true;
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
             }
+
         }
         return retorno;
     }

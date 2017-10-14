@@ -1,16 +1,22 @@
 package Interfaces;
 
+import Classes.Funcionario;
+import DAO.FunDAO;
 import DAO.LoginDAO;
+import javax.swing.Icon;
 import javax.swing.JOptionPane;
 
 
 public class Login extends javax.swing.JFrame {
 
     
+    Funcionario funLog;
+    
     public Login() 
     {
         initComponents();
         this.setTitle("GetFood - Login");
+        funLog = new Funcionario();
     }
 
     
@@ -28,6 +34,7 @@ public class Login extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnLogar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +62,6 @@ public class Login extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/LOGO_150px.png"))); // NOI18N
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\Botao_Entrar (1).png")); // NOI18N
         jLabel7.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -68,6 +74,16 @@ public class Login extends javax.swing.JFrame {
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
+            }
+        });
+
+        btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Logar.png"))); // NOI18N
+        btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnLogarMouseEntered(evt);
             }
         });
 
@@ -98,6 +114,8 @@ public class Login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLogar)
                 .addGap(352, 352, 352))
         );
         jPanel1Layout.setVerticalGroup(
@@ -125,7 +143,9 @@ public class Login extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(jLabel2)))
                 .addGap(36, 36, 36)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogar))
                 .addContainerGap(102, Short.MAX_VALUE))
         );
 
@@ -166,16 +186,44 @@ public class Login extends javax.swing.JFrame {
         }else
         {
             result = loginDAO.logar(txtLogin.getText(),senha);
-            
+            funLog = loginDAO.getFuncionarioLogin(txtLogin.getText());
             if(result){
                 dispose();
-                Inicio i = new Inicio();
+                Inicio i = new Inicio(funLog);
                 i.setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(null,"Senha/login inválidos.");
             }
         }
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
+        
+        
+        LoginDAO loginDAO = new LoginDAO();
+        String senha = new String(txtSenha.getPassword());
+        String login = txtLogin.getText();
+        boolean result;
+        if(login.isEmpty() || senha.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Um campo importante está vazio!");
+        }else
+        {
+            result = loginDAO.logar(txtLogin.getText(),senha);
+            funLog = loginDAO.getFuncionarioLogin(txtLogin.getText());
+            if(result){
+                dispose();
+                Inicio i = new Inicio(funLog);
+                i.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null,"Senha/login inválidos.");
+            }
+        }
+    }//GEN-LAST:event_btnLogarMouseClicked
+
+    private void btnLogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseEntered
+        
+    }//GEN-LAST:event_btnLogarMouseEntered
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -210,6 +258,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -1,7 +1,7 @@
-
 package Interfaces;
 
 import Classes.Aluno;
+import Classes.Funcionario;
 import DAO.AlunoDAO;
 import DAO.FichaDAO;
 import DAO.VendaDAO;
@@ -17,10 +17,15 @@ public class Venda extends javax.swing.JFrame {
     FichaDAO ficha;
     VendaDAO venda;
     Aluno al;
+    Funcionario funLog;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Calendar data = Calendar.getInstance();
-    public Venda() 
-    {
+
+    private Venda() {
+        initComponents();
+    }
+
+    public Venda(Funcionario fun) {
         initComponents();
         btnExe.setVisible(false);
         aluno = new AlunoDAO();
@@ -30,9 +35,9 @@ public class Venda extends javax.swing.JFrame {
         cxBeneficio.setVisible(false);
         cxCredito.setVisible(false);
         cxDinheiro.setVisible(false);
+        this.funLog = fun;
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -54,8 +59,6 @@ public class Venda extends javax.swing.JFrame {
         lblVenda = new javax.swing.JLabel();
         cxCredito = new javax.swing.JCheckBox();
         cxBeneficio = new javax.swing.JCheckBox();
-        jLabel3 = new javax.swing.JLabel();
-        txtMatrFun = new javax.swing.JTextField();
         cxDinheiro = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
@@ -134,16 +137,6 @@ public class Venda extends javax.swing.JFrame {
         cxBeneficio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         cxBeneficio.setText("Benefício");
 
-        jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        jLabel3.setText("MatrFun:");
-
-        txtMatrFun.setPreferredSize(new java.awt.Dimension(6, 34));
-        txtMatrFun.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMatrFunActionPerformed(evt);
-            }
-        });
-
         cxDinheiro.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         cxDinheiro.setText("Dinheiro");
 
@@ -168,15 +161,10 @@ public class Venda extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(82, 82, 82)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtMatrFun, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(8, 8, 8)
                                         .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,11 +215,7 @@ public class Venda extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtMatrFun, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(41, 41, 41)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnExe, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -247,7 +231,7 @@ public class Venda extends javax.swing.JFrame {
                         .addComponent(cxDinheiro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cxCredito)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
@@ -257,7 +241,6 @@ public class Venda extends javax.swing.JFrame {
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 204));
 
         jMenu2.setBorder(null);
-        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\cash.png")); // NOI18N
         jMenu2.setText("Venda");
         jMenu2.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu2.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -291,7 +274,6 @@ public class Venda extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBorder(null);
-        jMenu3.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\ticket.png")); // NOI18N
         jMenu3.setText("Ficha");
         jMenu3.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -306,7 +288,6 @@ public class Venda extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\icon.png")); // NOI18N
         jMenu4.setText("Aluno");
         jMenu4.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu4.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -342,7 +323,6 @@ public class Venda extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\users.png")); // NOI18N
         jMenu5.setText("Funcionário");
         jMenu5.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu5.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -372,7 +352,6 @@ public class Venda extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Desktop\\padnote.png")); // NOI18N
         jMenu6.setText("Relatório");
         jMenu6.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -473,46 +452,34 @@ public class Venda extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMatrActionPerformed
 
     private void btnExeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExeActionPerformed
-        //System.out.println("voce clicou nesta merda filha da puta");
-        if(!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()  )
-        {
-            JOptionPane.showMessageDialog(null,"Selecione a forma de pagamento.");
-        }else
-        {
-            if(cxDinheiro.isSelected())
-            {
-               // System.out.println("vc vai comprar no money");
-                venda.efetuarVenda(txtMatr.getText(),txtMatrFun.getText(),0,new Date(data.getTimeInMillis()),4);
-            }else if (cxCredito.isSelected())
-            {
-                venda.efetuarVenda(txtMatr.getText(),txtMatrFun.getText(),5,new Date(data.getTimeInMillis()),1);
-            }else
-            {
-                if(cxBeneficio.isSelected())
-                {
+        
+        if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.");
+        } else {
+            if (cxDinheiro.isSelected()) {
+                venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), 4);
+            } else if (cxCredito.isSelected()) {
+                venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), 1);
+            } else {
+                if (cxBeneficio.isSelected()) {
                     ArrayList<Aluno> lista = aluno.getListaAlunosBeneficio(1);
-                    for(Aluno al : lista)
-                    {
-                      if(txtMatr.getText().equals(al.getMatricula()))
-                      {
-                           venda.efetuarVenda(txtMatr.getText(),txtMatrFun.getText(),0,new Date(data.getTimeInMillis()),4);
-                      }else
-                      {
-                        JOptionPane.showMessageDialog(null,"Esse aluno não é beneficiário.");
-                      }
+                    for (Aluno al : lista) {
+                        if (txtMatr.getText().equals(al.getMatricula())) {
+                            venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), 4);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Esse aluno não é beneficiário.");
+                        }
                     }
                 }
             }
-            int resp = JOptionPane.showConfirmDialog(null,"Deseja executar outra venda ?");
-            if(resp == JOptionPane.YES_OPTION)
-            {
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda ?");
+            if (resp == JOptionPane.YES_OPTION) {
                 dispose();
-                Venda newVenda = new Venda();
+                Venda newVenda = new Venda(funLog);
                 newVenda.setVisible(true);
-            }else
-            {
+            } else {
                 dispose();
-                Inicio newInicio = new Inicio();
+                Inicio newInicio = new Inicio(funLog);
                 newInicio.setVisible(true);
             }
         }
@@ -522,20 +489,16 @@ public class Venda extends javax.swing.JFrame {
         txtMatr.setEditable(false);
         btnVerificar.setVisible(false);
         btnExe.setVisible(true);
-        if(txtMatr.equals(""))
-        {
-            JOptionPane.showMessageDialog(null,"Um campo importante está vazio.");
-        }else
-        {   
+        if (txtMatr.equals("")) {
+            JOptionPane.showMessageDialog(null, "Um campo importante está vazio.");
+        } else {
             double valor = ficha.getVal();
             Aluno al = aluno.getAlunoMatricula(txtMatr.getText());
-            PainelDados.setText("Saldo(R$):"+al.getSaldo());
-            if(al.getSaldo() >= valor)
-            {
+            PainelDados.setText("Saldo(R$):" + al.getSaldo());
+            if (al.getSaldo() >= valor) {
                 cxCredito.setVisible(true);
-            }else
-            {
-                JOptionPane.showMessageDialog(null,"O aluno não possui crédito.");
+            } else {
+                JOptionPane.showMessageDialog(null, "O aluno não possui crédito.");
                 cxCredito.setVisible(false);
             }
             btnVerificar.setVisible(false);
@@ -545,10 +508,6 @@ public class Venda extends javax.swing.JFrame {
             cxBeneficio.setVisible(true);
         }
     }//GEN-LAST:event_btnVerificarActionPerformed
-
-    private void txtMatrFunActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatrFunActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatrFunActionPerformed
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -560,19 +519,19 @@ public class Venda extends javax.swing.JFrame {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         dispose();
-        Venda newVenda = new Venda();
+        Venda newVenda = new Venda(funLog);
         newVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         dispose();
-        VendaCreditus newVenda = new VendaCreditus();
+        VendaCreditus newVenda = new VendaCreditus(funLog);
         newVenda.setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         dispose();
-        AltFicha alt = new AltFicha();
+        AltFicha alt = new AltFicha(funLog);
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
@@ -582,25 +541,25 @@ public class Venda extends javax.swing.JFrame {
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
         dispose();
-        CDBeneficio newCD = new CDBeneficio();
+        CDBeneficio newCD = new CDBeneficio(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         dispose();
-        ResetAlunos newReset = new ResetAlunos();
+        ResetAlunos newReset = new ResetAlunos(funLog);
         newReset.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun newCD = new CDFun();
+        CDFun newCD = new CDFun(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         dispose();
-        CDLogin newCD = new CDLogin();
+        CDLogin newCD = new CDLogin(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu5ActionPerformed
 
@@ -610,43 +569,43 @@ public class Venda extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDCurso c=new CDCurso();
+        CDCurso c = new CDCurso(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
-        AltrCurso alt = new AltrCurso();
+        AltrCurso alt = new AltrCurso(funLog);
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         dispose();
-        CDCurso newCD = new CDCurso();
+        CDCurso newCD = new CDCurso(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu7ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma c=new CDTurma();
+        CDTurma c = new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         dispose();
-        AltrTurma alt = new AltrTurma();
+        AltrTurma alt = new AltrTurma(funLog);
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
         dispose();
-        CDTurma newCD = new CDTurma();
+        CDTurma newCD = new CDTurma(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         dispose();
-        Inicio newInicio = new Inicio();
+        Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
@@ -703,7 +662,6 @@ public class Venda extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -741,6 +699,5 @@ public class Venda extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JLabel lblVenda;
     private javax.swing.JTextField txtMatr;
-    private javax.swing.JTextField txtMatrFun;
     // End of variables declaration//GEN-END:variables
 }

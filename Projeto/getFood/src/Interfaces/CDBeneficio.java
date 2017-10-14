@@ -2,6 +2,7 @@ package Interfaces;
 
 import java.awt.Color;
 import Classes.Aluno;
+import Classes.Funcionario;
 import DAO.AlunoDAO;
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,18 +13,26 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 public class CDBeneficio extends javax.swing.JFrame {
+
     BufferedReader txt;
     Aluno aluno;
     AlunoDAO alunoDao;
     String[] dadosAluno;
     FileReader arqReader;
     ArrayList<Aluno> lista;
-    public CDBeneficio() 
-    {
+    Funcionario funLog;
+
+    public CDBeneficio() {
+        initComponents();
+    }
+
+    public CDBeneficio(Funcionario fun) {
         initComponents();
         alunoDao = new AlunoDAO();
         lista = new ArrayList();
+        this.funLog = fun;
     }
 
     @SuppressWarnings("unchecked")
@@ -399,94 +408,94 @@ public class CDBeneficio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-      dispose();
-      CDCurso c=new CDCurso();
-      c.setVisible(true);
+        dispose();
+        CDCurso c = new CDCurso(funLog);
+        c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
         dispose();
-        CDTurma newCD = new CDTurma();
+        CDTurma newCD = new CDTurma(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-         dispose();
-        CDTurma c=new CDTurma();
+        dispose();
+        CDTurma c = new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
-        CDFun newCD = new CDFun();
+        CDFun newCD = new CDFun(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
-        AltrCurso alt = new AltrCurso();
+        AltrCurso alt = new AltrCurso(funLog);
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         dispose();
-        AltFicha alt = new AltFicha();
+        AltFicha alt = new AltFicha(funLog);
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jMenuItem11MouseEntered
 
     private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
-        
+
     }//GEN-LAST:event_jMenuItem11MouseExited
 
     private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
         dispose();
-        VendaCreditus newVenda = new VendaCreditus();
+        VendaCreditus newVenda = new VendaCreditus(funLog);
         newVenda.setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         dispose();
-        Venda newVenda = new Venda();
+        Venda newVenda = new Venda(funLog);
         newVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         dispose();
-       
+
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
         dispose();
-        CDBeneficio newCD = new CDBeneficio();
+        CDBeneficio newCD = new CDBeneficio(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         dispose();
-        ResetAlunos newReset = new ResetAlunos();
+        ResetAlunos newReset = new ResetAlunos(funLog);
         newReset.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         dispose();
-        CDLogin newCD = new CDLogin();
+        CDLogin newCD = new CDLogin(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         dispose();
-        CDCurso newCD = new CDCurso();
+        CDCurso newCD = new CDCurso(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu7ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         dispose();
-        AltrTurma alt = new AltrTurma();
+        AltrTurma alt = new AltrTurma(funLog);
         alt.setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
@@ -545,19 +554,19 @@ public class CDBeneficio extends javax.swing.JFrame {
             alunoDao.setBeneficiario(al);
         }
         JOptionPane.showMessageDialog(null, "Operação realizada com sucesso.");
-        Inicio inicio = new Inicio();
+        Inicio inicio = new Inicio(funLog);
         inicio.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         dispose();
-        Inicio newInicio = new Inicio();
+        Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CDBeneficio().setVisible(true);
