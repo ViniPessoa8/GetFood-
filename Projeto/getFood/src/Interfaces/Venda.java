@@ -45,6 +45,9 @@ public class Venda extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtMatr = new javax.swing.JTextField();
@@ -656,6 +659,9 @@ public class Venda extends javax.swing.JFrame {
     private javax.swing.JButton btnExe;
     private javax.swing.JButton btnVerificar;
     private javax.swing.JLabel btnVoltar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.JCheckBox cxBeneficio;
     private javax.swing.JCheckBox cxCredito;
     private javax.swing.JCheckBox cxDinheiro;
