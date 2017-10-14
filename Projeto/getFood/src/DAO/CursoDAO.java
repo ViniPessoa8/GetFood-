@@ -17,11 +17,27 @@ public class CursoDAO {
     private boolean retorno;
     private ArrayList<String> lista;
 
-
     public CursoDAO() {
         this.con = new ConnectionFactory().getConnection();
         pstm = null;
         sql = null;
+    }
+
+    public Curso getCurso(int codigo) {
+        Curso curso = null;
+
+        sql = "SELECT * FROM curso WHERE codigo = ?";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, ""+codigo);
+            rs = pstm.executeQuery();
+            rs.first();
+            curso = new Curso(rs.getString("codigo"), rs.getString("nome"));
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return curso;
     }
 
     public void addCurso(Curso c) {
@@ -50,7 +66,6 @@ public class CursoDAO {
                 retorno = true;
             }
             pstm.close();
-
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -113,32 +128,32 @@ public class CursoDAO {
             e.printStackTrace();
         }
     }
-    
-    public void alteraCodigo(String codigoAntigo, String codigoNovo){
+
+    public void alteraCodigo(String codigoAntigo, String codigoNovo) {
         sql = "UPDATE curso SET codigo = ? WHERE codigo = ?";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, codigoNovo);
             pstm.setString(2, codigoAntigo);
             pstm.execute();
             pstm.close();
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    
-    public int getCodigoByNome(String nome){
+
+    public int getCodigoByNome(String nome) {
         sql = "SELECT * FROM curso WHERE nome = ?";
         int codigo = 0;
-        try{
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, nome);
             System.out.println(pstm.toString());
             rs = pstm.executeQuery();
             rs.first();
             codigo = rs.getInt("codigo");
-        } catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return codigo;

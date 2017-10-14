@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import Classes.Aluno;
@@ -16,10 +11,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- *
- * @author vinicius
- */
 public class VendaDAO {
 
     private PreparedStatement pstm;
@@ -40,6 +31,7 @@ public class VendaDAO {
     tipo = 1 -> Venda de uma ficha a partir dos créditos
     tipo = 2 -> venda de uma ficha no dinheiro
     tipo = 3 -> Venda de créditos
+    tipo = 4 -> Venda de uma ficha para um aluno beneficiário
      */
     public boolean efetuarVenda(String matAluno, String matFun, double valor, Date data, int tipo) {
         boolean retorno = false;
@@ -49,27 +41,70 @@ public class VendaDAO {
         Verifica se o usuário tem créditos suficientes para a venda ou 
         se ele está comprando no dinheiro
          */
-        if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 2) {
-
-            sql = "INSERT INTO venda(matAluno, matFun, valor, data, tipo) VALUES(?,?,?,?,?)";
-
+        if (tipo == 4) {
+            sql = "insert into venda(matrAl,matrFun,valor,dt,tipo) values (?,?,?,?,?);";
             try {
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, matAluno);
                 pstm.setString(2, matFun);
-                pstm.setDouble(3, valor);
-                pstm.setDate(4, new java.sql.Date(data.getTime()));
+                pstm.setDouble(3, 0);
+                pstm.setDate(4, (java.sql.Date) data);
                 pstm.setInt(5, tipo);
+                pstm.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            if (tipo == 1) {
-                atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) - valor);
-            } else if (tipo == 3) {
-                atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) + valor);
+        } else {
+
+            if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 2) {
+
+                sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
+
+                try {
+                    pstm = con.prepareStatement(sql);
+                    pstm.setString(1, matAluno);
+                    pstm.setString(2, matFun);
+                    pstm.setDouble(3, valor);
+                    pstm.setDate(4, new java.sql.Date(data.getTime()));
+                    pstm.setInt(5, tipo);
+                    pstm.execute();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 1) {
+                    atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) - valor);
+
+                    sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
+
+                    try {
+                        pstm = con.prepareStatement(sql);
+                        pstm.setString(1, matAluno);
+                        pstm.setString(2, matFun);
+                        pstm.setDouble(3, valor);
+                        pstm.setDate(4, new java.sql.Date(data.getTime()));
+                        pstm.setInt(5, tipo);
+                        pstm.execute();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                } else if (tipo == 3) {
+                    atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) + valor);
+                    sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
+
+                    try {
+                        pstm = con.prepareStatement(sql);
+                        pstm.setString(1, matAluno);
+                        pstm.setString(2, matFun);
+                        pstm.setDouble(3, valor);
+                        pstm.setDate(4, new java.sql.Date(data.getTime()));
+                        pstm.setInt(5, tipo);
+                        pstm.execute();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
-
         return retorno;
     }
 
@@ -99,9 +134,10 @@ public class VendaDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, matAluno);
             rs = pstm.executeQuery();
-            pstm.close();
 
+            rs.first();
             saldo = rs.getDouble("saldo");
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -198,11 +234,11 @@ public class VendaDAO {
 
     public ArrayList<Venda> filtraVendaTipo(ArrayList<Venda> lista, int tipo) {
         for (int i = 0; i < lista.size(); i++) {
-            if (lista.get(i).getTipo() != tipo){
+            if (lista.get(i).getTipo() != tipo) {
                 lista.remove(i);
             }
         }
-        
+
         return lista;
     }
 
@@ -231,8 +267,22 @@ public class VendaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
- 
-        
+
         return lista;
     }
+
+    public boolean dropVendas() {
+        boolean result = false;
+        sql = "delete from venda;";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.execute();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 }

@@ -35,12 +35,11 @@ public class AlunoDAO {
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
     * matricula informada
      */
-    
-    public Boolean addAluno(Aluno aluno){
+    public Boolean addAluno(Aluno aluno) {
         retorno = false;
         sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario) VALUES (?,?,?,?,?,?)";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, aluno.getMatricula());
             pstm.setString(2, aluno.getNome());
@@ -49,19 +48,19 @@ public class AlunoDAO {
             pstm.setInt(5, aluno.getCurso());
             pstm.setInt(6, aluno.getBeneficiario());
             pstm.execute();
-            
+
             retorno = true;
-        }catch(SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return retorno;
     }
-    
+
     public Aluno getAlunoMatricula(String matricula) {
 
-        //Instancia um aluno
-        aluno = new Aluno();
+        
+        aluno = null;
 
         //Requisição de dados do banco de dados
         sql = "SELECT * FROM aluno WHERE matricula = ?";
@@ -71,7 +70,10 @@ public class AlunoDAO {
             rs = pstm.executeQuery();
 
             //Se houver resultado
-            if (rs.next()) {
+            if (rs.first()) {
+                //Instancia o aluno
+                aluno = new Aluno();
+                
                 //Atribuição de valores ao objeto 'aluno'
                 aluno.setCurso(rs.getInt("curso"));
                 aluno.setMatricula(rs.getString("matricula"));
@@ -298,19 +300,33 @@ public class AlunoDAO {
 
         return retorno;
     }
-    
-    public boolean setBeneficiario(Aluno al){
+
+    public boolean setBeneficiario(Aluno al) {
         sql = "UPDATE aluno SET beneficiario = 1 WHERE matricula = ?";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, al.getMatricula());
             pstm.execute();
             retorno = true;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
         return retorno;
+    }
+
+    public boolean dropAlunos() {
+        boolean result = false;
+        sql = "delete from aluno;";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.execute();
+            result = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }
