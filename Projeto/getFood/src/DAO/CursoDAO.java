@@ -17,7 +17,8 @@ public class CursoDAO {
     private boolean retorno;
     private ArrayList<String> lista;
 
-    public CursoDAO() {
+    public CursoDAO() 
+    {
         this.con = new ConnectionFactory().getConnection();
         pstm = null;
         sql = null;
@@ -158,5 +159,22 @@ public class CursoDAO {
         }
         return codigo;
     }
+     
+    
+    public boolean dropCursos() 
+    {
+        boolean result = false;
+        sql = "delete from curso;";
+        try 
+        {
+            pstm = con.prepareStatement(sql);
+            pstm.execute();
+            result = true;
+        } catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
 
+        return result;
+    }
 }

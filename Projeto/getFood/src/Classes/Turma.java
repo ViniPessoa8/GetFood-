@@ -10,6 +10,11 @@ public class Turma
         this.codigo=codigo;
     }
 
+    public Turma() 
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getCodigo() {
         return codigo;
     }

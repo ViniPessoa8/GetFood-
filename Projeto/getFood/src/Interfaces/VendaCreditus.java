@@ -23,6 +23,7 @@ public class VendaCreditus extends javax.swing.JFrame {
         aluno = new AlunoDAO();
         venda = new VendaDAO();
         initComponents();
+        PainelDados.setEditable(false);
     }
 
     public VendaCreditus(Funcionario fun) {
@@ -50,40 +51,36 @@ public class VendaCreditus extends javax.swing.JFrame {
         txtMatr = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtQuantia = new javax.swing.JTextField();
-        btnVerificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         PainelDados = new javax.swing.JTextPane();
         PainelImagem = new javax.swing.JPanel();
-        btnExecutar = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         btnVoltar1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -123,13 +120,6 @@ public class VendaCreditus extends javax.swing.JFrame {
             }
         });
 
-        btnVerificar.setText("Verificar");
-        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerificarActionPerformed(evt);
-            }
-        });
-
         jScrollPane1.setViewportView(PainelDados);
 
         PainelImagem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -145,13 +135,6 @@ public class VendaCreditus extends javax.swing.JFrame {
             .addGap(0, 189, Short.MAX_VALUE)
         );
 
-        btnExecutar.setText("Vender");
-        btnExecutar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExecutarActionPerformed(evt);
-            }
-        });
-
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/LOGO_150px.png"))); // NOI18N
 
         btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/backward-arrow.png"))); // NOI18N
@@ -162,6 +145,20 @@ public class VendaCreditus extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Verificar.png"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Vender.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -169,28 +166,25 @@ public class VendaCreditus extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 55, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnExecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(184, 184, 184)))
-                        .addGap(34, 34, 34))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(99, 99, 99)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,44 +200,47 @@ public class VendaCreditus extends javax.swing.JFrame {
                         .addGap(417, 417, 417)
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addContainerGap()
                         .addComponent(btnVoltar1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(23, 23, 23)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8))
                         .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(18, 18, 18)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(38, 38, 38)
-                        .addComponent(btnExecutar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(97, 97, 97)))
                 .addComponent(btnVoltar1)
-                .addGap(28, 28, 28))
+                .addGap(43, 43, 43))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(204, 255, 255));
-
         jMenu2.setBorder(null);
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/wallet.png"))); // NOI18N
         jMenu2.setText("Venda");
         jMenu2.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu2.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -265,18 +262,18 @@ public class VendaCreditus extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem11);
 
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Créditos");
-        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem10.setText("Créditos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem1ActionPerformed(evt);
+                jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu2.add(jRadioButtonMenuItem1);
+        jMenu2.add(jMenuItem10);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBorder(null);
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/ticket.png"))); // NOI18N
         jMenu3.setText("Ficha");
         jMenu3.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -291,6 +288,7 @@ public class VendaCreditus extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/icon.png"))); // NOI18N
         jMenu4.setText("Aluno");
         jMenu4.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu4.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -304,14 +302,13 @@ public class VendaCreditus extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem4);
 
-        jRadioButtonMenuItem2.setSelected(true);
-        jRadioButtonMenuItem2.setText("Adicionar listagem beneficente");
-        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem12.setText("Adicionar listagem beneficente");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem2ActionPerformed(evt);
+                jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu4.add(jRadioButtonMenuItem2);
+        jMenu4.add(jMenuItem12);
 
         jMenuItem5.setText("Alterar");
         jMenu4.add(jMenuItem5);
@@ -326,6 +323,7 @@ public class VendaCreditus extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/users.png"))); // NOI18N
         jMenu5.setText("Funcionário");
         jMenu5.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu5.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -349,12 +347,17 @@ public class VendaCreditus extends javax.swing.JFrame {
         jMenuItem9.setText("Desativar");
         jMenu5.add(jMenuItem9);
 
-        jRadioButtonMenuItem3.setSelected(true);
-        jRadioButtonMenuItem3.setText("Criar login");
-        jMenu5.add(jRadioButtonMenuItem3);
+        jMenuItem21.setText("Criar login");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem21);
 
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/padnote.png"))); // NOI18N
         jMenu6.setText("Relatório");
         jMenu6.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -372,6 +375,7 @@ public class VendaCreditus extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/curso_1.png"))); // NOI18N
         jMenu7.setText("Curso");
         jMenu7.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu7.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -389,24 +393,14 @@ public class VendaCreditus extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem14);
 
-        jMenuItem15.setText("Alterar");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem15);
-
-        jMenuItem16.setText("Desativar");
-        jMenu7.add(jMenuItem16);
-
         jMenuBar1.add(jMenu7);
 
         jMenu8.setBorder(null);
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/turma.png"))); // NOI18N
         jMenu8.setText("Turma");
         jMenu8.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu8.setMargin(new java.awt.Insets(10, 35, 10, 35));
-        jMenu8.setPreferredSize(new java.awt.Dimension(110, 33));
+        jMenu8.setPreferredSize(new java.awt.Dimension(115, 33));
         jMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu8ActionPerformed(evt);
@@ -420,17 +414,6 @@ public class VendaCreditus extends javax.swing.JFrame {
             }
         });
         jMenu8.add(jMenuItem17);
-
-        jMenuItem18.setText("Alterar");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem18);
-
-        jMenuItem19.setText("Desativar");
-        jMenu8.add(jMenuItem19);
 
         jMenuBar1.add(jMenu8);
 
@@ -458,22 +441,66 @@ public class VendaCreditus extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQuantiaActionPerformed
 
-    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        //Verifica se o campo de matrícula está vazio.
-        if (txtMatr.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo de matrícula está vazio.");
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        dispose();
+        Inicio newInicio = new Inicio(funLog);
+        newInicio.setVisible(true);
+    }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void btnVoltar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltar1MouseClicked
+        dispose();
+        Inicio newInicio = new Inicio(funLog);
+        newInicio.setVisible(true);
+    }//GEN-LAST:event_btnVoltar1MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        if(txtMatr.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"O campo de matrícula está vazio.");
         }
-        //Verifica se o aluno existe no BD.
-        if (aluno.getAlunoMatricula(txtMatr.getText()) == null) {
+        System.out.println(txtMatr.getText());
+        if(aluno.getAlunoMatricula(txtMatr.getText()) == null)
+        {
             JOptionPane.showMessageDialog(null, "Aluno não encontrado");
-        } else {
+        } else 
+        {
             al = aluno.getAlunoMatricula(txtMatr.getText());
         }
-        //Escreve os dados do aluno no painel.
         PainelDados.setText(al.toString());
+    }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        double quantia;
+        Boolean resultado;
+        quantia = Double.parseDouble(txtQuantia.getText());
 
-    }//GEN-LAST:event_btnVerificarActionPerformed
+        /*
+        Venda de créditos, tipo 3.
+        */
+        System.out.println("Funcionario = " + funLog.toString());
+        resultado = venda.efetuarVenda(al.getMatricula(), funLog.getMatricula(), quantia, new Date(data.getTimeInMillis()), 3);
+
+        if (resultado) 
+        {
+            JOptionPane.showMessageDialog(null, "Venda realizada com sucesso.");
+            int resp = JOptionPane.showConfirmDialog(null, "Deseja realizar outra venda?");
+            if (resp == JOptionPane.YES_OPTION) 
+            {
+                dispose();
+                VendaCreditus newVenda = new VendaCreditus(funLog);
+                newVenda.setVisible(true);
+            } else 
+            {
+                dispose();
+                Inicio newInicio = new Inicio(funLog);
+                newInicio.setVisible(true);
+            }
+
+        } else 
+        {
+            JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada");
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -489,11 +516,11 @@ public class VendaCreditus extends javax.swing.JFrame {
         newVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         dispose();
         VendaCreditus newVenda = new VendaCreditus(funLog);
         newVenda.setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         dispose();
@@ -503,13 +530,15 @@ public class VendaCreditus extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         dispose();
+        CDAlunos newCD = new CDAlunos(funLog);
+        newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         dispose();
         CDBeneficio newCD = new CDBeneficio(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         dispose();
@@ -523,6 +552,12 @@ public class VendaCreditus extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        dispose();
+        CDLogin newCD = new CDLogin(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         dispose();
         CDLogin newCD = new CDLogin(funLog);
@@ -535,15 +570,9 @@ public class VendaCreditus extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDCurso c = new CDCurso(funLog);
+        CDCurso c=new CDCurso(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
-
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        dispose();
-        AltrCurso alt = new AltrCurso(funLog);
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         dispose();
@@ -553,63 +582,15 @@ public class VendaCreditus extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma c = new CDTurma(funLog);
+        CDTurma c=new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        AltrTurma alt = new AltrTurma(funLog);
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
         dispose();
         CDTurma newCD = new CDTurma(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
-
-    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-        dispose();
-        Inicio newInicio = new Inicio(funLog);
-        newInicio.setVisible(true);
-    }//GEN-LAST:event_btnVoltarMouseClicked
-
-    private void btnVoltar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltar1MouseClicked
-        dispose();
-        Inicio newInicio = new Inicio(funLog);
-        newInicio.setVisible(true);
-    }//GEN-LAST:event_btnVoltar1MouseClicked
-
-    private void btnExecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecutarActionPerformed
-        double quantia;
-        Boolean resultado;
-        quantia = Double.parseDouble(txtQuantia.getText());
-
-        /*
-        Venda de créditos, tipo 3.
-         */
-        System.out.println("Funcionario = " + funLog.toString());
-        resultado = venda.efetuarVenda(al.getMatricula(), funLog.getMatricula(), quantia, new Date(data.getTimeInMillis()), 3);
-
-        if (resultado) {
-            JOptionPane.showMessageDialog(null, "Venda realizada com sucesso.");
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja realizar outra venda?");
-            if (resp == JOptionPane.YES_OPTION) {
-                dispose();
-                VendaCreditus newVenda = new VendaCreditus(funLog);
-                newVenda.setVisible(true);
-            } else {
-                dispose();
-                Inicio newInicio = new Inicio(funLog);
-                newInicio.setVisible(true);
-            }
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada");
-        }
-
-    }//GEN-LAST:event_btnExecutarActionPerformed
 
     public static void main(String args[]) {
 
@@ -623,14 +604,14 @@ public class VendaCreditus extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane PainelDados;
     private javax.swing.JPanel PainelImagem;
-    private javax.swing.JButton btnExecutar;
-    private javax.swing.JButton btnVerificar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JLabel btnVoltar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
@@ -643,16 +624,15 @@ public class VendaCreditus extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -662,9 +642,6 @@ public class VendaCreditus extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtMatr;
     private javax.swing.JTextField txtQuantia;

@@ -9,6 +9,12 @@ public class Curso
         this.codigo=codigo;
     }
 
+    public Curso() 
+    {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
     public String getCodigo() {
         return codigo;
     }

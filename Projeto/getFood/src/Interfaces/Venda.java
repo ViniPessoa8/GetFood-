@@ -51,13 +51,11 @@ public class Venda extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtMatr = new javax.swing.JTextField();
-        btnExe = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 90), new java.awt.Dimension(0, 90), new java.awt.Dimension(32767, 90));
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         PainelDados = new javax.swing.JTextPane();
-        btnVerificar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lblVenda = new javax.swing.JLabel();
         cxCredito = new javax.swing.JCheckBox();
@@ -65,33 +63,31 @@ public class Venda extends javax.swing.JFrame {
         cxDinheiro = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
+        btnVerificar = new javax.swing.JLabel();
+        btnExe = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem2 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
-        jRadioButtonMenuItem3 = new javax.swing.JRadioButtonMenuItem();
+        jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
 
         jMenu1.setText("jMenu1");
 
@@ -109,39 +105,38 @@ public class Venda extends javax.swing.JFrame {
             }
         });
 
-        btnExe.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnExe.setText("Efetuar venda");
-        btnExe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExeActionPerformed(evt);
-            }
-        });
-
         jTextPane1.setEnabled(false);
         jScrollPane1.setViewportView(jTextPane1);
 
         PainelDados.setEnabled(false);
         jScrollPane3.setViewportView(PainelDados);
 
-        btnVerificar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        btnVerificar.setText("Verificar");
-        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerificarActionPerformed(evt);
-            }
-        });
-
         lblVenda.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lblVenda.setText("Venda a partir de :");
 
         cxCredito.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         cxCredito.setText("Créditos");
+        cxCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxCreditoActionPerformed(evt);
+            }
+        });
 
         cxBeneficio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         cxBeneficio.setText("Benefício");
+        cxBeneficio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxBeneficioActionPerformed(evt);
+            }
+        });
 
         cxDinheiro.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         cxDinheiro.setText("Dinheiro");
+        cxDinheiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cxDinheiroActionPerformed(evt);
+            }
+        });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/LOGO_150px.png"))); // NOI18N
 
@@ -150,6 +145,20 @@ public class Venda extends javax.swing.JFrame {
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVoltarMouseClicked(evt);
+            }
+        });
+
+        btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Verificar.png"))); // NOI18N
+        btnVerificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVerificarMouseClicked(evt);
+            }
+        });
+
+        btnExe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Vender.png"))); // NOI18N
+        btnExe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExeMouseClicked(evt);
             }
         });
 
@@ -169,14 +178,14 @@ public class Venda extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(8, 8, 8)
-                                        .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(11, 11, 11)
+                                        .addComponent(btnVerificar)
                                         .addGap(18, 18, 18)
-                                        .addComponent(btnExe, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(btnExe))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(187, 187, 187)
                                 .addComponent(jLabel7)))
-                        .addGap(103, 103, 103)
+                        .addGap(91, 91, 91)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -219,8 +228,8 @@ public class Venda extends javax.swing.JFrame {
                                     .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addGap(41, 41, 41)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnExe, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,16 +243,15 @@ public class Venda extends javax.swing.JFrame {
                         .addComponent(cxDinheiro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cxCredito)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addGap(35, 35, 35))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(0, 0, 204));
-
         jMenu2.setBorder(null);
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/wallet.png"))); // NOI18N
         jMenu2.setText("Venda");
         jMenu2.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu2.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -265,18 +273,18 @@ public class Venda extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem11);
 
-        jRadioButtonMenuItem1.setSelected(true);
-        jRadioButtonMenuItem1.setText("Créditos");
-        jRadioButtonMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem10.setText("Créditos");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem1ActionPerformed(evt);
+                jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu2.add(jRadioButtonMenuItem1);
+        jMenu2.add(jMenuItem10);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBorder(null);
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/ticket.png"))); // NOI18N
         jMenu3.setText("Ficha");
         jMenu3.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu3.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -291,6 +299,7 @@ public class Venda extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/icon.png"))); // NOI18N
         jMenu4.setText("Aluno");
         jMenu4.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu4.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -304,14 +313,13 @@ public class Venda extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem4);
 
-        jRadioButtonMenuItem2.setSelected(true);
-        jRadioButtonMenuItem2.setText("Adicionar listagem beneficente");
-        jRadioButtonMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem12.setText("Adicionar listagem beneficente");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMenuItem2ActionPerformed(evt);
+                jMenuItem12ActionPerformed(evt);
             }
         });
-        jMenu4.add(jRadioButtonMenuItem2);
+        jMenu4.add(jMenuItem12);
 
         jMenuItem5.setText("Alterar");
         jMenu4.add(jMenuItem5);
@@ -326,6 +334,7 @@ public class Venda extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/users.png"))); // NOI18N
         jMenu5.setText("Funcionário");
         jMenu5.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu5.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -349,12 +358,17 @@ public class Venda extends javax.swing.JFrame {
         jMenuItem9.setText("Desativar");
         jMenu5.add(jMenuItem9);
 
-        jRadioButtonMenuItem3.setSelected(true);
-        jRadioButtonMenuItem3.setText("Criar login");
-        jMenu5.add(jRadioButtonMenuItem3);
+        jMenuItem21.setText("Criar login");
+        jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem21ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem21);
 
         jMenuBar1.add(jMenu5);
 
+        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/padnote.png"))); // NOI18N
         jMenu6.setText("Relatório");
         jMenu6.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -372,6 +386,7 @@ public class Venda extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu6);
 
+        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/curso_1.png"))); // NOI18N
         jMenu7.setText("Curso");
         jMenu7.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu7.setMargin(new java.awt.Insets(10, 10, 10, 10));
@@ -389,24 +404,14 @@ public class Venda extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem14);
 
-        jMenuItem15.setText("Alterar");
-        jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem15ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem15);
-
-        jMenuItem16.setText("Desativar");
-        jMenu7.add(jMenuItem16);
-
         jMenuBar1.add(jMenu7);
 
         jMenu8.setBorder(null);
+        jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/turma.png"))); // NOI18N
         jMenu8.setText("Turma");
         jMenu8.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu8.setMargin(new java.awt.Insets(10, 35, 10, 35));
-        jMenu8.setPreferredSize(new java.awt.Dimension(110, 33));
+        jMenu8.setPreferredSize(new java.awt.Dimension(115, 33));
         jMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu8ActionPerformed(evt);
@@ -420,17 +425,6 @@ public class Venda extends javax.swing.JFrame {
             }
         });
         jMenu8.add(jMenuItem17);
-
-        jMenuItem18.setText("Alterar");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jMenu8.add(jMenuItem18);
-
-        jMenuItem19.setText("Desativar");
-        jMenu8.add(jMenuItem19);
 
         jMenuBar1.add(jMenu8);
 
@@ -454,63 +448,85 @@ public class Venda extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMatrActionPerformed
 
-    private void btnExeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExeActionPerformed
-        
-        if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.");
-        } else {
-            if (cxDinheiro.isSelected()) {
-                venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), 4);
-            } else if (cxCredito.isSelected()) {
-                venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), 1);
-            } else {
-                if (cxBeneficio.isSelected()) {
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        dispose();
+        Inicio newInicio = new Inicio(funLog);
+        newInicio.setVisible(true);
+    }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
+        txtMatr.setEditable(false);
+        btnVerificar.setVisible(false);
+        //jLabel4.setVisible(true);
+        if(txtMatr.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(null,"Um campo importante está vazio.");
+        }else
+        {
+            double valor = ficha.getVal();
+            Aluno al = aluno.getAlunoMatricula(txtMatr.getText());
+            PainelDados.setText(""+al.toString());
+            if(al.getSaldo() >= valor)
+            {
+                cxCredito.setVisible(true);
+            }else
+            {
+                JOptionPane.showMessageDialog(null,"O aluno não possui crédito.");
+                cxCredito.setVisible(false);
+            }
+            btnVerificar.setVisible(false);
+            //jLabel4.setVisible(true);
+            lblVenda.setVisible(true);
+            cxDinheiro.setVisible(true);
+            cxBeneficio.setVisible(true);
+        }
+    }//GEN-LAST:event_btnVerificarMouseClicked
+
+    private void btnExeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExeMouseClicked
+        //System.out.println("voce clicou nesta merda filha da puta");
+        if(!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()  )
+        {
+            JOptionPane.showMessageDialog(null,"Selecione a forma de pagamento.");
+        }else
+        {
+            if(cxDinheiro.isSelected())
+            {
+                // System.out.println("vc vai comprar no money");
+                venda.efetuarVenda(txtMatr.getText(),funLog.getMatricula(),0,new Date(data.getTimeInMillis()),4);
+            }else if (cxCredito.isSelected())
+            {
+                venda.efetuarVenda(txtMatr.getText(),funLog.getMatricula(),5,new Date(data.getTimeInMillis()),1);
+            }else
+            {
+                if(cxBeneficio.isSelected())
+                {
                     ArrayList<Aluno> lista = aluno.getListaAlunosBeneficio(1);
-                    for (Aluno al : lista) {
-                        if (txtMatr.getText().equals(al.getMatricula())) {
-                            venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), 4);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Esse aluno não é beneficiário.");
+                    for(Aluno al : lista)
+                    {
+                        if(txtMatr.getText().equals(al.getMatricula()))
+                        {
+                            venda.efetuarVenda(txtMatr.getText(),funLog.getMatricula(),0,new Date(data.getTimeInMillis()),4);
+                        }else
+                        {
+                            JOptionPane.showMessageDialog(null,"Esse aluno não é beneficiário.");
                         }
                     }
                 }
             }
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda ?");
-            if (resp == JOptionPane.YES_OPTION) {
+            int resp = JOptionPane.showConfirmDialog(null,"Deseja executar outra venda ?");
+            if(resp == JOptionPane.YES_OPTION)
+            {
                 dispose();
-                Venda newVenda = new Venda(funLog);
+                Venda newVenda = new Venda();
                 newVenda.setVisible(true);
-            } else {
+            }else
+            {
                 dispose();
                 Inicio newInicio = new Inicio(funLog);
                 newInicio.setVisible(true);
             }
         }
-    }//GEN-LAST:event_btnExeActionPerformed
-
-    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-        txtMatr.setEditable(false);
-        btnVerificar.setVisible(false);
-        btnExe.setVisible(true);
-        if (txtMatr.equals("")) {
-            JOptionPane.showMessageDialog(null, "Um campo importante está vazio.");
-        } else {
-            double valor = ficha.getVal();
-            Aluno al = aluno.getAlunoMatricula(txtMatr.getText());
-            PainelDados.setText("Saldo(R$):" + al.getSaldo());
-            if (al.getSaldo() >= valor) {
-                cxCredito.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null, "O aluno não possui crédito.");
-                cxCredito.setVisible(false);
-            }
-            btnVerificar.setVisible(false);
-            btnExe.setVisible(true);
-            lblVenda.setVisible(true);
-            cxDinheiro.setVisible(true);
-            cxBeneficio.setVisible(true);
-        }
-    }//GEN-LAST:event_btnVerificarActionPerformed
+    }//GEN-LAST:event_btnExeMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -526,11 +542,11 @@ public class Venda extends javax.swing.JFrame {
         newVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
-    private void jRadioButtonMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem1ActionPerformed
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         dispose();
         VendaCreditus newVenda = new VendaCreditus(funLog);
         newVenda.setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
         dispose();
@@ -540,13 +556,15 @@ public class Venda extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         dispose();
+        CDAlunos newCD = new CDAlunos(funLog);
+        newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jRadioButtonMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMenuItem2ActionPerformed
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         dispose();
         CDBeneficio newCD = new CDBeneficio(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jRadioButtonMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
         dispose();
@@ -560,6 +578,12 @@ public class Venda extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
+    private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
+        dispose();
+        CDLogin newCD = new CDLogin(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenuItem21ActionPerformed
+
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         dispose();
         CDLogin newCD = new CDLogin(funLog);
@@ -572,15 +596,9 @@ public class Venda extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDCurso c = new CDCurso(funLog);
+        CDCurso c=new CDCurso(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
-
-    private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        dispose();
-        AltrCurso alt = new AltrCurso(funLog);
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenu7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu7ActionPerformed
         dispose();
@@ -590,15 +608,9 @@ public class Venda extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma c = new CDTurma(funLog);
+        CDTurma c=new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
-
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        AltrTurma alt = new AltrTurma(funLog);
-        alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
         dispose();
@@ -606,11 +618,26 @@ public class Venda extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-        dispose();
-        Inicio newInicio = new Inicio(funLog);
-        newInicio.setVisible(true);
-    }//GEN-LAST:event_btnVoltarMouseClicked
+    private void cxBeneficioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxBeneficioActionPerformed
+        if(cxBeneficio.isSelected() && (cxDinheiro.isSelected() || cxCredito.isSelected()))
+        {
+            cxBeneficio.setSelected(false);
+        }
+    }//GEN-LAST:event_cxBeneficioActionPerformed
+
+    private void cxDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxDinheiroActionPerformed
+        if(cxDinheiro.isSelected() && (cxBeneficio.isSelected() || cxCredito.isSelected()))
+        {
+            cxDinheiro.setSelected(false);
+        }
+    }//GEN-LAST:event_cxDinheiroActionPerformed
+
+    private void cxCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxCreditoActionPerformed
+        if(cxCredito.isSelected() && (cxDinheiro.isSelected() || cxBeneficio.isSelected()))
+        {
+            cxCredito.setSelected(false);
+        }
+    }//GEN-LAST:event_cxCreditoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -656,8 +683,8 @@ public class Venda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane PainelDados;
-    private javax.swing.JButton btnExe;
-    private javax.swing.JButton btnVerificar;
+    private javax.swing.JLabel btnExe;
+    private javax.swing.JLabel btnVerificar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -679,15 +706,14 @@ public class Venda extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
+    private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
@@ -697,9 +723,6 @@ public class Venda extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem2;
-    private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextPane jTextPane1;

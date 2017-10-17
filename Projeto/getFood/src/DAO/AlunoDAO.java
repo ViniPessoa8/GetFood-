@@ -57,6 +57,36 @@ public class AlunoDAO {
         return retorno;
     }
 
+    public ArrayList<Aluno> getListaAlunos()
+    {
+        listaAlunos = new ArrayList();
+        sql = "SELECT * FROM aluno;";
+        try 
+        {
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+
+            while (rs.next()) 
+            {
+                aluno = new Aluno();
+
+                aluno.setCurso(rs.getInt("curso"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setMatricula(rs.getString("matricula"));
+                aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setTurma(rs.getString("turma"));
+                aluno.setBeneficiario(rs.getInt("beneficiario"));
+
+                listaAlunos.add(aluno);
+            }
+
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return listaAlunos;
+    }
     public Aluno getAlunoMatricula(String matricula) {
 
         

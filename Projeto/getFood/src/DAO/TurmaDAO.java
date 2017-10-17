@@ -23,7 +23,22 @@ public class TurmaDAO {
         pstm = null;
         sql = null;
     }
-
+    public String getCodigoByNome(String nome) 
+    {
+        sql = "SELECT * FROM turma WHERE curso = ?";
+        String codigo ="";
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, nome);
+            System.out.println(pstm.toString());
+            rs = pstm.executeQuery();
+            rs.first();
+            codigo = ""+rs.getInt("codigo");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return codigo;
+    }
     public boolean addTurma(Turma t) {
 
         //Atribuições
@@ -129,4 +144,23 @@ public class TurmaDAO {
 
         return retorno;
     }
+    
+    public boolean dropTurmas() 
+    {
+        boolean result = false;
+        sql = "delete from turma;";
+        try 
+        {
+            pstm = con.prepareStatement(sql);
+            pstm.execute();
+            result = true;
+        } catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+
 }

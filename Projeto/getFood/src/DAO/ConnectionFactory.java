@@ -17,8 +17,8 @@ public class ConnectionFactory {
 
     public Connection getConnection() {
         try {
-           return DriverManager.getConnection("jdbc:mysql://localhost/getFood", "root", "root");
-           // return DriverManager.getConnection("jdbc:mysql://localhost/getFood", "root", "rockdesaia");
+           //return DriverManager.getConnection("jdbc:mysql://localhost/getFood", "root", "root");
+           return DriverManager.getConnection("jdbc:mysql://localhost/getFood", "root", "rockdesaia");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
