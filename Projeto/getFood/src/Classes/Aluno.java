@@ -8,8 +8,8 @@ public class Aluno {
     private float saldo = 0;
     private String nome = "", turma = "", matricula = "";
     private int beneficiario = 0, curso = 0;
-    private CursoDAO cursoDao = new CursoDAO();
-    private TurmaDAO turmaDao = new TurmaDAO();
+    private CursoDAO cursoDao;
+    
     //fota ?
     public void Aluno(String matricula, float saldo, String nome, String turma, int curso, int beneficiario) {
         this.matricula = matricula;
