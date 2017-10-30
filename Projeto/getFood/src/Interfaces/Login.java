@@ -5,21 +5,20 @@ import DAO.FunDAO;
 import DAO.LoginDAO;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 
+public class Login extends javax.swing.JFrame implements KeyListener {
 
-public class Login extends javax.swing.JFrame {
-
-    
     Funcionario funLog;
-    
-    public Login() 
-    {
+
+    public Login() {
         initComponents();
         this.setTitle("GetFood - Login");
         funLog = new Funcionario();
+
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -176,54 +175,55 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel7AncestorAdded
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-         LoginDAO loginDAO = new LoginDAO();
-        String senha = new String(txtSenha.getPassword());
-        String login = txtLogin.getText();
-        boolean result;
-        if(login.isEmpty() || senha.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Um campo importante está vazio!");
-        }else
-        {
-            result = loginDAO.logar(txtLogin.getText(),senha);
-            funLog = loginDAO.getFuncionarioLogin(txtLogin.getText());
-            if(result){
-                dispose();
-                Inicio i = new Inicio(funLog);
-                i.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(null,"Senha/login inválidos.");
-            }
-        }
+        logar();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
-        
-        
+        logar();
+    }//GEN-LAST:event_btnLogarMouseClicked
+
+    private void btnLogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseEntered
+
+    }//GEN-LAST:event_btnLogarMouseEntered
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        System.out.println("1");
+        if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
+            System.out.println("2");
+            logar();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void logar() {
         LoginDAO loginDAO = new LoginDAO();
         String senha = new String(txtSenha.getPassword());
         String login = txtLogin.getText();
         boolean result;
-        if(login.isEmpty() || senha.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Um campo importante está vazio!");
-        }else
-        {
-            result = loginDAO.logar(txtLogin.getText(),senha);
+        if (login.isEmpty() || senha.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Um campo importante está vazio!");
+        } else {
+            result = loginDAO.logar(txtLogin.getText(), senha);
             funLog = loginDAO.getFuncionarioLogin(txtLogin.getText());
-            if(result){
+            if (result) {
                 dispose();
                 Inicio i = new Inicio(funLog);
                 i.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null,"Senha/login inválidos.");
+                JOptionPane.showMessageDialog(null, "Senha/login inválidos.");
             }
         }
-    }//GEN-LAST:event_btnLogarMouseClicked
-
-    private void btnLogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseEntered
-        
-    }//GEN-LAST:event_btnLogarMouseEntered
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -270,4 +270,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
 }

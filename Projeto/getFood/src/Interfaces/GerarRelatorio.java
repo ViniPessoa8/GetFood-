@@ -33,7 +33,7 @@ public class GerarRelatorio extends javax.swing.JFrame {
         funLog = fun;
     }
     
-    public GerarRelatorio(){
+    private GerarRelatorio(){
         
     }
 
@@ -248,7 +248,7 @@ public class GerarRelatorio extends javax.swing.JFrame {
         }
         
         try {
-            relatorio.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projetos\\getFood\\src\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+            relatorio.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
         } catch (JRException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
