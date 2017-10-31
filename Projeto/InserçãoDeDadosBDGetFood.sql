@@ -1,4 +1,5 @@
 use getFood;
+insert into ficha(valor) values(5);
 INSERT INTO curso(codigo, nome) VALUES ('1','Informática');
 INSERT INTO curso(codigo, nome) VALUES ('2','Mecânica');
 INSERT INTO curso(codigo, nome) VALUES ('3','Edificações');
@@ -10,6 +11,7 @@ INSERT INTO funcionario(matricula,cargo,nome) VALUES ('123456789','Coordenador',
 INSERT INTO login(login,senha,matrFun) VALUES ('admin',MD5('admin'),'123456789');
 INSERT INTO aluno(matricula,nome,saldo,turma,curso,foto,beneficiario) VALUES ('201511440767', 'Bolsonaro 2018',0,'IINF31B','1',null,0);
 INSERT INTO venda(matrAl, matrFun, valor, tipo, dt) VALUES ('201511440260', '123456789', 20.0, 0, '2017-10-02');
+INSERT INTO funcionario(matricula,cargo,nome) VALUES ('666','Presidente da República','Satã');
 SELECT * FROM aluno WHERE nome LIKE '%a%';
 SELECT * FROM funcionario;
 select * from venda;
@@ -19,6 +21,5 @@ select * from ficha;
 select * from curso;
 
 update aluno set saldo=0 where matricula = 201511440260;
-insert into ficha(valor) values(5);
+
 select * from aluno where matricula = 201511440767;
-INSERT INTO funcionario(matricula,cargo,nome) VALUES ('666','Presidente da República','Satã');

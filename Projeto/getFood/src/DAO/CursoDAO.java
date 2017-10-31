@@ -34,6 +34,10 @@ public class CursoDAO {
             rs = pstm.executeQuery();
             rs.first();
             curso = new Curso(rs.getString("codigo"), rs.getString("nome"));
+            //[DEV]
+            System.out.println(curso.getNome());
+            System.out.println(curso.getCodigo());
+            
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();

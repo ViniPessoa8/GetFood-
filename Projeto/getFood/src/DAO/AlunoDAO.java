@@ -6,11 +6,12 @@
 package DAO;
 
 import Classes.Aluno;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import Classes.FotoUtil;
+import java.io.*;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,10 +27,20 @@ public class AlunoDAO {
     private ArrayList<Aluno> listaAlunos;
     private boolean retorno;
     private TurmaDAO turmaDAO;
+    //Imagem do aluno
+    private InputStream input;
+    private FileInputStream inputImagem;
+    private ByteArrayOutputStream outImagem;
+    private File arquivo;
+    private FotoUtil fotoUtil;
 
     public AlunoDAO() {
         con = new ConnectionFactory().getConnection();
-
+        inputImagem = null;
+        input = null;
+        outImagem = null;
+        arquivo = null;
+        fotoUtil = new FotoUtil();
     }
 
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
@@ -37,7 +48,10 @@ public class AlunoDAO {
      */
     public Boolean addAluno(Aluno aluno) {
         retorno = false;
-        sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario) VALUES (?,?,?,?,?,?)";
+        sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario) VALUES (?,?,?,?,?,?,?)";
+        String path = "C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\bin";
+        //processamento da foto do aluno
+        inputImagem = fotoUtil.byteToInputStream(aluno.getFoto(), path);
 
         try {
             pstm = con.prepareStatement(sql);
@@ -47,6 +61,7 @@ public class AlunoDAO {
             pstm.setString(4, aluno.getTurma());
             pstm.setInt(5, aluno.getCurso());
             pstm.setInt(6, aluno.getBeneficiario());
+            pstm.setBinaryStream(7, inputImagem);
             pstm.execute();
 
             retorno = true;
@@ -57,17 +72,14 @@ public class AlunoDAO {
         return retorno;
     }
 
-    public ArrayList<Aluno> getListaAlunos()
-    {
+    public ArrayList<Aluno> getListaAlunos() {
         listaAlunos = new ArrayList();
         sql = "SELECT * FROM aluno;";
-        try 
-        {
+        try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
 
-            while (rs.next()) 
-            {
+            while (rs.next()) {
                 aluno = new Aluno();
 
                 aluno.setCurso(rs.getInt("curso"));
@@ -87,9 +99,9 @@ public class AlunoDAO {
 
         return listaAlunos;
     }
+
     public Aluno getAlunoMatricula(String matricula) {
 
-        
         aluno = null;
 
         //Requisição de dados do banco de dados
@@ -103,13 +115,29 @@ public class AlunoDAO {
             if (rs.first()) {
                 //Instancia o aluno
                 aluno = new Aluno();
-                
+
+                //Tratamento da foto do aluno
+                input = rs.getBinaryStream("foto");
+                ByteArrayOutputStream out = new ByteArrayOutputStream();
+                byte[] rb = new byte[1024];
+                int ch = 0;
+                try {
+                    while ((ch = input.read(rb)) != -1) {
+                        out.write(rb, 0, ch);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                byte[] b = out.toByteArray();
+
                 //Atribuição de valores ao objeto 'aluno'
                 aluno.setCurso(rs.getInt("curso"));
+                System.out.println(rs.getInt("curso"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setTurma(rs.getString("turma"));
                 aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setFoto(b);
             }
             pstm.close();
         } catch (SQLException e) {
@@ -358,5 +386,41 @@ public class AlunoDAO {
         }
 
         return result;
+    }
+
+    public boolean setFotoAluno(byte[] bytes, Aluno al) {
+        retorno = false;
+        String path = "C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\bin";
+        InputStream input = fotoUtil.byteToInputStream(bytes, sql);
+        sql = "UPDATE aluno SET foto = ? WHERE matricula = ?";
+
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setBinaryStream(1, input);
+            pstm.executeUpdate();
+            retorno = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return retorno;
+    }
+
+    public boolean setFotoAluno(InputStream input, Aluno al) {
+        retorno = false;
+
+        sql = "UPDATE aluno SET foto = ? WHERE matricula = ?";
+
+        try {
+            pstm = con.prepareStatement(sql);
+            pstm.setBinaryStream(1, input);
+            pstm.setString(2, al.getMatricula());
+            pstm.executeUpdate();
+            retorno = true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return retorno;
     }
 }
