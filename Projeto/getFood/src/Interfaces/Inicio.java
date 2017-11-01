@@ -408,7 +408,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         dispose();
-        VendaCreditus newVenda = new VendaCreditus(funLog);
+        //VendaCreditus newVenda = new VendaCreditus(funLog);   MUDEI PQ A INTERFACE VendaCreditus AINDA N TA PRONTA
+        Venda newVenda = new Venda(funLog);
         newVenda.setVisible(true);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 

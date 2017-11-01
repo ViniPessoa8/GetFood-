@@ -101,7 +101,7 @@ public class AlunoDAO {
     }
 
     public Aluno getAlunoMatricula(String matricula) {
-
+        byte[] b = null;
         aluno = null;
 
         //Requisição de dados do banco de dados
@@ -117,22 +117,23 @@ public class AlunoDAO {
                 aluno = new Aluno();
 
                 //Tratamento da foto do aluno
-                input = rs.getBinaryStream("foto");
-                ByteArrayOutputStream out = new ByteArrayOutputStream();
-                byte[] rb = new byte[1024];
-                int ch = 0;
-                try {
-                    while ((ch = input.read(rb)) != -1) {
-                        out.write(rb, 0, ch);
+                if (rs.getBinaryStream("foto") != null) {
+                    input = rs.getBinaryStream("foto");
+                    ByteArrayOutputStream out = new ByteArrayOutputStream();
+                    byte[] rb = new byte[1024];
+                    int ch = 0;
+                    try {
+                        while ((ch = input.read(rb)) != -1) {
+                            out.write(rb, 0, ch);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    b = out.toByteArray();
                 }
-                byte[] b = out.toByteArray();
 
                 //Atribuição de valores ao objeto 'aluno'
                 aluno.setCurso(rs.getInt("curso"));
-                System.out.println(rs.getInt("curso"));
                 aluno.setMatricula(rs.getString("matricula"));
                 aluno.setNome(rs.getString("nome"));
                 aluno.setTurma(rs.getString("turma"));
@@ -145,7 +146,11 @@ public class AlunoDAO {
         }
 
         //[Desnvolvedor] Imprime no console as informações do usuário
-        System.out.println(aluno.toString());
+        if (aluno != null) {
+            System.out.println(aluno.toString());
+        } else {
+            return null;
+        }
 
         return aluno;
     }
