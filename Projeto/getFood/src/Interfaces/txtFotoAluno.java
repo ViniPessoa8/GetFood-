@@ -17,9 +17,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Vinicius
  */
 public class txtFotoAluno extends javax.swing.JFrame {
+
     File[] fotos;
     AlunoDAO alunoDao;
     FotoUtil fu;
+
     /**
      * Creates new form txtFotoAluno
      */
@@ -72,7 +74,6 @@ public class txtFotoAluno extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
-        
 
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagem", "jpg");
         int retornoFileChooser;
@@ -89,23 +90,22 @@ public class txtFotoAluno extends javax.swing.JFrame {
         if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
             fotos = fileChooser.getSelectedFiles();
             //PADRÃO: F#(matricula)
-            for(File file : fotos){
+            for (File file : fotos) {
                 String nomeArquivo = file.getName();
                 String[] dadosNome = nomeArquivo.split("#");
-                
+
                 //tirando o ".jpg" no fim da string
                 String[] split = dadosNome[1].split(".jpg");
                 dadosNome[1] = split[0];
-                
-                if(dadosNome[0].equals("F")){
+
+                if (dadosNome[0].equals("F")) {
                     alunoDao.setFotoAluno(fu.fileToInputStream(file), alunoDao.getAlunoMatricula(dadosNome[1]));
                 }
-                
+
             }
-            
+
             JOptionPane.showMessageDialog(null, "Fotos cadastradas com sucesso");
-            
-            
+
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
