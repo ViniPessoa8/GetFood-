@@ -1,4 +1,5 @@
 package Interfaces;
+
 import Classes.Aluno;
 import Classes.Curso;
 import Classes.Funcionario;
@@ -34,14 +35,13 @@ public class CDTurma extends javax.swing.JFrame {
     CursoDAO cursoDao;
     String[] dadosTurma;
     FileReader arqReader;
-    ArrayList<Turma>listaTurma;
+    ArrayList<Turma> listaTurma;
 
     private CDTurma() {
         initComponents();
     }
-    
-    public CDTurma(Funcionario fun) 
-    {
+
+    public CDTurma(Funcionario fun) {
         initComponents();
         listaTurma = new ArrayList();
         cursoDao = new CursoDAO();
@@ -63,8 +63,8 @@ public class CDTurma extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtNomeArquivo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblEscolherArquivo = new javax.swing.JLabel();
+        lblSalvar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -113,17 +113,17 @@ public class CDTurma extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(53, 72, 112));
         jLabel4.setText("Selecione um arquivo:");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_EscolherArquivo.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblEscolherArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_EscolherArquivo.png"))); // NOI18N
+        lblEscolherArquivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                lblEscolherArquivoMouseClicked(evt);
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Salvar.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Salvar.png"))); // NOI18N
+        lblSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                lblSalvarMouseClicked(evt);
             }
         });
 
@@ -145,9 +145,9 @@ public class CDTurma extends javax.swing.JFrame {
                         .addGap(178, 178, 178))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(jLabel3)
+                        .addComponent(lblSalvar)
                         .addGap(60, 60, 60))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,8 +185,8 @@ public class CDTurma extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(142, 142, 142)
                 .addComponent(btnVoltar)
                 .addGap(63, 63, 63))
@@ -466,7 +466,7 @@ public class CDTurma extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDCurso c=new CDCurso(funLog);
+        CDCurso c = new CDCurso(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -478,7 +478,7 @@ public class CDTurma extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma c=new CDTurma(funLog);
+        CDTurma c = new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -488,7 +488,7 @@ public class CDTurma extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void lblEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEscolherArquivoMouseClicked
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -504,24 +504,19 @@ public class CDTurma extends javax.swing.JFrame {
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
 
-        if (retornoFileChooser == JFileChooser.APPROVE_OPTION)
-        {
+        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
-            try
-            {
+            try {
                 arqReader = new FileReader(arq);
                 txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e)
-            {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
 
-            try
-            {
+            try {
                 String linha = txt.readLine();
-                while (linha != null)
-                {
+                while (linha != null) {
                     String novaLinha = txtArea.getText() + linha + "\n";
                     txtArea.setText(novaLinha);
 
@@ -529,30 +524,32 @@ public class CDTurma extends javax.swing.JFrame {
 
                     turma = new Turma();
                     turma.setCodigo(dadosTurma[0]);
-                    turma.setCurso(""+cursoDao.getCodigoByNome(dadosTurma[1]));
+                    turma.setCurso("" + cursoDao.getCodigoByNome(dadosTurma[1]));
                     listaTurma.add(turma);
                     linha = txt.readLine();
                 }
-            } catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_jLabel2MouseClicked
+    }//GEN-LAST:event_lblEscolherArquivoMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        for(Turma t : listaTurma)
-        {
-            turmaDao.addTurma(turma);
+    private void lblSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalvarMouseClicked
+        if (txt == null) {
+            JOptionPane.showMessageDialog(null, "Selecione um arquivo.","AVISO!",JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            for (Turma t : listaTurma) {
+                turmaDao.addTurma(turma);
+            }
+            int resposta = JOptionPane.showConfirmDialog(null, "Turmas cadastradas com sucesso. Deseja voltar ao menu principal ?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                dispose();
+                Inicio newInicio = new Inicio(funLog);
+                newInicio.setVisible(true);
+            }
         }
-        int resposta = JOptionPane.showConfirmDialog(null,"Turmas cadastradas com sucesso. Deseja voltar ao menu principal ?");
-        if(resposta == JOptionPane.YES_OPTION)
-        {
-            dispose();
-            Inicio newInicio = new Inicio(funLog);
-            newInicio.setVisible(true);
-        }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_lblSalvarMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -653,8 +650,6 @@ public class CDTurma extends javax.swing.JFrame {
     private javax.swing.JLabel btnVoltar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -686,6 +681,8 @@ public class CDTurma extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEscolherArquivo;
+    private javax.swing.JLabel lblSalvar;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
