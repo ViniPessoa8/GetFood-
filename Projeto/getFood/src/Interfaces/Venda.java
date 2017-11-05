@@ -39,6 +39,14 @@ public class Venda extends javax.swing.JFrame {
         this.funLog = fun;
     }
 
+    public void reset() {
+        lblVenda.setVisible(false);
+        cxDinheiro.setVisible(false);
+        cxBeneficio.setVisible(false);
+        btnExe.setVisible(false);
+        cxCredito.setVisible(false);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -464,13 +472,15 @@ public class Venda extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Um campo importante está vazio.");
         } else {
             double valor = ficha.getVal();
-            Aluno al = aluno.getAlunoMatricula(txtMatr.getText());
+            al = aluno.getAlunoMatricula(txtMatr.getText());
             if (al == null) {
                 JOptionPane.showMessageDialog(null, "Aluno não encontrado");
             } else {
+                txtMatr.setEnabled(false);
                 //foto aluno
-                txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
-                System.out.println(al.getFoto().toString());
+                if (al.getFoto() != null) {
+                    txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
+                }
                 //Dados aluno
                 PainelDados.setText("" + al.toString());
                 if (al.getSaldo() >= valor) {
@@ -482,44 +492,67 @@ public class Venda extends javax.swing.JFrame {
                 btnVerificar.setVisible(false);
                 //jLabel4.setVisible(true);
                 lblVenda.setVisible(true);
-                cxDinheiro.setVisible(true);
-                cxBeneficio.setVisible(true);
+
+                if (al.getBeneficiario() == 1) {
+                    cxBeneficio.setVisible(true);
+                } else {
+                    if (al.getSaldo() >= valor) {
+                        cxDinheiro.setVisible(true);
+                        cxCredito.setVisible(true);
+                    } else {
+                        cxDinheiro.setVisible(true);
+                    }
+
+                }
+
+                btnExe.setVisible(true);
             }
         }
     }//GEN-LAST:event_btnVerificarMouseClicked
 
     private void btnExeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExeMouseClicked
         //System.out.println("voce clicou nesta merda filha da puta");
-        if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.");
-        } else {
-            if (cxDinheiro.isSelected()) {
-                // System.out.println("vc vai comprar no money");
-                venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), 4);
-            } else if (cxCredito.isSelected()) {
-                venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), 1);
+        boolean resultado = false;
+        if (al != null) {
+            if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.");
             } else {
-                if (cxBeneficio.isSelected()) {
-                    ArrayList<Aluno> lista = aluno.getListaAlunosBeneficio(1);
-                    for (Aluno al : lista) {
-                        if (txtMatr.getText().equals(al.getMatricula())) {
-                            venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), 4);
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Esse aluno não é beneficiário.");
+                if (cxDinheiro.isSelected()) {
+                    // System.out.println("vc vai comprar no money");
+                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_DINHEIRO);
+                } else if (cxCredito.isSelected()) {
+                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_CREDITOS);
+                } else {
+                    if (cxBeneficio.isSelected()) {
+
+                        if (al != null) {
+                            if (al.getBeneficiario() == 1) {
+                                resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_BENEFICIO);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Aluno não é beneficiário", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
+
+                    }
+                }
+                if (!resultado) {
+                    JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda ?");
+                    if (resp == JOptionPane.YES_OPTION) {
+                        dispose();
+                        Venda newVenda = new Venda(funLog);
+                        newVenda.reset();
+                        newVenda.setVisible(true);
+                    } else {
+                        dispose();
+                        Inicio newInicio = new Inicio(funLog);
+                        newInicio.setVisible(true);
                     }
                 }
             }
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda ?");
-            if (resp == JOptionPane.YES_OPTION) {
-                dispose();
-                Venda newVenda = new Venda();
-                newVenda.setVisible(true);
-            } else {
-                dispose();
-                Inicio newInicio = new Inicio(funLog);
-                newInicio.setVisible(true);
-            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum aluno foi escolhido.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnExeMouseClicked
 

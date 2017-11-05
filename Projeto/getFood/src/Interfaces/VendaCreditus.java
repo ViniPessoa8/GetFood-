@@ -8,6 +8,7 @@ import Classes.Funcionario;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 
 public class VendaCreditus extends javax.swing.JFrame {
 
@@ -24,6 +25,8 @@ public class VendaCreditus extends javax.swing.JFrame {
         venda = new VendaDAO();
         initComponents();
         PainelDados.setEditable(false);
+        txtQuantia.setEditable(false);
+        txtQuantia.setEnabled(false);
     }
 
     public VendaCreditus(Funcionario fun) {
@@ -32,6 +35,9 @@ public class VendaCreditus extends javax.swing.JFrame {
         aluno = new AlunoDAO();
         venda = new VendaDAO();
         this.funLog = fun;
+        PainelDados.setEditable(false);
+        txtQuantia.setEditable(false);
+        txtQuantia.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -53,11 +59,11 @@ public class VendaCreditus extends javax.swing.JFrame {
         txtQuantia = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         PainelDados = new javax.swing.JTextPane();
-        PainelImagem = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         btnVoltar1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        txtFoto = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -122,19 +128,6 @@ public class VendaCreditus extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(PainelDados);
 
-        PainelImagem.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        javax.swing.GroupLayout PainelImagemLayout = new javax.swing.GroupLayout(PainelImagem);
-        PainelImagem.setLayout(PainelImagemLayout);
-        PainelImagemLayout.setHorizontalGroup(
-            PainelImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 207, Short.MAX_VALUE)
-        );
-        PainelImagemLayout.setVerticalGroup(
-            PainelImagemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 189, Short.MAX_VALUE)
-        );
-
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/LOGO_150px.png"))); // NOI18N
 
         btnVoltar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/backward-arrow.png"))); // NOI18N
@@ -163,13 +156,15 @@ public class VendaCreditus extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(204, 204, 204)
-                        .addComponent(jLabel8))
+                        .addComponent(jLabel8)
+                        .addGap(160, 160, 160)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(91, 91, 91)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -183,46 +178,43 @@ public class VendaCreditus extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addGap(18, 18, 18)
-                                    .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(460, 460, 460)
-                        .addComponent(jLabel4))
+                                    .addComponent(txtQuantia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(82, 82, 82)
+                        .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(417, 417, 417)
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnVoltar1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(23, 23, 23)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(PainelImagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel8))
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))
+                                .addGap(206, 206, 206)
+                                .addComponent(jLabel4))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
@@ -234,8 +226,7 @@ public class VendaCreditus extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(97, 97, 97)))
-                .addComponent(btnVoltar1)
+                        .addGap(179, 179, 179)))
                 .addGap(43, 43, 43))
         );
 
@@ -454,19 +445,27 @@ public class VendaCreditus extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar1MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        if(txtMatr.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null,"O campo de matrícula está vazio.");
+        if (!txtMatr.getText().equals("")) {
+            System.out.println(txtMatr.getText());
+            if (aluno.getAlunoMatricula(txtMatr.getText()) == null) {
+                al = null;
+            } else {
+                al = aluno.getAlunoMatricula(txtMatr.getText());
+            }
+            if (al != null) {
+                
+                txtMatr.setEnabled(false);
+                PainelDados.setText(al.toString());
+                txtQuantia.setEnabled(true);
+                txtQuantia.setEditable(true);
+                if (al.getFoto() != null) {
+                    txtFoto.setIcon(new ImageIcon(al.getFoto()));
+                }
+                txtQuantia.setEditable(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Aluno não encontrado, verifique a matrícula", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            }
         }
-        System.out.println(txtMatr.getText());
-        if(aluno.getAlunoMatricula(txtMatr.getText()) == null)
-        {
-            JOptionPane.showMessageDialog(null, "Aluno não encontrado");
-        } else 
-        {
-            al = aluno.getAlunoMatricula(txtMatr.getText());
-        }
-        PainelDados.setText(al.toString());
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
@@ -476,28 +475,24 @@ public class VendaCreditus extends javax.swing.JFrame {
 
         /*
         Venda de créditos, tipo 3.
-        */
+         */
         System.out.println("Funcionario = " + funLog.toString());
         resultado = venda.efetuarVenda(al.getMatricula(), funLog.getMatricula(), quantia, new Date(data.getTimeInMillis()), 3);
 
-        if (resultado) 
-        {
+        if (resultado) {
             JOptionPane.showMessageDialog(null, "Venda realizada com sucesso.");
             int resp = JOptionPane.showConfirmDialog(null, "Deseja realizar outra venda?");
-            if (resp == JOptionPane.YES_OPTION) 
-            {
+            if (resp == JOptionPane.YES_OPTION) {
                 dispose();
                 VendaCreditus newVenda = new VendaCreditus(funLog);
                 newVenda.setVisible(true);
-            } else 
-            {
+            } else {
                 dispose();
                 Inicio newInicio = new Inicio(funLog);
                 newInicio.setVisible(true);
             }
 
-        } else 
-        {
+        } else {
             JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada");
         }
     }//GEN-LAST:event_jLabel6MouseClicked
@@ -570,7 +565,7 @@ public class VendaCreditus extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        CDCurso c=new CDCurso(funLog);
+        CDCurso c = new CDCurso(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -582,7 +577,7 @@ public class VendaCreditus extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        CDTurma c=new CDTurma(funLog);
+        CDTurma c = new CDTurma(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -603,7 +598,6 @@ public class VendaCreditus extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane PainelDados;
-    private javax.swing.JPanel PainelImagem;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JLabel btnVoltar1;
     private javax.swing.JLabel jLabel1;
@@ -643,6 +637,7 @@ public class VendaCreditus extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel txtFoto;
     private javax.swing.JTextField txtMatr;
     private javax.swing.JTextField txtQuantia;
     // End of variables declaration//GEN-END:variables
