@@ -9,16 +9,22 @@ public class Aluno {
     private String nome = "", turma = "", matricula = "";
     private int beneficiario = 0, curso = 0;
     private CursoDAO cursoDao;
+    private byte[] foto;
     
-    //fota ?
-    public void Aluno(String matricula, float saldo, String nome, String turma, int curso, int beneficiario) {
+    
+    public Aluno(String matricula, float saldo, String nome, String turma, int curso, int beneficiario, byte[] foto) {
         this.matricula = matricula;
         this.saldo = saldo;
         this.nome = nome;
         this.turma = turma;
         this.curso = curso;
         this.beneficiario = beneficiario;
-        
+        this.foto = foto;
+        cursoDao = new CursoDAO();
+    }
+    
+    public Aluno(){
+        cursoDao = new CursoDAO();
     }
 
     public String getMatricula() {
@@ -67,6 +73,14 @@ public class Aluno {
 
     public void setBeneficiario(int beneficiario) {
         this.beneficiario = beneficiario;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
 
     

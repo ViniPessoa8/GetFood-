@@ -19,7 +19,7 @@ create table aluno(
 	matricula varchar(14) not null,
 	primary key(matricula),
 	foto longblob,
-	saldo float,
+	saldo double,
 	nome varchar(50) not null,
     beneficiario int(1) not null,
 	curso varchar(25) not null,

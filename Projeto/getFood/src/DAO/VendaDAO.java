@@ -13,6 +13,11 @@ import java.util.Date;
 
 public class VendaDAO {
 
+    public final int VENDA_FICHA_CREDITOS = 1;
+    public final int VENDA_FICHA_DINHEIRO = 2;
+    public final int VENDA_CREDITOS = 3;
+    public final int VENDA_FICHA_BENEFICIO = 4;
+    
     private PreparedStatement pstm;
     private ResultSet rs;
     private String sql;
@@ -41,6 +46,7 @@ public class VendaDAO {
         Verifica se o usuário tem créditos suficientes para a venda ou 
         se ele está comprando no dinheiro
          */
+        //VENDA_FICHA_BENEFICIO
         if (tipo == 4) {
             sql = "insert into venda(matrAl,matrFun,valor,dt,tipo) values (?,?,?,?,?);";
             try {
@@ -56,8 +62,8 @@ public class VendaDAO {
                 e.printStackTrace();
             }
         } else {
-
-            if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 2) {
+            //VENDA_FICHA_DINHEIRO
+            if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == VENDA_FICHA_DINHEIRO) {
 
                 sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
 
@@ -73,7 +79,8 @@ public class VendaDAO {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-            } else if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == 1) {
+            //VENDA_FICHA_CREDITOS
+            } else if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == VENDA_FICHA_CREDITOS) {
                 atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) - valor);
 
                 sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
@@ -90,6 +97,7 @@ public class VendaDAO {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+            //VENDA_CREDITOS
             } else if (tipo == 3) {
                 System.out.println("Chegou aqui uhul");
                 atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) + valor);
@@ -128,7 +136,7 @@ public class VendaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
+        System.out.println("ATUALIZOU O SALDO "+valor);
         return retorno;
     }
 

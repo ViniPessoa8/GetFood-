@@ -63,15 +63,13 @@ public class LoginDAO {
         sql = "SELECT * FROM login WHERE login = ? AND senha = MD5('" + senha + "')";
         try {
             pstm = con.prepareStatement(sql);
-            System.out.println("eae men");
             pstm.setString(1, login);
             // pstm.setString(2, senha);
             rs = pstm.executeQuery();
             if (rs.first()) {
-                System.out.println("ACHOU");
                 retorno = true;
             } else {
-                System.out.println("vc falhou como smp se fode ai");
+                retorno = false;
             }
             pstm.close();
         } catch (SQLException e) {
