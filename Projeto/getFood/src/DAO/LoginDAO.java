@@ -40,11 +40,10 @@ public class LoginDAO {
 
     public boolean validaLogin(String login) {
         retorno = false;
-        sql = "SELECT * FROM login WHERE login = '" + login + "';";
+        sql = "SELECT * FROM login WHERE login = ?";
         try {
             pstm = con.prepareStatement(sql);
-            System.out.println("passou");
-            //pstm.setString(1, login);
+            pstm.setString(1, login);
             rs = pstm.executeQuery();
             if (rs.first()) {
                 retorno = true;

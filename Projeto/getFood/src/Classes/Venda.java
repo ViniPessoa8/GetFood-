@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Venda {
 
+    private int codigo;
     private String matAluno, matFun;
     private Double valor;
     private Date data;
@@ -15,6 +16,7 @@ public class Venda {
         this.valor = valor;
         this.data = data;
         this.tipo = tipo;
+        codigo = 0;
     }
 
     public Venda() {
@@ -23,9 +25,16 @@ public class Venda {
         tipo = 0;
         valor = null;
         data = null;
+        codigo = 0;
     }
-    
-    
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
 
     public String getMatAluno() {
         return matAluno;
@@ -65,6 +74,11 @@ public class Venda {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" + "matAluno=" + matAluno + ", matFun=" + matFun + ", valor=" + valor + ", data=" + data + ", tipo=" + tipo + '}';
     }
 
     

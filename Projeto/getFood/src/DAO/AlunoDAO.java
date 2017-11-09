@@ -7,8 +7,10 @@ package DAO;
 
 import Classes.Aluno;
 import Classes.FotoUtil;
+import Classes.Venda;
 import java.io.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,6 +35,8 @@ public class AlunoDAO {
     private ByteArrayOutputStream outImagem;
     private File arquivo;
     private FotoUtil fotoUtil;
+    private VendaDAO vendaDao;
+    private SimpleDateFormat sdf;
 
     public AlunoDAO() {
         con = new ConnectionFactory().getConnection();
@@ -41,6 +45,8 @@ public class AlunoDAO {
         outImagem = null;
         arquivo = null;
         fotoUtil = new FotoUtil();
+        vendaDao = new VendaDAO();
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
     }
 
     /*Retorna uma instancia de Aluno com os valores preenchidos de acordo com a 
@@ -427,5 +433,47 @@ public class AlunoDAO {
         }
 
         return retorno;
+    }
+
+    //Retorna um ArrayLista com o histórico de todas as vendas do aluno
+    public ArrayList consultarHistorico(String matricula) {
+        ArrayList<String> historico = new ArrayList();
+        ArrayList<Venda> vendas = vendaDao.getListaVendaAluno(matricula);
+
+        if (!vendas.isEmpty()) {
+
+            //Formatação dp tipo
+            for (Venda venda : vendas) {
+                String tipo = "";
+                switch (venda.getTipo()) {
+                    case 1:
+                        tipo = "Ficha_Crédito";
+                        break;
+                    case 2:
+                        tipo = "Ficha_Dinheiro";
+                        break;
+                    case 3:
+                        tipo = "Crédito";
+                        break;
+                    case 4:
+                        tipo = "Ficha_Benefício";
+                        break;
+                    default:
+                        tipo = "ERRO!";
+                        break;
+                }
+
+                //Formatação da data
+                String data = sdf.format(venda.getData());
+
+                String linha = venda.getCodigo() + ", R$" + venda.getValor() + ", " + tipo + ", " + data;
+                historico.add(linha);
+            }
+
+        } else {
+            historico = null;
+        }
+
+        return historico;
     }
 }

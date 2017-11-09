@@ -39,6 +39,7 @@ public class VendaDAO {
     tipo = 4 -> Venda de uma ficha para um aluno beneficiário
      */
     public boolean efetuarVenda(String matAluno, String matFun, double valor, Date data, int tipo) {
+        System.out.println("[VENDA]");
         boolean retorno = false;
         FichaDAO fichaDAO = new FichaDAO();
 
@@ -47,7 +48,8 @@ public class VendaDAO {
         se ele está comprando no dinheiro
          */
         //VENDA_FICHA_BENEFICIO
-        if (tipo == 4) {
+        if (tipo == VENDA_FICHA_BENEFICIO) {
+            System.out.println("VENDA_FICHA_BENEFICIO");
             sql = "insert into venda(matrAl,matrFun,valor,dt,tipo) values (?,?,?,?,?);";
             try {
                 pstm = con.prepareStatement(sql);
@@ -61,10 +63,10 @@ public class VendaDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else {
+        } else{
             //VENDA_FICHA_DINHEIRO
-            if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == VENDA_FICHA_DINHEIRO) {
-
+            if (getSaldoAluno(matAluno) >= fichaDAO.getVal() && tipo == VENDA_FICHA_DINHEIRO) {
+                System.out.println("VENDA_FICHA_DINHEIRO");
                 sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
 
                 try {
@@ -80,7 +82,8 @@ public class VendaDAO {
                     e.printStackTrace();
                 }
             //VENDA_FICHA_CREDITOS
-            } else if (getSaldoAluno(matAluno) >= fichaDAO.getVal() || tipo == VENDA_FICHA_CREDITOS) {
+            } else if (getSaldoAluno(matAluno) >= fichaDAO.getVal() && tipo == VENDA_FICHA_CREDITOS) {
+                System.out.println("VENDA_FICHA_CREDITOS");
                 atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) - valor);
 
                 sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
@@ -98,8 +101,8 @@ public class VendaDAO {
                     e.printStackTrace();
                 }
             //VENDA_CREDITOS
-            } else if (tipo == 3) {
-                System.out.println("Chegou aqui uhul");
+            } else if (tipo == VENDA_CREDITOS) {
+                System.out.println("VENDA_CREDITOS");
                 atualizaSaldoAluno(matAluno, getSaldoAluno(matAluno) + valor);
                 sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
 
@@ -172,7 +175,7 @@ public class VendaDAO {
             while (rs.next()) {
                 venda = new Venda();
                 venda.setData(rs.getDate("dt"));
-                venda.setMatAluno(rs.getString("matAluno"));
+                venda.setMatAluno(rs.getString("matrAl"));
                 venda.setMatFun(rs.getString("matFun"));
                 venda.setValor(rs.getDouble("valor"));
                 venda.setTipo(rs.getInt("tipo"));
@@ -190,25 +193,25 @@ public class VendaDAO {
     public ArrayList<Venda> getListaVendaAluno(String matAluno) {
         ArrayList<Venda> lista = new ArrayList();
         Venda venda;
-        sql = "SELECT FROM venda WHERE matAluno = ?";
+        sql = "SELECT * FROM venda WHERE matrAl = ?";
 
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, matAluno);
             rs = pstm.executeQuery();
-            pstm.close();
+            
 
             while (rs.next()) {
                 venda = new Venda();
                 venda.setData(rs.getDate("dt"));
-                venda.setMatAluno(rs.getString("matAluno"));
-                venda.setMatFun(rs.getString("matFun"));
+                venda.setMatAluno(rs.getString("matrAl"));
+                venda.setMatFun(rs.getString("matrFun"));
                 venda.setValor(rs.getDouble("valor"));
                 venda.setTipo(rs.getInt("tipo"));
 
                 lista.add(venda);
             }
-
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -225,19 +228,19 @@ public class VendaDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, sql);
             rs = pstm.executeQuery();
-            pstm.close();
+            
 
             while (rs.next()) {
                 venda = new Venda();
                 venda.setData(rs.getDate("dt"));
-                venda.setMatAluno(rs.getString("matAluno"));
-                venda.setMatFun(rs.getString("matFun"));
+                venda.setMatAluno(rs.getString("matrAl"));
+                venda.setMatFun(rs.getString("matrFun"));
                 venda.setValor(rs.getDouble("valor"));
                 venda.setTipo(rs.getInt("tipo"));
 
                 lista.add(venda);
             }
-
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -264,19 +267,19 @@ public class VendaDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, sql);
             rs = pstm.executeQuery();
-            pstm.close();
+            
 
             while (rs.next()) {
                 venda = new Venda();
                 venda.setData(rs.getDate("dt"));
-                venda.setMatAluno(rs.getString("matAluno"));
-                venda.setMatFun(rs.getString("matFun"));
+                venda.setMatAluno(rs.getString("matrAl"));
+                venda.setMatFun(rs.getString("matrFun"));
                 venda.setValor(rs.getDouble("valor"));
                 venda.setTipo(rs.getInt("tipo"));
 
                 lista.add(venda);
             }
-
+            pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -289,8 +292,7 @@ public class VendaDAO {
         sql = "delete from venda;";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.execute();
-            result = true;
+            result = pstm.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }

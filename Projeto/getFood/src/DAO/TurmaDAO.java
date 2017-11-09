@@ -75,7 +75,6 @@ public class TurmaDAO {
 
             //Se houver resultado
             if (rs.first()) {
-                System.out.println(rs.getStatement());
                 retorno = true;
             }
 

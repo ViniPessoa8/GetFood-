@@ -109,7 +109,6 @@ public class FunDAO {
         Funcionario fun;
         sql = "SELECT * FROM funcionario WHERE nome LIKE '%"+nome+"%'";
         try {
-            System.out.println(sql);
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
             while (rs.next()) {
