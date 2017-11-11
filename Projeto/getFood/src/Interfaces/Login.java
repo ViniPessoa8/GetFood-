@@ -162,8 +162,8 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         if (login.isEmpty() || senha.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Um campo importante está vazio!");
         } else {
-            result = loginDAO.logar(txtLogin.getText(), senha);
-            funLog = loginDAO.getFuncionarioLogin(txtLogin.getText());
+            result = loginDAO.logar(login, senha);
+            funLog = loginDAO.getFuncionarioLogin(login);
             if (result) {
                 dispose();
                 Inicio i = new Inicio(funLog);

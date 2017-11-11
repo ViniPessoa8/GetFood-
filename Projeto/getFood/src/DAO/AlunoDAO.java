@@ -466,7 +466,7 @@ public class AlunoDAO {
                 //Formatação da data
                 String data = sdf.format(venda.getData());
 
-                String linha = venda.getCodigo() + ", R$" + venda.getValor() + ", " + tipo + ", " + data;
+                String linha = venda.getCodigo() + "#" + venda.getValor() + "#" + tipo + "#" + data;
                 historico.add(linha);
             }
 

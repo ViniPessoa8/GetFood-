@@ -501,9 +501,6 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         al = null;
-        txtMatr.setEditable(false);
-        btnVerificar.setVisible(false);
-        //jLabel4.setVisible(true);
         if (txtMatr.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Digite a matrícula do aluno.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -512,42 +509,46 @@ public class Venda_Ficha extends javax.swing.JFrame {
             if (al == null) {
                 JOptionPane.showMessageDialog(null, "Aluno não encontrado");
             } else {
-                txtMatr.setEnabled(false);
-                //foto aluno
-                if (al.getFoto() != null) {
-                    txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
-                }
-                //Dados aluno
-                PainelDados.setText("" + al.toString());
-                if (al.getSaldo() >= valor) {
-                    cxCredito.setVisible(true);
-                    cxCredito.setSelected(true);
+                if (venda.alunoPegouFicha(txtMatr.getText())) {
+                    JOptionPane.showMessageDialog(null, "Aluno já pegou ficha hoje.", "Aviso!", JOptionPane.WARNING_MESSAGE);
                 } else {
-                    cxCredito.setVisible(false);
-                    cxDinheiro.setSelected(true);
-                }
-                btnVerificar.setVisible(false);
-                lblVenda.setVisible(true);
-
-                if (al.getBeneficiario() == 1) {
-                    cxBeneficio.setVisible(true);
-                } else {
+                    txtMatr.setEnabled(false);
+                    //foto aluno
+                    if (al.getFoto() != null) {
+                        txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
+                    }
+                    //Dados aluno
+                    PainelDados.setText("" + al.toString());
                     if (al.getSaldo() >= valor) {
-                        cxDinheiro.setVisible(true);
                         cxCredito.setVisible(true);
+                        cxCredito.setSelected(true);
                     } else {
-                        cxDinheiro.setVisible(true);
+                        cxCredito.setVisible(false);
+                        cxDinheiro.setSelected(true);
+                    }
+                    btnVerificar.setVisible(false);
+                    lblVenda.setVisible(true);
+
+                    if (al.getBeneficiario() == 1) {
+                        cxBeneficio.setVisible(true);
+                    } else {
+                        if (al.getSaldo() >= valor) {
+                            cxDinheiro.setVisible(true);
+                            cxCredito.setVisible(true);
+                        } else {
+                            cxDinheiro.setVisible(true);
+                        }
+
                     }
 
+                    btnExe.setVisible(true);
                 }
-
-                btnExe.setVisible(true);
             }
         }
     }//GEN-LAST:event_btnVerificarMouseClicked
 
     private void btnExeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExeMouseClicked
-        
+
         boolean resultado = false;
         if (al != null) {
             if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
@@ -697,7 +698,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -709,7 +710,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
