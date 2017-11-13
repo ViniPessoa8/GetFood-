@@ -447,14 +447,10 @@ public class Venda_Creditos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltar1MouseClicked
 
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
+        al = null;
         if (!txtMatr.getText().equals("")) {
-            if (aluno.getAlunoMatricula(txtMatr.getText()) == null) {
-                al = null;
-            } else {
+            if (aluno.getAlunoMatricula(txtMatr.getText()) != null) {
                 al = aluno.getAlunoMatricula(txtMatr.getText());
-            }
-            if (al != null) {
-                
                 txtMatr.setEnabled(false);
                 PainelDados.setText(al.toString());
                 txtQuantia.setEnabled(true);
@@ -466,6 +462,8 @@ public class Venda_Creditos extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "Aluno não encontrado, verifique a matrícula", "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite algo no campo 'Matrícula'.", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnVerificarMouseClicked
 
@@ -586,7 +584,7 @@ public class Venda_Creditos extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -598,7 +596,7 @@ public class Venda_Creditos extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 

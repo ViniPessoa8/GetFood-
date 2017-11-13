@@ -501,17 +501,13 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         al = null;
-        if (txtMatr.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Digite a matrícula do aluno.", "ERRO!", JOptionPane.ERROR_MESSAGE);
-        } else {
+        if (!txtMatr.getText().equals("")) {
             double valor = ficha.getVal();
             al = aluno.getAlunoMatricula(txtMatr.getText());
             if (al == null) {
                 JOptionPane.showMessageDialog(null, "Aluno não encontrado");
             } else {
-                if (venda.alunoPegouFicha(txtMatr.getText())) {
-                    JOptionPane.showMessageDialog(null, "Aluno já pegou ficha hoje.", "Aviso!", JOptionPane.WARNING_MESSAGE);
-                } else {
+                if (!venda.alunoPegouFicha(txtMatr.getText())) {
                     txtMatr.setEnabled(false);
                     //foto aluno
                     if (al.getFoto() != null) {
@@ -542,8 +538,12 @@ public class Venda_Ficha extends javax.swing.JFrame {
                     }
 
                     btnExe.setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Aluno já pegou ficha hoje.", "Aviso!", JOptionPane.WARNING_MESSAGE);
                 }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Digite a matrícula do aluno.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnVerificarMouseClicked
 

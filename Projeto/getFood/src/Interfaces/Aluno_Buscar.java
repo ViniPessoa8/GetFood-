@@ -6,6 +6,7 @@ import DAO.AlunoDAO;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Aluno_Buscar extends javax.swing.JFrame {
 
@@ -21,7 +22,7 @@ public class Aluno_Buscar extends javax.swing.JFrame {
         alunoDao = new AlunoDAO();
         lista = new ArrayList();
         painelDados.setEditable(false);
-        
+
     }
 
     private Aluno_Buscar() {
@@ -397,12 +398,17 @@ public class Aluno_Buscar extends javax.swing.JFrame {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String matricula;
-        
+
         matricula = txtBusca.getText();
-        aluno = alunoDao.getAlunoMatricula(matricula);
-        
-        txtFoto.setIcon(new ImageIcon(aluno.getFoto()));
-        painelDados.setText(aluno.toString());
+        if (matricula.length() != 12) {
+            JOptionPane.showMessageDialog(null, "Matrícula incompleta.", "Erro!", JOptionPane.ERROR_MESSAGE);
+            txtFoto.setIcon(null);
+            painelDados.setText("");
+        } else {
+            aluno = alunoDao.getAlunoMatricula(matricula);
+            txtFoto.setIcon(new ImageIcon(aluno.getFoto()));
+            painelDados.setText(aluno.toString());
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
@@ -499,7 +505,7 @@ public class Aluno_Buscar extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -511,7 +517,7 @@ public class Aluno_Buscar extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
