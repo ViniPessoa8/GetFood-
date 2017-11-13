@@ -27,6 +27,7 @@ public class Venda_Creditos extends javax.swing.JFrame {
         PainelDados.setEditable(false);
         txtQuantia.setEditable(false);
         txtQuantia.setEnabled(false);
+        btnVender.setVisible(false);
     }
 
     public Venda_Creditos(Funcionario fun) {
@@ -38,6 +39,7 @@ public class Venda_Creditos extends javax.swing.JFrame {
         PainelDados.setEditable(false);
         txtQuantia.setEditable(false);
         txtQuantia.setEnabled(false);
+        btnVender.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -449,18 +451,26 @@ public class Venda_Creditos extends javax.swing.JFrame {
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         al = null;
         if (!txtMatr.getText().equals("")) {
-            if (aluno.getAlunoMatricula(txtMatr.getText()) != null) {
-                al = aluno.getAlunoMatricula(txtMatr.getText());
-                txtMatr.setEnabled(false);
-                PainelDados.setText(al.toString());
-                txtQuantia.setEnabled(true);
-                txtQuantia.setEditable(true);
-                if (al.getFoto() != null) {
-                    txtFoto.setIcon(new ImageIcon(al.getFoto()));
+            if (txtMatr.getText().length() == 12) {
+                if (aluno.getAlunoMatricula(txtMatr.getText()) != null) {
+                    al = aluno.getAlunoMatricula(txtMatr.getText());
+                    btnVerificar.setVisible(false);
+                    txtMatr.setEnabled(false);
+                    PainelDados.setText(al.toString());
+                    txtQuantia.setEnabled(true);
+                    txtQuantia.setEditable(true);
+                    btnVender.setVisible(true);
+                    if (al.getFoto() != null) {
+                        txtFoto.setIcon(new ImageIcon(al.getFoto()));
+                    } else {
+                        txtFoto.setText("(Aluno sem foto)");
+                    }
+                    txtQuantia.setEditable(true);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Aluno não encontrado, verifique a matrícula", "ERRO!", JOptionPane.ERROR_MESSAGE);
                 }
-                txtQuantia.setEditable(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Aluno não encontrado, verifique a matrícula", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Digite uma matrícula válida (12 dígitos)", "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Digite algo no campo 'Matrícula'.", "Erro!", JOptionPane.ERROR_MESSAGE);

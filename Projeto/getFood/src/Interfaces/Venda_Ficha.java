@@ -29,7 +29,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
     public Venda_Ficha(Funcionario fun) {
         initComponents();
         this.funLog = fun;
-        btnExe.setVisible(false);
+        btnVender.setVisible(false);
         aluno = new AlunoDAO();
         ficha = new FichaDAO();
         venda = new VendaDAO();
@@ -39,14 +39,16 @@ public class Venda_Ficha extends javax.swing.JFrame {
         cxDinheiro.setVisible(false);
         PainelDados.setEnabled(true);
         PainelDados.setEditable(false);
+        btnVender.setVisible(false);
     }
 
     public void reset() {
         lblVenda.setVisible(false);
         cxDinheiro.setVisible(false);
         cxBeneficio.setVisible(false);
-        btnExe.setVisible(false);
+        btnVender.setVisible(false);
         cxCredito.setVisible(false);
+        btnVender.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -73,7 +75,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
         btnVerificar = new javax.swing.JLabel();
-        btnExe = new javax.swing.JLabel();
+        btnVender = new javax.swing.JLabel();
         txtFotoAluno = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -165,10 +167,10 @@ public class Venda_Ficha extends javax.swing.JFrame {
             }
         });
 
-        btnExe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Vender.png"))); // NOI18N
-        btnExe.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Vender.png"))); // NOI18N
+        btnVender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnExeMouseClicked(evt);
+                btnVenderMouseClicked(evt);
             }
         });
 
@@ -211,7 +213,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
                                 .addGap(93, 93, 93)
                                 .addComponent(btnVerificar)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnExe)))
+                                .addComponent(btnVender)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -239,7 +241,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
                                 .addGap(41, 41, 41)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnExe, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(162, 162, 162)
@@ -502,52 +504,57 @@ public class Venda_Ficha extends javax.swing.JFrame {
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         al = null;
         if (!txtMatr.getText().equals("")) {
-            double valor = ficha.getVal();
-            al = aluno.getAlunoMatricula(txtMatr.getText());
-            if (al == null) {
-                JOptionPane.showMessageDialog(null, "Aluno não encontrado");
-            } else {
-                if (!venda.alunoPegouFicha(txtMatr.getText())) {
-                    txtMatr.setEnabled(false);
-                    //foto aluno
-                    if (al.getFoto() != null) {
-                        txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
-                    }
-                    //Dados aluno
-                    PainelDados.setText("" + al.toString());
-                    if (al.getSaldo() >= valor) {
-                        cxCredito.setVisible(true);
-                        cxCredito.setSelected(true);
-                    } else {
-                        cxCredito.setVisible(false);
-                        cxDinheiro.setSelected(true);
-                    }
-                    btnVerificar.setVisible(false);
-                    lblVenda.setVisible(true);
-
-                    if (al.getBeneficiario() == 1) {
-                        cxBeneficio.setVisible(true);
-                    } else {
+            if (txtMatr.getText().length() == 12) {
+                double valor = ficha.getVal();
+                al = aluno.getAlunoMatricula(txtMatr.getText());
+                if (al == null) {
+                    if (!venda.alunoPegouFicha(txtMatr.getText())) {
+                        txtMatr.setEnabled(false);
+                        //foto aluno
+                        if (al.getFoto() != null) {
+                            txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
+                        }
+                        //Dados aluno
+                        PainelDados.setText("" + al.toString());
                         if (al.getSaldo() >= valor) {
-                            cxDinheiro.setVisible(true);
                             cxCredito.setVisible(true);
+                            cxCredito.setSelected(true);
                         } else {
-                            cxDinheiro.setVisible(true);
+                            cxCredito.setVisible(false);
+                            cxDinheiro.setSelected(true);
+                        }
+                        btnVerificar.setVisible(false);
+                        lblVenda.setVisible(true);
+                        btnVender.setVisible(true);
+
+                        if (al.getBeneficiario() == 1) {
+                            cxBeneficio.setVisible(true);
+                        } else {
+                            if (al.getSaldo() >= valor) {
+                                cxDinheiro.setVisible(true);
+                                cxCredito.setVisible(true);
+                            } else {
+                                cxDinheiro.setVisible(true);
+                            }
+
                         }
 
+                        btnVender.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Aluno já pegou ficha hoje.", "Aviso!", JOptionPane.WARNING_MESSAGE);
                     }
-
-                    btnExe.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Aluno já pegou ficha hoje.", "Aviso!", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Aluno não encontrado");
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Digite uma matrícula válida (12 dígitos).", "ERRO!", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Digite a matrícula do aluno.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnVerificarMouseClicked
 
-    private void btnExeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExeMouseClicked
+    private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
 
         boolean resultado = false;
         if (al != null) {
@@ -590,7 +597,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum aluno foi escolhido.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnExeMouseClicked
+    }//GEN-LAST:event_btnVenderMouseClicked
 
     private void cxBeneficioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxBeneficioActionPerformed
         if (cxBeneficio.isSelected() && (cxDinheiro.isSelected() || cxCredito.isSelected())) {
@@ -794,7 +801,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane PainelDados;
-    private javax.swing.JLabel btnExe;
+    private javax.swing.JLabel btnVender;
     private javax.swing.JLabel btnVerificar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.ButtonGroup buttonGroup1;

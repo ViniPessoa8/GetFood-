@@ -392,7 +392,7 @@
                                   <EmptySpace min="93" pref="93" max="-2" attributes="0"/>
                                   <Component id="btnVerificar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="btnExe" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnVender" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace pref="97" max="32767" attributes="0"/>
@@ -430,7 +430,7 @@
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="btnVerificar" min="-2" pref="46" max="-2" attributes="0"/>
-                                      <Component id="btnExe" min="-2" pref="42" max="-2" attributes="0"/>
+                                      <Component id="btnVender" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -587,14 +587,14 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVerificarMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="btnExe">
+        <Component class="javax.swing.JLabel" name="btnVender">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagens/btn_Vender.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnExeMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnVenderMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="txtFotoAluno">
