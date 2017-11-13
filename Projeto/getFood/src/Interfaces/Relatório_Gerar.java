@@ -8,10 +8,10 @@ package Interfaces;
 import Classes.DateUtil;
 import Classes.Funcionario;
 import Classes.Relatorio;
+import DAO.RelatorioDAO;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
-import java.util.Calendar;
 import java.util.Date;
 import net.sf.jasperreports.engine.JRException;
 
@@ -24,6 +24,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
     private Date dataInicial, dataFinal;
     private Relatorio relatorio;
     private Funcionario funLog;
+    private RelatorioDAO relatorioDao;
     /**
      * Creates new form GerarRelatorio
      */
@@ -31,6 +32,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         initComponents();
         relatorio = new Relatorio();
         funLog = fun;
+        relatorioDao = new RelatorioDAO();
     }
     
     private Relatório_Gerar(){
@@ -657,7 +659,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         }
         
         try {
-            relatorio.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+            relatorioDao.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
         } catch (JRException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

@@ -51,7 +51,9 @@ FROM
 					<textElement textAlignment="Left">
 						<font size="14" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Vendas realizadas no período de]]></text>
+					<text><![CDATA[Vendas realizadas no período de ![CDATA[dataInicial]] à ![CDATA[dataFinal]]
+                                            
+]]></text>
 				</staticText>
 			</frame>
 		</band>
