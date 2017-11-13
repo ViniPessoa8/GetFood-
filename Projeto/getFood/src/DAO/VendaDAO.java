@@ -313,11 +313,12 @@ public class VendaDAO {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, data);
             pstm.setString(2, matricula);
+            System.out.println(pstm.toString());
             rs = pstm.executeQuery();
-            if (rs != null) {
-                retorno = false;
-            } else {
+            if (rs.first()) {
                 retorno = true;
+            } else {
+                retorno = false;
             }
         } catch (SQLException e) {
             e.printStackTrace();
