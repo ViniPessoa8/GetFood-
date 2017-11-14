@@ -556,18 +556,10 @@ public class Venda_Ficha extends javax.swing.JFrame {
                     resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_DINHEIRO);
                 } else if (cxCredito.isSelected()) {
                     resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_CREDITOS);
-                } else {
-                    if (cxBeneficio.isSelected()) {
-
-                        if (al != null) {
-                            if (al.getBeneficiario() == 1) {
-                                resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_BENEFICIO);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Aluno não é beneficiário", "ERRO!", JOptionPane.ERROR_MESSAGE);
-                            }
-                        }
-
-                    }
+                } else if (cxBeneficio.isSelected()) {
+                    if (al.getBeneficiario() == 1) {
+                        resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_BENEFICIO);
+                    } 
                 }
                 if (!resultado) {
                     JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
@@ -698,7 +690,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -710,7 +702,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 

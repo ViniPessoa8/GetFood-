@@ -655,7 +655,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
             }
 
             try {
-                relatorioDao.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+                relatorioDao.gerar("/home/vinicius/Documentos/GitHub/GetFood-/Projeto/getFood/src/Relatorio/Vendas.jrxml", beneficiario, dataInicial, dataFinal);
             } catch (JRException | ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }

@@ -432,6 +432,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEscolherArquivoActionPerformed
 
