@@ -80,12 +80,12 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         txtDataFinal = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtDataInicial = new javax.swing.JTextField();
-        btnSemana = new javax.swing.JButton();
-        btnGerarRelatorio = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cbBeneficiarios = new javax.swing.JCheckBox();
         txtLogo = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
+        btnGerarRelatorio = new javax.swing.JLabel();
+        btnEstaSemana = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu16 = new javax.swing.JMenu();
         jMenuItem38 = new javax.swing.JMenuItem();
@@ -323,6 +323,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(53, 72, 112));
         jLabel2.setText("Data Final:");
 
         txtDataInicial.addActionListener(new java.awt.event.ActionListener() {
@@ -331,22 +332,10 @@ public class Relatório_Gerar extends javax.swing.JFrame {
             }
         });
 
-        btnSemana.setText("Esta Semana");
-        btnSemana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSemanaActionPerformed(evt);
-            }
-        });
-
-        btnGerarRelatorio.setText("Gerar Relatório");
-        btnGerarRelatorio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGerarRelatorioActionPerformed(evt);
-            }
-        });
-
+        jLabel1.setForeground(new java.awt.Color(53, 72, 112));
         jLabel1.setText("Data Inicial:");
 
+        cbBeneficiarios.setForeground(new java.awt.Color(53, 72, 112));
         cbBeneficiarios.setText("Beneficiarios");
         cbBeneficiarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -364,61 +353,74 @@ public class Relatório_Gerar extends javax.swing.JFrame {
             }
         });
 
+        btnGerarRelatorio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_GerarRelatório.png"))); // NOI18N
+        btnGerarRelatorio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGerarRelatorioMouseClicked(evt);
+            }
+        });
+
+        btnEstaSemana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_EstaSemana.png"))); // NOI18N
+        btnEstaSemana.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEstaSemanaMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnVoltar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(226, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(37, 37, 37))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(btnVoltar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbBeneficiarios)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtDataInicial)
                                 .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cbBeneficiarios)
                             .addComponent(txtLogo, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSemana))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnGerarRelatorio)))
-                .addGap(201, 201, 201))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEstaSemana)))
+                .addGap(157, 157, 157))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(307, 307, 307)
+                .addComponent(btnGerarRelatorio)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(txtLogo)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnSemana))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbBeneficiarios)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDataInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnGerarRelatorio)
-                        .addGap(37, 37, 37))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVoltar)
-                        .addGap(18, 18, 18))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEstaSemana)
+                        .addGap(14, 14, 14)))
+                .addComponent(cbBeneficiarios)
+                .addGap(30, 30, 30)
+                .addComponent(btnGerarRelatorio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(btnVoltar)
+                .addGap(18, 18, 18))
         );
 
         jMenu16.setBorder(null);
@@ -644,38 +646,6 @@ public class Relatório_Gerar extends javax.swing.JFrame {
     private void txtDataInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDataInicialActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDataInicialActionPerformed
-
-    private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
-        int beneficiario = 0;
-        if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
-            JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (cbBeneficiarios.isSelected()) {
-                beneficiario = 1;
-            }
-
-            try {
-                relatorioDao.gerar("/home/vinicius/Documentos/GitHub/GetFood-/Projeto/getFood/src/Relatorio/Vendas.jrxml", beneficiario, dataInicial, dataFinal);
-            } catch (JRException | ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }//GEN-LAST:event_btnGerarRelatorioActionPerformed
-
-    private void btnSemanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSemanaActionPerformed
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        DateUtil du = new DateUtil();
-        Date data = new Date();
-        Date primeiro = du.resolvePrimeiroUltimoSemana(data, true);
-        Date ultimo = du.resolvePrimeiroUltimoSemana(data, false);
-        System.out.println(primeiro + " - " + ultimo);
-
-        txtDataInicial.setText(formato.format(primeiro));
-        txtDataFinal.setText(formato.format(ultimo));
-
-        dataInicial = primeiro;
-        dataFinal = ultimo;
-    }//GEN-LAST:event_btnSemanaActionPerformed
 
     private void cbBeneficiariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbBeneficiariosActionPerformed
         // TODO add your handling code here:
@@ -907,6 +877,38 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu22ActionPerformed
 
+    private void btnGerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGerarRelatorioMouseClicked
+        int beneficiario = 0;
+        if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (cbBeneficiarios.isSelected()) {
+                beneficiario = 1;
+            }
+
+            try {
+                relatorioDao.gerar("/home/vinicius/Documentos/GitHub/GetFood-/Projeto/getFood/src/Relatorio/Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+            } catch (JRException | ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btnGerarRelatorioMouseClicked
+
+    private void btnEstaSemanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstaSemanaMouseClicked
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        DateUtil du = new DateUtil();
+        Date data = new Date();
+        Date primeiro = du.resolvePrimeiroUltimoSemana(data, true);
+        Date ultimo = du.resolvePrimeiroUltimoSemana(data, false);
+        System.out.println(primeiro + " - " + ultimo);
+
+        txtDataInicial.setText(formato.format(primeiro));
+        txtDataFinal.setText(formato.format(ultimo));
+
+        dataInicial = primeiro;
+        dataFinal = ultimo;
+    }//GEN-LAST:event_btnEstaSemanaMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -944,8 +946,8 @@ public class Relatório_Gerar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGerarRelatorio;
-    private javax.swing.JButton btnSemana;
+    private javax.swing.JLabel btnEstaSemana;
+    private javax.swing.JLabel btnGerarRelatorio;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JCheckBox cbBeneficiarios;
     private javax.swing.JLabel jLabel1;

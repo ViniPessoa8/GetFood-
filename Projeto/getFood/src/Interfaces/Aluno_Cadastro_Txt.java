@@ -61,11 +61,11 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        btnEscolherArquivo = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
         txtNomeArquivo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
+        btnEscolherArquivo = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -99,23 +99,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtArea);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(53, 72, 112));
         jLabel1.setText("Selecione um arquivo:");
-
-        btnEscolherArquivo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEscolherArquivo.setText("Escolher Arquivo");
-        btnEscolherArquivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEscolherArquivoActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
@@ -124,6 +109,20 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnVoltarMouseClicked(evt);
+            }
+        });
+
+        btnEscolherArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_EscolherArquivo.png"))); // NOI18N
+        btnEscolherArquivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherArquivoMouseClicked(evt);
+            }
+        });
+
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
             }
         });
 
@@ -336,24 +335,25 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(252, 252, 252)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(btnEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(252, 252, 252)
+                                .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(btnVoltar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(btnVoltar)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEscolherArquivo)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvar)
+                        .addGap(92, 92, 92)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -370,79 +370,17 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEscolherArquivo)
+                    .addComponent(btnSalvar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addGap(20, 20, 20))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEscolherArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherArquivoActionPerformed
-        //VARI�VEIS
-        JFileChooser fileChooser = new JFileChooser();
-        File arq;
-
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
-        int retornoFileChooser;
-
-        //Configura��o do JFileChooser
-        fileChooser.setDialogTitle("Escolher Arquivo...");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setFileFilter(filtro);
-
-        //Abre a janela JFileChooser e guarda a resposta na vari�vel 'retornoFileChooser'
-        retornoFileChooser = fileChooser.showOpenDialog(this);
-
-        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
-            arq = fileChooser.getSelectedFile();
-            txtNomeArquivo.setText(arq.getName());
-            try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                String linha = txt.readLine();
-                while (linha != null) {
-                    String novaLinha = txtArea.getText() + linha + "\n";
-                    txtArea.setText(novaLinha);
-
-                    dadosAluno = linha.split("#");
-
-                    aluno = new Aluno();
-                    aluno.setMatricula(dadosAluno[0]);
-                    aluno.setNome(dadosAluno[1]);
-                    aluno.setCurso(cursoDao.getCodigoByNome(dadosAluno[2]));
-                    aluno.setTurma(dadosAluno[3]);
-                    aluno.setSaldo(0);
-                    aluno.setBeneficiario(0);
-                    System.out.println(aluno.toString());
-
-                    listaAluno.add(aluno);
-
-                    linha = txt.readLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnEscolherArquivoActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        for (Aluno al : listaAluno) {
-            alunoDao.addAluno(al);
-        }
-        JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
-    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         dispose();
@@ -562,6 +500,68 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        for (Aluno al : listaAluno) {
+            alunoDao.addAluno(al);
+        }
+        JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+        //VARI�VEIS
+        JFileChooser fileChooser = new JFileChooser();
+        File arq;
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
+        int retornoFileChooser;
+
+        //Configura��o do JFileChooser
+        fileChooser.setDialogTitle("Escolher Arquivo...");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setFileFilter(filtro);
+
+        //Abre a janela JFileChooser e guarda a resposta na vari�vel 'retornoFileChooser'
+        retornoFileChooser = fileChooser.showOpenDialog(this);
+
+        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
+            arq = fileChooser.getSelectedFile();
+            txtNomeArquivo.setText(arq.getName());
+            try {
+                arqReader = new FileReader(arq);
+                txt = new BufferedReader(arqReader);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String linha = txt.readLine();
+                while (linha != null) {
+                    String novaLinha = txtArea.getText() + linha + "\n";
+                    txtArea.setText(novaLinha);
+
+                    dadosAluno = linha.split("#");
+
+                    aluno = new Aluno();
+                    aluno.setMatricula(dadosAluno[0]);
+                    aluno.setNome(dadosAluno[1]);
+                    aluno.setCurso(cursoDao.getCodigoByNome(dadosAluno[2]));
+                    aluno.setTurma(dadosAluno[3]);
+                    aluno.setSaldo(0);
+                    aluno.setBeneficiario(0);
+                    System.out.println(aluno.toString());
+
+                    listaAluno.add(aluno);
+
+                    linha = txt.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -599,8 +599,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEscolherArquivo;
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel btnEscolherArquivo;
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

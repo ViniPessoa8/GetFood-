@@ -35,10 +35,10 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
     /**
      * Creates new form txtBeneficio
      */
-    public Aluno_Cadastro_Beneficiarios_Txt(){
-        
+    public Aluno_Cadastro_Beneficiarios_Txt() {
+
     }
-    
+
     public Aluno_Cadastro_Beneficiarios_Txt(Funcionario fun) {
         initComponents();
         alunoDao = new AlunoDAO();
@@ -61,10 +61,10 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
         txtArea = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnEscolherArquivo = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
         btnVoltar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        btnEscolherArquivo = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -94,6 +94,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(53, 72, 112));
         jLabel1.setText("Selecione um arquivo:");
 
         txtNomeArquivo.addActionListener(new java.awt.event.ActionListener() {
@@ -106,25 +107,11 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
         txtArea.setRows(5);
         jScrollPane1.setViewportView(txtArea);
 
+        jLabel3.setForeground(new java.awt.Color(53, 72, 112));
         jLabel3.setText("Certique-se que os dados estejam na seguinte ordem: matrícula, nome,");
 
+        jLabel4.setForeground(new java.awt.Color(53, 72, 112));
         jLabel4.setText("curso e turma. E que estejam separados por um #");
-
-        btnEscolherArquivo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnEscolherArquivo.setText("Escolher Arquivo");
-        btnEscolherArquivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEscolherArquivoActionPerformed(evt);
-            }
-        });
-
-        btnSalvar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
-            }
-        });
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar.setToolTipText("Voltar");
@@ -135,6 +122,20 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
         });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
+
+        btnEscolherArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_EscolherArquivo.png"))); // NOI18N
+        btnEscolherArquivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherArquivoMouseClicked(evt);
+            }
+        });
+
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         jMenu2.setBorder(null);
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
@@ -349,8 +350,13 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
                         .addComponent(btnVoltar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(262, 262, 262)
-                        .addComponent(jLabel2)))
-                .addContainerGap(509, Short.MAX_VALUE))
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(btnEscolherArquivo)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSalvar)))
+                .addContainerGap(453, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -361,12 +367,8 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
                             .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel4)
-                                .addComponent(btnEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(120, 120, 120))
+                            .addComponent(jLabel4)
+                            .addGap(231, 231, 231))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(57, 57, 57)))
@@ -378,7 +380,11 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEscolherArquivo, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(79, 79, 79)
                 .addComponent(btnVoltar)
                 .addGap(15, 15, 15))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,74 +399,13 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel4)
-                            .addGap(76, 76, 76)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel4))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(62, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEscolherArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscolherArquivoActionPerformed
-        //VARI�VEIS
-        JFileChooser fileChooser = new JFileChooser();
-        File arq;
-
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
-        int retornoFileChooser;
-
-        //Configura��o do JFileChooser
-        fileChooser.setDialogTitle("Escolher Arquivo...");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setFileFilter(filtro);
-
-        //Abre a janela JFileChooser e guarda a resposta na vari�vel 'retornoFileChooser'
-        retornoFileChooser = fileChooser.showOpenDialog(this);
-
-        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
-            arq = fileChooser.getSelectedFile();
-            txtNomeArquivo.setText(arq.getName());
-            try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                String linha = txt.readLine();
-                while (linha != null) {
-                    String novaLinha = txtArea.getText() + linha + "\n";
-                    txtArea.setText(novaLinha);
-
-                    dadosAluno = linha.split("#");
-
-                    //alunoDao.setBeneficiario(alunoDao.getAlunoMatricula(dadosAluno[0]));
-                    lista.add(alunoDao.getAlunoMatricula(dadosAluno[0]));
-
-                    linha = txt.readLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }//GEN-LAST:event_btnEscolherArquivoActionPerformed
-
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        for (Aluno al : lista) {
-            alunoDao.setBeneficiario(al);
-        }
-        JOptionPane.showMessageDialog(null, "Opera��o realizada com sucesso.");
-        Inicio inicio = new Inicio(funLog);
-        inicio.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtNomeArquivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeArquivoActionPerformed
         // TODO add your handling code here:
@@ -562,7 +507,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -574,7 +519,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -583,6 +528,62 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
+
+    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+        //VARI�VEIS
+        JFileChooser fileChooser = new JFileChooser();
+        File arq;
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
+        int retornoFileChooser;
+
+        //Configura��o do JFileChooser
+        fileChooser.setDialogTitle("Escolher Arquivo...");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setFileFilter(filtro);
+
+        //Abre a janela JFileChooser e guarda a resposta na vari�vel 'retornoFileChooser'
+        retornoFileChooser = fileChooser.showOpenDialog(this);
+
+        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
+            arq = fileChooser.getSelectedFile();
+            txtNomeArquivo.setText(arq.getName());
+            try {
+                arqReader = new FileReader(arq);
+                txt = new BufferedReader(arqReader);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String linha = txt.readLine();
+                while (linha != null) {
+                    String novaLinha = txtArea.getText() + linha + "\n";
+                    txtArea.setText(novaLinha);
+
+                    dadosAluno = linha.split("#");
+
+                    //alunoDao.setBeneficiario(alunoDao.getAlunoMatricula(dadosAluno[0]));
+                    lista.add(alunoDao.getAlunoMatricula(dadosAluno[0]));
+
+                    linha = txt.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        for (Aluno al : lista) {
+            alunoDao.setBeneficiario(al);
+        }
+        JOptionPane.showMessageDialog(null, "Opera��o realizada com sucesso.");
+        Inicio inicio = new Inicio(funLog);
+        inicio.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -635,8 +636,8 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEscolherArquivo;
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel btnEscolherArquivo;
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

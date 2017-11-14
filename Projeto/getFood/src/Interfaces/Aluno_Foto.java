@@ -33,9 +33,9 @@ public class Aluno_Foto extends javax.swing.JFrame {
         fu = new FotoUtil();
         this.funLog = funLog;
     }
-    
-    private Aluno_Foto(){
-        
+
+    private Aluno_Foto() {
+
     }
 
     /**
@@ -47,12 +47,12 @@ public class Aluno_Foto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArquivos = new javax.swing.JTextArea();
         btnVoltar2 = new javax.swing.JLabel();
-        btnSalvar = new javax.swing.JButton();
         txtIcone = new javax.swing.JLabel();
+        btnEscolherArquivo = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -81,13 +81,6 @@ public class Aluno_Foto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Escolher Arquivos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         txtArquivos.setColumns(20);
         txtArquivos.setRows(5);
         jScrollPane1.setViewportView(txtArquivos);
@@ -95,14 +88,21 @@ public class Aluno_Foto extends javax.swing.JFrame {
         btnVoltar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar2.setToolTipText("Voltar");
 
-        btnSalvar.setText("Salvar");
-        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalvarActionPerformed(evt);
+        txtIcone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
+
+        btnEscolherArquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_EscolherArquivo.png"))); // NOI18N
+        btnEscolherArquivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEscolherArquivoMouseClicked(evt);
             }
         });
 
-        txtIcone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSalvarMouseClicked(evt);
+            }
+        });
 
         jMenu2.setBorder(null);
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
@@ -312,16 +312,20 @@ public class Aluno_Foto extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnVoltar2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(219, 219, 219)
-                        .addComponent(txtIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalvar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(btnVoltar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 58, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(txtIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(151, 151, 151))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnEscolherArquivo)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSalvar)
+                                .addGap(49, 49, 49)))))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -331,59 +335,19 @@ public class Aluno_Foto extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1))
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(53, 53, 53)
                 .addComponent(txtIcone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEscolherArquivo)
                     .addComponent(btnSalvar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
                 .addComponent(btnVoltar2)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //VARIÁVEIS
-        JFileChooser fileChooser = new JFileChooser();
-
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagem", "jpg");
-        int retornoFileChooser;
-
-        //Configuração do JFileChooser
-        fileChooser.setDialogTitle("Escolher Arquivo...");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setFileFilter(filtro);
-        fileChooser.setMultiSelectionEnabled(true);
-
-        //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
-        retornoFileChooser = fileChooser.showOpenDialog(this);
-
-        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
-            txtArquivos.setText("");
-            fotos = fileChooser.getSelectedFiles();
-            //PADRÃO: F#(matricula)
-            for (File file : fotos) {
-                String nomeArquivo = file.getName();
-                txtArquivos.setText(txtArquivos.getText() + "\n" + nomeArquivo);
-                String[] dadosNome = nomeArquivo.split("#");
-
-                //tirando o ".jpg" no fim da string
-                String[] split = dadosNome[1].split(".jpg");
-                dadosNome[1] = split[0];
-
-                if (dadosNome[0].equals("F")) {
-                    alunoDao.setFotoAluno(fu.fileToInputStream(file), alunoDao.getAlunoMatricula(dadosNome[1]));
-                }
-
-            }
-
-            JOptionPane.showMessageDialog(null, "Fotos cadastradas com sucesso");
-
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -475,7 +439,7 @@ public class Aluno_Foto extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -487,7 +451,7 @@ public class Aluno_Foto extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -497,9 +461,66 @@ public class Aluno_Foto extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        
-    }//GEN-LAST:event_btnSalvarActionPerformed
+    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+        //VARIÁVEIS
+        JFileChooser fileChooser = new JFileChooser();
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Imagem", "jpg");
+        int retornoFileChooser;
+
+        //Configuração do JFileChooser
+        fileChooser.setDialogTitle("Escolher Arquivo...");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setFileFilter(filtro);
+        fileChooser.setMultiSelectionEnabled(true);
+
+        //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
+        retornoFileChooser = fileChooser.showOpenDialog(this);
+
+        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
+            txtArquivos.setText("");
+            fotos = fileChooser.getSelectedFiles();
+            //PADRÃO: F#(matricula)
+            for (File file : fotos) {
+                String nomeArquivo = file.getName();
+                txtArquivos.setText(txtArquivos.getText() + "\n" + nomeArquivo);
+
+            }
+
+            
+
+        }
+    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        boolean ok = true;
+        //verificação da formatação do nome dos arquivos
+        for (File file : fotos) {
+            String nomeArquivo = file.getName();
+            if (nomeArquivo.contains("F#") && nomeArquivo.length() == 14) {
+
+            } else {
+                JOptionPane.showMessageDialog(jMenu2, fu);
+                ok = false;
+                break;
+            }
+        }
+        if (ok) {
+            for (File file : fotos) {
+                String nomeArquivo = file.getName();
+                String[] dadosNome = nomeArquivo.split("#");
+
+                //tirando o ".jpg" no fim da string
+                String[] split = dadosNome[1].split(".jpg");
+                dadosNome[1] = split[0];
+
+                if (dadosNome[0].equals("F")) {
+                    alunoDao.setFotoAluno(fu.fileToInputStream(file), alunoDao.getAlunoMatricula(dadosNome[1]));
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Fotos cadastradas com sucesso");
+        }
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -538,9 +559,9 @@ public class Aluno_Foto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSalvar;
+    private javax.swing.JLabel btnEscolherArquivo;
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;

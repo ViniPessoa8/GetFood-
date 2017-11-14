@@ -132,6 +132,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
         tabHistorico.setRowSelectionAllowed(false);
         JScrollPane.setViewportView(tabHistorico);
 
+        jLabel1.setForeground(new java.awt.Color(53, 72, 112));
         jLabel1.setText("Matrícula:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

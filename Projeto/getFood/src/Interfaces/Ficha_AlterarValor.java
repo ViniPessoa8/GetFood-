@@ -72,6 +72,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(53, 72, 112));
         jLabel1.setText("Preço atual:");
 
         txtAtual.setEnabled(false);
@@ -83,6 +84,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(53, 72, 112));
         jLabel2.setText("Novo preço:");
 
         cxPreco.setPreferredSize(new java.awt.Dimension(6, 34));
