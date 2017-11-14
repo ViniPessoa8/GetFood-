@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 
 /**
@@ -25,18 +26,19 @@ public class Relatório_Gerar extends javax.swing.JFrame {
     private Relatorio relatorio;
     private Funcionario funLog;
     private RelatorioDAO relatorioDao;
+
     /**
      * Creates new form GerarRelatorio
      */
-    public Relatório_Gerar (Funcionario fun) {
+    public Relatório_Gerar(Funcionario fun) {
         initComponents();
         relatorio = new Relatorio();
         funLog = fun;
         relatorioDao = new RelatorioDAO();
     }
-    
-    private Relatório_Gerar(){
-        
+
+    private Relatório_Gerar() {
+
     }
 
     /**
@@ -645,14 +647,18 @@ public class Relatório_Gerar extends javax.swing.JFrame {
 
     private void btnGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarRelatorioActionPerformed
         int beneficiario = 0;
-        if (cbBeneficiarios.isSelected()) {
-            beneficiario = 1;
-        }
-        
-        try {
-            relatorioDao.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
-        } catch (JRException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+        if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (cbBeneficiarios.isSelected()) {
+                beneficiario = 1;
+            }
+
+            try {
+                relatorioDao.gerar("C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+            } catch (JRException | ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_btnGerarRelatorioActionPerformed
 
@@ -767,7 +773,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -779,7 +785,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -879,7 +885,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
 
     private void jMenuItem53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem53ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem53ActionPerformed
 
@@ -891,7 +897,7 @@ public class Relatório_Gerar extends javax.swing.JFrame {
 
     private void jMenuItem54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem54ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem54ActionPerformed
 
