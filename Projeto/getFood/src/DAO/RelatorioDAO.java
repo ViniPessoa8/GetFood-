@@ -9,9 +9,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -27,18 +28,43 @@ import net.sf.jasperreports.view.JasperViewer;
  * @author vinicius
  */
 public class RelatorioDAO {
-    private static final String driver = "com.mysql.jdbc.Driver";
 
-    public void Relatorio() {
+    private static final String driver = "com.mysql.jdbc.Driver";
+    
+    private ResultSet rs;
+
+    public RelatorioDAO() {
         
     }
 
-    public void gerar(String layout, int beneficio, Date dataInicial, Date dataFinal) throws JRException, SQLException, ClassNotFoundException {
-
+    public void gerar(String layout, int beneficio, Date inicial, Date fim) throws JRException, SQLException, ClassNotFoundException {
+        SimpleDateFormat sdf;
+        sdf = new SimpleDateFormat("dd/MM/yyyy");
         java.sql.Date dataIni = null, dataFim = null;
 
-        dataIni = new java.sql.Date(dataInicial.getTime());
-        dataFim = new java.sql.Date(dataFinal.getTime());
+        dataIni = new java.sql.Date(inicial.getTime());
+        dataFim = new java.sql.Date(fim.getTime());
+
+        //[DESENVOLVERDOR]
+        System.out.println(inicial.getTime());
+        System.out.println(
+                sdf.format(
+                        inicial));
+        String Beneficiarios = "";
+        if (beneficio == 1){
+            Beneficiarios = "Beneficiários";
+        } else {
+            Beneficiarios = "Não-Benefíciários";
+        }
+        String dataInicial, dataFinal;
+        dataInicial = sdf.format(inicial.getTime());
+        dataFinal = sdf.format(fim.getTime());
+
+        //HashMap com os parâmetros
+        Map map = new HashMap();
+        map.put("dataInicial", dataInicial);
+        map.put("dataFinal", dataFinal);
+        map.put("Beneficiarios", Beneficiarios);
 
         //gerando o jasper design
         JasperDesign desenho = JRXmlLoader.load(layout);
@@ -49,18 +75,26 @@ public class RelatorioDAO {
         //estabelece conexão
         Class.forName(driver);
         Connection con = new ConnectionFactory().getConnection();
-        String sql = "select * from venda, aluno as A where A.beneficiario = ? and (dt between ? and ?)";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setInt(1, beneficio);
-        stmt.setDate(2, dataIni);
-        stmt.setDate(3, dataFim);
-        ResultSet rs = stmt.executeQuery();
+        if (dataIni == dataFim) {
+            String sql = "select * from venda, aluno as A where A.beneficiario = ? and dt = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, beneficio);
+            stmt.setDate(2, dataIni);
+            rs = stmt.executeQuery();
+        } else {
+            String sql = "select * from venda, aluno as A where A.beneficiario = ? and (dt between ? and ?)";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, beneficio);
+            stmt.setDate(2, dataIni);
+            stmt.setDate(3, dataFim);
+            rs = stmt.executeQuery();
+        }
 
         //implementação da interface JRDataSource para DataSource ResultSet
         JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
 
         //executa o relatório
-        JasperPrint impressao = JasperFillManager.fillReport(relatorio, new HashMap(), jrRS);
+        JasperPrint impressao = JasperFillManager.fillReport(relatorio, map, jrRS);
 
         //exibe o resultado
         JasperViewer viewer = new JasperViewer(impressao, true);

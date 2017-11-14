@@ -90,7 +90,6 @@ public class Curso_Cadastro extends javax.swing.JFrame {
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
@@ -346,21 +345,13 @@ public class Curso_Cadastro extends javax.swing.JFrame {
         jMenu6.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        jMenuItem2.setText("Semanal");
+        jMenuItem2.setText("Gerar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
             }
         });
         jMenu6.add(jMenuItem2);
-
-        jMenuItem3.setText("Mensal");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem3);
 
         jMenuBar1.add(jMenu6);
 
@@ -558,6 +549,12 @@ public class Curso_Cadastro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        dispose();
+        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
         Funcionario_Cadastro newCD = new Funcionario_Cadastro(funLog);
@@ -582,10 +579,6 @@ public class Curso_Cadastro extends javax.swing.JFrame {
         gerarRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
         Curso_Cadastro c=new Curso_Cadastro(funLog);
@@ -609,12 +602,6 @@ public class Curso_Cadastro extends javax.swing.JFrame {
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
-
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
-        consulta.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -743,7 +730,6 @@ public class Curso_Cadastro extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

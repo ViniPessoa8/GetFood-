@@ -84,32 +84,31 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         cbBeneficiarios = new javax.swing.JCheckBox();
         txtLogo = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
-        jMenuItem22 = new javax.swing.JMenuItem();
-        jMenu11 = new javax.swing.JMenu();
-        jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
-        jMenuItem25 = new javax.swing.JMenuItem();
-        jMenuItem26 = new javax.swing.JMenuItem();
-        jMenuItem27 = new javax.swing.JMenuItem();
-        jMenuItem28 = new javax.swing.JMenuItem();
-        jMenuItem29 = new javax.swing.JMenuItem();
-        jMenu12 = new javax.swing.JMenu();
-        jMenuItem30 = new javax.swing.JMenuItem();
-        jMenuItem31 = new javax.swing.JMenuItem();
-        jMenuItem32 = new javax.swing.JMenuItem();
-        jMenuItem33 = new javax.swing.JMenuItem();
-        jMenu13 = new javax.swing.JMenu();
-        jMenuItem34 = new javax.swing.JMenuItem();
-        jMenuItem35 = new javax.swing.JMenuItem();
-        jMenu14 = new javax.swing.JMenu();
-        jMenuItem36 = new javax.swing.JMenuItem();
-        jMenu15 = new javax.swing.JMenu();
-        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu16 = new javax.swing.JMenu();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
+        jMenu17 = new javax.swing.JMenu();
+        jMenuItem40 = new javax.swing.JMenuItem();
+        jMenu18 = new javax.swing.JMenu();
+        jMenuItem41 = new javax.swing.JMenuItem();
+        jMenuItem42 = new javax.swing.JMenuItem();
+        jMenuItem43 = new javax.swing.JMenuItem();
+        jMenuItem44 = new javax.swing.JMenuItem();
+        jMenuItem45 = new javax.swing.JMenuItem();
+        jMenuItem46 = new javax.swing.JMenuItem();
+        jMenuItem47 = new javax.swing.JMenuItem();
+        jMenu19 = new javax.swing.JMenu();
+        jMenuItem48 = new javax.swing.JMenuItem();
+        jMenuItem49 = new javax.swing.JMenuItem();
+        jMenuItem50 = new javax.swing.JMenuItem();
+        jMenuItem51 = new javax.swing.JMenuItem();
+        jMenu20 = new javax.swing.JMenu();
+        jMenuItem52 = new javax.swing.JMenuItem();
+        jMenu21 = new javax.swing.JMenu();
+        jMenuItem53 = new javax.swing.JMenuItem();
+        jMenu22 = new javax.swing.JMenu();
+        jMenuItem54 = new javax.swing.JMenuItem();
 
         jMenu2.setBorder(null);
         jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
@@ -420,215 +419,207 @@ public class Relatório_Gerar extends javax.swing.JFrame {
                         .addGap(18, 18, 18))))
         );
 
-        jMenu9.setBorder(null);
-        jMenu9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
-        jMenu9.setText("Venda");
-        jMenu9.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu9.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jMenu9.setPreferredSize(new java.awt.Dimension(110, 25));
+        jMenu16.setBorder(null);
+        jMenu16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
+        jMenu16.setText("Venda");
+        jMenu16.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu16.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu16.setPreferredSize(new java.awt.Dimension(110, 25));
 
-        jMenuItem13.setText("Ticket");
-        jMenuItem13.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem38.setText("Ticket");
+        jMenuItem38.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMenuItem13MouseEntered(evt);
+                jMenuItem38MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jMenuItem13MouseExited(evt);
+                jMenuItem38MouseExited(evt);
             }
         });
-        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem38.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem13ActionPerformed(evt);
+                jMenuItem38ActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem13);
+        jMenu16.add(jMenuItem38);
 
-        jMenuItem19.setText("Créditos");
-        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem39.setText("Créditos");
+        jMenuItem39.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem19ActionPerformed(evt);
+                jMenuItem39ActionPerformed(evt);
             }
         });
-        jMenu9.add(jMenuItem19);
+        jMenu16.add(jMenuItem39);
 
-        jMenuBar2.add(jMenu9);
+        jMenuBar3.add(jMenu16);
 
-        jMenu10.setBorder(null);
-        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ticket.png"))); // NOI18N
-        jMenu10.setText("Ficha");
-        jMenu10.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu10.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu17.setBorder(null);
+        jMenu17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ticket.png"))); // NOI18N
+        jMenu17.setText("Ficha");
+        jMenu17.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu17.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        jMenuItem22.setText("Alterar");
-        jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem40.setText("Alterar");
+        jMenuItem40.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem22ActionPerformed(evt);
+                jMenuItem40ActionPerformed(evt);
             }
         });
-        jMenu10.add(jMenuItem22);
+        jMenu17.add(jMenuItem40);
 
-        jMenuBar2.add(jMenu10);
+        jMenuBar3.add(jMenu17);
 
-        jMenu11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon.png"))); // NOI18N
-        jMenu11.setText("Aluno");
-        jMenu11.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu11.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jMenu11.setPreferredSize(new java.awt.Dimension(110, 52));
+        jMenu18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon.png"))); // NOI18N
+        jMenu18.setText("Aluno");
+        jMenu18.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu18.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu18.setPreferredSize(new java.awt.Dimension(110, 52));
 
-        jMenuItem23.setText("Adicionar listagem");
-        jMenuItem23.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem41.setText("Adicionar listagem");
+        jMenuItem41.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem23ActionPerformed(evt);
+                jMenuItem41ActionPerformed(evt);
             }
         });
-        jMenu11.add(jMenuItem23);
+        jMenu18.add(jMenuItem41);
 
-        jMenuItem24.setText("Adicionar listagem beneficente");
-        jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem42.setText("Adicionar listagem beneficente");
+        jMenuItem42.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem24ActionPerformed(evt);
+                jMenuItem42ActionPerformed(evt);
             }
         });
-        jMenu11.add(jMenuItem24);
+        jMenu18.add(jMenuItem42);
 
-        jMenuItem25.setText("Alterar");
-        jMenu11.add(jMenuItem25);
+        jMenuItem43.setText("Alterar");
+        jMenu18.add(jMenuItem43);
 
-        jMenuItem26.setText("Resetar");
-        jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem44.setText("Resetar");
+        jMenuItem44.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem26ActionPerformed(evt);
+                jMenuItem44ActionPerformed(evt);
             }
         });
-        jMenu11.add(jMenuItem26);
+        jMenu18.add(jMenuItem44);
 
-        jMenuItem27.setText("Buscar Aluno");
-        jMenuItem27.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem45.setText("Buscar Aluno");
+        jMenuItem45.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem27ActionPerformed(evt);
+                jMenuItem45ActionPerformed(evt);
             }
         });
-        jMenu11.add(jMenuItem27);
+        jMenu18.add(jMenuItem45);
 
-        jMenuItem28.setText("Adicionar foto txt");
-        jMenuItem28.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem46.setText("Adicionar foto txt");
+        jMenuItem46.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem28ActionPerformed(evt);
+                jMenuItem46ActionPerformed(evt);
             }
         });
-        jMenu11.add(jMenuItem28);
+        jMenu18.add(jMenuItem46);
 
-        jMenuItem29.setText("Consultar Histórico");
-        jMenuItem29.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem47.setText("Consultar Histórico");
+        jMenuItem47.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem29ActionPerformed(evt);
+                jMenuItem47ActionPerformed(evt);
             }
         });
-        jMenu11.add(jMenuItem29);
+        jMenu18.add(jMenuItem47);
 
-        jMenuBar2.add(jMenu11);
+        jMenuBar3.add(jMenu18);
 
-        jMenu12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/users.png"))); // NOI18N
-        jMenu12.setText("Funcionário");
-        jMenu12.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu12.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jMenu12.addActionListener(new java.awt.event.ActionListener() {
+        jMenu19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/users.png"))); // NOI18N
+        jMenu19.setText("Funcionário");
+        jMenu19.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu19.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu12ActionPerformed(evt);
+                jMenu19ActionPerformed(evt);
             }
         });
 
-        jMenuItem30.setText("Cadastro");
-        jMenuItem30.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem48.setText("Cadastro");
+        jMenuItem48.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem30ActionPerformed(evt);
+                jMenuItem48ActionPerformed(evt);
             }
         });
-        jMenu12.add(jMenuItem30);
+        jMenu19.add(jMenuItem48);
 
-        jMenuItem31.setText("Alterar");
-        jMenu12.add(jMenuItem31);
+        jMenuItem49.setText("Alterar");
+        jMenu19.add(jMenuItem49);
 
-        jMenuItem32.setText("Desativar");
-        jMenu12.add(jMenuItem32);
+        jMenuItem50.setText("Desativar");
+        jMenu19.add(jMenuItem50);
 
-        jMenuItem33.setText("Criar login");
-        jMenuItem33.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem51.setText("Criar login");
+        jMenuItem51.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem33ActionPerformed(evt);
+                jMenuItem51ActionPerformed(evt);
             }
         });
-        jMenu12.add(jMenuItem33);
+        jMenu19.add(jMenuItem51);
 
-        jMenuBar2.add(jMenu12);
+        jMenuBar3.add(jMenu19);
 
-        jMenu13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/padnote.png"))); // NOI18N
-        jMenu13.setText("Relatório");
-        jMenu13.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu13.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/padnote.png"))); // NOI18N
+        jMenu20.setText("Relatório");
+        jMenu20.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu20.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        jMenuItem34.setText("Semanal");
-        jMenuItem34.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem52.setText("Gerar");
+        jMenuItem52.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem34ActionPerformed(evt);
+                jMenuItem52ActionPerformed(evt);
             }
         });
-        jMenu13.add(jMenuItem34);
+        jMenu20.add(jMenuItem52);
 
-        jMenuItem35.setText("Mensal");
-        jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar3.add(jMenu20);
+
+        jMenu21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/curso_1.png"))); // NOI18N
+        jMenu21.setText("Curso");
+        jMenu21.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu21.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem35ActionPerformed(evt);
+                jMenu21ActionPerformed(evt);
             }
         });
-        jMenu13.add(jMenuItem35);
 
-        jMenuBar2.add(jMenu13);
-
-        jMenu14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/curso_1.png"))); // NOI18N
-        jMenu14.setText("Curso");
-        jMenu14.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu14.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jMenu14.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem53.setText("Cadastrar");
+        jMenuItem53.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu14ActionPerformed(evt);
+                jMenuItem53ActionPerformed(evt);
             }
         });
+        jMenu21.add(jMenuItem53);
 
-        jMenuItem36.setText("Cadastrar");
-        jMenuItem36.addActionListener(new java.awt.event.ActionListener() {
+        jMenuBar3.add(jMenu21);
+
+        jMenu22.setBorder(null);
+        jMenu22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turma.png"))); // NOI18N
+        jMenu22.setText("Turma");
+        jMenu22.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu22.setMargin(new java.awt.Insets(10, 35, 10, 35));
+        jMenu22.setPreferredSize(new java.awt.Dimension(130, 33));
+        jMenu22.setRequestFocusEnabled(false);
+        jMenu22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem36ActionPerformed(evt);
+                jMenu22ActionPerformed(evt);
             }
         });
-        jMenu14.add(jMenuItem36);
 
-        jMenuBar2.add(jMenu14);
-
-        jMenu15.setBorder(null);
-        jMenu15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turma.png"))); // NOI18N
-        jMenu15.setText("Turma");
-        jMenu15.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu15.setMargin(new java.awt.Insets(10, 35, 10, 35));
-        jMenu15.setPreferredSize(new java.awt.Dimension(130, 33));
-        jMenu15.setRequestFocusEnabled(false);
-        jMenu15.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem54.setText("Cadastrar");
+        jMenuItem54.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu15ActionPerformed(evt);
+                jMenuItem54ActionPerformed(evt);
             }
         });
+        jMenu22.add(jMenuItem54);
 
-        jMenuItem37.setText("Cadastrar");
-        jMenuItem37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem37ActionPerformed(evt);
-            }
-        });
-        jMenu15.add(jMenuItem37);
+        jMenuBar3.add(jMenu22);
 
-        jMenuBar2.add(jMenu15);
-
-        setJMenuBar(jMenuBar2);
+        setJMenuBar(jMenuBar3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -798,119 +789,117 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void jMenuItem13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem13MouseEntered
+    private void jMenuItem38MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem38MouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem13MouseEntered
 
-    private void jMenuItem13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem13MouseExited
+    }//GEN-LAST:event_jMenuItem38MouseEntered
 
-    }//GEN-LAST:event_jMenuItem13MouseExited
+    private void jMenuItem38MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem38MouseExited
 
-    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    }//GEN-LAST:event_jMenuItem38MouseExited
+
+    private void jMenuItem38ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem38ActionPerformed
         dispose();
         Venda_Ficha newVenda = new Venda_Ficha(funLog);
         newVenda.setVisible(true);
-    }//GEN-LAST:event_jMenuItem13ActionPerformed
+    }//GEN-LAST:event_jMenuItem38ActionPerformed
 
-    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+    private void jMenuItem39ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem39ActionPerformed
         dispose();
         Venda_Creditos newVenda = new Venda_Creditos(funLog);
         newVenda.setVisible(true);
-    }//GEN-LAST:event_jMenuItem19ActionPerformed
+    }//GEN-LAST:event_jMenuItem39ActionPerformed
 
-    private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
+    private void jMenuItem40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem40ActionPerformed
         dispose();
         Ficha_AlterarValor alt = new Ficha_AlterarValor(funLog);
         alt.setVisible(true);
-    }//GEN-LAST:event_jMenuItem22ActionPerformed
+    }//GEN-LAST:event_jMenuItem40ActionPerformed
 
-    private void jMenuItem23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem23ActionPerformed
+    private void jMenuItem41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem41ActionPerformed
         dispose();
         Aluno_Cadastro newCD = new Aluno_Cadastro(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jMenuItem23ActionPerformed
+    }//GEN-LAST:event_jMenuItem41ActionPerformed
 
-    private void jMenuItem24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem24ActionPerformed
+    private void jMenuItem42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem42ActionPerformed
         dispose();
         Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
         newCD.setVisible(true);
-    }//GEN-LAST:event_jMenuItem24ActionPerformed
+    }//GEN-LAST:event_jMenuItem42ActionPerformed
 
-    private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
+    private void jMenuItem44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem44ActionPerformed
         dispose();
         Reset newReset = new Reset(funLog);
         newReset.setVisible(true);
-    }//GEN-LAST:event_jMenuItem26ActionPerformed
+    }//GEN-LAST:event_jMenuItem44ActionPerformed
 
-    private void jMenuItem27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem27ActionPerformed
+    private void jMenuItem45ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem45ActionPerformed
         dispose();
         Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
         newBuscar.setVisible(true);
-    }//GEN-LAST:event_jMenuItem27ActionPerformed
+    }//GEN-LAST:event_jMenuItem45ActionPerformed
 
-    private void jMenuItem28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem28ActionPerformed
+    private void jMenuItem46ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem46ActionPerformed
         dispose();
         Aluno_Foto newFoto = new Aluno_Foto(funLog);
         newFoto.setVisible(true);
-    }//GEN-LAST:event_jMenuItem28ActionPerformed
 
-    private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
-        dispose();
-        Funcionario_Cadastro newCD = new Funcionario_Cadastro(funLog);
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenuItem30ActionPerformed
+    }//GEN-LAST:event_jMenuItem46ActionPerformed
 
-    private void jMenuItem33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem33ActionPerformed
-        dispose();
-        Login_Cadastro newCD = new Login_Cadastro(funLog);
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenuItem33ActionPerformed
-
-    private void jMenu12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu12ActionPerformed
-        dispose();
-        Login_Cadastro newCD = new Login_Cadastro(funLog);
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenu12ActionPerformed
-
-    private void jMenuItem34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem34ActionPerformed
-        dispose();
-        Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
-        gerarRelatorio.setVisible(true);
-    }//GEN-LAST:event_jMenuItem34ActionPerformed
-
-    private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem35ActionPerformed
-
-    private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed
-        dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
-        c.setVisible(true);
-    }//GEN-LAST:event_jMenuItem36ActionPerformed
-
-    private void jMenu14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu14ActionPerformed
-        dispose();
-        Curso_Cadastro newCD = new Curso_Cadastro(funLog);
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenu14ActionPerformed
-
-    private void jMenuItem37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem37ActionPerformed
-        dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
-        c.setVisible(true);
-    }//GEN-LAST:event_jMenuItem37ActionPerformed
-
-    private void jMenu15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu15ActionPerformed
-        dispose();
-        Turma_Cadastro newCD = new Turma_Cadastro(funLog);
-        newCD.setVisible(true);
-    }//GEN-LAST:event_jMenu15ActionPerformed
-
-    private void jMenuItem29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem29ActionPerformed
+    private void jMenuItem47ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem47ActionPerformed
         dispose();
         Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
         consulta.setVisible(true);
-    }//GEN-LAST:event_jMenuItem29ActionPerformed
+    }//GEN-LAST:event_jMenuItem47ActionPerformed
+
+    private void jMenuItem48ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem48ActionPerformed
+        dispose();
+        Funcionario_Cadastro newCD = new Funcionario_Cadastro(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenuItem48ActionPerformed
+
+    private void jMenuItem51ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem51ActionPerformed
+        dispose();
+        Login_Cadastro newCD = new Login_Cadastro(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenuItem51ActionPerformed
+
+    private void jMenu19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu19ActionPerformed
+        dispose();
+        Login_Cadastro newCD = new Login_Cadastro(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenu19ActionPerformed
+
+    private void jMenuItem52ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem52ActionPerformed
+        dispose();
+        Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
+        gerarRelatorio.setVisible(true);
+    }//GEN-LAST:event_jMenuItem52ActionPerformed
+
+    private void jMenuItem53ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem53ActionPerformed
+        dispose();
+        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem53ActionPerformed
+
+    private void jMenu21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu21ActionPerformed
+        dispose();
+        Curso_Cadastro newCD = new Curso_Cadastro(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenu21ActionPerformed
+
+    private void jMenuItem54ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem54ActionPerformed
+        dispose();
+        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        c.setVisible(true);
+    }//GEN-LAST:event_jMenuItem54ActionPerformed
+
+    private void jMenu22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu22ActionPerformed
+        dispose();
+        Turma_Cadastro newCD = new Turma_Cadastro(funLog);
+        newCD.setVisible(true);
+    }//GEN-LAST:event_jMenu22ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -955,54 +944,53 @@ public class Relatório_Gerar extends javax.swing.JFrame {
     private javax.swing.JCheckBox cbBeneficiarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu11;
-    private javax.swing.JMenu jMenu12;
-    private javax.swing.JMenu jMenu13;
-    private javax.swing.JMenu jMenu14;
-    private javax.swing.JMenu jMenu15;
+    private javax.swing.JMenu jMenu16;
+    private javax.swing.JMenu jMenu17;
+    private javax.swing.JMenu jMenu18;
+    private javax.swing.JMenu jMenu19;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu20;
+    private javax.swing.JMenu jMenu21;
+    private javax.swing.JMenu jMenu22;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
-    private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
-    private javax.swing.JMenuItem jMenuItem26;
-    private javax.swing.JMenuItem jMenuItem27;
-    private javax.swing.JMenuItem jMenuItem28;
-    private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem30;
-    private javax.swing.JMenuItem jMenuItem31;
-    private javax.swing.JMenuItem jMenuItem32;
-    private javax.swing.JMenuItem jMenuItem33;
-    private javax.swing.JMenuItem jMenuItem34;
-    private javax.swing.JMenuItem jMenuItem35;
-    private javax.swing.JMenuItem jMenuItem36;
-    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem40;
+    private javax.swing.JMenuItem jMenuItem41;
+    private javax.swing.JMenuItem jMenuItem42;
+    private javax.swing.JMenuItem jMenuItem43;
+    private javax.swing.JMenuItem jMenuItem44;
+    private javax.swing.JMenuItem jMenuItem45;
+    private javax.swing.JMenuItem jMenuItem46;
+    private javax.swing.JMenuItem jMenuItem47;
+    private javax.swing.JMenuItem jMenuItem48;
+    private javax.swing.JMenuItem jMenuItem49;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem50;
+    private javax.swing.JMenuItem jMenuItem51;
+    private javax.swing.JMenuItem jMenuItem52;
+    private javax.swing.JMenuItem jMenuItem53;
+    private javax.swing.JMenuItem jMenuItem54;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

@@ -77,9 +77,9 @@ public class Venda_Ficha extends javax.swing.JFrame {
         btnVerificar = new javax.swing.JLabel();
         btnVender = new javax.swing.JLabel();
         txtFotoAluno = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuBar3 = new javax.swing.JMenuBar();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem19 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
@@ -98,7 +98,6 @@ public class Venda_Ficha extends javax.swing.JFrame {
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem14 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
@@ -267,28 +266,28 @@ public class Venda_Ficha extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
         );
 
-        jMenu2.setBorder(null);
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
-        jMenu2.setText("Venda");
-        jMenu2.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu2.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jMenu2.setPreferredSize(new java.awt.Dimension(110, 25));
+        jMenu10.setBorder(null);
+        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
+        jMenu10.setText("Venda");
+        jMenu10.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu10.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu10.setPreferredSize(new java.awt.Dimension(110, 25));
 
-        jMenuItem11.setText("Ticket");
-        jMenuItem11.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem19.setText("Ticket");
+        jMenuItem19.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMenuItem11MouseEntered(evt);
+                jMenuItem19MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jMenuItem11MouseExited(evt);
+                jMenuItem19MouseExited(evt);
             }
         });
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                jMenuItem19ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem11);
+        jMenu10.add(jMenuItem19);
 
         jMenuItem10.setText("Créditos");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -296,9 +295,9 @@ public class Venda_Ficha extends javax.swing.JFrame {
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem10);
+        jMenu10.add(jMenuItem10);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar3.add(jMenu10);
 
         jMenu3.setBorder(null);
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ticket.png"))); // NOI18N
@@ -314,7 +313,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem20);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar3.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon.png"))); // NOI18N
         jMenu4.setText("Aluno");
@@ -373,7 +372,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem18);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar3.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/users.png"))); // NOI18N
         jMenu5.setText("Funcionário");
@@ -407,14 +406,14 @@ public class Venda_Ficha extends javax.swing.JFrame {
         });
         jMenu5.add(jMenuItem21);
 
-        jMenuBar1.add(jMenu5);
+        jMenuBar3.add(jMenu5);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/padnote.png"))); // NOI18N
         jMenu6.setText("Relatório");
         jMenu6.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu6.setMargin(new java.awt.Insets(10, 10, 10, 10));
 
-        jMenuItem2.setText("Semanal");
+        jMenuItem2.setText("Gerar");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -422,15 +421,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         });
         jMenu6.add(jMenuItem2);
 
-        jMenuItem3.setText("Mensal");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu6.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu6);
+        jMenuBar3.add(jMenu6);
 
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/curso_1.png"))); // NOI18N
         jMenu7.setText("Curso");
@@ -450,7 +441,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         });
         jMenu7.add(jMenuItem14);
 
-        jMenuBar1.add(jMenu7);
+        jMenuBar3.add(jMenu7);
 
         jMenu8.setBorder(null);
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turma.png"))); // NOI18N
@@ -473,9 +464,9 @@ public class Venda_Ficha extends javax.swing.JFrame {
         });
         jMenu8.add(jMenuItem17);
 
-        jMenuBar1.add(jMenu8);
+        jMenuBar3.add(jMenu8);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -507,7 +498,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
             if (txtMatr.getText().length() == 12) {
                 double valor = ficha.getVal();
                 al = aluno.getAlunoMatricula(txtMatr.getText());
-                if (al == null) {
+                if (al != null) {
                     if (!venda.alunoPegouFicha(txtMatr.getText())) {
                         txtMatr.setEnabled(false);
                         //foto aluno
@@ -617,20 +608,20 @@ public class Venda_Ficha extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cxCreditoActionPerformed
 
-    private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
+    private void jMenuItem19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MouseEntered
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jMenuItem11MouseEntered
+    }//GEN-LAST:event_jMenuItem19MouseEntered
 
-    private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
+    private void jMenuItem19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MouseExited
 
-    }//GEN-LAST:event_jMenuItem11MouseExited
+    }//GEN-LAST:event_jMenuItem19MouseExited
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
         dispose();
         Venda_Ficha newVenda = new Venda_Ficha(funLog);
         newVenda.setVisible(true);
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    }//GEN-LAST:event_jMenuItem19ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         dispose();
@@ -675,6 +666,12 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
+    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
+        dispose();
+        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
+        consulta.setVisible(true);
+    }//GEN-LAST:event_jMenuItem18ActionPerformed
+
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         dispose();
         Funcionario_Cadastro newCD = new Funcionario_Cadastro(funLog);
@@ -699,13 +696,9 @@ public class Venda_Ficha extends javax.swing.JFrame {
         gerarRelatorio.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c = new Curso_Cadastro(funLog);
+        Curso_Cadastro c=new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -717,7 +710,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c = new Turma_Cadastro(funLog);
+        Turma_Cadastro c=new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -726,12 +719,6 @@ public class Venda_Ficha extends javax.swing.JFrame {
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
-
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
-        consulta.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -815,6 +802,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -822,20 +810,24 @@ public class Venda_Ficha extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;

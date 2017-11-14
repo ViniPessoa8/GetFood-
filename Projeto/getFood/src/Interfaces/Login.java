@@ -4,12 +4,14 @@ import Classes.Funcionario;
 import DAO.FunDAO;
 import DAO.LoginDAO;
 import java.awt.ComponentOrientation;
+import java.awt.event.ActionEvent;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends javax.swing.JFrame implements KeyListener {
+public class Login extends javax.swing.JFrame {
 
     Funcionario funLog;
 
@@ -17,6 +19,20 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         initComponents();
         this.setTitle("GetFood - Login");
         funLog = new Funcionario();
+        getRootPane().setDefaultButton(btnLogar);
+        txtLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                btnLogar.doClick();
+            }
+        });
+        txtSenha.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                btnLogar.doClick();
+            }
+        });
+        
 
     }
 
@@ -30,7 +46,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         txtSenha = new javax.swing.JPasswordField();
         txtLogin = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        btnLogar = new javax.swing.JLabel();
+        btnLogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,13 +74,11 @@ public class Login extends javax.swing.JFrame implements KeyListener {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
-        btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Logar.png"))); // NOI18N
-        btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnLogarMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnLogarMouseEntered(evt);
+        btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Logar.png"))); // NOI18N
+        btnLogar.setBorder(null);
+        btnLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogarActionPerformed(evt);
             }
         });
 
@@ -100,9 +114,9 @@ public class Login extends javax.swing.JFrame implements KeyListener {
                         .addComponent(jLabel1)
                         .addGap(46, 46, 46)
                         .addComponent(jLabel2)))
-                .addGap(36, 36, 36)
-                .addComponent(btnLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addComponent(btnLogar)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,32 +141,9 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
 
-    private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
+    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         logar();
-    }//GEN-LAST:event_btnLogarMouseClicked
-
-    private void btnLogarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseEntered
-
-    }//GEN-LAST:event_btnLogarMouseEntered
-
-    @Override
-    public void keyTyped(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void keyPressed(KeyEvent ke) {
-        System.out.println("1");
-        if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-            System.out.println("2");
-            logar();
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent ke) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }//GEN-LAST:event_btnLogarActionPerformed
 
     private void logar() {
         LoginDAO loginDAO = new LoginDAO();
@@ -207,7 +198,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btnLogar;
+    private javax.swing.JButton btnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
