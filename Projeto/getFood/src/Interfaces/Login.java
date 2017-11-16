@@ -153,7 +153,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         if(resposta == JOptionPane.YES_OPTION)
         {
             dispose();
-            Login_Cadastro newCDLogin = new Login_Cadastro(funLog);
+            Login_Deslogado newCDLogin = new Login_Deslogado();
             newCDLogin.setVisible(true);
         }
     }//GEN-LAST:event_btnCadastrarLoginMouseClicked
