@@ -86,7 +86,6 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -299,9 +298,6 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
             }
         });
         jMenu5.add(jMenuItem7);
-
-        jMenuItem9.setText("Desativar");
-        jMenu5.add(jMenuItem9);
 
         jMenuItem21.setText("Criar login");
         jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
@@ -597,7 +593,6 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTable tabHistorico;
     private javax.swing.JLabel txtLogo;

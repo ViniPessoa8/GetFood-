@@ -58,7 +58,6 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -302,9 +301,6 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
             }
         });
         jMenu5.add(jMenuItem7);
-
-        jMenuItem9.setText("Desativar");
-        jMenu5.add(jMenuItem9);
 
         jMenuItem21.setText("Criar login");
         jMenuItem21.addActionListener(new java.awt.event.ActionListener() {
@@ -665,7 +661,6 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JTextField txtAtual;

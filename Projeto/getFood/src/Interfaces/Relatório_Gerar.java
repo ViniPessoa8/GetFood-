@@ -107,7 +107,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         jMenuItem28 = new javax.swing.JMenuItem();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem29 = new javax.swing.JMenuItem();
-        jMenuItem30 = new javax.swing.JMenuItem();
         jMenuItem31 = new javax.swing.JMenuItem();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem32 = new javax.swing.JMenuItem();
@@ -550,9 +549,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
             }
         });
         jMenu12.add(jMenuItem29);
-
-        jMenuItem30.setText("Desativar");
-        jMenu12.add(jMenuItem30);
 
         jMenuItem31.setText("Criar login");
         jMenuItem31.addActionListener(new java.awt.event.ActionListener() {
@@ -998,7 +994,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
     private javax.swing.JMenuItem jMenuItem28;
     private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem30;
     private javax.swing.JMenuItem jMenuItem31;
     private javax.swing.JMenuItem jMenuItem32;
     private javax.swing.JMenuItem jMenuItem33;
