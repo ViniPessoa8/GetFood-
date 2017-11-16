@@ -94,6 +94,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         jMenuItem17 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         txtArea.setColumns(20);
         txtArea.setRows(5);

@@ -93,6 +93,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame impleme
         jMenuItem17 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(53, 72, 112));

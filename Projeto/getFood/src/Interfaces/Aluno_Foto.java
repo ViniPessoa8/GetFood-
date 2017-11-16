@@ -83,6 +83,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
         jMenuItem17 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         txtArquivos.setColumns(20);
         txtArquivos.setRows(5);

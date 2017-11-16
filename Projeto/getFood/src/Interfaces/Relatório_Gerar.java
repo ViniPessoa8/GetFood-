@@ -321,6 +321,7 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
         jMenuBar1.add(jMenu8);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         txtDataFinal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

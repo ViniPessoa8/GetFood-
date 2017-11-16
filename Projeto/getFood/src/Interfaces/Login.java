@@ -38,6 +38,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         btnCadastrarLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(53, 72, 112));

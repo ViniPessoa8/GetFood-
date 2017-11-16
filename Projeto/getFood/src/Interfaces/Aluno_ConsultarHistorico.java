@@ -94,6 +94,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         jMenuItem17 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar.setToolTipText("Voltar");
