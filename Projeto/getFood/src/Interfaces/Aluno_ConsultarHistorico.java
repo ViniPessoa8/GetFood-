@@ -8,6 +8,8 @@ package Interfaces;
 import Classes.Aluno;
 import Classes.Funcionario;
 import DAO.AlunoDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -16,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Vinicius
  */
-public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
+public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
     Aluno aluno;
@@ -31,6 +33,8 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
         initComponents();
         alunoDao = new AlunoDAO();
         modelo = (DefaultTableModel) tabHistorico.getModel();
+        txtMatricula.addKeyListener(this);
+        tabHistorico.addKeyListener(this);
     }
 
     private Aluno_ConsultarHistorico() {
@@ -394,8 +398,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
-
+    private void consultar() {
         formataTabela();
         ArrayList<String> historico;
         String matricula = txtMatricula.getText();
@@ -418,6 +421,11 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
             }
             mostraTabela();
         }
+    }
+
+    private void btnConsultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseClicked
+        consultar();
+
     }//GEN-LAST:event_btnConsultarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -510,7 +518,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -522,7 +530,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -602,4 +610,22 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame {
     private javax.swing.JLabel txtLogo;
     private javax.swing.JTextField txtMatricula;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if (codigo == KeyEvent.VK_ENTER) {
+            consultar();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

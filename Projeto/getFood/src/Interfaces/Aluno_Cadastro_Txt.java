@@ -9,6 +9,8 @@ import Classes.Aluno;
 import Classes.Funcionario;
 import DAO.AlunoDAO;
 import DAO.CursoDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -23,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Vinicius
  */
-public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
+public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListener{
 
     BufferedReader txt;
     Aluno aluno;
@@ -47,6 +49,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         alunoDao = new AlunoDAO();
         cursoDao = new CursoDAO();
         this.funLog = fun;
+        txtNomeArquivo.addKeyListener(this);
     }
 
     /**
@@ -500,14 +503,14 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+    private void salvar(){
         for (Aluno al : listaAluno) {
             alunoDao.addAluno(al);
         }
         JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
-    }//GEN-LAST:event_btnSalvarMouseClicked
-
-    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+    }   
+    
+    private void escolherArquivo(){
         //VARI�VEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -560,6 +563,14 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        salvar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+        escolherArquivo();
     }//GEN-LAST:event_btnEscolherArquivoMouseClicked
 
     /**
@@ -633,4 +644,26 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame {
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(txtNomeArquivo.getText().length() == 0){
+                escolherArquivo();
+            } else {
+                salvar();
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

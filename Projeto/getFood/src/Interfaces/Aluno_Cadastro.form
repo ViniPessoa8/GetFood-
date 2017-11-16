@@ -399,6 +399,8 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JTextField" name="txtNomeArquivo">
+        </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -431,8 +433,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Selecione um arquivo:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtNomeArquivo">
         </Component>
         <Component class="javax.swing.JLabel" name="btnVoltar">
           <Properties>

@@ -11,7 +11,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
 
@@ -19,20 +19,8 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         this.setTitle("GetFood - Login");
         funLog = new Funcionario();
-        getRootPane().setDefaultButton(btnLogar);
-        txtLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                btnLogar.doClick();
-            }
-        });
-        txtSenha.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                btnLogar.doClick();
-            }
-        });
-        
+        txtLogin.addKeyListener(this);
+        txtSenha.addKeyListener(this);
 
     }
 
@@ -46,7 +34,7 @@ public class Login extends javax.swing.JFrame {
         txtSenha = new javax.swing.JPasswordField();
         txtLogin = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        btnLogar = new javax.swing.JButton();
+        btnLogar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,10 +63,9 @@ public class Login extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
         btnLogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Logar.png"))); // NOI18N
-        btnLogar.setBorder(null);
-        btnLogar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogarActionPerformed(evt);
+        btnLogar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnLogarMouseClicked(evt);
             }
         });
 
@@ -114,9 +101,9 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(46, 46, 46)
                         .addComponent(jLabel2)))
-                .addGap(43, 43, 43)
+                .addGap(37, 37, 37)
                 .addComponent(btnLogar)
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,9 +128,9 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
 
-    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
+    private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
         logar();
-    }//GEN-LAST:event_btnLogarActionPerformed
+    }//GEN-LAST:event_btnLogarMouseClicked
 
     private void logar() {
         LoginDAO loginDAO = new LoginDAO();
@@ -157,6 +144,7 @@ public class Login extends javax.swing.JFrame {
             funLog = loginDAO.getFuncionarioLogin(login);
             if (result) {
                 dispose();
+                
                 Inicio i = new Inicio(funLog);
                 i.setVisible(true);
             } else {
@@ -198,7 +186,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogar;
+    private javax.swing.JLabel btnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -206,5 +194,24 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            logar();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        
+    }
 
 }

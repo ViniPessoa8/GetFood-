@@ -4,6 +4,8 @@ import Classes.Aluno;
 import Classes.Funcionario;
 import DAO.AlunoDAO;
 import DAO.CursoDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Aluno_Cadastro extends javax.swing.JFrame {
+public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
 
     BufferedReader txt;
     Aluno aluno;
@@ -35,6 +37,10 @@ public class Aluno_Cadastro extends javax.swing.JFrame {
         alunoDao = new AlunoDAO();
         cursoDao = new CursoDAO();
         fun = this.funLog;
+        txtNomeArquivo.addKeyListener(this);
+        txtNomeArquivo.setEditable(false);
+        txtArea.addKeyListener(this);
+        txtArea.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -46,11 +52,11 @@ public class Aluno_Cadastro extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
+        txtNomeArquivo = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        txtNomeArquivo = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -390,8 +396,8 @@ public class Aluno_Cadastro extends javax.swing.JFrame {
         Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    
+    private void escolherArquivo(){
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -442,9 +448,9 @@ public class Aluno_Cadastro extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    }
+    
+    private void cadastrar(){
         for(Aluno al : listaAluno)
         {
             alunoDao.addAluno(al);
@@ -456,6 +462,14 @@ public class Aluno_Cadastro extends javax.swing.JFrame {
             Inicio newInicio = new Inicio(funLog);
             newInicio.setVisible(true);
         }
+    }
+    
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        escolherArquivo();
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        cadastrar();
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -619,4 +633,27 @@ public class Aluno_Cadastro extends javax.swing.JFrame {
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(txtNomeArquivo.getText().length()==0){
+                escolherArquivo();
+            } else {
+                cadastrar();
+            }
+            
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -47,9 +47,7 @@ public class RelatorioDAO {
 
         //[DESENVOLVERDOR]
         System.out.println(inicial.getTime());
-        System.out.println(
-                sdf.format(
-                        inicial));
+        System.out.println(sdf.format(inicial));
         String Beneficiarios = "";
         if (beneficio == 1){
             Beneficiarios = "Beneficiários";
@@ -71,18 +69,21 @@ public class RelatorioDAO {
 
         //compila o relatório
         JasperReport relatorio = JasperCompileManager.compileReport(desenho);
-
+        
         //estabelece conexão
         Class.forName(driver);
         Connection con = new ConnectionFactory().getConnection();
         if (dataIni == dataFim) {
-            String sql = "select * from venda, aluno as A where A.beneficiario = ? and dt = ?";
+            
+            String sql = "select distinct codigo, matrAl, matrFun, valor, tipo, dt from venda, aluno as A where A.beneficiario = ? and dt = ?";
+            System.out.println(sql);
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, beneficio);
             stmt.setDate(2, dataIni);
             rs = stmt.executeQuery();
         } else {
-            String sql = "select * from venda, aluno as A where A.beneficiario = ? and (dt between ? and ?)";
+            String sql = "select distinct codigo, matrAl, matrFun, valor, tipo, dt from venda, aluno as A where A.beneficiario = ? and (dt between ? and ?)";
+            System.out.println(sql);
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setInt(1, beneficio);
             stmt.setDate(2, dataIni);

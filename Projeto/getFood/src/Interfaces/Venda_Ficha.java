@@ -5,6 +5,8 @@ import Classes.Funcionario;
 import DAO.AlunoDAO;
 import DAO.FichaDAO;
 import DAO.VendaDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.Calendar;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class Venda_Ficha extends javax.swing.JFrame {
+public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
 
     AlunoDAO aluno;
     FichaDAO ficha;
@@ -40,6 +42,8 @@ public class Venda_Ficha extends javax.swing.JFrame {
         PainelDados.setEnabled(true);
         PainelDados.setEditable(false);
         btnVender.setVisible(false);
+        txtMatr.addKeyListener(this);
+        PainelDados.addKeyListener(this);
     }
 
     public void reset() {
@@ -492,7 +496,7 @@ public class Venda_Ficha extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
+    private void verificar(){
         al = null;
         if (!txtMatr.getText().equals("")) {
             if (txtMatr.getText().length() == 12) {
@@ -543,10 +547,9 @@ public class Venda_Ficha extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Digite a matrícula do aluno.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnVerificarMouseClicked
-
-    private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
-
+    }
+    
+    private void vender(){
         boolean resultado = false;
         if (al != null) {
             if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
@@ -580,6 +583,14 @@ public class Venda_Ficha extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum aluno foi escolhido.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
+        verificar();
+    }//GEN-LAST:event_btnVerificarMouseClicked
+
+    private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
+        vender();
     }//GEN-LAST:event_btnVenderMouseClicked
 
     private void cxBeneficioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxBeneficioActionPerformed
@@ -833,4 +844,26 @@ public class Venda_Ficha extends javax.swing.JFrame {
     private javax.swing.JLabel txtFotoAluno;
     private javax.swing.JTextField txtMatr;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(PainelDados.getText().length() == 0) {
+                verificar();
+            } else {
+                vender();
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

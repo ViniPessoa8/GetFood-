@@ -16,6 +16,8 @@ import Interfaces.Inicio;
 import Interfaces.Reset;
 import Interfaces.Venda_Ficha;
 import Interfaces.Venda_Creditos;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +28,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Turma_Cadastro extends javax.swing.JFrame {
+public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
 
     Funcionario funLog;
     BufferedReader txt;
@@ -46,6 +48,9 @@ public class Turma_Cadastro extends javax.swing.JFrame {
         listaTurma = new ArrayList();
         cursoDao = new CursoDAO();
         turmaDao = new TurmaDAO();
+        txtArea.addKeyListener(this);
+        txtNomeArquivo.addKeyListener(this);
+        funLog = fun;
     }
 
     @SuppressWarnings("unchecked")
@@ -59,7 +64,7 @@ public class Turma_Cadastro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 90), new java.awt.Dimension(0, 90), new java.awt.Dimension(32767, 90));
         jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtNomeArquivo = new javax.swing.JTextField();
@@ -101,7 +106,7 @@ public class Turma_Cadastro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
+        txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar.setToolTipText("Voltar");
@@ -141,7 +146,7 @@ public class Turma_Cadastro extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(199, 199, 199)
-                        .addComponent(jLabel7)
+                        .addComponent(txtLogo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(178, 178, 178))
@@ -177,7 +182,7 @@ public class Turma_Cadastro extends javax.swing.JFrame {
                         .addGap(125, 125, 125))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel7)
+                        .addComponent(txtLogo)
                         .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -422,7 +427,7 @@ public class Turma_Cadastro extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void lblEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEscolherArquivoMouseClicked
+    public void escolherArquivo(){
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -466,9 +471,9 @@ public class Turma_Cadastro extends javax.swing.JFrame {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_lblEscolherArquivoMouseClicked
-
-    private void lblSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalvarMouseClicked
+    }
+    
+    private void salvar(){
         if (txt == null) {
             JOptionPane.showMessageDialog(null, "Selecione um arquivo.","AVISO!",JOptionPane.WARNING_MESSAGE);
         } else {
@@ -483,6 +488,14 @@ public class Turma_Cadastro extends javax.swing.JFrame {
                 newInicio.setVisible(true);
             }
         }
+    }
+    
+    private void lblEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEscolherArquivoMouseClicked
+        escolherArquivo();
+    }//GEN-LAST:event_lblEscolherArquivoMouseClicked
+
+    private void lblSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalvarMouseClicked
+        salvar();
     }//GEN-LAST:event_lblSalvarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -762,7 +775,6 @@ public class Turma_Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -796,6 +808,31 @@ public class Turma_Cadastro extends javax.swing.JFrame {
     private javax.swing.JLabel lblEscolherArquivo;
     private javax.swing.JLabel lblSalvar;
     private javax.swing.JTextArea txtArea;
+    private javax.swing.JLabel txtLogo;
     private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(txtNomeArquivo.getText().length()==0){
+                escolherArquivo();
+            } else {
+                salvar();
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
 }

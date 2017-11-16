@@ -4,6 +4,8 @@ import java.awt.Color;
 import Classes.Aluno;
 import Classes.Funcionario;
 import DAO.AlunoDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame {
+public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements KeyListener{
 
     BufferedReader txt;
     Aluno aluno;
@@ -33,6 +35,9 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame {
         alunoDao = new AlunoDAO();
         lista = new ArrayList();
         this.funLog = fun;
+        txtNomeArquivo.addKeyListener(this);
+        txtArea.addKeyListener(this);
+        txtArea.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -400,7 +405,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void escolherArquivo(){
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -444,9 +449,9 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    }
+    
+    private void salvar(){
         for (Aluno al : lista)
         {
             alunoDao.setBeneficiario(al);
@@ -455,6 +460,14 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame {
         dispose();
         Inicio inicio = new Inicio(funLog);
         inicio.setVisible(true);
+    }
+    
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        escolherArquivo();
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        salvar();
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -618,4 +631,26 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame {
     private javax.swing.JLabel txtLogo;
     private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(txtNomeArquivo.getText().length() == 0){
+                escolherArquivo();
+            } else {
+                salvar();
+            }
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

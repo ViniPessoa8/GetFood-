@@ -7,15 +7,7 @@
 	<parameter name="dataFinal" class="java.lang.String"/>
 	<parameter name="Beneficiarios" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT
-     venda.`codigo` AS codigo,
-     venda.`matrAl` AS matrAl,
-     venda.`matrFun` AS matrFun,
-     venda.`valor` AS valor,
-     venda.`tipo` AS tipo,
-     venda.`dt` AS dt
-FROM
-     `venda` venda]]>
+		<![CDATA[]]>
 	</queryString>
 	<field name="codigo" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -151,42 +143,42 @@ FROM
 				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="b8b25a2a-7ff2-4073-98e8-64b5e48a285a"/>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="0" y="0" width="70" height="20" uuid="67fcbc22-099f-4c8f-98c1-d044ceab63c7"/>
+				<reportElement isPrintRepeatedValues="false" x="0" y="0" width="70" height="20" isRemoveLineWhenBlank="true" uuid="67fcbc22-099f-4c8f-98c1-d044ceab63c7"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="70" y="0" width="114" height="20" uuid="969eaebc-b63d-424d-a97f-878b6ade068c"/>
+				<reportElement x="70" y="0" width="114" height="20" isRemoveLineWhenBlank="true" uuid="969eaebc-b63d-424d-a97f-878b6ade068c"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{matrAl}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="184" y="0" width="92" height="20" uuid="ab92fcde-fcae-492e-80f5-c0f59a23479a"/>
+				<reportElement x="184" y="0" width="92" height="20" isRemoveLineWhenBlank="true" uuid="ab92fcde-fcae-492e-80f5-c0f59a23479a"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{matrFun}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="¤ #,##0.00">
-				<reportElement x="283" y="0" width="92" height="20" uuid="54bb5d1b-4b09-4703-9d60-f9f87878c399"/>
+				<reportElement x="283" y="0" width="92" height="20" isRemoveLineWhenBlank="true" uuid="54bb5d1b-4b09-4703-9d60-f9f87878c399"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="375" y="0" width="40" height="20" uuid="e5fe9989-92bf-4c3c-b46e-f16e8d92dafb"/>
+				<reportElement x="375" y="0" width="40" height="20" isRemoveLineWhenBlank="true" uuid="e5fe9989-92bf-4c3c-b46e-f16e8d92dafb"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tipo}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
-				<reportElement x="415" y="0" width="140" height="20" uuid="db54529f-1a38-4050-9349-44111f6218a2"/>
+				<reportElement x="415" y="0" width="140" height="20" isRemoveLineWhenBlank="true" uuid="db54529f-1a38-4050-9349-44111f6218a2"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

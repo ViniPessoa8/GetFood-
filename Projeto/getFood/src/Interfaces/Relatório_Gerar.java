@@ -9,10 +9,13 @@ import Classes.DateUtil;
 import Classes.Funcionario;
 import Classes.Relatorio;
 import DAO.RelatorioDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 
@@ -20,7 +23,7 @@ import net.sf.jasperreports.engine.JRException;
  *
  * @author Vinicius
  */
-public class Relatório_Gerar extends javax.swing.JFrame {
+public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
 
     private Date dataInicial, dataFinal;
     private Relatorio relatorio;
@@ -35,6 +38,10 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         relatorio = new Relatorio();
         funLog = fun;
         relatorioDao = new RelatorioDAO();
+        txtDataFinal.addKeyListener(this);
+        txtDataInicial.addKeyListener(this);
+        this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
+        
     }
 
     private Relatório_Gerar() {
@@ -876,8 +883,8 @@ public class Relatório_Gerar extends javax.swing.JFrame {
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu22ActionPerformed
-
-    private void btnGerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGerarRelatorioMouseClicked
+    
+    private void gerarRelatorio(){
         int beneficiario = 0;
         if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
             JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -887,14 +894,14 @@ public class Relatório_Gerar extends javax.swing.JFrame {
             }
 
             try {
-                relatorioDao.gerar("/home/vinicius/Documentos/GitHub/GetFood-/Projeto/getFood/src/Relatorio/Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+                relatorioDao.gerar("src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
             } catch (JRException | ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }
         }
-    }//GEN-LAST:event_btnGerarRelatorioMouseClicked
-
-    private void btnEstaSemanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstaSemanaMouseClicked
+    }
+    
+    private void estaSemana(){
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         DateUtil du = new DateUtil();
         Date data = new Date();
@@ -907,6 +914,15 @@ public class Relatório_Gerar extends javax.swing.JFrame {
 
         dataInicial = primeiro;
         dataFinal = ultimo;
+    }
+    
+    private void btnGerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGerarRelatorioMouseClicked
+        gerarRelatorio();
+    }//GEN-LAST:event_btnGerarRelatorioMouseClicked
+    
+    
+    private void btnEstaSemanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstaSemanaMouseClicked
+        estaSemana();
     }//GEN-LAST:event_btnEstaSemanaMouseClicked
 
     /**
@@ -1008,4 +1024,27 @@ public class Relatório_Gerar extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataInicial;
     private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(txtDataFinal.getText().length() == 0 && txtDataInicial.getText().length() == 0){
+                estaSemana();
+            } else {
+                gerarRelatorio();
+            }
+            
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

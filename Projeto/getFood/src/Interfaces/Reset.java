@@ -6,19 +6,24 @@ import DAO.AlunoDAO;
 import DAO.CursoDAO;
 import DAO.TurmaDAO;
 import DAO.VendaDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
-public class Reset extends javax.swing.JFrame {
+public class Reset extends javax.swing.JFrame implements KeyListener{
 
     Funcionario funLog;
-    
+
     private Reset() {
         initComponents();
     }
-    
-    public Reset(Funcionario fun){
+
+    public Reset(Funcionario fun) {
         initComponents();
         this.funLog = fun;
+        txtLogo.addKeyListener(this);
+        addKeyListener(this);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -32,7 +37,7 @@ public class Reset extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -69,7 +74,7 @@ public class Reset extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
+        txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar.setToolTipText("Voltar");
@@ -94,7 +99,7 @@ public class Reset extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(374, 374, 374)
-                        .addComponent(jLabel6)
+                        .addComponent(txtLogo)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -116,7 +121,7 @@ public class Reset extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                    .addComponent(txtLogo)
                     .addComponent(jLabel4))
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -347,47 +352,43 @@ public class Reset extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        int resp = JOptionPane.showConfirmDialog(null,"Deseja realmente apagar todos os alunos cadastrados no banco de dados ?");
-        if(resp == JOptionPane.YES_OPTION)
-        {
+    private void resetar(){
+        int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar todos os alunos, vendas, cursos e turmas cadastrados no banco de dados ?");
+        if (resp == JOptionPane.YES_OPTION) {
             AlunoDAO aluno = new AlunoDAO();
             VendaDAO venda = new VendaDAO();
             TurmaDAO turma = new TurmaDAO();
             CursoDAO curso = new CursoDAO();
             boolean rs1 = venda.dropVendas();
-            if(rs1)
-            {
+            if (rs1) {
                 boolean rs2 = aluno.dropAlunos();
-                if(rs2)
-                {
+                if (rs2) {
                     boolean rs3 = turma.dropTurmas();
-                    if(rs3)
-                    {
+                    if (rs3) {
                         curso.dropCursos();
-                        int rp = JOptionPane.showConfirmDialog(null,"O banco de dados foi resetado com sucesso.Deseja voltar ao menu principal ?");
-                        if(rp == JOptionPane.YES_OPTION)
-                        {
+                        int rp = JOptionPane.showConfirmDialog(null, "O banco de dados foi resetado com sucesso.Deseja voltar ao menu principal ?");
+                        if (rp == JOptionPane.YES_OPTION) {
                             dispose();
                             Inicio newInicio = new Inicio(funLog);
                             newInicio.setVisible(true);
                         }
                     }
-                } 
-            }else
-            {
-                JOptionPane.showMessageDialog(null,"O bando de dados não foi resetado.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "O bando de dados não foi resetado.");
             }
-        }else if(resp == JOptionPane.NO_OPTION)
-        {
-            int k = JOptionPane.showConfirmDialog(null,"Deseja voltar à tela inicial ?");
-            if(k == JOptionPane.YES_OPTION)
-            {
+        } else if (resp == JOptionPane.NO_OPTION) {
+            int k = JOptionPane.showConfirmDialog(null, "Deseja voltar à tela inicial ?");
+            if (k == JOptionPane.YES_OPTION) {
                 dispose();
                 Inicio newInicio = new Inicio(funLog);
                 newInicio.setVisible(true);
             }
         }
+    }
+    
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        resetar();
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -480,7 +481,7 @@ public class Reset extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -492,7 +493,7 @@ public class Reset extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -503,7 +504,7 @@ public class Reset extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Reset().setVisible(true);
@@ -516,7 +517,6 @@ public class Reset extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -547,5 +547,24 @@ public class Reset extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            resetar();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

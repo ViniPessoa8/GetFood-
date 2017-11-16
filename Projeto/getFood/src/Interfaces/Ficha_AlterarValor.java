@@ -4,24 +4,28 @@ import Classes.Ficha;
 import Classes.Funcionario;
 import DAO.FichaDAO;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
-public class Ficha_AlterarValor extends javax.swing.JFrame {
+public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListener {
+
     Funcionario funLog;
     FichaDAO fichaDao;
-    
-    private Ficha_AlterarValor(){
+
+    private Ficha_AlterarValor() {
         initComponents();
     }
-    
+
     public Ficha_AlterarValor(Funcionario fun) {
         initComponents();
         fichaDao = new FichaDAO();
-        txtAtual.setText(""+fichaDao.getVal());
+        txtAtual.setText("" + fichaDao.getVal());
         this.funLog = fun;
+        txtAtual.addKeyListener(this);
+        txtPreco.addKeyListener(this);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,7 +38,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
         txtAtual = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 90), new java.awt.Dimension(0, 90), new java.awt.Dimension(32767, 90));
         jLabel2 = new javax.swing.JLabel();
-        cxPreco = new javax.swing.JTextField();
+        txtPreco = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtLogo = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
@@ -87,10 +91,10 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(53, 72, 112));
         jLabel2.setText("Novo preço:");
 
-        cxPreco.setPreferredSize(new java.awt.Dimension(6, 34));
-        cxPreco.addActionListener(new java.awt.event.ActionListener() {
+        txtPreco.setPreferredSize(new java.awt.Dimension(6, 34));
+        txtPreco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxPrecoActionPerformed(evt);
+                txtPrecoActionPerformed(evt);
             }
         });
 
@@ -139,7 +143,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
                                                 .addComponent(jLabel2)
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cxPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                                         .addGap(10, 10, 10)
                                                         .addComponent(btnAlterar)))))
@@ -168,7 +172,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cxPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))))
                 .addGap(18, 18, 18)
                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,9 +401,9 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAtualActionPerformed
 
-    private void cxPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxPrecoActionPerformed
+    private void txtPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cxPrecoActionPerformed
+    }//GEN-LAST:event_txtPrecoActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         dispose();
@@ -407,18 +411,24 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
-        if(cxPreco.getText().equals(""))
-        {
-            JOptionPane.showMessageDialog(null,"Digite um novo preço para as fichas alimentícias.");
-        }else
-        {
-            fichaDao.updatePreco(Float.parseFloat(cxPreco.getText()));
-            JOptionPane.showMessageDialog(null,"Preço devidamente alterado.");
-            Inicio newInicio = new Inicio(funLog);
-            newInicio.setVisible(true);
+    private void alterar() {
+        if (txtPreco.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Digite um novo preço para as fichas alimentícias.");
+        } else {
+            boolean operacao = fichaDao.updatePreco(Float.parseFloat(txtPreco.getText()));
+            if (operacao) {
+                JOptionPane.showMessageDialog(null, "Preço devidamente alterado.");
+                Inicio newInicio = new Inicio(funLog);
+                newInicio.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "ERRO!", "Erro!", JOptionPane.ERROR_MESSAGE);
+            }
             // JOptionPane.showMessageDialog(null,cxPreco.getText());
         }
+    }
+
+    private void btnAlterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAlterarMouseClicked
+        alterar();
     }//GEN-LAST:event_btnAlterarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -511,7 +521,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -523,7 +533,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -634,7 +644,6 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAlterar;
     private javax.swing.JLabel btnVoltar;
-    private javax.swing.JTextField cxPreco;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -670,5 +679,24 @@ public class Ficha_AlterarValor extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JTextField txtAtual;
     private javax.swing.JLabel txtLogo;
+    private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            alterar();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

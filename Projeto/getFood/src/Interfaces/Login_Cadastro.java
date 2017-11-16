@@ -2,21 +2,27 @@ package Interfaces;
 
 import Classes.Funcionario;
 import DAO.LoginDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
-public class Login_Cadastro extends javax.swing.JFrame {
+public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
-    
+
     private Login_Cadastro() {
         initComponents();
     }
 
-    public Login_Cadastro(Funcionario fun){
+    public Login_Cadastro(Funcionario fun) {
         initComponents();
         this.funLog = fun;
+        txtConfirmacao.addKeyListener(this);
+        txtLogin.addKeyListener(this);
+        txtMatricula.addKeyListener(this);
+        txtSenha.addKeyListener(this);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,12 +35,12 @@ public class Login_Cadastro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        senha = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
-        matr = new javax.swing.JTextField();
+        txtMatricula = new javax.swing.JTextField();
         txtLogo = new javax.swing.JLabel();
-        confirma = new javax.swing.JPasswordField();
-        login = new javax.swing.JTextField();
+        txtConfirmacao = new javax.swing.JPasswordField();
+        txtLogin = new javax.swing.JTextField();
         btnVoltar = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -87,17 +93,17 @@ public class Login_Cadastro extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(53, 72, 112));
         jLabel2.setText("Matrícula:");
 
-        matr.addActionListener(new java.awt.event.ActionListener() {
+        txtMatricula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                matrActionPerformed(evt);
+                txtMatriculaActionPerformed(evt);
             }
         });
 
         txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
-        login.addActionListener(new java.awt.event.ActionListener() {
+        txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginActionPerformed(evt);
+                txtLoginActionPerformed(evt);
             }
         });
 
@@ -139,10 +145,10 @@ public class Login_Cadastro extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(matr, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConfirmacao, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(285, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,19 +162,19 @@ public class Login_Cadastro extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(matr, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(confirma, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtConfirmacao, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)))
@@ -391,13 +397,13 @@ public class Login_Cadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void matrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matrActionPerformed
+    private void txtMatriculaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatriculaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_matrActionPerformed
+    }//GEN-LAST:event_txtMatriculaActionPerformed
 
-    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
+    private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_loginActionPerformed
+    }//GEN-LAST:event_txtLoginActionPerformed
 
     private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
         dispose();
@@ -405,41 +411,38 @@ public class Login_Cadastro extends javax.swing.JFrame {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        String s = new String(senha.getPassword());
-        String c = new String(confirma.getPassword());
-        if (login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("")) 
-        {
+    private void cadastrar(){
+        String s = new String(txtSenha.getPassword());
+        String c = new String(txtConfirmacao.getPassword());
+        if (txtLogin.getText().isEmpty() || txtMatricula.getText().isEmpty() || s.equals("") || c.equals("")) {
             JOptionPane.showMessageDialog(null, "Um campo importante está vazio!");
-        } else 
-        {
-            if (s.equals(c)) 
-            {
+        } else {
+            if (s.equals(c)) {
                 System.out.println("Senhas iguais");
                 LoginDAO log = new LoginDAO();
-                if (log.validaLogin(login.getText())) 
-                {
+                if (log.validaLogin(txtLogin.getText())) {
                     System.out.println("vrau");
                     JOptionPane.showMessageDialog(null, "Esse login já existe.");
-                } else 
-                {
-                    log.add(login.getText(), s, matr.getText());
-                    int r = JOptionPane.showConfirmDialog(null,"Login cadastrado com sucesso. Deseja cadastrar outro login ?");
-                    if(r == JOptionPane.YES_OPTION)
-                    {
+                } else {
+                    log.add(txtLogin.getText(), s, txtMatricula.getText());
+                    int r = JOptionPane.showConfirmDialog(null, "Login cadastrado com sucesso. Deseja cadastrar outro login ?");
+                    if (r == JOptionPane.YES_OPTION) {
                         dispose();
                         Login_Cadastro cadastro = new Login_Cadastro(funLog);
                         cadastro.setVisible(true);
-                    }else
-                    {
+                    } else {
                         dispose();
                         Inicio inicio = new Inicio(funLog);
                         inicio.setVisible(true);
                     }
-                
+
                 }
             }
         }
+    }
+    
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        cadastrar();
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -532,7 +535,7 @@ public class Login_Cadastro extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -544,7 +547,7 @@ public class Login_Cadastro extends javax.swing.JFrame {
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -565,7 +568,6 @@ public class Login_Cadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnVoltar;
-    private javax.swing.JPasswordField confirma;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -601,9 +603,28 @@ public class Login_Cadastro extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JTextField login;
-    private javax.swing.JTextField matr;
-    private javax.swing.JPasswordField senha;
+    private javax.swing.JPasswordField txtConfirmacao;
+    private javax.swing.JTextField txtLogin;
     private javax.swing.JLabel txtLogo;
+    private javax.swing.JTextField txtMatricula;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if (codigo == KeyEvent.VK_ENTER) {
+            cadastrar();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

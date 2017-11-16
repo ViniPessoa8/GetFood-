@@ -9,6 +9,8 @@ import Classes.FotoUtil;
 import Classes.Funcionario;
 import java.io.*;
 import DAO.AlunoDAO;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -17,7 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Vinicius
  */
-public class Aluno_Foto extends javax.swing.JFrame {
+public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
 
     File[] fotos;
     AlunoDAO alunoDao;
@@ -32,6 +34,9 @@ public class Aluno_Foto extends javax.swing.JFrame {
         alunoDao = new AlunoDAO();
         fu = new FotoUtil();
         this.funLog = funLog;
+        addKeyListener(this);
+        txtArquivos.addKeyListener(this);
+        txtArquivos.setEditable(false);
     }
 
     private Aluno_Foto() {
@@ -461,7 +466,7 @@ public class Aluno_Foto extends javax.swing.JFrame {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+    private void escolherArquivo() {
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
 
@@ -484,23 +489,19 @@ public class Aluno_Foto extends javax.swing.JFrame {
             for (File file : fotos) {
                 String nomeArquivo = file.getName();
                 txtArquivos.setText(txtArquivos.getText() + "\n" + nomeArquivo);
-
             }
-
-            
-
         }
-    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
+    }
 
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+    private void salvar() {
         boolean ok = true;
         //verificação da formatação do nome dos arquivos
         for (File file : fotos) {
             String nomeArquivo = file.getName();
-            if (nomeArquivo.contains("F#") && nomeArquivo.length() == 14) {
-
+            if (nomeArquivo.contains("F#") && nomeArquivo.length() == 18 && nomeArquivo.contains(".jpg")) {
+                
             } else {
-                JOptionPane.showMessageDialog(jMenu2, fu);
+                JOptionPane.showMessageDialog(jMenu2, nomeArquivo);
                 ok = false;
                 break;
             }
@@ -520,6 +521,14 @@ public class Aluno_Foto extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(null, "Fotos cadastradas com sucesso");
         }
+    }
+
+    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+        escolherArquivo();
+    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
+
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        salvar();
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     /**
@@ -591,4 +600,27 @@ public class Aluno_Foto extends javax.swing.JFrame {
     private javax.swing.JTextArea txtArquivos;
     private javax.swing.JLabel txtIcone;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent ke) {
+        int codigo = ke.getKeyCode();
+        if(codigo == KeyEvent.VK_ENTER){
+            if(txtArquivos.getText().length()==0){
+                escolherArquivo();
+            } else {
+                salvar();
+            }
+            
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent ke) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

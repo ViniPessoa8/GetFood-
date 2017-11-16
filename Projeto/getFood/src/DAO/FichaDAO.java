@@ -12,22 +12,26 @@ public class FichaDAO {
     private String sql;
     private PreparedStatement pstm;
     private ResultSet rs;
+    private boolean retorno;
 
     public FichaDAO() {
         this.con = new ConnectionFactory().getConnection();
         pstm = null;
+        retorno = false;
     }
 
-    public void updatePreco(float preco) {
+    public boolean updatePreco(float preco) {
         sql = "UPDATE ficha SET valor = ?";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setFloat(1, preco);
             pstm.execute();
             pstm.close();
+            retorno = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return retorno;
     }
 
     public float getVal() {
