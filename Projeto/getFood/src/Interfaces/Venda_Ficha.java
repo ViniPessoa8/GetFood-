@@ -81,23 +81,21 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         btnVerificar = new javax.swing.JLabel();
         btnVender = new javax.swing.JLabel();
         txtFotoAluno = new javax.swing.JLabel();
-        jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu10 = new javax.swing.JMenu();
-        jMenuItem19 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem20 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -270,28 +268,28 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
                 .addGap(35, 35, 35))
         );
 
-        jMenu10.setBorder(null);
-        jMenu10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
-        jMenu10.setText("Venda");
-        jMenu10.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
-        jMenu10.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jMenu10.setPreferredSize(new java.awt.Dimension(110, 25));
+        jMenu2.setBorder(null);
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/wallet.png"))); // NOI18N
+        jMenu2.setText("Venda");
+        jMenu2.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        jMenu2.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        jMenu2.setPreferredSize(new java.awt.Dimension(110, 25));
 
-        jMenuItem19.setText("Ticket");
-        jMenuItem19.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuItem11.setText("Ticket");
+        jMenuItem11.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jMenuItem19MouseEntered(evt);
+                jMenuItem11MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jMenuItem19MouseExited(evt);
+                jMenuItem11MouseExited(evt);
             }
         });
-        jMenuItem19.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem19ActionPerformed(evt);
+                jMenuItem11ActionPerformed(evt);
             }
         });
-        jMenu10.add(jMenuItem19);
+        jMenu2.add(jMenuItem11);
 
         jMenuItem10.setText("Créditos");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -299,9 +297,9 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
                 jMenuItem10ActionPerformed(evt);
             }
         });
-        jMenu10.add(jMenuItem10);
+        jMenu2.add(jMenuItem10);
 
-        jMenuBar3.add(jMenu10);
+        jMenuBar1.add(jMenu2);
 
         jMenu3.setBorder(null);
         jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/ticket.png"))); // NOI18N
@@ -317,7 +315,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu3.add(jMenuItem20);
 
-        jMenuBar3.add(jMenu3);
+        jMenuBar1.add(jMenu3);
 
         jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon.png"))); // NOI18N
         jMenu4.setText("Aluno");
@@ -340,9 +338,6 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
             }
         });
         jMenu4.add(jMenuItem12);
-
-        jMenuItem5.setText("Alterar");
-        jMenu4.add(jMenuItem5);
 
         jMenuItem6.setText("Resetar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
@@ -376,7 +371,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu4.add(jMenuItem18);
 
-        jMenuBar3.add(jMenu4);
+        jMenuBar1.add(jMenu4);
 
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/users.png"))); // NOI18N
         jMenu5.setText("Funcionário");
@@ -396,9 +391,6 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu5.add(jMenuItem7);
 
-        jMenuItem8.setText("Alterar");
-        jMenu5.add(jMenuItem8);
-
         jMenuItem9.setText("Desativar");
         jMenu5.add(jMenuItem9);
 
@@ -410,7 +402,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu5.add(jMenuItem21);
 
-        jMenuBar3.add(jMenu5);
+        jMenuBar1.add(jMenu5);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/padnote.png"))); // NOI18N
         jMenu6.setText("Relatório");
@@ -425,7 +417,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu6.add(jMenuItem2);
 
-        jMenuBar3.add(jMenu6);
+        jMenuBar1.add(jMenu6);
 
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/curso_1.png"))); // NOI18N
         jMenu7.setText("Curso");
@@ -445,7 +437,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu7.add(jMenuItem14);
 
-        jMenuBar3.add(jMenu7);
+        jMenuBar1.add(jMenu7);
 
         jMenu8.setBorder(null);
         jMenu8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/turma.png"))); // NOI18N
@@ -468,9 +460,9 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         });
         jMenu8.add(jMenuItem17);
 
-        jMenuBar3.add(jMenu8);
+        jMenuBar1.add(jMenu8);
 
-        setJMenuBar(jMenuBar3);
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -611,20 +603,20 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
         }
     }//GEN-LAST:event_cxCreditoActionPerformed
 
-    private void jMenuItem19MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MouseEntered
+    private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jMenuItem19MouseEntered
+    }//GEN-LAST:event_jMenuItem11MouseEntered
 
-    private void jMenuItem19MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem19MouseExited
+    private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
 
-    }//GEN-LAST:event_jMenuItem19MouseExited
+    }//GEN-LAST:event_jMenuItem11MouseExited
 
-    private void jMenuItem19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem19ActionPerformed
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         dispose();
         Venda_Ficha newVenda = new Venda_Ficha(funLog);
         newVenda.setVisible(true);
-    }//GEN-LAST:event_jMenuItem19ActionPerformed
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         dispose();
@@ -701,7 +693,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c = new Curso_Cadastro(funLog);
+        Curso_Cadastro c=new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -805,7 +797,6 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -813,29 +804,22 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener{
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuBar jMenuBar3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;

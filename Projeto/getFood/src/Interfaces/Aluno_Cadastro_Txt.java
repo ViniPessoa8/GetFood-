@@ -78,14 +78,12 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -200,9 +198,6 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         });
         jMenu4.add(jMenuItem12);
 
-        jMenuItem5.setText("Alterar");
-        jMenu4.add(jMenuItem5);
-
         jMenuItem6.setText("Resetar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -254,9 +249,6 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
             }
         });
         jMenu5.add(jMenuItem7);
-
-        jMenuItem8.setText("Alterar");
-        jMenu5.add(jMenuItem8);
 
         jMenuItem9.setText("Desativar");
         jMenu5.add(jMenuItem9);
@@ -391,6 +383,76 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
+    private void salvar(){
+        for (Aluno al : listaAluno) {
+            alunoDao.addAluno(al);
+        }
+        JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
+    }   
+    
+    private void escolherArquivo(){
+        //VARI�VEIS
+        JFileChooser fileChooser = new JFileChooser();
+        File arq;
+
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
+        int retornoFileChooser;
+
+        //Configura��o do JFileChooser
+        fileChooser.setDialogTitle("Escolher Arquivo...");
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setFileFilter(filtro);
+
+        //Abre a janela JFileChooser e guarda a resposta na vari�vel 'retornoFileChooser'
+        retornoFileChooser = fileChooser.showOpenDialog(this);
+
+        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
+            arq = fileChooser.getSelectedFile();
+            txtNomeArquivo.setText(arq.getName());
+            try {
+                arqReader = new FileReader(arq);
+                txt = new BufferedReader(arqReader);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                String linha = txt.readLine();
+                while (linha != null) {
+                    String novaLinha = txtArea.getText() + linha + "\n";
+                    txtArea.setText(novaLinha);
+
+                    dadosAluno = linha.split("#");
+
+                    aluno = new Aluno();
+                    aluno.setMatricula(dadosAluno[0]);
+                    aluno.setNome(dadosAluno[1]);
+                    aluno.setCurso(cursoDao.getCodigoByNome(dadosAluno[2]));
+                    aluno.setTurma(dadosAluno[3]);
+                    aluno.setSaldo(0);
+                    aluno.setBeneficiario(0);
+                    System.out.println(aluno.toString());
+
+                    listaAluno.add(aluno);
+
+                    linha = txt.readLine();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        salvar();
+    }//GEN-LAST:event_btnSalvarMouseClicked
+
+    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
+        escolherArquivo();
+    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
+
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
 
@@ -493,7 +555,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
         dispose();
-        Turma_Cadastro c=new Turma_Cadastro(funLog);
+        Turma_Cadastro c = new Turma_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -502,76 +564,6 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
-
-    private void salvar(){
-        for (Aluno al : listaAluno) {
-            alunoDao.addAluno(al);
-        }
-        JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
-    }   
-    
-    private void escolherArquivo(){
-        //VARI�VEIS
-        JFileChooser fileChooser = new JFileChooser();
-        File arq;
-
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
-        int retornoFileChooser;
-
-        //Configura��o do JFileChooser
-        fileChooser.setDialogTitle("Escolher Arquivo...");
-        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        fileChooser.setFileFilter(filtro);
-
-        //Abre a janela JFileChooser e guarda a resposta na vari�vel 'retornoFileChooser'
-        retornoFileChooser = fileChooser.showOpenDialog(this);
-
-        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
-            arq = fileChooser.getSelectedFile();
-            txtNomeArquivo.setText(arq.getName());
-            try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                String linha = txt.readLine();
-                while (linha != null) {
-                    String novaLinha = txtArea.getText() + linha + "\n";
-                    txtArea.setText(novaLinha);
-
-                    dadosAluno = linha.split("#");
-
-                    aluno = new Aluno();
-                    aluno.setMatricula(dadosAluno[0]);
-                    aluno.setNome(dadosAluno[1]);
-                    aluno.setCurso(cursoDao.getCodigoByNome(dadosAluno[2]));
-                    aluno.setTurma(dadosAluno[3]);
-                    aluno.setSaldo(0);
-                    aluno.setBeneficiario(0);
-                    System.out.println(aluno.toString());
-
-                    listaAluno.add(aluno);
-
-                    linha = txt.readLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
-    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        salvar();
-    }//GEN-LAST:event_btnSalvarMouseClicked
-
-    private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked
-        escolherArquivo();
-    }//GEN-LAST:event_btnEscolherArquivoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -635,10 +627,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtArea;

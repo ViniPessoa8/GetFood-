@@ -52,14 +52,12 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
@@ -252,9 +250,6 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
         });
         jMenu4.add(jMenuItem12);
 
-        jMenuItem5.setText("Alterar");
-        jMenu4.add(jMenuItem5);
-
         jMenuItem6.setText("Resetar");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,9 +301,6 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
             }
         });
         jMenu5.add(jMenuItem7);
-
-        jMenuItem8.setText("Alterar");
-        jMenu5.add(jMenuItem8);
 
         jMenuItem9.setText("Desativar");
         jMenu5.add(jMenuItem9);
@@ -521,7 +513,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c = new Curso_Cadastro(funLog);
+        Curso_Cadastro c=new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -670,10 +662,8 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
