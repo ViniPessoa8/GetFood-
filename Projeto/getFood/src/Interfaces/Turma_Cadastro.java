@@ -51,6 +51,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
         txtArea.addKeyListener(this);
         txtNomeArquivo.addKeyListener(this);
         funLog = fun;
+        txtArea.setEditable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -60,7 +61,6 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jLabel6 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 90), new java.awt.Dimension(0, 90), new java.awt.Dimension(32767, 90));
         jLabel1 = new javax.swing.JLabel();
@@ -101,8 +101,6 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
         jMenu1.setText("jMenu1");
 
         jMenuItem1.setText("jMenuItem1");
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/LOGO_150px.png"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -774,7 +772,6 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
