@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
 
-public class Reset extends javax.swing.JFrame implements KeyListener{
+public class Reset extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
 
@@ -23,7 +23,7 @@ public class Reset extends javax.swing.JFrame implements KeyListener{
         this.funLog = fun;
         txtLogo.addKeyListener(this);
         addKeyListener(this);
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -352,41 +352,32 @@ public class Reset extends javax.swing.JFrame implements KeyListener{
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void resetar(){
+    private void resetar() {
         int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar todos os alunos, vendas, cursos e turmas cadastrados no banco de dados ?");
         if (resp == JOptionPane.YES_OPTION) {
             AlunoDAO aluno = new AlunoDAO();
             VendaDAO venda = new VendaDAO();
             TurmaDAO turma = new TurmaDAO();
             CursoDAO curso = new CursoDAO();
-            boolean rs1 = venda.dropVendas();
-            if (rs1) {
-                boolean rs2 = aluno.dropAlunos();
-                if (rs2) {
-                    boolean rs3 = turma.dropTurmas();
-                    if (rs3) {
-                        curso.dropCursos();
-                        int rp = JOptionPane.showConfirmDialog(null, "O banco de dados foi resetado com sucesso.Deseja voltar ao menu principal ?");
-                        if (rp == JOptionPane.YES_OPTION) {
-                            dispose();
-                            Inicio newInicio = new Inicio(funLog);
-                            newInicio.setVisible(true);
-                        }
-                    }
-                }
+            if (venda.dropVendas() && aluno.dropAlunos() && turma.dropTurmas() && curso.dropCursos()) {
+                JOptionPane.showMessageDialog(null, "Operação realizada com sucesso, seu banco de dados foi resetado.");
             } else {
-                JOptionPane.showMessageDialog(null, "O bando de dados não foi resetado.");
+                JOptionPane.showMessageDialog(null, "O bando de dados não foi resetado.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else if (resp == JOptionPane.NO_OPTION) {
-            int k = JOptionPane.showConfirmDialog(null, "Deseja voltar à tela inicial ?");
-            if (k == JOptionPane.YES_OPTION) {
+            int result = JOptionPane.showConfirmDialog(null, "Deseja voltar à tela inicial ?");
+            if (result == JOptionPane.YES_OPTION) {
                 dispose();
                 Inicio newInicio = new Inicio(funLog);
                 newInicio.setVisible(true);
             }
         }
+        dispose();
+        Inicio newInicio = new Inicio(funLog);
+        newInicio.setVisible(true);
     }
-    
+
+
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         resetar();
     }//GEN-LAST:event_jLabel1MouseClicked
@@ -558,7 +549,7 @@ public class Reset extends javax.swing.JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
+        if (codigo == KeyEvent.VK_ENTER) {
             resetar();
         }
     }

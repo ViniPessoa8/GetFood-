@@ -35,6 +35,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         txtLogin = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         btnLogar = new javax.swing.JLabel();
+        btnCadastrarLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +70,15 @@ public class Login extends javax.swing.JFrame implements KeyListener {
             }
         });
 
+        btnCadastrarLogin.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
+        btnCadastrarLogin.setForeground(new java.awt.Color(53, 72, 112));
+        btnCadastrarLogin.setText("Ainda não possui um login ?");
+        btnCadastrarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarLoginMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,6 +95,10 @@ public class Login extends javax.swing.JFrame implements KeyListener {
                     .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLogar))
                 .addGap(352, 352, 352))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnCadastrarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +117,9 @@ public class Login extends javax.swing.JFrame implements KeyListener {
                         .addComponent(jLabel2)))
                 .addGap(37, 37, 37)
                 .addComponent(btnLogar)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addComponent(btnCadastrarLogin)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -131,6 +147,16 @@ public class Login extends javax.swing.JFrame implements KeyListener {
     private void btnLogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogarMouseClicked
         logar();
     }//GEN-LAST:event_btnLogarMouseClicked
+
+    private void btnCadastrarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarLoginMouseClicked
+        int resposta = JOptionPane.showConfirmDialog(null,"Deseja executar o cadastro do seu login?");
+        if(resposta == JOptionPane.YES_OPTION)
+        {
+            dispose();
+            Login_Cadastro newCDLogin = new Login_Cadastro(funLog);
+            newCDLogin.setVisible(true);
+        }
+    }//GEN-LAST:event_btnCadastrarLoginMouseClicked
 
     private void logar() {
         LoginDAO loginDAO = new LoginDAO();
@@ -186,6 +212,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnCadastrarLogin;
     private javax.swing.JLabel btnLogar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
