@@ -8,12 +8,11 @@ import javax.swing.JOptionPane;
 public class Login_Deslogado extends javax.swing.JFrame {
 
     Funcionario funLog;
-    
+
     public Login_Deslogado() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -29,7 +28,6 @@ public class Login_Deslogado extends javax.swing.JFrame {
         senha = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         matr = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         confirma = new javax.swing.JPasswordField();
         login = new javax.swing.JTextField();
@@ -69,7 +67,7 @@ public class Login_Deslogado extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/LOGO_150px.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
         confirma.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(53, 72, 112), 2, true));
 
@@ -80,7 +78,7 @@ public class Login_Deslogado extends javax.swing.JFrame {
             }
         });
 
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/backward-arrow.png"))); // NOI18N
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar.setToolTipText("Voltar");
         btnVoltar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -88,7 +86,7 @@ public class Login_Deslogado extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaces/btn_Cadastrar.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_Cadastrar.png"))); // NOI18N
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel7MouseClicked(evt);
@@ -102,9 +100,7 @@ public class Login_Deslogado extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addGap(349, 349, 349))
+                .addGap(355, 355, 355))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -131,14 +127,9 @@ public class Login_Deslogado extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6)))
-                .addGap(36, 36, 36)
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(matr, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -186,44 +177,32 @@ public class Login_Deslogado extends javax.swing.JFrame {
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         String s = new String(senha.getPassword());
         String c = new String(confirma.getPassword());
-        FunDAO funcionarioDAO =  new FunDAO();
-        
-        if (login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("")) 
-        {
+        FunDAO funcionarioDAO = new FunDAO();
+
+        if (login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("")) {
             JOptionPane.showMessageDialog(null, "Um campo importante está vazio.", "Erro", JOptionPane.ERROR_MESSAGE);
-        } else 
-        {
-            if(matr.getText().length() < 12)
-            {
-                JOptionPane.showMessageDialog(null, "Número de matrícula inválido.", "Erro", JOptionPane.ERROR_MESSAGE);
-            }else
-            {   
-                Funcionario fun = new Funcionario(matr.getText(),"Sem nome","Sem cargo");
-                if(funcionarioDAO.validarMatr(fun))
-                {
-                    if (s.equals(c)) 
-                    {   
+        } else {
+            
+                Funcionario fun = new Funcionario(matr.getText(), "Sem nome", "Sem cargo");
+                if (funcionarioDAO.validarMatr(fun)) {
+                    if (s.equals(c)) {
                         LoginDAO log = new LoginDAO();
-                        if (log.validaLogin(login.getText())) 
-                        {
+                        if (log.validaLogin(login.getText())) {
                             JOptionPane.showMessageDialog(null, "Esse login já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
-                        } else 
-                        {
+                        } else {
                             log.add(login.getText(), s, matr.getText());
                             JOptionPane.showMessageDialog(null, "Login cadastrado com sucesso.");
                             dispose();
                             Login newLogin = new Login();
                             newLogin.setVisible(true);
                         }
-                    }else
-                    {
+                    } else {
                         JOptionPane.showMessageDialog(null, "As senhas digitadas não são compatíveis.", "Erro", JOptionPane.ERROR_MESSAGE);
-                    } 
-                }else
-                {
+                    }
+                } else {
                     JOptionPane.showMessageDialog(null, "A matrícula digitada não está cadastrada no sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-            }    
+            
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 
@@ -247,7 +226,6 @@ public class Login_Deslogado extends javax.swing.JFrame {
     private javax.swing.JPasswordField confirma;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
