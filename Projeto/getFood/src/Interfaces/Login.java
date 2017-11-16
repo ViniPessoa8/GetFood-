@@ -1,15 +1,10 @@
 package Interfaces;
 
 import Classes.Funcionario;
-import DAO.FunDAO;
 import DAO.LoginDAO;
-import java.awt.ComponentOrientation;
-import java.awt.event.ActionEvent;
-import javax.swing.Icon;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.ActionListener;
 
 public class Login extends javax.swing.JFrame implements KeyListener {
 
@@ -21,6 +16,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         funLog = new Funcionario();
         txtLogin.addKeyListener(this);
         txtSenha.addKeyListener(this);
+        this.setLocationRelativeTo(null);
 
     }
 

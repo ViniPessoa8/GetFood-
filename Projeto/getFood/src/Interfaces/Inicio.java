@@ -1,19 +1,20 @@
 package Interfaces;
 
 import Classes.Funcionario;
-import java.awt.Color;
 
 public class Inicio extends javax.swing.JFrame {
-    
+
     Funcionario funLog;
-    
+
     public Inicio(Funcionario fun) {
         initComponents();
         this.funLog = fun;
+        this.setLocationRelativeTo(null);
     }
-    
-    private Inicio(){
+
+    private Inicio() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -340,9 +341,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
-      dispose();
-      Curso_Cadastro c=new Curso_Cadastro(funLog);
-      c.setVisible(true);
+        dispose();
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
+        c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
     private void jMenu8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu8ActionPerformed
@@ -371,11 +372,11 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jMenuItem11MouseEntered
 
     private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
-        
+
     }//GEN-LAST:event_jMenuItem11MouseExited
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
@@ -421,22 +422,22 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-       dispose();
-       Login_Cadastro newCD = new Login_Cadastro(funLog);
-       newCD.setVisible(true);
+        dispose();
+        Login_Cadastro newCD = new Login_Cadastro(funLog);
+        newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-       dispose();
-       Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
-       newBuscar.setVisible(true);
+        dispose();
+        Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
+        newBuscar.setVisible(true);
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
         dispose();
         Aluno_Foto newFoto = new Aluno_Foto(funLog);
         newFoto.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
@@ -446,7 +447,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Inicio().setVisible(true);

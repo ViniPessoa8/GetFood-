@@ -1,18 +1,8 @@
 package Interfaces;
-import Classes.Aluno;
+
 import Classes.Curso;
 import Classes.Funcionario;
 import DAO.CursoDAO;
-import Interfaces.Ficha_AlterarValor;
-import Interfaces.Aluno_Cadastro;
-import Interfaces.Aluno_Cadastro_Beneficiarios;
-import Interfaces.Funcionario_Cadastro;
-import Interfaces.Login_Cadastro;
-import Interfaces.Turma_Cadastro;
-import Interfaces.Inicio;
-import Interfaces.Reset;
-import Interfaces.Venda_Ficha;
-import Interfaces.Venda_Creditos;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
@@ -37,24 +27,23 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     CursoDAO cursoDao;
     String[] dadosCurso;
     FileReader arqReader;
-    ArrayList<Curso>listaCurso;
-    
-    private Curso_Cadastro() 
-    {
+    ArrayList<Curso> listaCurso;
+
+    private Curso_Cadastro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-    
-    public Curso_Cadastro(Funcionario fun) 
-    {
+
+    public Curso_Cadastro(Funcionario fun) {
         initComponents();
         this.funLog = fun;
         listaCurso = new ArrayList();
         cursoDao = new CursoDAO();
         txtNomeArquivo.addKeyListener(this);
         txtArea.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -416,8 +405,8 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltar3MouseClicked
-    
-    private void escolherArquivo(){
+
+    private void escolherArquivo() {
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -433,24 +422,19 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
 
-        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) 
-        {
+        if (retornoFileChooser == JFileChooser.APPROVE_OPTION) {
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
-            try 
-            {
+            try {
                 arqReader = new FileReader(arq);
                 txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) 
-            {
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
 
-            try 
-            {
+            try {
                 String linha = txt.readLine();
-                while (linha != null) 
-                {
+                while (linha != null) {
                     String novaLinha = txtArea.getText() + linha + "\n";
                     txtArea.setText(novaLinha);
 
@@ -459,35 +443,32 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
                     curso = new Curso();
                     curso.setCodigo(dadosCurso[0]);
                     curso.setNome(dadosCurso[1]);
-                    System.out.println(""+curso.getCodigo());
-                    System.out.println(""+curso.getNome());
+                    System.out.println("" + curso.getCodigo());
+                    System.out.println("" + curso.getNome());
                     System.out.println(curso.toString());
 
                     listaCurso.add(curso);
 
                     linha = txt.readLine();
                 }
-            } catch (IOException e) 
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    
-    private void cadastrarCurso(){
-        for(Curso c : listaCurso)
-        {
+
+    private void cadastrarCurso() {
+        for (Curso c : listaCurso) {
             cursoDao.addCurso(c);
         }
-        int resposta = JOptionPane.showConfirmDialog(null,"Cursos cadastrados com sucesso. Deseja voltar ao menu principal ?");
-        if(resposta == JOptionPane.YES_OPTION)
-        {
+        int resposta = JOptionPane.showConfirmDialog(null, "Cursos cadastrados com sucesso. Deseja voltar ao menu principal ?");
+        if (resposta == JOptionPane.YES_OPTION) {
             dispose();
             Inicio newInicio = new Inicio(funLog);
             newInicio.setVisible(true);
         }
     }
-    
+
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         escolherArquivo();
     }//GEN-LAST:event_jLabel2MouseClicked
@@ -586,7 +567,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -754,13 +735,13 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(txtNomeArquivo.getText().length()==0){
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (txtNomeArquivo.getText().length() == 0) {
                 escolherArquivo();
             } else {
                 cadastrarCurso();
             }
-            
+
         }
     }
 

@@ -38,7 +38,8 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame impleme
      * Creates new form txtBeneficio
      */
     public Aluno_Cadastro_Beneficiarios_Txt() {
-
+        initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Aluno_Cadastro_Beneficiarios_Txt(Funcionario fun) {
@@ -47,6 +48,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame impleme
         lista = new ArrayList();
         this.funLog = fun;
         txtNomeArquivo.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -567,7 +569,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame impleme
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -684,7 +686,7 @@ public class Aluno_Cadastro_Beneficiarios_Txt extends javax.swing.JFrame impleme
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
         if (codigo == KeyEvent.VK_ENTER) {
-            if(txtArea.getText().length()==0){
+            if (txtArea.getText().length() == 0) {
                 escolherArquivo();
             } else {
                 salvar();

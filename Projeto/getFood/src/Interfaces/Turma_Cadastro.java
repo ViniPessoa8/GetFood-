@@ -1,21 +1,9 @@
 package Interfaces;
 
-import Classes.Aluno;
-import Classes.Curso;
 import Classes.Funcionario;
 import Classes.Turma;
 import DAO.CursoDAO;
 import DAO.TurmaDAO;
-import Interfaces.Ficha_AlterarValor;
-import Interfaces.Aluno_Cadastro;
-import Interfaces.Aluno_Cadastro_Beneficiarios;
-import Interfaces.Funcionario_Cadastro;
-import Interfaces.Login_Cadastro;
-import Interfaces.Turma_Cadastro;
-import Interfaces.Inicio;
-import Interfaces.Reset;
-import Interfaces.Venda_Ficha;
-import Interfaces.Venda_Creditos;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
@@ -28,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
+public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
     BufferedReader txt;
@@ -41,6 +29,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
 
     private Turma_Cadastro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Turma_Cadastro(Funcionario fun) {
@@ -52,6 +41,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
         txtNomeArquivo.addKeyListener(this);
         funLog = fun;
         txtArea.setEditable(false);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -418,7 +408,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    public void escolherArquivo(){
+    public void escolherArquivo() {
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -463,10 +453,10 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
             }
         }
     }
-    
-    private void salvar(){
+
+    private void salvar() {
         if (txt == null) {
-            JOptionPane.showMessageDialog(null, "Selecione um arquivo.","AVISO!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um arquivo.", "AVISO!", JOptionPane.WARNING_MESSAGE);
         } else {
 
             for (Turma t : listaTurma) {
@@ -480,7 +470,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
             }
         }
     }
-    
+
     private void lblEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEscolherArquivoMouseClicked
         escolherArquivo();
     }//GEN-LAST:event_lblEscolherArquivoMouseClicked
@@ -579,7 +569,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -808,8 +798,8 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(txtNomeArquivo.getText().length()==0){
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (txtNomeArquivo.getText().length() == 0) {
                 escolherArquivo();
             } else {
                 salvar();
@@ -819,8 +809,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent ke) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
 }

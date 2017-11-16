@@ -13,9 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 
@@ -23,7 +21,7 @@ import net.sf.jasperreports.engine.JRException;
  *
  * @author Vinicius
  */
-public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
+public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener {
 
     private Date dataInicial, dataFinal;
     private Relatorio relatorio;
@@ -41,11 +39,12 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
         txtDataFinal.addKeyListener(this);
         txtDataInicial.addKeyListener(this);
         this.setDefaultCloseOperation(this.DISPOSE_ON_CLOSE);
-        
+        this.setLocationRelativeTo(null);
     }
 
     private Relatório_Gerar() {
-
+        initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -764,8 +763,8 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
-    
-    private void gerarRelatorio(){
+
+    private void gerarRelatorio() {
         int beneficiario = 0;
         if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
             JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
@@ -781,8 +780,8 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
             }
         }
     }
-    
-    private void estaSemana(){
+
+    private void estaSemana() {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         DateUtil du = new DateUtil();
         Date data = new Date();
@@ -796,12 +795,12 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
         dataInicial = primeiro;
         dataFinal = ultimo;
     }
-    
+
     private void btnGerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGerarRelatorioMouseClicked
         gerarRelatorio();
     }//GEN-LAST:event_btnGerarRelatorioMouseClicked
-    
-    
+
+
     private void btnEstaSemanaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstaSemanaMouseClicked
         estaSemana();
     }//GEN-LAST:event_btnEstaSemanaMouseClicked
@@ -896,7 +895,7 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
 
     private void jMenuItem33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem33ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem33ActionPerformed
 
@@ -1024,13 +1023,13 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(txtDataFinal.getText().length() == 0 && txtDataInicial.getText().length() == 0){
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (txtDataFinal.getText().length() == 0 && txtDataInicial.getText().length() == 0) {
                 estaSemana();
             } else {
                 gerarRelatorio();
             }
-            
+
         }
     }
 

@@ -11,6 +11,7 @@ public class Login_Deslogado extends javax.swing.JFrame {
 
     public Login_Deslogado() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -183,27 +184,27 @@ public class Login_Deslogado extends javax.swing.JFrame {
         if (login.getText().isEmpty() || matr.getText().isEmpty() || s.equals("") || c.equals("")) {
             JOptionPane.showMessageDialog(null, "Um campo importante está vazio.", "Erro", JOptionPane.ERROR_MESSAGE);
         } else {
-            
-                Funcionario fun = new Funcionario(matr.getText(), "Sem nome", "Sem cargo");
-                if (funcionarioDAO.validarMatr(fun)) {
-                    if (s.equals(c)) {
-                        LoginDAO log = new LoginDAO();
-                        if (log.validaLogin(login.getText())) {
-                            JOptionPane.showMessageDialog(null, "Esse login já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
-                        } else {
-                            log.add(login.getText(), s, matr.getText());
-                            JOptionPane.showMessageDialog(null, "Login cadastrado com sucesso.");
-                            dispose();
-                            Login newLogin = new Login();
-                            newLogin.setVisible(true);
-                        }
+
+            Funcionario fun = new Funcionario(matr.getText(), "Sem nome", "Sem cargo");
+            if (funcionarioDAO.validarMatr(fun)) {
+                if (s.equals(c)) {
+                    LoginDAO log = new LoginDAO();
+                    if (log.validaLogin(login.getText())) {
+                        JOptionPane.showMessageDialog(null, "Esse login já existe.", "Erro", JOptionPane.ERROR_MESSAGE);
                     } else {
-                        JOptionPane.showMessageDialog(null, "As senhas digitadas não são compatíveis.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        log.add(login.getText(), s, matr.getText());
+                        JOptionPane.showMessageDialog(null, "Login cadastrado com sucesso.");
+                        dispose();
+                        Login newLogin = new Login();
+                        newLogin.setVisible(true);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "A matrícula digitada não está cadastrada no sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "As senhas digitadas não são compatíveis.", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
-            
+            } else {
+                JOptionPane.showMessageDialog(null, "A matrícula digitada não está cadastrada no sistema.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
     }//GEN-LAST:event_jLabel7MouseClicked
 

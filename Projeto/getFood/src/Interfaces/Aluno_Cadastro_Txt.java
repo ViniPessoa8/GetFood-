@@ -25,7 +25,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Vinicius
  */
-public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListener{
+public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListener {
 
     BufferedReader txt;
     Aluno aluno;
@@ -40,7 +40,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
      * Creates new form txtAlunos
      */
     public Aluno_Cadastro_Txt() {
-
+        initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Aluno_Cadastro_Txt(Funcionario fun) {
@@ -50,6 +51,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         cursoDao = new CursoDAO();
         this.funLog = fun;
         txtNomeArquivo.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -384,14 +386,14 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void salvar(){
+    private void salvar() {
         for (Aluno al : listaAluno) {
             alunoDao.addAluno(al);
         }
         JOptionPane.showMessageDialog(null, "Alunos cadastrados com sucesso.");
-    }   
-    
-    private void escolherArquivo(){
+    }
+
+    private void escolherArquivo() {
         //VARI�VEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -445,7 +447,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
             JOptionPane.showMessageDialog(null, "Nenhum arquivo foi selecionado.", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
         salvar();
     }//GEN-LAST:event_btnSalvarMouseClicked
@@ -544,7 +546,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -644,8 +646,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(txtNomeArquivo.getText().length() == 0){
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (txtNomeArquivo.getText().length() == 0) {
                 escolherArquivo();
             } else {
                 salvar();

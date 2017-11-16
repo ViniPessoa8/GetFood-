@@ -16,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
+public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     BufferedReader txt;
     Aluno aluno;
@@ -26,12 +26,13 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
     FileReader arqReader;
     ArrayList<Aluno> listaAluno;
     Funcionario funLog;
-    private Aluno_Cadastro() 
-    {
+
+    private Aluno_Cadastro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-    
-    public Aluno_Cadastro(Funcionario fun){
+
+    public Aluno_Cadastro(Funcionario fun) {
         initComponents();
         listaAluno = new ArrayList();
         alunoDao = new AlunoDAO();
@@ -41,6 +42,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
         txtNomeArquivo.setEditable(false);
         txtArea.addKeyListener(this);
         txtArea.setEditable(false);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -389,8 +391,8 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
         Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
-    
-    private void escolherArquivo(){
+
+    private void escolherArquivo() {
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -442,21 +444,19 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
             }
         }
     }
-    
-    private void cadastrar(){
-        for(Aluno al : listaAluno)
-        {
+
+    private void cadastrar() {
+        for (Aluno al : listaAluno) {
             alunoDao.addAluno(al);
         }
-        int resposta = JOptionPane.showConfirmDialog(null,"Alunos cadastrados com sucesso. Deseja voltar ao menu principal ?");
-        if(resposta == JOptionPane.YES_OPTION)
-        {
+        int resposta = JOptionPane.showConfirmDialog(null, "Alunos cadastrados com sucesso. Deseja voltar ao menu principal ?");
+        if (resposta == JOptionPane.YES_OPTION) {
             dispose();
             Inicio newInicio = new Inicio(funLog);
             newInicio.setVisible(true);
         }
     }
-    
+
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         escolherArquivo();
     }//GEN-LAST:event_jLabel2MouseClicked
@@ -555,7 +555,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -578,7 +578,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
     }//GEN-LAST:event_jMenu8ActionPerformed
 
     public static void main(String args[]) {
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Aluno_Cadastro().setVisible(true);
@@ -633,13 +633,13 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(txtNomeArquivo.getText().length()==0){
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (txtNomeArquivo.getText().length() == 0) {
                 escolherArquivo();
             } else {
                 cadastrar();
             }
-            
+
         }
     }
 

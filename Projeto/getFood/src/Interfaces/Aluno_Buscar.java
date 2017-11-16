@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener{
+public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
     Aluno aluno;
@@ -26,10 +26,12 @@ public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener{
         painelDados.setEditable(false);
         txtBusca.addKeyListener(this);
         painelDados.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     private Aluno_Buscar() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -389,7 +391,7 @@ public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener{
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void buscar(){
+    private void buscar() {
         String matricula;
 
         matricula = txtBusca.getText();
@@ -407,10 +409,10 @@ public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener{
             } else {
                 JOptionPane.showMessageDialog(null, "Aluno não encontrado.", "Erro!", JOptionPane.ERROR_MESSAGE);
             }
-            
+
         }
     }
-    
+
     private void btnBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseClicked
         buscar();
     }//GEN-LAST:event_btnBuscarMouseClicked
@@ -505,7 +507,7 @@ public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener{
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -594,7 +596,7 @@ public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener{
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
+        if (codigo == KeyEvent.VK_ENTER) {
             buscar();
         }
     }

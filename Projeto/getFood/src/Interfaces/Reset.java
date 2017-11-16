@@ -1,7 +1,6 @@
 package Interfaces;
 
 import Classes.Funcionario;
-import java.awt.Color;
 import DAO.AlunoDAO;
 import DAO.CursoDAO;
 import DAO.TurmaDAO;
@@ -16,6 +15,7 @@ public class Reset extends javax.swing.JFrame implements KeyListener {
 
     private Reset() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Reset(Funcionario fun) {
@@ -23,7 +23,7 @@ public class Reset extends javax.swing.JFrame implements KeyListener {
         this.funLog = fun;
         txtLogo.addKeyListener(this);
         addKeyListener(this);
-
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -465,7 +465,7 @@ public class Reset extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 

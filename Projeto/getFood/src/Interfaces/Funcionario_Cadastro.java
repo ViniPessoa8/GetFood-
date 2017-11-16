@@ -18,17 +18,19 @@ import javax.swing.JOptionPane;
 public class Funcionario_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
-    
+
     private Funcionario_Cadastro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-    
-    public Funcionario_Cadastro(Funcionario fun){
+
+    public Funcionario_Cadastro(Funcionario fun) {
         initComponents();
         this.funLog = fun;
         txtMatricula.addKeyListener(this);
         txtNome.addKeyListener(this);
         txtCargo.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -417,13 +419,13 @@ public class Funcionario_Cadastro extends javax.swing.JFrame implements KeyListe
         Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltar2MouseClicked
-    private void cadastrar(){
+    private void cadastrar() {
         String matr = txtMatricula.getText();
         Funcionario fun = new Funcionario(matr, txtNome.getText(), txtCargo.getText());
         FunDAO f = new FunDAO();
-        if(txtMatricula.getText().length()==0 || txtNome.getText().length()==0 || txtCargo.getText().length()==0){
+        if (txtMatricula.getText().length() == 0 || txtNome.getText().length() == 0 || txtCargo.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Algum campo deixou de ser preenchido.", "Erro!", JOptionPane.ERROR_MESSAGE);
-        }else if (f.validarMatr(fun)) {
+        } else if (f.validarMatr(fun)) {
             JOptionPane.showMessageDialog(null, "Essa matricula já está no nosso banco de dados.");
         } else {
             f.addFuncionario(fun);
@@ -540,7 +542,7 @@ public class Funcionario_Cadastro extends javax.swing.JFrame implements KeyListe
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -659,7 +661,7 @@ public class Funcionario_Cadastro extends javax.swing.JFrame implements KeyListe
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
+        if (codigo == KeyEvent.VK_ENTER) {
             cadastrar();
         }
     }

@@ -1,9 +1,7 @@
 package Interfaces;
 
-import Classes.Ficha;
 import Classes.Funcionario;
 import DAO.FichaDAO;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JOptionPane;
@@ -15,6 +13,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
 
     private Ficha_AlterarValor() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Ficha_AlterarValor(Funcionario fun) {
@@ -24,6 +23,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
         this.funLog = fun;
         txtAtual.addKeyListener(this);
         txtPreco.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -514,7 +514,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -681,7 +681,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
+        if (codigo == KeyEvent.VK_ENTER) {
             alterar();
         }
     }

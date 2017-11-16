@@ -37,10 +37,12 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
         addKeyListener(this);
         txtArquivos.addKeyListener(this);
         txtArquivos.setEditable(false);
+        this.setLocationRelativeTo(null);
     }
 
     private Aluno_Foto() {
-
+        initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -380,7 +382,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
         for (File file : fotos) {
             String nomeArquivo = file.getName();
             if (nomeArquivo.contains("F#") && nomeArquivo.length() == 18 && nomeArquivo.contains(".jpg")) {
-                
+
             } else {
                 JOptionPane.showMessageDialog(jMenu2, nomeArquivo);
                 ok = false;
@@ -502,7 +504,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -600,13 +602,13 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(txtArquivos.getText().length()==0){
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (txtArquivos.getText().length() == 0) {
                 escolherArquivo();
             } else {
                 salvar();
             }
-            
+
         }
     }
 

@@ -12,6 +12,7 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private Login_Cadastro() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public Login_Cadastro(Funcionario fun) {
@@ -21,6 +22,7 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
         txtLogin.addKeyListener(this);
         txtMatricula.addKeyListener(this);
         txtSenha.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -404,7 +406,7 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltarMouseClicked
 
-    private void cadastrar(){
+    private void cadastrar() {
         String s = new String(txtSenha.getPassword());
         String c = new String(txtConfirmacao.getPassword());
         if (txtLogin.getText().isEmpty() || txtMatricula.getText().isEmpty() || s.equals("") || c.equals("")) {
@@ -433,7 +435,7 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
             }
         }
     }
-    
+
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         cadastrar();
     }//GEN-LAST:event_jLabel7MouseClicked
@@ -528,7 +530,7 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 

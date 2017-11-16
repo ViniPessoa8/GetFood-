@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
 
-public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
+public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
 
     AlunoDAO aluno;
     Aluno al;
@@ -30,6 +30,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
         txtQuantia.setEditable(false);
         txtQuantia.setEnabled(false);
         btnVender.setVisible(false);
+        this.setLocationRelativeTo(null);
     }
 
     public Venda_Creditos(Funcionario fun) {
@@ -44,6 +45,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
         btnVender.setVisible(false);
         txtMatr.addKeyListener(this);
         txtQuantia.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -436,7 +438,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltar1MouseClicked
 
-    public void verificar(){
+    public void verificar() {
         al = null;
         if (!txtMatr.getText().equals("")) {
             if (txtMatr.getText().length() == 12) {
@@ -464,8 +466,8 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
             JOptionPane.showMessageDialog(null, "Digite algo no campo 'Matrícula'.", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void vender(){
+
+    public void vender() {
         double quantia;
         Boolean resultado;
         quantia = Double.parseDouble(txtQuantia.getText());
@@ -493,7 +495,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
             JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada");
         }
     }
-    
+
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         verificar();
     }//GEN-LAST:event_btnVerificarMouseClicked
@@ -592,7 +594,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
@@ -667,14 +669,14 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener{
 
     @Override
     public void keyTyped(KeyEvent ke) {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
-            if(PainelDados.getText().length() == 0) {
+        if (codigo == KeyEvent.VK_ENTER) {
+            if (PainelDados.getText().length() == 0) {
                 verificar();
             } else {
                 vender();

@@ -35,10 +35,12 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         modelo = (DefaultTableModel) tabHistorico.getModel();
         txtMatricula.addKeyListener(this);
         tabHistorico.addKeyListener(this);
+        this.setLocationRelativeTo(null);
     }
 
     private Aluno_ConsultarHistorico() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     public void formataTabela() {
@@ -511,7 +513,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         dispose();
-        Curso_Cadastro c=new Curso_Cadastro(funLog);
+        Curso_Cadastro c = new Curso_Cadastro(funLog);
         c.setVisible(true);
     }//GEN-LAST:event_jMenuItem14ActionPerformed
 
