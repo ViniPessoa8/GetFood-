@@ -63,25 +63,20 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtMatr = new javax.swing.JTextField();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 90), new java.awt.Dimension(0, 90), new java.awt.Dimension(32767, 90));
         jScrollPane3 = new javax.swing.JScrollPane();
         PainelDados = new javax.swing.JTextPane();
-        jLabel2 = new javax.swing.JLabel();
         lblVenda = new javax.swing.JLabel();
-        cxCredito = new javax.swing.JCheckBox();
-        cxBeneficio = new javax.swing.JCheckBox();
-        cxDinheiro = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
         btnVerificar = new javax.swing.JLabel();
         btnVender = new javax.swing.JLabel();
         txtFotoAluno = new javax.swing.JLabel();
+        cxBeneficio = new javax.swing.JRadioButton();
+        cxDinheiro = new javax.swing.JRadioButton();
+        cxCredito = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -128,30 +123,6 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         lblVenda.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         lblVenda.setText("Venda a partir de :");
 
-        cxCredito.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cxCredito.setText("Créditos");
-        cxCredito.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxCreditoActionPerformed(evt);
-            }
-        });
-
-        cxBeneficio.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cxBeneficio.setText("Benefício");
-        cxBeneficio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxBeneficioActionPerformed(evt);
-            }
-        });
-
-        cxDinheiro.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
-        cxDinheiro.setText("Dinheiro");
-        cxDinheiro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cxDinheiroActionPerformed(evt);
-            }
-        });
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
 
         btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
@@ -176,28 +147,25 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
             }
         });
 
+        cxBeneficio.setText("Benefício");
+
+        cxDinheiro.setText("Dinheiro");
+
+        cxCredito.setText("Crédito");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(82, 82, 82)
-                                .addComponent(jLabel1)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(91, 91, 91)
-                                .addComponent(jLabel2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(145, 145, 145)
-                                .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(93, 93, 93)
+                                .addComponent(btnVerificar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnVender))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -208,15 +176,21 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                                         .addComponent(btnVoltar)))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cxDinheiro)
                                     .addComponent(cxBeneficio)
-                                    .addComponent(cxCredito)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(btnVerificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnVender)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)))
+                                    .addComponent(cxDinheiro)
+                                    .addComponent(cxCredito))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(30, 30, 30)
+                                .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(85, 85, 85))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(195, 195, 195)))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -233,21 +207,15 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1))
-                                .addGap(41, 41, 41)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(162, 162, 162)
-                                .addComponent(jLabel2)))
+                        .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblVenda)
@@ -256,7 +224,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                         .addComponent(cxDinheiro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cxCredito)
-                        .addContainerGap(81, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(57, 57, 57)
                         .addComponent(txtFotoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
@@ -583,24 +551,6 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         vender();
     }//GEN-LAST:event_btnVenderMouseClicked
 
-    private void cxBeneficioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxBeneficioActionPerformed
-        if (cxBeneficio.isSelected() && (cxDinheiro.isSelected() || cxCredito.isSelected())) {
-            cxBeneficio.setSelected(false);
-        }
-    }//GEN-LAST:event_cxBeneficioActionPerformed
-
-    private void cxDinheiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxDinheiroActionPerformed
-        if (cxDinheiro.isSelected() && (cxBeneficio.isSelected() || cxCredito.isSelected())) {
-            cxDinheiro.setSelected(false);
-        }
-    }//GEN-LAST:event_cxDinheiroActionPerformed
-
-    private void cxCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cxCreditoActionPerformed
-        if (cxCredito.isSelected() && (cxDinheiro.isSelected() || cxBeneficio.isSelected())) {
-            cxCredito.setSelected(false);
-        }
-    }//GEN-LAST:event_cxCreditoActionPerformed
-
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
 
@@ -784,15 +734,10 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JLabel btnVender;
     private javax.swing.JLabel btnVerificar;
     private javax.swing.JLabel btnVoltar;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JCheckBox cxBeneficio;
-    private javax.swing.JCheckBox cxCredito;
-    private javax.swing.JCheckBox cxDinheiro;
-    private javax.swing.Box.Filler filler1;
+    private javax.swing.JRadioButton cxBeneficio;
+    private javax.swing.JRadioButton cxCredito;
+    private javax.swing.JRadioButton cxDinheiro;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
