@@ -69,7 +69,6 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         jMenu4 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
@@ -251,14 +250,6 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
             }
         });
         jMenu4.add(jMenuItem12);
-
-        jMenuItem6.setText("Resetar");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem6);
 
         jMenuItem15.setText("Buscar Aluno");
         jMenuItem15.addActionListener(new java.awt.event.ActionListener() {
@@ -509,12 +500,6 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        dispose();
-        Reset newReset = new Reset(funLog);
-        newReset.setVisible(true);
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
         dispose();
         Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
@@ -619,7 +604,6 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;

@@ -103,7 +103,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         jMenu11 = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
         jMenuItem24 = new javax.swing.JMenuItem();
-        jMenuItem25 = new javax.swing.JMenuItem();
         jMenuItem26 = new javax.swing.JMenuItem();
         jMenuItem27 = new javax.swing.JMenuItem();
         jMenuItem28 = new javax.swing.JMenuItem();
@@ -501,14 +500,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         });
         jMenu11.add(jMenuItem24);
 
-        jMenuItem25.setText("Resetar");
-        jMenuItem25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem25ActionPerformed(evt);
-            }
-        });
-        jMenu11.add(jMenuItem25);
-
         jMenuItem26.setText("Buscar Aluno");
         jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -844,12 +835,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenuItem24ActionPerformed
 
-    private void jMenuItem25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem25ActionPerformed
-        dispose();
-        Reset newReset = new Reset(funLog);
-        newReset.setVisible(true);
-    }//GEN-LAST:event_jMenuItem25ActionPerformed
-
     private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
         dispose();
         Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
@@ -992,7 +977,6 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
     private javax.swing.JMenuItem jMenuItem26;
     private javax.swing.JMenuItem jMenuItem27;
     private javax.swing.JMenuItem jMenuItem28;
