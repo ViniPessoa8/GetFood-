@@ -92,6 +92,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Turmas");
         setResizable(false);
 
         txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N

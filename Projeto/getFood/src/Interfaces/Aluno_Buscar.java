@@ -86,6 +86,7 @@ public class Aluno_Buscar extends javax.swing.JFrame implements KeyListener {
         jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Buscar Aluno");
         setResizable(false);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N

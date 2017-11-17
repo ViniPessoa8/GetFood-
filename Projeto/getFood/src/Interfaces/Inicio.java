@@ -62,6 +62,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenuItem13.setText("jMenuItem13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Simplified Arabic", 1, 24)); // NOI18N

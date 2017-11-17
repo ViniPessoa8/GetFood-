@@ -94,6 +94,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         jMenuItem13.setText("jMenuItem13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Alunos");
         setResizable(false);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N

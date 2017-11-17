@@ -83,6 +83,7 @@ public class Funcionario_Cadastro extends javax.swing.JFrame implements KeyListe
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Funcionários");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N

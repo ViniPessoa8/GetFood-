@@ -93,6 +93,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Cursos");
         setResizable(false);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N

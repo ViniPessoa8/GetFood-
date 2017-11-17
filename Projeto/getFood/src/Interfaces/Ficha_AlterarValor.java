@@ -71,6 +71,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Alterar Valor da Ficha");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N

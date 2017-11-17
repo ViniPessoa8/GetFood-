@@ -70,6 +70,7 @@ public class Reset extends javax.swing.JFrame implements KeyListener {
         jMenuItem13.setText("jMenuItem13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Reset do banco de dados");
         setResizable(false);
 
         txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N

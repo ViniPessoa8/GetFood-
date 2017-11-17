@@ -75,6 +75,7 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
         jMenuItem13.setText("jMenuItem13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Login");
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N

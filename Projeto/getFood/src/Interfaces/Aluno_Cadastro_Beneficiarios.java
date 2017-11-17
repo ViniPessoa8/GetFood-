@@ -90,6 +90,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         jMenuItem13.setText("jMenuItem13");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cadastrar Beneficiários");
         setResizable(false);
 
         txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
