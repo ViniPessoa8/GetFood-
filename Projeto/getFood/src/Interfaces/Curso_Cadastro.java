@@ -32,6 +32,8 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     private Curso_Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
+        txtArea.setEditable(false);
+        txtArea.addKeyListener(this);
     }
 
     public Curso_Cadastro(Funcionario fun) {
@@ -41,6 +43,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         cursoDao = new CursoDAO();
         txtNomeArquivo.addKeyListener(this);
         txtArea.addKeyListener(this);
+        txtArea.setEditable(false);
         this.setLocationRelativeTo(null);
     }
 
@@ -276,7 +279,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         });
         jMenu4.add(jMenuItem15);
 
-        jMenuItem16.setText("Adicionar foto txt");
+        jMenuItem16.setText("Adicionar foto");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem16ActionPerformed(evt);
@@ -414,7 +417,13 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
-
+        
+        //Aviso sobre a formatação do arquivo.
+        JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
+                + "(Dados separados por '#' e na seguinte ordem:\n"
+                + "-Código do curso\n"
+                + "-Nome do curso", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
 

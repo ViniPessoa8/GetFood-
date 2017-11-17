@@ -28,6 +28,8 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
     public Aluno_Cadastro_Beneficiarios() {
         initComponents();
         this.setLocationRelativeTo(null);
+        txtArea.setEditable(false);
+        txtArea.addKeyListener(this);
     }
 
     public Aluno_Cadastro_Beneficiarios(Funcionario fun) {
@@ -265,7 +267,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         });
         jMenu4.add(jMenuItem15);
 
-        jMenuItem16.setText("Adicionar foto txt");
+        jMenuItem16.setText("Adicionar foto");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem16ActionPerformed(evt);
@@ -407,7 +409,15 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
-
+        
+        //Aviso sobre a formatação do arquivo.
+        JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
+                + "(Dados separados por '#' e na seguinte ordem:\n"
+                + "-Matrícula\n"
+                + "-Nome\n"
+                + "-Curso\n"
+                + "-Turma\n", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
 

@@ -11,6 +11,8 @@ import Classes.Relatorio;
 import DAO.RelatorioDAO;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -514,7 +516,7 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         });
         jMenu11.add(jMenuItem26);
 
-        jMenuItem27.setText("Adicionar foto txt");
+        jMenuItem27.setText("Adicionar foto");
         jMenuItem27.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem27ActionPerformed(evt);
@@ -770,7 +772,8 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
             }
 
             try {
-                relatorioDao.gerar("src\\Relatorio\\Vendas.jrxml", beneficiario, dataInicial, dataFinal);
+                Path url = Paths.get("Relatorio/Vendas.jrxml");
+                relatorioDao.gerar("/home/vinicius/Documentos/GitHub/GetFood-/Projeto/getFood/src/Relatorio/Vendas.jrxml", beneficiario, dataInicial, dataFinal);
             } catch (JRException | ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
             }

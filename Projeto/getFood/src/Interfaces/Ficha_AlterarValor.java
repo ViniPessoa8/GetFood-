@@ -266,7 +266,7 @@ public class Ficha_AlterarValor extends javax.swing.JFrame implements KeyListene
         });
         jMenu4.add(jMenuItem15);
 
-        jMenuItem16.setText("Adicionar foto txt");
+        jMenuItem16.setText("Adicionar foto");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem16ActionPerformed(evt);

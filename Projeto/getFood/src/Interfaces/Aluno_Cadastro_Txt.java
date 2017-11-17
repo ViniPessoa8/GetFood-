@@ -42,6 +42,8 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
     public Aluno_Cadastro_Txt() {
         initComponents();
         this.setLocationRelativeTo(null);
+        txtArea.addKeyListener(this);
+        txtArea.setEditable(false);
     }
 
     public Aluno_Cadastro_Txt(Funcionario fun) {
@@ -51,7 +53,9 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         cursoDao = new CursoDAO();
         this.funLog = fun;
         txtNomeArquivo.addKeyListener(this);
+        
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -216,7 +220,7 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
         });
         jMenu4.add(jMenuItem15);
 
-        jMenuItem16.setText("Adicionar foto txt");
+        jMenuItem16.setText("Adicionar foto");
         jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem16ActionPerformed(evt);
@@ -396,7 +400,15 @@ public class Aluno_Cadastro_Txt extends javax.swing.JFrame implements KeyListene
 
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("Texto", "txt");
         int retornoFileChooser;
-
+        
+        //Aviso sobre a formatação do arquivo.
+        JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
+                + "(Dados separados por '#' e na seguinte ordem:\n"
+                + "-Matrícula\n"
+                + "-Nome\n"
+                + "-Curso\n"
+                + "-Turma\n", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        
         //Configura��o do JFileChooser
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
