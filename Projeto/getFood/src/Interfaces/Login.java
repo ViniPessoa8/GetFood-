@@ -94,7 +94,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
                 .addGap(352, 352, 352))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnCadastrarLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrarLogin)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(

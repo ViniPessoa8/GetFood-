@@ -270,7 +270,7 @@
               <Insets value="[10, 35, 10, 35]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[130, 33]"/>
+              <Dimension value="[150, 33]"/>
             </Property>
             <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>

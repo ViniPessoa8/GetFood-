@@ -362,7 +362,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         jMenu8.setText("Turma");
         jMenu8.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu8.setMargin(new java.awt.Insets(10, 35, 10, 35));
-        jMenu8.setPreferredSize(new java.awt.Dimension(130, 33));
+        jMenu8.setPreferredSize(new java.awt.Dimension(150, 33));
         jMenu8.setRequestFocusEnabled(false);
         jMenu8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

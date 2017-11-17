@@ -600,7 +600,7 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         jMenu15.setText("Turma");
         jMenu15.setFont(new java.awt.Font("Simplified Arabic", 0, 18)); // NOI18N
         jMenu15.setMargin(new java.awt.Insets(10, 35, 10, 35));
-        jMenu15.setPreferredSize(new java.awt.Dimension(130, 33));
+        jMenu15.setPreferredSize(new java.awt.Dimension(150, 33));
         jMenu15.setRequestFocusEnabled(false);
         jMenu15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
