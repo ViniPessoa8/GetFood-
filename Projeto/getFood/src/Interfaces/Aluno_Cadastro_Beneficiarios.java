@@ -455,7 +455,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         for (Aluno al : lista) {
             alunoDao.setBeneficiario(al);
         }
-        JOptionPane.showMessageDialog(null, "Operação realizada com sucesso.");
+        JOptionPane.showMessageDialog(null, "Operação realizada com sucesso.", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
         dispose();
         Inicio inicio = new Inicio(funLog);
         inicio.setVisible(true);

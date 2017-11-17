@@ -466,7 +466,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
             for (Turma t : listaTurma) {
                 turmaDao.addTurma(turma);
             }
-            int resposta = JOptionPane.showConfirmDialog(null, "Turmas cadastradas com sucesso. Deseja voltar ao menu principal ?");
+            int resposta = JOptionPane.showConfirmDialog(null, "Turmas cadastradas com sucesso. Deseja voltar ao menu principal?", null, JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 dispose();
                 Inicio newInicio = new Inicio(funLog);

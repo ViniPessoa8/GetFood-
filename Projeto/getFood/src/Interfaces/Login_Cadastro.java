@@ -406,17 +406,17 @@ public class Login_Cadastro extends javax.swing.JFrame implements KeyListener {
         String s = new String(txtSenha.getPassword());
         String c = new String(txtConfirmacao.getPassword());
         if (txtLogin.getText().isEmpty() || txtMatricula.getText().isEmpty() || s.equals("") || c.equals("")) {
-            JOptionPane.showMessageDialog(null, "Um campo importante está vazio!");
+            JOptionPane.showMessageDialog(null, "Um campo importante está vazio!", "Erro!", JOptionPane.ERROR_MESSAGE);
         } else {
             if (s.equals(c)) {
                 System.out.println("Senhas iguais");
                 LoginDAO log = new LoginDAO();
                 if (log.validaLogin(txtLogin.getText())) {
                     System.out.println("vrau");
-                    JOptionPane.showMessageDialog(null, "Esse login já existe.");
+                    JOptionPane.showMessageDialog(null, "Esse login já existe.", "Erro!", JOptionPane.ERROR_MESSAGE);
                 } else {
                     log.add(txtLogin.getText(), s, txtMatricula.getText());
-                    int r = JOptionPane.showConfirmDialog(null, "Login cadastrado com sucesso. Deseja cadastrar outro login ?");
+                    int r = JOptionPane.showConfirmDialog(null, "Login cadastrado com sucesso. Deseja cadastrar outro login?", "Cadastro", JOptionPane.YES_NO_OPTION);
                     if (r == JOptionPane.YES_OPTION) {
                         dispose();
                         Login_Cadastro cadastro = new Login_Cadastro(funLog);

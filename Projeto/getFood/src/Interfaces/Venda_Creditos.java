@@ -475,8 +475,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
         resultado = venda.efetuarVenda(al.getMatricula(), funLog.getMatricula(), quantia, new Date(data.getTimeInMillis()), venda.VENDA_CREDITOS);
         //venda.atualizaSaldoAluno(al.getMatricula(), al.getSaldo() + quantia);
         if (resultado) {
-            JOptionPane.showMessageDialog(null, "Venda realizada com sucesso.");
-            int resp = JOptionPane.showConfirmDialog(null, "Deseja realizar outra venda?");
+            int resp = JOptionPane.showConfirmDialog(null, "Venda realizada com sucesso. Deseja realizar outra venda?", "Venda", JOptionPane.YES_NO_OPTION);
             if (resp == JOptionPane.YES_OPTION) {
                 dispose();
                 Venda_Creditos newVenda = new Venda_Creditos(funLog);
@@ -488,7 +487,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada");
+            JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
     }
 

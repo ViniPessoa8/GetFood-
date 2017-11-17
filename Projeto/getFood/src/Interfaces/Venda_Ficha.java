@@ -511,7 +511,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         boolean resultado = false;
         if (al != null) {
             if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
-                JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.");
+                JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.", "Erro!", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (cxDinheiro.isSelected()) {
                     resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_DINHEIRO);
@@ -525,7 +525,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                 if (!resultado) {
                     JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda ?");
+                    int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda?", "Venda", JOptionPane.YES_NO_OPTION);
                     if (resp == JOptionPane.YES_OPTION) {
                         dispose();
                         Venda_Ficha newVenda = new Venda_Ficha(funLog);

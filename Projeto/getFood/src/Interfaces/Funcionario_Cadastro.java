@@ -422,16 +422,16 @@ public class Funcionario_Cadastro extends javax.swing.JFrame implements KeyListe
         if (txtMatricula.getText().length() == 0 || txtNome.getText().length() == 0 || txtCargo.getText().length() == 0) {
             JOptionPane.showMessageDialog(null, "Algum campo deixou de ser preenchido.", "Erro!", JOptionPane.ERROR_MESSAGE);
         } else if (f.validarMatr(fun)) {
-            JOptionPane.showMessageDialog(null, "Essa matricula já está no nosso banco de dados.");
+            JOptionPane.showMessageDialog(null, "Essa matricula já está no nosso banco de dados.", "Erro!", JOptionPane.ERROR_MESSAGE);
         } else {
             f.addFuncionario(fun);
-            int k = JOptionPane.showConfirmDialog(null, "Deseja executar o  cadastro do login deste funcionário?");
+            int k = JOptionPane.showConfirmDialog(null, "Deseja executar o  cadastro do login deste funcionário?", "Login", JOptionPane.YES_NO_OPTION);
             if (k == JOptionPane.YES_OPTION) {
                 dispose();
                 Login_Cadastro lc = new Login_Cadastro(funLog);
                 lc.setVisible(true);
             } else {
-                int r = JOptionPane.showConfirmDialog(null, "Deseja cadastrar outro funcionário?");
+                int r = JOptionPane.showConfirmDialog(null, "Deseja cadastrar outro funcionário?", "Cadastro de Funcionário", JOptionPane.YES_NO_OPTION);
                 if (r == JOptionPane.YES_OPTION || r == JOptionPane.OK_OPTION) {
                     txtNome.setText("");
                     txtMatricula.setText("");

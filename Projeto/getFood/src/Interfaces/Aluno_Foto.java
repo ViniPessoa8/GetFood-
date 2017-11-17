@@ -398,8 +398,15 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
                     alunoDao.setFotoAluno(fu.fileToInputStream(file), alunoDao.getAlunoMatricula(dadosNome[1]));
                 }
             }
-            JOptionPane.showMessageDialog(null, "Fotos cadastradas com sucesso");
+            JOptionPane.showMessageDialog(null, "Fotos cadastradas com sucesso", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            MenuPrincipal();
         }
+    }
+    
+    private void MenuPrincipal(){
+        dispose();
+        Inicio mn = new Inicio(funLog);
+        mn.setVisible(true);
     }
 
     private void btnEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEscolherArquivoMouseClicked

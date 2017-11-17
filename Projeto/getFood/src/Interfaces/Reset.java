@@ -342,19 +342,19 @@ public class Reset extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void resetar() {
-        int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar todos os alunos, vendas, cursos e turmas cadastrados no banco de dados ?");
+        int resp = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar todos os alunos, vendas, cursos e turmas cadastrados no banco de dados?", "Reset", JOptionPane.YES_NO_OPTION);
         if (resp == JOptionPane.YES_OPTION) {
             AlunoDAO aluno = new AlunoDAO();
             VendaDAO venda = new VendaDAO();
             TurmaDAO turma = new TurmaDAO();
             CursoDAO curso = new CursoDAO();
             if (venda.dropVendas() && aluno.dropAlunos() && turma.dropTurmas() && curso.dropCursos()) {
-                JOptionPane.showMessageDialog(null, "Operação realizada com sucesso, seu banco de dados foi resetado.");
+                JOptionPane.showMessageDialog(null, "Operação realizada com sucesso, seu banco de dados foi resetado.", "Reset", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "O bando de dados não foi resetado.", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "O banco de dados não foi resetado.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
         } else if (resp == JOptionPane.NO_OPTION) {
-            int result = JOptionPane.showConfirmDialog(null, "Deseja voltar à tela inicial ?");
+            int result = JOptionPane.showConfirmDialog(null, "Deseja voltar à tela inicial ?", "Reset", JOptionPane.YES_NO_OPTION);
             if (result == JOptionPane.YES_OPTION) {
                 dispose();
                 Inicio newInicio = new Inicio(funLog);

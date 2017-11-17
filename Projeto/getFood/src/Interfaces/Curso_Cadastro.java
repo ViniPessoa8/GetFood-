@@ -466,7 +466,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         for (Curso c : listaCurso) {
             cursoDao.addCurso(c);
         }
-        int resposta = JOptionPane.showConfirmDialog(null, "Cursos cadastrados com sucesso. Deseja voltar ao menu principal ?");
+        int resposta = JOptionPane.showConfirmDialog(null, "Cursos cadastrados com sucesso. Deseja voltar ao menu principal?", "Cadastro de curso", JOptionPane.YES_NO_OPTION);
         if (resposta == JOptionPane.YES_OPTION) {
             dispose();
             Inicio newInicio = new Inicio(funLog);

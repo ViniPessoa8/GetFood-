@@ -402,9 +402,14 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
-        
+
         //Aviso sobre a formatação do arquivo.
-        JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro.", "Aviso!", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
+                + "(Dados separados por '#' e na seguinte ordem:\n"
+                + "-Matrícula\n"
+                + "-Nome\n"
+                + "-Curso\n"
+                + "-Turma\n", "Aviso!", JOptionPane.WARNING_MESSAGE);
 
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
@@ -450,12 +455,11 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         for (Aluno al : listaAluno) {
             alunoDao.addAluno(al);
         }
-        int resposta = JOptionPane.showConfirmDialog(null, "Alunos cadastrados com sucesso. Deseja voltar ao menu principal ?");
-        if (resposta == JOptionPane.YES_OPTION) {
-            dispose();
-            Inicio newInicio = new Inicio(funLog);
-            newInicio.setVisible(true);
-        }
+        JOptionPane.showMessageDialog(null, "Cadastros realizados com sucesso.", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+        Inicio newInicio = new Inicio(funLog);
+        newInicio.setVisible(true);
+
     }
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
