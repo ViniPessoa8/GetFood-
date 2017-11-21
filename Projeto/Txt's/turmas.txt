@@ -1,0 +1,6 @@
+IINF11-A#Informática
+IINF11-B#Informática
+IINF21-A#Informática
+IINF21-B#Informática
+IINF31-A#Informática
+IINF31-B#Informática

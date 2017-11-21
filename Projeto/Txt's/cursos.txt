@@ -1,0 +1,5 @@
+1#Informática
+2#Mecânica
+3#Edificações
+4#Química
+5#Eletrotécnica
