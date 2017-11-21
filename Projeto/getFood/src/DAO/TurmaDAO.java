@@ -160,6 +160,22 @@ public class TurmaDAO {
 
         return result;
     }
-
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM turma";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs != null){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return retorno;
+    }
 
 }

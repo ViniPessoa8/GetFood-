@@ -10,9 +10,6 @@ import java.util.ArrayList;
 
 public class FunDAO {
 
-
-
-
     private Connection con;
     private String sql;
     private PreparedStatement pstm;
@@ -145,6 +142,40 @@ public class FunDAO {
 
         }
         
+        return retorno;
+    }
+    
+    public boolean validaSenhaAdm(String senha){
+        sql = "SELECT * FROM login WHERE senha = ?";
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,senha);
+            rs = pstm.executeQuery();
+            if(rs != null){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return retorno;
+    }
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM funcionario";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs != null){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return retorno;
     }
 }

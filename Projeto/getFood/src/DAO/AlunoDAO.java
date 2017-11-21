@@ -476,4 +476,21 @@ public class AlunoDAO {
 
         return historico;
     }
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM aluno";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs != null){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return retorno;
+    }
 }

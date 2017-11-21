@@ -24,6 +24,7 @@ public class VendaDAO {
     private Connection con;
     private Calendar cal;
     private SimpleDateFormat sdf;
+    private boolean retorno;
 
     public VendaDAO() {
         this.con = new ConnectionFactory().getConnection();
@@ -32,6 +33,7 @@ public class VendaDAO {
         sql = null;
         cal = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd");
+        retorno = false;
     }
 
     /* Efetua a venda ao aluno.
@@ -324,6 +326,23 @@ public class VendaDAO {
             e.printStackTrace();
         }
 
+        return retorno;
+    }
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM venda";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs != null){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return retorno;
     }
 
