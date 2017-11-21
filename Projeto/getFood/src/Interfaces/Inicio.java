@@ -1,15 +1,31 @@
 package Interfaces;
 
 import Classes.Funcionario;
+import DAO.AlunoDAO;
+import DAO.CursoDAO;
+import DAO.FunDAO;
+import DAO.TurmaDAO;
+import DAO.VendaDAO;
+import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
 
     Funcionario funLog;
+    TurmaDAO turmaDao;
+    CursoDAO cursoDao;
+    AlunoDAO alunoDao;
+    VendaDAO vendaDao;
+    FunDAO funDao;
 
     public Inicio(Funcionario fun) {
         initComponents();
         this.funLog = fun;
         this.setLocationRelativeTo(null);
+        turmaDao = new TurmaDAO();
+        cursoDao = new CursoDAO();
+        alunoDao = new AlunoDAO();
+        vendaDao = new VendaDAO();
+        funDao = new FunDAO();
     }
 
     private Inicio() {
@@ -323,9 +339,13 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        dispose();
-        Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
-        gerarRelatorio.setVisible(true);
+        if (!vendaDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há vendas.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
+            gerarRelatorio.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
@@ -368,9 +388,15 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem11MouseExited
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        dispose();
-        Venda_Ficha newVenda = new Venda_Ficha(funLog);
-        newVenda.setVisible(true);
+        if (alunoDao.verificaBD() == false) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else if (funDao.verificaBD() == false) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Venda_Ficha newVenda = new Venda_Ficha(funLog);
+            newVenda.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -392,40 +418,65 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu7ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        dispose();
-        Venda_Creditos newVenda = new Venda_Creditos(funLog);
-        newVenda.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Venda_Creditos newVenda = new Venda_Creditos(funLog);
+            newVenda.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        dispose();
-        Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
-        newCD.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
+            newCD.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-        dispose();
-        Login_Cadastro newCD = new Login_Cadastro(funLog);
-        newCD.setVisible(true);
+        if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Login_Cadastro newCD = new Login_Cadastro(funLog);
+            newCD.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        dispose();
-        Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
-        newBuscar.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
+            newBuscar.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        dispose();
-        Aluno_Foto newFoto = new Aluno_Foto(funLog);
-        newFoto.setVisible(true);
-
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Foto newFoto = new Aluno_Foto(funLog);
+            newFoto.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
-        consulta.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
+            consulta.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     public static void main(String args[]) {

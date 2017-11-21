@@ -183,7 +183,7 @@ public class CursoDAO {
         try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
-            if (rs != null) {
+            if (rs.first()) {
                 retorno = true;
             } else {
                 retorno = false;

@@ -163,12 +163,12 @@ public class FunDAO {
     }
     
     public boolean verificaBD(){
-        sql = "SELECT * FROM funcionario";
+        sql = "SELECT * FROM funcionario WHERE matricula <> 0";
         
         try{
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
-            if(rs != null){
+            if(rs.first()){
                 retorno = true;
             } else {
                 retorno = false;

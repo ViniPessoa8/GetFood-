@@ -483,7 +483,8 @@ public class AlunoDAO {
         try{
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
-            if(rs != null){
+            System.out.println(rs.toString());
+            if(rs.first()){
                 retorno = true;
             } else {
                 retorno = false;
