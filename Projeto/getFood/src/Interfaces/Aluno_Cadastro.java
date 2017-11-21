@@ -91,6 +91,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -311,6 +312,14 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
             }
         });
         jMenu5.add(jMenuItem21);
+
+        jMenuItem3.setText("[ADMINISTRADOR]");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
 
         jMenuBar1.add(jMenu5);
 
@@ -614,6 +623,17 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
+        if (funDao.validaSenhaAdm(senha)){
+            dispose();
+            Administrador_Menu admMenu = new Administrador_Menu(funLog);
+            admMenu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -651,6 +671,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;

@@ -6,7 +6,10 @@ import DAO.CursoDAO;
 import DAO.FunDAO;
 import DAO.TurmaDAO;
 import DAO.VendaDAO;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -16,6 +19,9 @@ public class Inicio extends javax.swing.JFrame {
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
+    JPasswordField password;
+    JLabel rotulo;
+    JPanel entUsuario;
 
     public Inicio(Funcionario fun) {
         initComponents();
@@ -26,6 +32,13 @@ public class Inicio extends javax.swing.JFrame {
         alunoDao = new AlunoDAO();
         vendaDao = new VendaDAO();
         funDao = new FunDAO();
+        password = new JPasswordField(10);
+        password.setEchoChar('*');
+        rotulo = new JLabel("Entre com a senha:");
+        entUsuario = new JPanel();
+        entUsuario.add(rotulo);
+        entUsuario.add(password);
+
     }
 
     private Inicio() {
@@ -63,6 +76,7 @@ public class Inicio extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -261,6 +275,14 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         jMenu5.add(jMenuItem21);
+
+        jMenuItem3.setText("[ADMINISTRADOR]");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
 
         jMenuBar1.add(jMenu5);
 
@@ -479,6 +501,19 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JOptionPane.showMessageDialog(null, entUsuario, "Acesso Restrito", JOptionPane.QUESTION_MESSAGE);
+        String senha = new String(password.getPassword());
+        System.out.println("senha: "+senha);
+        if (funDao.validaSenhaAdm(senha)) {
+            dispose();
+            Administrador_Menu admMenu = new Administrador_Menu(funLog);
+            admMenu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -517,6 +552,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;

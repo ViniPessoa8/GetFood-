@@ -146,12 +146,12 @@ public class FunDAO {
     }
     
     public boolean validaSenhaAdm(String senha){
-        sql = "SELECT * FROM login WHERE senha = ?";
+        sql = "SELECT * FROM login WHERE senha = MD5(?) and login = 'admin'";
         try{
             pstm = con.prepareStatement(sql);
             pstm.setString(1,senha);
             rs = pstm.executeQuery();
-            if(rs != null){
+            if(rs.first()){
                 retorno = true;
             } else {
                 retorno = false;
