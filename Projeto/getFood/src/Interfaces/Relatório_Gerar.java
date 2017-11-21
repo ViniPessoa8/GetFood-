@@ -11,6 +11,9 @@ import Classes.Relatorio;
 import DAO.RelatorioDAO;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
@@ -49,6 +52,39 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         this.setLocationRelativeTo(null);
     }
 
+     private void gerarRelatorio() {
+        int beneficiario = 0;
+        if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (cbBeneficiarios.isSelected()) {
+                beneficiario = 1;
+            }
+
+            try {
+                URL caminho = getClass().getResource("/Relatorio/Vendas.jrxml");
+                relatorioDao.gerar(caminho.getPath(), dataInicial, dataFinal);
+            } catch (JRException | ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void estaSemana() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        DateUtil du = new DateUtil();
+        Date data = new Date();
+        Date primeiro = du.resolvePrimeiroUltimoSemana(data, true);
+        Date ultimo = du.resolvePrimeiroUltimoSemana(data, false);
+        System.out.println(primeiro + " - " + ultimo);
+
+        txtDataInicial.setText(formato.format(primeiro));
+        txtDataFinal.setText(formato.format(ultimo));
+
+        dataInicial = primeiro;
+        dataFinal = ultimo;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -754,38 +790,7 @@ public class Relatório_Gerar extends javax.swing.JFrame implements KeyListener 
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
-    private void gerarRelatorio() {
-        int beneficiario = 0;
-        if (txtDataFinal.getText().length() != 10 || txtDataInicial.getText().length() != 10) {
-            JOptionPane.showMessageDialog(null, "Digite as datas para gerar o relatório.", "Erro!", JOptionPane.ERROR_MESSAGE);
-        } else {
-            if (cbBeneficiarios.isSelected()) {
-                beneficiario = 1;
-            }
-
-            try {
-                Path url = Paths.get("Relatorio/Vendas.jrxml");
-                relatorioDao.gerar("/home/vinicius/Documentos/GitHub/GetFood-/Projeto/getFood/src/Relatorio/Vendas.jrxml", beneficiario, dataInicial, dataFinal);
-            } catch (JRException | ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void estaSemana() {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-        DateUtil du = new DateUtil();
-        Date data = new Date();
-        Date primeiro = du.resolvePrimeiroUltimoSemana(data, true);
-        Date ultimo = du.resolvePrimeiroUltimoSemana(data, false);
-        System.out.println(primeiro + " - " + ultimo);
-
-        txtDataInicial.setText(formato.format(primeiro));
-        txtDataFinal.setText(formato.format(ultimo));
-
-        dataInicial = primeiro;
-        dataFinal = ultimo;
-    }
+   
 
     private void btnGerarRelatorioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGerarRelatorioMouseClicked
         gerarRelatorio();

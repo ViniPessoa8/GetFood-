@@ -501,36 +501,35 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         if (al != null) {
             if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
                 JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.", "Erro!", JOptionPane.ERROR_MESSAGE);
-            } else {
-                if (cxDinheiro.isSelected()) {
-                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_DINHEIRO);
-                } else if (cxCredito.isSelected()) {
-                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_CREDITOS);
-                } else if (cxBeneficio.isSelected()) {
-                    if (al.getBeneficiario() == 1) {
-                        resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_BENEFICIO);
-                    }
+            } else if (cxDinheiro.isSelected()) {
+                resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_DINHEIRO);
+            } else if (cxCredito.isSelected()) {
+                resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_CREDITOS);
+            } else if (cxBeneficio.isSelected()) {
+                if (al.getBeneficiario() == 1) {
+                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_BENEFICIO);
                 }
-                if (!resultado) {
-                    JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            }
+            if (!resultado) {
+                JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda?", "Venda", JOptionPane.YES_NO_OPTION);
+                if (resp == JOptionPane.YES_OPTION) {
+                    dispose();
+                    Venda_Ficha newVenda = new Venda_Ficha(funLog);
+                    newVenda.reset();
+                    newVenda.setVisible(true);
                 } else {
-                    int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda?", "Venda", JOptionPane.YES_NO_OPTION);
-                    if (resp == JOptionPane.YES_OPTION) {
-                        dispose();
-                        Venda_Ficha newVenda = new Venda_Ficha(funLog);
-                        newVenda.reset();
-                        newVenda.setVisible(true);
-                    } else {
-                        dispose();
-                        Inicio newInicio = new Inicio(funLog);
-                        newInicio.setVisible(true);
-                    }
+                    dispose();
+                    Inicio newInicio = new Inicio(funLog);
+                    newInicio.setVisible(true);
                 }
             }
         } else {
             JOptionPane.showMessageDialog(null, "Nenhum aluno foi escolhido.", "ERRO!", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
         verificar();
@@ -660,16 +659,24 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
