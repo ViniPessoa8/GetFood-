@@ -35,7 +35,6 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
-    
 
     public Aluno_ConsultarHistorico(Funcionario funLog) {
         this.funLog = funLog;
@@ -410,6 +409,8 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         String matricula = txtMatricula.getText();
         if (alunoDao.getAlunoMatricula(matricula) == null) {
             JOptionPane.showMessageDialog(null, "Matrícula inválida.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+        } else if (alunoDao.consultarHistorico(matricula).size() == 0) {
+            JOptionPane.showMessageDialog(null, "O aluno não tem registros.", "Aviso!", JOptionPane.WARNING_MESSAGE);
         } else {
 
             historico = alunoDao.consultarHistorico(matricula);
@@ -576,7 +577,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
-        if (funDao.validaSenhaAdm(senha)){
+        if (funDao.validaSenhaAdm(senha)) {
             dispose();
             Administrador_Menu admMenu = new Administrador_Menu(funLog);
             admMenu.setVisible(true);

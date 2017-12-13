@@ -11,9 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -32,7 +35,6 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
-    
 
     private Aluno_Cadastro() {
         initComponents();
@@ -431,16 +433,16 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
             try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
+                System.out.println(arq.getPath());
+                txt = new BufferedReader(new InputStreamReader(new FileInputStream(arq.getPath()), "UTF-8"));
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
 
             try {
                 String linha = txt.readLine();
                 while (linha != null) {
-                    String novaLinha = txtArea.getText() + linha + "\n";
+                    String novaLinha = txtArea.getText()+ linha + "\n";
                     txtArea.setText(novaLinha);
 
                     dadosAluno = linha.split("#");
@@ -625,7 +627,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
-        if (funDao.validaSenhaAdm(senha)){
+        if (funDao.validaSenhaAdm(senha)) {
             dispose();
             Administrador_Menu admMenu = new Administrador_Menu(funLog);
             admMenu.setVisible(true);

@@ -54,27 +54,44 @@ public class AlunoDAO {
      */
     public Boolean addAluno(Aluno aluno) {
         retorno = false;
-        sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario) VALUES (?,?,?,?,?,?,?)";
         String path = "C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\bin";
         //processamento da foto do aluno
-        inputImagem = fotoUtil.byteToInputStream(aluno.getFoto(), path);
+        if (aluno.getFoto() != null) {
+            inputImagem = fotoUtil.byteToInputStream(aluno.getFoto(), path + "\\F#" + aluno.getMatricula());
+            sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario) VALUES (?,?,?,?,?,?,?)";
+            try {
+                pstm = con.prepareStatement(sql);
+                pstm.setString(1, aluno.getMatricula());
+                pstm.setString(2, aluno.getNome());
+                pstm.setDouble(3, aluno.getSaldo());
+                pstm.setString(4, aluno.getTurma());
+                pstm.setInt(5, aluno.getCurso());
+                pstm.setInt(6, aluno.getBeneficiario());
+                pstm.execute();
 
-        try {
-            pstm = con.prepareStatement(sql);
-            pstm.setString(1, aluno.getMatricula());
-            pstm.setString(2, aluno.getNome());
-            pstm.setDouble(3, aluno.getSaldo());
-            pstm.setString(4, aluno.getTurma());
-            pstm.setInt(5, aluno.getCurso());
-            pstm.setInt(6, aluno.getBeneficiario());
-            pstm.setBinaryStream(7, inputImagem);
-            pstm.execute();
+                retorno = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            sql = "INSERT INTO aluno(matricula, nome, saldo, turma, curso, beneficiario, foto) VALUES (?,?,?,?,?,?,?)";
+            try {
+                pstm = con.prepareStatement(sql);
+                pstm.setString(1, aluno.getMatricula());
+                pstm.setString(2, aluno.getNome());
+                pstm.setDouble(3, aluno.getSaldo());
+                pstm.setString(4, aluno.getTurma());
+                pstm.setInt(5, aluno.getCurso());
+                pstm.setInt(6, aluno.getBeneficiario());
+                pstm.setBinaryStream(7, inputImagem);
+                pstm.execute();
 
-            retorno = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
+                retorno = true;
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
         }
-
         return retorno;
     }
 
@@ -476,20 +493,20 @@ public class AlunoDAO {
 
         return historico;
     }
-    
-    public boolean verificaBD(){
+
+    public boolean verificaBD() {
         sql = "SELECT * FROM aluno";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
             System.out.println(rs.toString());
-            if(rs.first()){
+            if (rs.first()) {
                 retorno = true;
             } else {
                 retorno = false;
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return retorno;

@@ -382,7 +382,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
             //PADRÃO: F#(matricula)
             for (File file : fotos) {
                 String nomeArquivo = file.getName();
-                txtArquivos.setText(txtArquivos.getText() + "\n" + nomeArquivo);
+                txtArquivos.setText(txtArquivos.getText() + nomeArquivo + "\n");
             }
         }
     }

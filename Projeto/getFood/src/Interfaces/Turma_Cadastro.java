@@ -32,7 +32,6 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
-    
 
     private Turma_Cadastro() {
         initComponents();
@@ -431,7 +430,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
-        
+
         //Aviso sobre a formatação do arquivo.
         JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
                 + "(Dados separados por '#' e na seguinte ordem:\n"
@@ -477,8 +476,12 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
         } else {
 
             for (Turma t : listaTurma) {
-                turmaDao.addTurma(turma);
+                if (turmaDao.addTurma(t) == false) {
+                    JOptionPane.showMessageDialog(null, "Erro.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+                    break;
+                }
             }
+
             int resposta = JOptionPane.showConfirmDialog(null, "Turmas cadastradas com sucesso. Deseja voltar ao menu principal?", null, JOptionPane.YES_NO_OPTION);
             if (resposta == JOptionPane.YES_OPTION) {
                 dispose();
@@ -638,7 +641,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
-        if (funDao.validaSenhaAdm(senha)){
+        if (funDao.validaSenhaAdm(senha)) {
             dispose();
             Administrador_Menu admMenu = new Administrador_Menu(funLog);
             admMenu.setVisible(true);
@@ -658,16 +661,24 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Turma_Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Turma_Cadastro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Turma_Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Turma_Cadastro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Turma_Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Turma_Cadastro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Turma_Cadastro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Turma_Cadastro.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>

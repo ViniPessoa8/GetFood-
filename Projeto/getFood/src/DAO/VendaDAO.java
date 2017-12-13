@@ -309,7 +309,7 @@ public class VendaDAO {
         boolean retorno = false;
         String data = sdf.format(cal.getTime());
         rs = null;
-        sql = "SELECT * FROM venda WHERE dt = ? and matrAl = ?";
+        sql = "SELECT * FROM venda WHERE dt = ? and matrAl = ? and tipo <> 3";
 
         try {
             pstm = con.prepareStatement(sql);
