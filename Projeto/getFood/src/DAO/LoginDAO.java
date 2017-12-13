@@ -109,4 +109,21 @@ public class LoginDAO {
 
         return retorno;
     }
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM login";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs.first()){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return retorno;
+    }
 }

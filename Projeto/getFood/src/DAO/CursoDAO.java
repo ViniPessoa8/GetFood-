@@ -17,8 +17,7 @@ public class CursoDAO {
     private boolean retorno;
     private ArrayList<String> lista;
 
-    public CursoDAO() 
-    {
+    public CursoDAO() {
         this.con = new ConnectionFactory().getConnection();
         pstm = null;
         sql = null;
@@ -30,14 +29,14 @@ public class CursoDAO {
         sql = "SELECT * FROM curso WHERE codigo = ?";
         try {
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, ""+codigo);
+            pstm.setString(1, "" + codigo);
             rs = pstm.executeQuery();
             rs.first();
             curso = new Curso(rs.getString("codigo"), rs.getString("nome"));
             //[DEV]
             System.out.println(curso.getNome());
             System.out.println(curso.getCodigo());
-            
+
             pstm.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -163,22 +162,35 @@ public class CursoDAO {
         }
         return codigo;
     }
-     
-    
-    public boolean dropCursos() 
-    {
+
+    public boolean dropCursos() {
         boolean result = false;
         sql = "delete from curso;";
-        try 
-        {
+        try {
             pstm = con.prepareStatement(sql);
             pstm.execute();
             result = true;
-        } catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return result;
+    }
+
+    public boolean verificaBD() {
+        sql = "SELECT * FROM curso";
+
+        try {
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if (rs.first()) {
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return retorno;
     }
 }

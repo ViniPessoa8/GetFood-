@@ -3,25 +3,34 @@ package Interfaces;
 import Classes.Aluno;
 import Classes.Funcionario;
 import DAO.AlunoDAO;
+import DAO.CursoDAO;
 import DAO.FichaDAO;
+import DAO.FunDAO;
+import DAO.TurmaDAO;
 import DAO.VendaDAO;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
 
-    AlunoDAO aluno;
+    AlunoDAO alunoDao;
     FichaDAO ficha;
-    VendaDAO venda;
+    VendaDAO vendaDao;
     Aluno al;
     Funcionario funLog;
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     Calendar data = Calendar.getInstance();
+    ButtonGroup bg;
+    TurmaDAO turmaDao;
+    CursoDAO cursoDao;
+    FunDAO funDao;
+    
 
     private Venda_Ficha() {
         initComponents();
@@ -31,9 +40,9 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         initComponents();
         this.funLog = fun;
         btnVender.setVisible(false);
-        aluno = new AlunoDAO();
+        alunoDao = new AlunoDAO();
         ficha = new FichaDAO();
-        venda = new VendaDAO();
+        vendaDao = new VendaDAO();
         lblVenda.setVisible(false);
         cxBeneficio.setVisible(false);
         cxCredito.setVisible(false);
@@ -44,6 +53,13 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         txtMatr.addKeyListener(this);
         PainelDados.addKeyListener(this);
         this.setLocationRelativeTo(null);
+        bg = new ButtonGroup();
+        bg.add(cxBeneficio);
+        bg.add(cxCredito);
+        bg.add(cxDinheiro);
+        turmaDao = new TurmaDAO();
+        cursoDao = new CursoDAO();
+        funDao = new FunDAO();
     }
 
     public void reset() {
@@ -92,6 +108,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -160,37 +177,33 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(93, 93, 93)
-                                .addComponent(btnVerificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnVender))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(125, 125, 125)
-                                        .addComponent(lblVenda))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(19, 19, 19)
-                                        .addComponent(btnVoltar)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cxBeneficio)
-                                    .addComponent(cxDinheiro)
-                                    .addComponent(cxCredito))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE))
+                        .addGap(19, 19, 19)
+                        .addComponent(btnVoltar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(141, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(147, 147, 147))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(30, 30, 30)
                                 .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(85, 85, 85))
+                                .addGap(47, 47, 47))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(195, 195, 195)))))
+                                .addComponent(btnVerificar)
+                                .addGap(33, 33, 33)
+                                .addComponent(btnVender)
+                                .addGap(34, 34, 34))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblVenda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cxBeneficio)
+                                    .addComponent(cxDinheiro)
+                                    .addComponent(cxCredito))
+                                .addGap(95, 95, 95)))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -200,34 +213,32 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtMatr, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblVenda)
-                            .addComponent(cxBeneficio))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cxDinheiro)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cxCredito)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(txtFotoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))))
+                    .addComponent(btnVerificar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVender, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cxBeneficio)
+                    .addComponent(lblVenda))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cxDinheiro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cxCredito)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(txtFotoAluno, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
@@ -357,6 +368,14 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         });
         jMenu5.add(jMenuItem21);
 
+        jMenuItem3.setText("[ADMINISTRADOR]");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/padnote.png"))); // NOI18N
@@ -427,36 +446,26 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtMatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatrActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMatrActionPerformed
-
-    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
-        dispose();
-        Inicio newInicio = new Inicio(funLog);
-        newInicio.setVisible(true);
-    }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void verificar() {
         al = null;
         if (!txtMatr.getText().equals("")) {
             if (txtMatr.getText().length() == 12) {
                 double valor = ficha.getVal();
-                al = aluno.getAlunoMatricula(txtMatr.getText());
+                al = alunoDao.getAlunoMatricula(txtMatr.getText());
                 if (al != null) {
-                    if (!venda.alunoPegouFicha(txtMatr.getText())) {
+                    if (!vendaDao.alunoPegouFicha(txtMatr.getText())) {
                         txtMatr.setEnabled(false);
-                        //foto aluno
+                        //foto alunoDao
                         if (al.getFoto() != null) {
                             txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
                         }
-                        //Dados aluno
+                        //Dados alunoDao
                         PainelDados.setText("" + al.toString());
                         if (al.getSaldo() >= valor) {
                             cxCredito.setVisible(true);
@@ -501,30 +510,28 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         if (al != null) {
             if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
                 JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.", "Erro!", JOptionPane.ERROR_MESSAGE);
-            } else {
-                if (cxDinheiro.isSelected()) {
-                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_DINHEIRO);
-                } else if (cxCredito.isSelected()) {
-                    resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_CREDITOS);
-                } else if (cxBeneficio.isSelected()) {
-                    if (al.getBeneficiario() == 1) {
-                        resultado = venda.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 0, new Date(data.getTimeInMillis()), venda.VENDA_FICHA_BENEFICIO);
-                    }
+            } else if (cxDinheiro.isSelected()) {
+                resultado = vendaDao.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), vendaDao.VENDA_FICHA_DINHEIRO);
+            } else if (cxCredito.isSelected()) {
+                resultado = vendaDao.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), vendaDao.VENDA_FICHA_CREDITOS);
+            } else if (cxBeneficio.isSelected()) {
+                if (al.getBeneficiario() == 1) {
+                    resultado = vendaDao.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), vendaDao.VENDA_FICHA_BENEFICIO);
                 }
-                if (!resultado) {
-                    JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            }
+            if (!resultado) {
+                JOptionPane.showMessageDialog(null, "Erro na venda.", "ERRO!", JOptionPane.ERROR_MESSAGE);
+            } else {
+                int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda?", "Venda", JOptionPane.YES_NO_OPTION);
+                if (resp == JOptionPane.YES_OPTION) {
+                    dispose();
+                    Venda_Ficha newVenda = new Venda_Ficha(funLog);
+                    newVenda.reset();
+                    newVenda.setVisible(true);
                 } else {
-                    int resp = JOptionPane.showConfirmDialog(null, "Deseja executar outra venda?", "Venda", JOptionPane.YES_NO_OPTION);
-                    if (resp == JOptionPane.YES_OPTION) {
-                        dispose();
-                        Venda_Ficha newVenda = new Venda_Ficha(funLog);
-                        newVenda.reset();
-                        newVenda.setVisible(true);
-                    } else {
-                        dispose();
-                        Inicio newInicio = new Inicio(funLog);
-                        newInicio.setVisible(true);
-                    }
+                    dispose();
+                    Inicio newInicio = new Inicio(funLog);
+                    newInicio.setVisible(true);
                 }
             }
         } else {
@@ -532,17 +539,27 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         }
     }
 
-    private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
-        verificar();
-    }//GEN-LAST:event_btnVerificarMouseClicked
 
     private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
         vender();
     }//GEN-LAST:event_btnVenderMouseClicked
 
+    private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked
+        verificar();
+    }//GEN-LAST:event_btnVerificarMouseClicked
+
+    private void btnVoltarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltarMouseClicked
+        dispose();
+        Inicio newInicio = new Inicio(funLog);
+        newInicio.setVisible(true);
+    }//GEN-LAST:event_btnVoltarMouseClicked
+
+    private void txtMatrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMatrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMatrActionPerformed
+
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jMenuItem11MouseEntered
 
     private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
@@ -550,15 +567,27 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_jMenuItem11MouseExited
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        dispose();
-        Venda_Ficha newVenda = new Venda_Ficha(funLog);
-        newVenda.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Venda_Ficha newVenda = new Venda_Ficha(funLog);
+            newVenda.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        dispose();
-        Venda_Creditos newVenda = new Venda_Creditos(funLog);
-        newVenda.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Venda_Creditos newVenda = new Venda_Creditos(funLog);
+            newVenda.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
@@ -574,28 +603,43 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        dispose();
-        Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
-        newCD.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
+            newCD.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        dispose();
-        Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
-        newBuscar.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
+            newBuscar.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        dispose();
-        Aluno_Foto newFoto = new Aluno_Foto(funLog);
-        newFoto.setVisible(true);
-
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Foto newFoto = new Aluno_Foto(funLog);
+            newFoto.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
-        consulta.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
+            consulta.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -605,9 +649,13 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-        dispose();
-        Login_Cadastro newCD = new Login_Cadastro(funLog);
-        newCD.setVisible(true);
+        if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Login_Cadastro newCD = new Login_Cadastro(funLog);
+            newCD.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
@@ -617,9 +665,13 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        dispose();
-        Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
-        gerarRelatorio.setVisible(true);
+        if (!vendaDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há vendas.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
+            gerarRelatorio.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
@@ -646,6 +698,17 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
+        if (funDao.validaSenhaAdm(senha)){
+            dispose();
+            Administrador_Menu admMenu = new Administrador_Menu(funLog);
+            admMenu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -660,16 +723,24 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Venda_Ficha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Venda_Ficha.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -743,6 +814,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;

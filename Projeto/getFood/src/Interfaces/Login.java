@@ -1,6 +1,7 @@
 package Interfaces;
 
 import Classes.Funcionario;
+import DAO.AlunoDAO;
 import DAO.LoginDAO;
 import javax.swing.JOptionPane;
 import java.awt.event.KeyListener;
@@ -9,6 +10,7 @@ import java.awt.event.KeyEvent;
 public class Login extends javax.swing.JFrame implements KeyListener {
 
     Funcionario funLog;
+    AlunoDAO alunoDao;
 
     public Login() {
         initComponents();
@@ -17,6 +19,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
         txtLogin.addKeyListener(this);
         txtSenha.addKeyListener(this);
         this.setLocationRelativeTo(null);
+        alunoDao = new AlunoDAO();
 
     }
 
@@ -147,12 +150,15 @@ public class Login extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_btnLogarMouseClicked
 
     private void btnCadastrarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarLoginMouseClicked
-        int resposta = JOptionPane.showConfirmDialog(null,"Deseja executar o cadastro do seu login?");
-        if(resposta == JOptionPane.YES_OPTION)
-        {
-            dispose();
-            Login_Deslogado newCDLogin = new Login_Deslogado();
-            newCDLogin.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int resposta = JOptionPane.showConfirmDialog(null, "Deseja executar o cadastro do seu login?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                dispose();
+                Login_Deslogado newCDLogin = new Login_Deslogado();
+                newCDLogin.setVisible(true);
+            }
         }
     }//GEN-LAST:event_btnCadastrarLoginMouseClicked
 
@@ -168,7 +174,7 @@ public class Login extends javax.swing.JFrame implements KeyListener {
             funLog = loginDAO.getFuncionarioLogin(login);
             if (result) {
                 dispose();
-                
+
                 Inicio i = new Inicio(funLog);
                 i.setVisible(true);
             } else {
@@ -222,21 +228,20 @@ public class Login extends javax.swing.JFrame implements KeyListener {
 
     @Override
     public void keyTyped(KeyEvent ke) {
-        
-        
+
     }
 
     @Override
     public void keyPressed(KeyEvent ke) {
         int codigo = ke.getKeyCode();
-        if(codigo == KeyEvent.VK_ENTER){
+        if (codigo == KeyEvent.VK_ENTER) {
             logar();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent ke) {
-        
+
     }
 
 }

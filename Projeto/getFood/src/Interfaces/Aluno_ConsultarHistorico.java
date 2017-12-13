@@ -8,6 +8,10 @@ package Interfaces;
 import Classes.Aluno;
 import Classes.Funcionario;
 import DAO.AlunoDAO;
+import DAO.CursoDAO;
+import DAO.FunDAO;
+import DAO.TurmaDAO;
+import DAO.VendaDAO;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -22,11 +26,16 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
 
     Funcionario funLog;
     Aluno aluno;
-    AlunoDAO alunoDao;
     String[] nomeColuna = {"Código", "Valor", "Tipo", "Data"};
     String[][] dados;
     ArrayList<String> historico;
     DefaultTableModel modelo;
+    TurmaDAO turmaDao;
+    CursoDAO cursoDao;
+    AlunoDAO alunoDao;
+    VendaDAO vendaDao;
+    FunDAO funDao;
+    
 
     public Aluno_ConsultarHistorico(Funcionario funLog) {
         this.funLog = funLog;
@@ -36,6 +45,11 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         txtMatricula.addKeyListener(this);
         tabHistorico.addKeyListener(this);
         this.setLocationRelativeTo(null);
+        turmaDao = new TurmaDAO();
+        cursoDao = new CursoDAO();
+        alunoDao = new AlunoDAO();
+        vendaDao = new VendaDAO();
+        funDao = new FunDAO();
     }
 
     private Aluno_ConsultarHistorico() {
@@ -86,6 +100,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         jMenu5 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -299,6 +314,14 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         });
         jMenu5.add(jMenuItem21);
 
+        jMenuItem3.setText("[ADMINISTRADOR]");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/padnote.png"))); // NOI18N
@@ -413,7 +436,6 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jMenuItem11MouseEntered
 
     private void jMenuItem11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseExited
@@ -421,15 +443,27 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     }//GEN-LAST:event_jMenuItem11MouseExited
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        dispose();
-        Venda_Ficha newVenda = new Venda_Ficha(funLog);
-        newVenda.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Venda_Ficha newVenda = new Venda_Ficha(funLog);
+            newVenda.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
-        dispose();
-        Venda_Creditos newVenda = new Venda_Creditos(funLog);
-        newVenda.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Venda_Creditos newVenda = new Venda_Creditos(funLog);
+            newVenda.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
@@ -445,28 +479,43 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        dispose();
-        Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
-        newCD.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Cadastro_Beneficiarios newCD = new Aluno_Cadastro_Beneficiarios(funLog);
+            newCD.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     private void jMenuItem15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem15ActionPerformed
-        dispose();
-        Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
-        newBuscar.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Buscar newBuscar = new Aluno_Buscar(funLog);
+            newBuscar.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        dispose();
-        Aluno_Foto newFoto = new Aluno_Foto(funLog);
-        newFoto.setVisible(true);
-
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_Foto newFoto = new Aluno_Foto(funLog);
+            newFoto.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        dispose();
-        Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
-        consulta.setVisible(true);
+        if (!alunoDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há alunos cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Aluno_ConsultarHistorico consulta = new Aluno_ConsultarHistorico(funLog);
+            consulta.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -476,9 +525,13 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem21ActionPerformed
-        dispose();
-        Login_Cadastro newCD = new Login_Cadastro(funLog);
-        newCD.setVisible(true);
+        if (!funDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há funcionários cadastrados.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Login_Cadastro newCD = new Login_Cadastro(funLog);
+            newCD.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
@@ -488,9 +541,13 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        dispose();
-        Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
-        gerarRelatorio.setVisible(true);
+        if (!vendaDao.verificaBD()) {
+            JOptionPane.showMessageDialog(null, "Não há vendas.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            dispose();
+            Relatório_Gerar gerarRelatorio = new Relatório_Gerar(funLog);
+            gerarRelatorio.setVisible(true);
+        }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
@@ -516,6 +573,17 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
         Turma_Cadastro newCD = new Turma_Cadastro(funLog);
         newCD.setVisible(true);
     }//GEN-LAST:event_jMenu8ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
+        if (funDao.validaSenhaAdm(senha)){
+            dispose();
+            Administrador_Menu admMenu = new Administrador_Menu(funLog);
+            admMenu.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha inválida.", "Erro!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -576,6 +644,7 @@ public class Aluno_ConsultarHistorico extends javax.swing.JFrame implements KeyL
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;

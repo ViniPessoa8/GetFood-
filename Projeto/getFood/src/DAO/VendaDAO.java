@@ -24,6 +24,7 @@ public class VendaDAO {
     private Connection con;
     private Calendar cal;
     private SimpleDateFormat sdf;
+    private boolean retorno;
 
     public VendaDAO() {
         this.con = new ConnectionFactory().getConnection();
@@ -32,6 +33,7 @@ public class VendaDAO {
         sql = null;
         cal = Calendar.getInstance();
         sdf = new SimpleDateFormat("yyyy-MM-dd");
+        retorno = false;
     }
 
     /* Efetua a venda ao aluno.
@@ -57,7 +59,7 @@ public class VendaDAO {
                 pstm = con.prepareStatement(sql);
                 pstm.setString(1, matAluno);
                 pstm.setString(2, matFun);
-                pstm.setDouble(3, 0);
+                pstm.setDouble(3, valor);
                 pstm.setDate(4, (java.sql.Date) data);
                 pstm.setInt(5, tipo);
                 pstm.execute();
@@ -67,7 +69,7 @@ public class VendaDAO {
             }
         } else {
             //VENDA_FICHA_DINHEIRO
-            if (getSaldoAluno(matAluno) >= fichaDAO.getVal() && tipo == VENDA_FICHA_DINHEIRO) {
+            if (tipo == VENDA_FICHA_DINHEIRO) {
                 System.out.println("VENDA_FICHA_DINHEIRO");
                 sql = "INSERT INTO venda(matrAl, matrFun, valor, dt, tipo) VALUES(?,?,?,?,?)";
 
@@ -324,6 +326,23 @@ public class VendaDAO {
             e.printStackTrace();
         }
 
+        return retorno;
+    }
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM venda";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs.first()){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return retorno;
     }
 

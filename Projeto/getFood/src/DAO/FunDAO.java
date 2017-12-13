@@ -1,7 +1,6 @@
 package DAO;
 
 import Classes.Funcionario;
-import DAO.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,9 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class FunDAO {
-
-
-
 
     private Connection con;
     private String sql;
@@ -145,6 +141,40 @@ public class FunDAO {
 
         }
         
+        return retorno;
+    }
+    
+    public boolean validaSenhaAdm(String senha){
+        sql = "SELECT * FROM login WHERE senha = MD5(?) and login = 'admin'";
+        try{
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1,senha);
+            rs = pstm.executeQuery();
+            if(rs.first()){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return retorno;
+    }
+    
+    public boolean verificaBD(){
+        sql = "SELECT * FROM funcionario WHERE matricula <> 0";
+        
+        try{
+            pstm = con.prepareStatement(sql);
+            rs = pstm.executeQuery();
+            if(rs.first()){
+                retorno = true;
+            } else {
+                retorno = false;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
         return retorno;
     }
 }

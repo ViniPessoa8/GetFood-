@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8686d009-f320-44e1-ae36-b756234ab797">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Vendas" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8686d009-f320-44e1-ae36-b756234ab797">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="dataInicial" class="java.lang.String"/>
 	<parameter name="dataFinal" class="java.lang.String"/>
-	<parameter name="Beneficiarios" class="java.lang.String"/>
+	<parameter name="LogoIfam" class="java.awt.Image"/>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[SELECT
+     venda.`codigo` AS codigo,
+     venda.`matrAl` AS matrAl,
+     venda.`matrFun` AS matrFun,
+     venda.`valor` AS valor,
+     venda.`tipo` AS tipo,
+     venda.`dt` AS dt,
+     aluno.`beneficiario` AS beneficio
+FROM
+     `aluno` aluno INNER JOIN `venda` venda ON aluno.`matricula` = venda.`matrAl`]]>
 	</queryString>
 	<field name="codigo" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -27,6 +36,102 @@
 	<field name="dt" class="java.sql.Date">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="beneficio" class="java.lang.Integer"/>
+	<variable name="subTotal" class="java.lang.Double" resetType="Group" resetGroup="beneficio" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+		<initialValueExpression><![CDATA[0.0]]></initialValueExpression>
+	</variable>
+	<variable name="Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{valor}]]></variableExpression>
+	</variable>
+	<group name="beneficio">
+		<groupExpression><![CDATA[$F{beneficio}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField isBlankWhenNull="true">
+					<reportElement x="74" y="0" width="415" height="50" uuid="89d3236c-1ec1-48bf-8c00-5fbbbaa5f66e"/>
+					<textElement textAlignment="Center">
+						<font size="30"/>
+					</textElement>
+					<textFieldExpression><![CDATA[($F{beneficio} == 1 ? "Beneficiários" : "Não-Beneficiários")]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="30" y="10" width="70" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ee875d9e-23c3-49a8-9988-1e27103bf2a1"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="100" y="10" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1c678f53-8ac6-428f-ae5d-54dbad0480b5"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Aluno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="214" y="10" width="99" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0a87124b-ab18-4405-a30b-5e5611723ce2"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Funcionario]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="313" y="10" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a75beea6-7591-47cd-a621-455572c9710d"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Valor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="395" y="195" width="40" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1bbdb2c1-4c8f-40c4-9d66-ee91659145e9"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Tipo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="445" y="10" width="140" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d5216ddf-3196-4e01-a6b4-80384ce3dacb"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Data]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="30" width="70" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="000ee44f-48f8-4a17-8c4a-bc4d59bdb4c8"/>
+					<textElement textAlignment="Left" markup="none">
+						<font size="14" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[Código]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="32">
+				<staticText>
+					<reportElement x="194" y="0" width="89" height="32" uuid="54db0751-518b-471a-bdaf-05275c9e200b"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<text><![CDATA[Sub-Total: ]]></text>
+				</staticText>
+				<textField pattern="¤ #,##0.00" isBlankWhenNull="true">
+					<reportElement x="283" y="0" width="106" height="32" uuid="145b5ddf-3159-451e-887c-a0955f6aeb1b"/>
+					<textElement>
+						<font size="18"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{subTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
 	<background>
 		<band/>
 	</background>
@@ -69,13 +174,10 @@
 					</textElement>
 					<textFieldExpression><![CDATA[$P{dataFinal}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement x="230" y="47" width="141" height="20" forecolor="#FFFFFF" uuid="c13ec95d-85c6-4096-b571-034522a29ab5"/>
-					<textElement>
-						<font size="14"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$P{Beneficiarios}]]></textFieldExpression>
-				</textField>
+				<image>
+					<reportElement x="233" y="28" width="150" height="50" uuid="021dc187-db4b-4b01-ba3f-157cda9527db"/>
+					<imageExpression><![CDATA["C:\\Users\\Vinicius\\Documents\\GitHub\\GetFood-\\Projeto\\getFood\\src\\logo_IFAM.png"]]></imageExpression>
+				</image>
 			</frame>
 		</band>
 	</title>
@@ -190,22 +292,29 @@
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="17">
+		<band height="18">
 			<textField>
-				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="3c0dd85a-00be-45ab-9a08-7e9b19befb7c"/>
+				<reportElement mode="Opaque" x="322" y="5" width="182" height="13" backcolor="#E6E6E6" uuid="3c0dd85a-00be-45ab-9a08-7e9b19befb7c"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="6271f040-c1a4-4e5d-8de5-022112233bd4"/>
+				<reportElement mode="Opaque" x="504" y="5" width="40" height="13" backcolor="#E6E6E6" uuid="6271f040-c1a4-4e5d-8de5-022112233bd4"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
-			</textField>
-			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13" uuid="14e5777c-f001-4178-9ad8-c0b8884d421c"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
+	<lastPageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="210" y="0" width="153" height="27" uuid="b1e94e27-9ccb-413d-851d-b7bcfacff961"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Total: R\$" + $V{Total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
 	<summary>
 		<band/>
 	</summary>
