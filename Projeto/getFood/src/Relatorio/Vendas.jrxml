@@ -55,62 +55,6 @@ FROM
 					</textElement>
 					<textFieldExpression><![CDATA[($F{beneficio} == 1 ? "Beneficiários" : "Não-Beneficiários")]]></textFieldExpression>
 				</textField>
-				<staticText>
-					<reportElement mode="Opaque" x="30" y="10" width="70" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ee875d9e-23c3-49a8-9988-1e27103bf2a1"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Código]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Opaque" x="100" y="10" width="114" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1c678f53-8ac6-428f-ae5d-54dbad0480b5"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Aluno]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Opaque" x="214" y="10" width="99" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0a87124b-ab18-4405-a30b-5e5611723ce2"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Funcionario]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Opaque" x="313" y="10" width="92" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a75beea6-7591-47cd-a621-455572c9710d"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Valor]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Opaque" x="395" y="195" width="40" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1bbdb2c1-4c8f-40c4-9d66-ee91659145e9"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Tipo]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Opaque" x="445" y="10" width="140" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d5216ddf-3196-4e01-a6b4-80384ce3dacb"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Data]]></text>
-				</staticText>
-				<staticText>
-					<reportElement mode="Opaque" x="0" y="30" width="70" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="000ee44f-48f8-4a17-8c4a-bc4d59bdb4c8"/>
-					<textElement textAlignment="Left" markup="none">
-						<font size="14" isBold="true"/>
-						<paragraph lineSpacing="Single"/>
-					</textElement>
-					<text><![CDATA[Código]]></text>
-				</staticText>
 			</band>
 		</groupHeader>
 		<groupFooter>
