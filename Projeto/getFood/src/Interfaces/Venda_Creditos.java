@@ -14,6 +14,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
 
@@ -189,7 +190,9 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
                                 .addGap(89, 89, 89)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(63, 63, 63)
+                                .addComponent(txtFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(btnVoltar1)))
@@ -461,6 +464,7 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
                     btnVender.setVisible(true);
                     if (al.getFoto() != null) {
                         txtFoto.setIcon(new ImageIcon(al.getFoto()));
+                        redimensionar(txtFoto, 150, 200);
                     } else {
                         txtFoto.setText("(Aluno sem foto)");
                     }
@@ -502,6 +506,14 @@ public class Venda_Creditos extends javax.swing.JFrame implements KeyListener {
         } else {
             JOptionPane.showMessageDialog(null, "Erro! A venda não foi realizada", "Erro!", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private ImageIcon redimensionar(JLabel jLabel, int xLargura, int yAltura){
+       
+        ImageIcon img = new ImageIcon (jLabel.getIcon().toString());  
+        img.setImage(img.getImage().getScaledInstance(xLargura, yAltura, 100));
+       
+        return img;
     }
 
     private void btnVerificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVerificarMouseClicked

@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
@@ -205,11 +206,13 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                                     .addComponent(cxCredito))
                                 .addGap(95, 95, 95)))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(txtFotoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(49, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtFotoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(130, 130, 130))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,6 +467,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                         //foto alunoDao
                         if (al.getFoto() != null) {
                             txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
+                            redimensionar(txtFotoAluno, 150, 200);
                         }
                         //Dados alunoDao
                         PainelDados.setText("" + al.toString());
@@ -539,6 +543,13 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
         }
     }
 
+    private ImageIcon redimensionar(JLabel jLabel, int xLargura, int yAltura){
+       
+        ImageIcon img = new ImageIcon (jLabel.getIcon().toString());  
+        img.setImage(img.getImage().getScaledInstance(xLargura, yAltura, 100));
+       
+        return img;
+    }
 
     private void btnVenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVenderMouseClicked
         vender();
