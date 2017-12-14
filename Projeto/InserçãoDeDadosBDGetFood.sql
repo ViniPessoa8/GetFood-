@@ -3,6 +3,8 @@ insert into ficha(valor) values(5);
 INSERT INTO funcionario(matricula,cargo,nome) VALUES ('0','admin','Administrador');
 INSERT INTO login(login, senha, matrFun) VALUES ('admin',MD5('admin'),'0');
 
+/*Criação dos Cursos*/
+
 /*INSERT INTO curso(codigo, nome) VALUES ('1','Informática');
 INSERT INTO curso(codigo, nome) VALUES ('2','Mecânica');
 INSERT INTO curso(codigo, nome) VALUES ('3','Edificações');
