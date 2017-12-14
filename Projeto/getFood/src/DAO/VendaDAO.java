@@ -294,10 +294,11 @@ public class VendaDAO {
 
     public boolean dropVendas() {
         boolean result = false;
-        sql = "delete from venda;";
+        sql = "delete from venda";
         try {
             pstm = con.prepareStatement(sql);
             result = pstm.execute();
+            result = true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

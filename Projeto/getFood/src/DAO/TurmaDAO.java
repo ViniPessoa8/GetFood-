@@ -23,22 +23,23 @@ public class TurmaDAO {
         pstm = null;
         sql = null;
     }
-    public String getCodigoByNome(String nome) 
-    {
+
+    public String getCodigoByNome(String nome) {
         sql = "SELECT * FROM turma WHERE curso = ?";
-        String codigo ="";
+        String codigo = "";
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, nome);
             System.out.println(pstm.toString());
             rs = pstm.executeQuery();
             rs.first();
-            codigo = ""+rs.getInt("codigo");
+            codigo = "" + rs.getInt("codigo");
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return codigo;
     }
+
     public boolean addTurma(Turma t) {
 
         //Atribuições
@@ -88,7 +89,6 @@ public class TurmaDAO {
 
     public ArrayList<String> getTurmasCurso(String curso) {
 
-
         //Atribuições
         rs = null;
         sql = "SELECT * FROM turma";
@@ -122,7 +122,6 @@ public class TurmaDAO {
         retorno = false;
 
         //verifica se a turma existe
-
         if (validacao(codigo)) {
 
             sql = "DELETE turma FROM turma WHERE codigo = ?";
@@ -143,36 +142,33 @@ public class TurmaDAO {
 
         return retorno;
     }
-    
-    public boolean dropTurmas() 
-    {
+
+    public boolean dropTurmas() {
         boolean result = false;
         sql = "delete from turma;";
-        try 
-        {
+        try {
             pstm = con.prepareStatement(sql);
             pstm.execute();
             result = true;
-        } catch (SQLException e) 
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
         return result;
     }
-    
-    public boolean verificaBD(){
+
+    public boolean verificaBD() {
         sql = "SELECT * FROM turma";
-        
-        try{
+
+        try {
             pstm = con.prepareStatement(sql);
             rs = pstm.executeQuery();
-            if(rs.first()){
+            if (rs.first()) {
                 retorno = true;
             } else {
                 retorno = false;
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return retorno;

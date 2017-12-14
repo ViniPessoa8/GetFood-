@@ -33,17 +33,12 @@ public class Administrador_Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnResetar = new javax.swing.JButton();
         btnVoltar3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        txtLogo = new javax.swing.JLabel();
+        btnApagarBD = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        btnResetar.setText("Resetar o Banco de Dados");
-        btnResetar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetarActionPerformed(evt);
-            }
-        });
 
         btnVoltar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/backward-arrow.png"))); // NOI18N
         btnVoltar3.setToolTipText("Voltar");
@@ -53,26 +48,44 @@ public class Administrador_Menu extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setText("Menu do Administrador");
+
+        txtLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/LOGO_150px.png"))); // NOI18N
+
+        btnApagarBD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Botoes/btn_apagarDadosDoBancoDeDados.png"))); // NOI18N
+        btnApagarBD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnApagarBDMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnVoltar3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(103, 103, 103)
-                        .addComponent(btnResetar)))
-                .addContainerGap(517, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(btnVoltar3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnApagarBD)
+                    .addComponent(jLabel1)
+                    .addComponent(txtLogo))
+                .addGap(109, 109, 109))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(btnResetar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 246, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(txtLogo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(77, 77, 77)
+                .addComponent(btnApagarBD)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                 .addComponent(btnVoltar3)
                 .addGap(18, 18, 18))
         );
@@ -80,16 +93,17 @@ public class Administrador_Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnResetarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetarActionPerformed
-        dispose();
-        Reset reset = new Reset(funLog);
-    }//GEN-LAST:event_btnResetarActionPerformed
-
     private void btnVoltar3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoltar3MouseClicked
         dispose();
         Inicio newInicio = new Inicio(funLog);
         newInicio.setVisible(true);
     }//GEN-LAST:event_btnVoltar3MouseClicked
+
+    private void btnApagarBDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnApagarBDMouseClicked
+        dispose();
+        Reset reset = new Reset();
+        reset.setVisible(true);
+    }//GEN-LAST:event_btnApagarBDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -127,7 +141,9 @@ public class Administrador_Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnResetar;
+    private javax.swing.JLabel btnApagarBD;
     private javax.swing.JLabel btnVoltar3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel txtLogo;
     // End of variables declaration//GEN-END:variables
 }
