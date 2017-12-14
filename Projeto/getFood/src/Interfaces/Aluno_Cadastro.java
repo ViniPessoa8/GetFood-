@@ -406,6 +406,8 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void escolherArquivo() {
+        txtArea.setText("");
+
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -434,7 +436,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
             txtNomeArquivo.setText(arq.getName());
             try {
                 System.out.println(arq.getPath());
-                txt = new BufferedReader(new InputStreamReader(new FileInputStream(arq.getPath()), "UTF-8"));
+                txt = new BufferedReader(new InputStreamReader(new FileInputStream(arq.getPath()), "UTF8"));
             } catch (FileNotFoundException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

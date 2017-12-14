@@ -361,6 +361,8 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void escolherArquivo() {
+        txtArquivos.setText("");
+        
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
 

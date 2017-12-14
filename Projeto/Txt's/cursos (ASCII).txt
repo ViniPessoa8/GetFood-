@@ -1,5 +1,0 @@
-1#Informatica
-2#Mecanica
-3#Edificacoes
-4#Quimica
-5#Eletrotecnica

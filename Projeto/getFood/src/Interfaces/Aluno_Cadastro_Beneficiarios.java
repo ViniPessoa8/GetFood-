@@ -11,9 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -413,6 +416,8 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     private void escolherArquivo() {
+        txtArea.setText("");
+        
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -440,9 +445,9 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
             try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
+                System.out.println(arq.getPath());
+                txt = new BufferedReader(new InputStreamReader(new FileInputStream(arq.getPath()), "UTF8"));
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
 
