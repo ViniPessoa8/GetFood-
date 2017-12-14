@@ -59,6 +59,3 @@ CREATE TABLE login(
     primary key(login),
     foreign key (matrFun) references funcionario(matricula)
 );
-
-
-select * from funcionario;

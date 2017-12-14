@@ -425,6 +425,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void escolherArquivo() {
         txtArea.setText("");
+        txtNomeArquivo.setText("");
         
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();

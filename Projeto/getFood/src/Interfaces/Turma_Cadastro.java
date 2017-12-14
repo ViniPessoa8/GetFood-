@@ -423,6 +423,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     public void escolherArquivo() {
         txtArea.setText("");
+        txtNomeArquivo.setText("");
         
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();

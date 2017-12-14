@@ -417,6 +417,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
 
     private void escolherArquivo() {
         txtArea.setText("");
+        txtNomeArquivo.setText("");
         
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();

@@ -407,6 +407,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void escolherArquivo() {
         txtArea.setText("");
+        txtNomeArquivo.setText("");
 
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
