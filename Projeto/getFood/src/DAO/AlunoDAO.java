@@ -168,11 +168,9 @@ public class AlunoDAO {
             e.printStackTrace();
         }
 
-        //[Desnvolvedor] Imprime no console as informações do usuário
+        //[Desenvolvedor] Imprime no console as informações do usuário
         if (aluno != null) {
             System.out.println(aluno.toString());
-        } else {
-            return null;
         }
 
         return aluno;

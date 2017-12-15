@@ -337,7 +337,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblEscolherArquivo" min="-2" pref="175" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                          <Component id="lblSalvar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnSalvar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -387,7 +387,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="lblSalvar" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="btnSalvar" min="-2" pref="55" max="-2" attributes="0"/>
                               <Component id="lblEscolherArquivo" min="-2" pref="58" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -464,14 +464,14 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblEscolherArquivoMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblSalvar">
+        <Component class="javax.swing.JLabel" name="btnSalvar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagens/btn_Salvar.png"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblSalvarMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSalvarMouseClicked"/>
           </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">

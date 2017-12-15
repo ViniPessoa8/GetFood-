@@ -11,9 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -36,13 +39,13 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
-    
 
     private Curso_Cadastro() {
         initComponents();
         this.setLocationRelativeTo(null);
         txtArea.setEditable(false);
         txtArea.addKeyListener(this);
+        btnSalvar.setEnabled(false);
     }
 
     public Curso_Cadastro(Funcionario fun) {
@@ -59,6 +62,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         alunoDao = new AlunoDAO();
         vendaDao = new VendaDAO();
         funDao = new FunDAO();
+        btnSalvar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -76,7 +80,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         jLabel4 = new javax.swing.JLabel();
         txtNomeArquivo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -131,10 +135,10 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                btnSalvarMouseClicked(evt);
             }
         });
 
@@ -156,7 +160,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
                         .addGap(91, 91, 91)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(btnSalvar)
                         .addGap(302, 302, 302)
                         .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -187,7 +191,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(202, 202, 202))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -421,6 +425,9 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_btnVoltar3MouseClicked
 
     private void escolherArquivo() {
+        txtArea.setText("");
+        txtNomeArquivo.setText("");
+
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -432,13 +439,13 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
-        
+
         //Aviso sobre a formatação do arquivo.
         JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
                 + "(Dados separados por '#' e na seguinte ordem:\n"
                 + "-Código do curso\n"
                 + "-Nome do curso", "Aviso!", JOptionPane.WARNING_MESSAGE);
-        
+
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
 
@@ -446,9 +453,9 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
             try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
+                System.out.println(arq.getPath());
+                txt = new BufferedReader(new InputStreamReader(new FileInputStream(arq.getPath()), "UTF8"));
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
 
@@ -474,6 +481,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            btnSalvar.setEnabled(true);
         }
     }
 
@@ -490,12 +498,14 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     }
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        escolherArquivo();
+            escolherArquivo();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        cadastrarCurso();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        if (btnSalvar.isEnabled()) {
+            cadastrarCurso();
+        }
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -639,7 +649,7 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
-        if (funDao.validaSenhaAdm(senha)){
+        if (funDao.validaSenhaAdm(senha)) {
             dispose();
             Administrador_Menu admMenu = new Administrador_Menu(funLog);
             admMenu.setVisible(true);
@@ -747,11 +757,11 @@ public class Curso_Cadastro extends javax.swing.JFrame implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar3;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;

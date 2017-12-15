@@ -11,9 +11,12 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -38,6 +41,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
         txtArea.setEditable(false);
         txtArea.addKeyListener(this);
+        btnSalvar.setEnabled(false);
     }
 
     public Turma_Cadastro(Funcionario fun) {
@@ -55,6 +59,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
         alunoDao = new AlunoDAO();
         vendaDao = new VendaDAO();
         funDao = new FunDAO();
+        btnSalvar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -72,7 +77,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
         jLabel4 = new javax.swing.JLabel();
         txtNomeArquivo = new javax.swing.JTextField();
         lblEscolherArquivo = new javax.swing.JLabel();
-        lblSalvar = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtArea = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -127,10 +132,10 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
             }
         });
 
-        lblSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
-        lblSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSalvarMouseClicked(evt);
+                btnSalvarMouseClicked(evt);
             }
         });
 
@@ -154,7 +159,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lblEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(lblSalvar)
+                        .addComponent(btnSalvar)
                         .addGap(60, 60, 60))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +197,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblEscolherArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(142, 142, 142)
                 .addComponent(btnVoltar)
@@ -419,6 +424,9 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_btnVoltarMouseClicked
 
     public void escolherArquivo() {
+        txtArea.setText("");
+        txtNomeArquivo.setText("");
+        
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -444,9 +452,9 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
             arq = fileChooser.getSelectedFile();
             txtNomeArquivo.setText(arq.getName());
             try {
-                arqReader = new FileReader(arq);
-                txt = new BufferedReader(arqReader);
-            } catch (FileNotFoundException e) {
+                System.out.println(arq.getPath());
+                txt = new BufferedReader(new InputStreamReader(new FileInputStream(arq.getPath()), "UTF8"));
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
 
@@ -467,6 +475,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            btnSalvar.setEnabled(false);
         }
     }
 
@@ -492,12 +501,14 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
     }
 
     private void lblEscolherArquivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEscolherArquivoMouseClicked
-        escolherArquivo();
+            escolherArquivo();
     }//GEN-LAST:event_lblEscolherArquivoMouseClicked
 
-    private void lblSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSalvarMouseClicked
-        salvar();
-    }//GEN-LAST:event_lblSalvarMouseClicked
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        if (btnSalvar.isEnabled()) {
+            salvar();
+        }
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -818,6 +829,7 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
@@ -850,7 +862,6 @@ public class Turma_Cadastro extends javax.swing.JFrame implements KeyListener {
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblEscolherArquivo;
-    private javax.swing.JLabel lblSalvar;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JLabel txtLogo;
     private javax.swing.JTextField txtNomeArquivo;

@@ -33,7 +33,6 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
-    
 
     /**
      * Creates new form txtFotoAluno
@@ -52,6 +51,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
         alunoDao = new AlunoDAO();
         vendaDao = new VendaDAO();
         funDao = new FunDAO();
+        btnSalvar.setEnabled(false);
     }
 
     private Aluno_Foto() {
@@ -361,6 +361,8 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void escolherArquivo() {
+        txtArquivos.setText("");
+
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
 
@@ -384,6 +386,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
                 String nomeArquivo = file.getName();
                 txtArquivos.setText(txtArquivos.getText() + nomeArquivo + "\n");
             }
+            btnSalvar.setEnabled(true);
         }
     }
 
@@ -417,8 +420,8 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
             MenuPrincipal();
         }
     }
-    
-    private void MenuPrincipal(){
+
+    private void MenuPrincipal() {
         dispose();
         Inicio mn = new Inicio(funLog);
         mn.setVisible(true);
@@ -429,7 +432,9 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
     }//GEN-LAST:event_btnEscolherArquivoMouseClicked
 
     private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
-        salvar();
+        if (btnSalvar.isEnabled()) {
+            salvar();
+        }
     }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
@@ -574,7 +579,7 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
-        if (funDao.validaSenhaAdm(senha)){
+        if (funDao.validaSenhaAdm(senha)) {
             dispose();
             Administrador_Menu admMenu = new Administrador_Menu(funLog);
             admMenu.setVisible(true);
