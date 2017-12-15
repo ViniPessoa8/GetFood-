@@ -12,13 +12,19 @@ import javax.swing.JOptionPane;
 
 public class Reset extends javax.swing.JFrame implements KeyListener {
 
+    Funcionario funLog;
     TurmaDAO turmaDao;
     CursoDAO cursoDao;
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
+    
+    public Reset(){
+        initComponents();
+    }
 
-    public Reset() {
+    public Reset(Funcionario funLog) {
+        this.funLog = funLog;
         initComponents();
         txtLogo.addKeyListener(this);
         addKeyListener(this);
@@ -146,12 +152,12 @@ public class Reset extends javax.swing.JFrame implements KeyListener {
             int result = JOptionPane.showConfirmDialog(null, "Deseja voltar à tela inicial ?", "Reset", JOptionPane.YES_NO_OPTION);
             if (result == JOptionPane.YES_OPTION) {
                 dispose();
-                Administrador_Menu adm = new Administrador_Menu();
+                Administrador_Menu adm = new Administrador_Menu(funLog);
                 adm.setVisible(true);
             }
         }
         dispose();
-        Administrador_Menu adm = new Administrador_Menu();
+        Administrador_Menu adm = new Administrador_Menu(funLog);
         adm.setVisible(true);
     }
 

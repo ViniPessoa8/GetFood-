@@ -17,11 +17,13 @@ public class Administrador_Menu extends javax.swing.JFrame {
 
     public Administrador_Menu(Funcionario funLog) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.funLog = funLog;
     }
 
     public Administrador_Menu() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

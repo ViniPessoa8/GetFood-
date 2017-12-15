@@ -70,7 +70,7 @@ public class RelatorioDAO {
 
            String sql = "SELECT codigo, matrAl, matrFun, valor, tipo, dt , A.beneficiario as beneficio "
                     + "FROM aluno as A INNER JOIN venda as V ON A.matricula = V.matrAl "
-                    + "WHERE dt between ? and ? ";
+                    + "WHERE tipo <> 3 and dt between ? and ? ";
             System.out.println(sql);
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setDate(1, dataIni);
@@ -78,7 +78,7 @@ public class RelatorioDAO {
         } else {
             String sql = "SELECT codigo, matrAl, matrFun, valor, tipo, dt , A.beneficiario as beneficio "
                     + "FROM aluno as A INNER JOIN venda as V ON A.matricula = V.matrAl "
-                    + "WHERE dt between ? and ? ";
+                    + "WHERE tipo <> 3 and dt between ? and ?  ";
             
             System.out.println(sql);
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -94,9 +94,8 @@ public class RelatorioDAO {
         JasperPrint impressao = JasperFillManager.fillReport(relatorio, map, jrRS);
 
         //exibe o resultado
-        JasperViewer viewer = new JasperViewer(impressao, true);
-
-        viewer.viewReport(impressao);
+        JasperViewer viewer = new JasperViewer(impressao, false);
+        viewer.viewReport(impressao, false);
     }
     
    

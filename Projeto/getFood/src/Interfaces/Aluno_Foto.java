@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import Classes.Aluno;
 import Classes.FotoUtil;
 import Classes.Funcionario;
 import java.io.*;
@@ -323,9 +324,6 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVoltar2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 58, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +334,10 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
                                 .addComponent(btnEscolherArquivo)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSalvar)
-                                .addGap(49, 49, 49)))))
+                                .addGap(49, 49, 49))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnVoltar2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -374,6 +375,10 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
         fileChooser.setMultiSelectionEnabled(true);
+        
+        //Aviso sobre seleção de arquivos
+        JOptionPane.showMessageDialog(null, "Para selecionar vários arquivos, segure a tecla 'shift' \ne clique nos arquivos desejados,"
+                + "ou tecle \nCtrl + A para seleciona todos os arquivos da pasta atual.", "Aviso!", JOptionPane.WARNING_MESSAGE);
 
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
@@ -411,7 +416,10 @@ public class Aluno_Foto extends javax.swing.JFrame implements KeyListener {
                 //tirando o ".jpg" no fim da string
                 String[] split = dadosNome[1].split(".jpg");
                 dadosNome[1] = split[0];
-
+                dadosNome[1].replaceAll("[^0-9]", "");
+                System.out.println("Matricula: "+dadosNome[1]);
+                Aluno al = alunoDao.getAlunoMatricula(dadosNome[1]);
+                System.out.println(al.toString());
                 if (dadosNome[0].equals("F")) {
                     alunoDao.setFotoAluno(fu.fileToInputStream(file), alunoDao.getAlunoMatricula(dadosNome[1]));
                 }

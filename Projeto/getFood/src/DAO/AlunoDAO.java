@@ -132,6 +132,7 @@ public class AlunoDAO {
         try {
             pstm = con.prepareStatement(sql);
             pstm.setString(1, matricula);
+            System.out.println(pstm.toString());
             rs = pstm.executeQuery();
 
             //Se houver resultado
@@ -161,6 +162,7 @@ public class AlunoDAO {
                 aluno.setNome(rs.getString("nome"));
                 aluno.setTurma(rs.getString("turma"));
                 aluno.setSaldo(rs.getFloat("saldo"));
+                aluno.setBeneficiario(rs.getInt("beneficiario"));
                 aluno.setFoto(b);
             }
             pstm.close();

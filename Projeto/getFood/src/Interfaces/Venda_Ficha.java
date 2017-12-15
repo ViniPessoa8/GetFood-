@@ -468,6 +468,8 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
                         if (al.getFoto() != null) {
                             txtFotoAluno.setIcon(new ImageIcon(al.getFoto()));
                             redimensionar(txtFotoAluno, 150, 200);
+                        } else {
+                            txtFotoAluno.setText("(Sem foto)");
                         }
                         //Dados alunoDao
                         PainelDados.setText("" + al.toString());
@@ -484,6 +486,7 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
 
                         if (al.getBeneficiario() == 1) {
                             cxBeneficio.setVisible(true);
+                            cxBeneficio.setSelected(true);
                         } else {
                             if (al.getSaldo() >= valor) {
                                 cxDinheiro.setVisible(true);
@@ -515,7 +518,9 @@ public class Venda_Ficha extends javax.swing.JFrame implements KeyListener {
             if (!cxCredito.isSelected() && !cxDinheiro.isSelected() && !cxBeneficio.isSelected()) {
                 JOptionPane.showMessageDialog(null, "Selecione a forma de pagamento.", "Erro!", JOptionPane.ERROR_MESSAGE);
             } else if (cxDinheiro.isSelected()) {
-                resultado = vendaDao.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), vendaDao.VENDA_FICHA_DINHEIRO);
+                resultado = vendaDao.efetuarVenda(txtMatr.getText(), 
+                        funLog.getMatricula(), 5, 
+                        new Date(data.getTimeInMillis()), vendaDao.VENDA_FICHA_DINHEIRO);
             } else if (cxCredito.isSelected()) {
                 resultado = vendaDao.efetuarVenda(txtMatr.getText(), funLog.getMatricula(), 5, new Date(data.getTimeInMillis()), vendaDao.VENDA_FICHA_CREDITOS);
             } else if (cxBeneficio.isSelected()) {

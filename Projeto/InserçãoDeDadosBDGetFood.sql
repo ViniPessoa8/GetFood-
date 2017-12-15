@@ -2,6 +2,8 @@ use getFood;
 insert into ficha(valor) values(5);
 INSERT INTO funcionario(matricula,cargo,nome) VALUES ('0','admin','Administrador');
 INSERT INTO login(login, senha, matrFun) VALUES ('admin',MD5('admin'),'0');
+INSERT INTO funcionario(matricula,cargo,nome) VALUES ('1','exemplo','exemplo');
+INSERT INTO login(login, senha, matrFun) VALUES ('exemplo',MD5('exemplo'),'1');
 
 /*Criação dos Cursos (Para a defesa)*/
 INSERT INTO curso(codigo, nome) VALUES('1','Edificacoes');
