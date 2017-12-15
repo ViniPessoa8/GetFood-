@@ -35,13 +35,13 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
     AlunoDAO alunoDao;
     VendaDAO vendaDao;
     FunDAO funDao;
-    
 
     public Aluno_Cadastro_Beneficiarios() {
         initComponents();
         this.setLocationRelativeTo(null);
         txtArea.setEditable(false);
         txtArea.addKeyListener(this);
+        btnSalvar.setEnabled(false);
     }
 
     public Aluno_Cadastro_Beneficiarios(Funcionario fun) {
@@ -58,6 +58,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         alunoDao = new AlunoDAO();
         vendaDao = new VendaDAO();
         funDao = new FunDAO();
+        btnSalvar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -76,7 +77,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         btnVoltar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -141,10 +142,10 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                btnSalvarMouseClicked(evt);
             }
         });
 
@@ -171,7 +172,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(39, 39, 39)
-                        .addComponent(jLabel2)
+                        .addComponent(btnSalvar)
                         .addGap(79, 79, 79)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -192,7 +193,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnVoltar)
                 .addGap(34, 34, 34))
@@ -418,7 +419,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
     private void escolherArquivo() {
         txtArea.setText("");
         txtNomeArquivo.setText("");
-        
+
         //VARIÁVEIS
         JFileChooser fileChooser = new JFileChooser();
         File arq;
@@ -430,7 +431,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         fileChooser.setDialogTitle("Escolher Arquivo...");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
         fileChooser.setFileFilter(filtro);
-        
+
         //Aviso sobre a formatação do arquivo.
         JOptionPane.showMessageDialog(null, "Certifique-se que o formato do arquivo está no padrão solicitado para executar o cadastro:\n"
                 + "(Dados separados por '#' e na seguinte ordem:\n"
@@ -438,7 +439,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
                 + "-Nome\n"
                 + "-Curso\n"
                 + "-Turma\n", "Aviso!", JOptionPane.WARNING_MESSAGE);
-        
+
         //Abre a janela JFileChooser e guarda a resposta na variável 'retornoFileChooser'
         retornoFileChooser = fileChooser.showOpenDialog(this);
 
@@ -457,23 +458,28 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
                 while (linha != null) {
                     String novaLinha = txtArea.getText() + linha + "\n";
                     txtArea.setText(novaLinha);
-
                     dadosAluno = linha.split("#");
-
+                    for(int i = 0; i<=3; i++){
+                        dadosAluno[i] = dadosAluno[i].replaceAll("﻿", "");
+                    }
+                    System.out.println("MATRICULA: " + dadosAluno[0]);
+                    Aluno al = alunoDao.getAlunoMatricula(dadosAluno[0]);
+                    lista.add(al);
                     //alunoDao.setBeneficiario(alunoDao.getAlunoMatricula(dadosAluno[0]));
-                    lista.add(alunoDao.getAlunoMatricula(dadosAluno[0]));
+                    //lista.add(alunoDao.getAlunoMatricula(dadosAluno[0]));
 
                     linha = txt.readLine();
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
+            btnSalvar.setEnabled(true);
         }
     }
 
     private void salvar() {
         for (Aluno al : lista) {
+            System.out.println(al.toString());
             alunoDao.setBeneficiario(al);
         }
         JOptionPane.showMessageDialog(null, "Operação realizada com sucesso.", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -486,9 +492,11 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
         escolherArquivo();
     }//GEN-LAST:event_jLabel3MouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        salvar();
-    }//GEN-LAST:event_jLabel2MouseClicked
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        if (btnSalvar.isEnabled()) {
+            salvar();
+        }
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -632,7 +640,7 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String senha = JOptionPane.showInputDialog(null, "Digite a senha do administrador:", null, JOptionPane.QUESTION_MESSAGE);
-        if (funDao.validaSenhaAdm(senha)){
+        if (funDao.validaSenhaAdm(senha)) {
             dispose();
             Administrador_Menu admMenu = new Administrador_Menu(funLog);
             admMenu.setVisible(true);
@@ -651,9 +659,9 @@ public class Aluno_Cadastro_Beneficiarios extends javax.swing.JFrame implements 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

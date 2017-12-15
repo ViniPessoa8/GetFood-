@@ -41,6 +41,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         this.setLocationRelativeTo(null);
         txtArea.setEditable(false);
         txtArea.addKeyListener(this);
+        btnSalvar.setEnabled(false);
     }
 
     public Aluno_Cadastro(Funcionario fun) {
@@ -59,6 +60,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         alunoDao = new AlunoDAO();
         vendaDao = new VendaDAO();
         funDao = new FunDAO();
+        btnSalvar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -77,7 +79,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         jLabel1 = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btnSalvar = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -136,10 +138,10 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btn_Salvar.png"))); // NOI18N
+        btnSalvar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                btnSalvarMouseClicked(evt);
             }
         });
 
@@ -164,7 +166,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
                         .addGap(83, 83, 83)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
@@ -185,7 +187,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
                             .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE))
                         .addGap(142, 142, 142)
                         .addComponent(btnVoltar)
@@ -466,6 +468,7 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            btnSalvar.setEnabled(true);
         }
     }
 
@@ -484,9 +487,11 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
         escolherArquivo();
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        cadastrar();
-    }//GEN-LAST:event_jLabel3MouseClicked
+    private void btnSalvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalvarMouseClicked
+        if (btnSalvar.isEnabled()) {
+            cadastrar();
+        }
+    }//GEN-LAST:event_btnSalvarMouseClicked
 
     private void jMenuItem11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem11MouseEntered
         // TODO add your handling code here:
@@ -649,10 +654,10 @@ public class Aluno_Cadastro extends javax.swing.JFrame implements KeyListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnSalvar;
     private javax.swing.JLabel btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
