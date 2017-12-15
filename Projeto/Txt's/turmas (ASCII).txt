@@ -1,6 +1,0 @@
-IINF11-A#Informatica
-IINF11-B#Informatica
-IINF21-A#Informatica
-IINF21-B#Informatica
-IINF31-A#Informatica
-IINF31-B#Informatica
